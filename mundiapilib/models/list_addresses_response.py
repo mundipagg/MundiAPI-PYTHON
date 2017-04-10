@@ -8,7 +8,7 @@
 import mundiapilib.models.get_address_response
 import mundiapilib.models.paging_response
 
-class ListAddressesResponse():
+class ListAddressesResponse(object):
 
     """Implementation of the 'ListAddressesResponse' model.
 
@@ -60,6 +60,7 @@ class ListAddressesResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_address_response.GetAddressResponse.from_dictionary(structure))
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)

@@ -8,7 +8,7 @@
 import mundiapilib.models.get_charge_response
 import mundiapilib.models.paging_response
 
-class ListChargesResponse():
+class ListChargesResponse(object):
 
     """Implementation of the 'ListChargesResponse' model.
 
@@ -60,6 +60,7 @@ class ListChargesResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_charge_response.GetChargeResponse.from_dictionary(structure))
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)

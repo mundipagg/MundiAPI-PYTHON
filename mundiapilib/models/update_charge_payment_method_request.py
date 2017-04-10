@@ -8,7 +8,7 @@
 import mundiapilib.models.create_credit_card_payment_request
 import mundiapilib.models.create_boleto_payment_request
 
-class UpdateChargePaymentMethodRequest():
+class UpdateChargePaymentMethodRequest(object):
 
     """Implementation of the 'UpdateChargePaymentMethodRequest' model.
 
@@ -67,6 +67,7 @@ class UpdateChargePaymentMethodRequest():
         payment_method = dictionary.get("payment_method")
         credit_card = mundiapilib.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
         boleto = mundiapilib.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
+
         # Return an object of this model
         return cls(update_subscription,
                    payment_method,

@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.update_pricing_scheme_request
 
-class UpdateSubscriptionItemRequest():
+class UpdateSubscriptionItemRequest(object):
 
     """Implementation of the 'UpdateSubscriptionItemRequest' model.
 
@@ -75,6 +75,7 @@ class UpdateSubscriptionItemRequest():
         cycles = dictionary.get("cycles")
         quantity = dictionary.get("quantity")
         minimum_price = dictionary.get("minimum_price")
+
         # Return an object of this model
         return cls(description,
                    status,

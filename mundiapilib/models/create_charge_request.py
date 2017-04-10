@@ -9,7 +9,7 @@ from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.create_customer_request
 import mundiapilib.models.create_payment_request
 
-class CreateChargeRequest():
+class CreateChargeRequest(object):
 
     """Implementation of the 'CreateChargeRequest' model.
 
@@ -82,6 +82,7 @@ class CreateChargeRequest():
         customer = mundiapilib.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
         payment = mundiapilib.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get("payment")) if dictionary.get("payment") else None
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(code,
                    amount,

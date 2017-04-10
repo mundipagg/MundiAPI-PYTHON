@@ -10,7 +10,7 @@ import mundiapilib.models.create_customer_request
 import mundiapilib.models.create_payment_request
 import mundiapilib.models.create_shipping_request
 
-class CreateOrderRequest():
+class CreateOrderRequest(object):
 
     """Implementation of the 'CreateOrderRequest' model.
 
@@ -87,6 +87,7 @@ class CreateOrderRequest():
         customer_id = dictionary.get("customer_id")
         shipping = mundiapilib.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(items,
                    customer,

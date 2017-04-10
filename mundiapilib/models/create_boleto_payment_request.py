@@ -7,7 +7,7 @@
 """
 
 
-class CreateBoletoPaymentRequest():
+class CreateBoletoPaymentRequest(object):
 
     """Implementation of the 'CreateBoletoPaymentRequest' model.
 
@@ -62,6 +62,7 @@ class CreateBoletoPaymentRequest():
         retries = dictionary.get("retries")
         bank = dictionary.get("bank")
         instructions = dictionary.get("instructions")
+
         # Return an object of this model
         return cls(retries,
                    bank,

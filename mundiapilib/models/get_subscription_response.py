@@ -12,7 +12,7 @@ import mundiapilib.models.get_credit_card_response
 import mundiapilib.models.get_subscription_item_response
 import mundiapilib.models.get_setup_response
 
-class GetSubscriptionResponse():
+class GetSubscriptionResponse(object):
 
     """Implementation of the 'GetSubscriptionResponse' model.
 
@@ -170,6 +170,7 @@ class GetSubscriptionResponse():
         billing_day = dictionary.get("billing_day")
         minimum_price = dictionary.get("minimum_price")
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
+
         # Return an object of this model
         return cls(id,
                    code,

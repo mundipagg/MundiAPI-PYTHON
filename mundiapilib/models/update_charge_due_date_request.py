@@ -7,7 +7,7 @@
 """
 from mundiapilib.api_helper import APIHelper
 
-class UpdateChargeDueDateRequest():
+class UpdateChargeDueDateRequest(object):
 
     """Implementation of the 'UpdateChargeDueDateRequest' model.
 
@@ -50,6 +50,7 @@ class UpdateChargeDueDateRequest():
 
         # Extract variables from the dictionary
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
+
         # Return an object of this model
         return cls(due_at)
 

@@ -7,7 +7,7 @@
 """
 
 
-class CreateAddressRequest():
+class CreateAddressRequest(object):
 
     """Implementation of the 'CreateAddressRequest' model.
 
@@ -92,6 +92,7 @@ class CreateAddressRequest():
         country = dictionary.get("country")
         complement = dictionary.get("complement")
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(street,
                    number,

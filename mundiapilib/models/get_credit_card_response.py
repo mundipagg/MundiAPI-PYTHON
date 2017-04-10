@@ -9,7 +9,7 @@ from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_billing_address_response
 import mundiapilib.models.get_customer_response
 
-class GetCreditCardResponse():
+class GetCreditCardResponse(object):
 
     """Implementation of the 'GetCreditCardResponse' model.
 
@@ -113,6 +113,7 @@ class GetCreditCardResponse():
         customer = mundiapilib.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
         metadata = dictionary.get("metadata")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
+
         # Return an object of this model
         return cls(id,
                    last_four_digits,

@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_pricing_scheme_request
 
-class CreatePlanItemRequest():
+class CreatePlanItemRequest(object):
 
     """Implementation of the 'CreatePlanItemRequest' model.
 
@@ -75,6 +75,7 @@ class CreatePlanItemRequest():
         description = dictionary.get("description")
         cycles = dictionary.get("cycles")
         quantity = dictionary.get("quantity")
+
         # Return an object of this model
         return cls(name,
                    pricing_scheme,

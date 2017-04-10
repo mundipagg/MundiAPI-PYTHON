@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_subscription_response
 
-class GetDiscountResponse():
+class GetDiscountResponse(object):
 
     """Implementation of the 'GetDiscountResponse' model.
 
@@ -86,6 +86,7 @@ class GetDiscountResponse():
         subscription = mundiapilib.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get("subscription")) if dictionary.get("subscription") else None
         cycles = dictionary.get("cycles")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
+
         # Return an object of this model
         return cls(id,
                    value,

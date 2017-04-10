@@ -7,7 +7,7 @@
 """
 from mundiapilib.api_helper import APIHelper
 
-class UpdateSubscriptionBillingDateRequest():
+class UpdateSubscriptionBillingDateRequest(object):
 
     """Implementation of the 'UpdateSubscriptionBillingDateRequest' model.
 
@@ -51,6 +51,7 @@ class UpdateSubscriptionBillingDateRequest():
 
         # Extract variables from the dictionary
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
+
         # Return an object of this model
         return cls(next_billing_at)
 

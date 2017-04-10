@@ -7,7 +7,7 @@
 """
 
 
-class PagingResponse():
+class PagingResponse(object):
 
     """Implementation of the 'PagingResponse' model.
 
@@ -60,6 +60,7 @@ class PagingResponse():
         total = dictionary.get("total")
         previous = dictionary.get("previous")
         next = dictionary.get("next")
+
         # Return an object of this model
         return cls(total,
                    previous,

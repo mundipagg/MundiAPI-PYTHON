@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.get_price_bracket_response
 
-class GetPricingSchemeResponse():
+class GetPricingSchemeResponse(object):
 
     """Implementation of the 'GetPricingSchemeResponse' model.
 
@@ -70,6 +70,7 @@ class GetPricingSchemeResponse():
             for structure in dictionary.get("price_brackets"):
                 price_brackets.append(mundiapilib.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(structure))
         minimum_price = dictionary.get("minimum_price")
+
         # Return an object of this model
         return cls(price,
                    scheme_type,

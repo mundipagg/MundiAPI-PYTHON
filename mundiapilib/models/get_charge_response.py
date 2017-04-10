@@ -11,7 +11,7 @@ import mundiapilib.models.get_invoice_response
 import mundiapilib.models.get_order_response
 import mundiapilib.models.get_customer_response
 
-class GetChargeResponse():
+class GetChargeResponse(object):
 
     """Implementation of the 'GetChargeResponse' model.
 
@@ -135,6 +135,7 @@ class GetChargeResponse():
         metadata = dictionary.get("metadata")
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
+
         # Return an object of this model
         return cls(id,
                    code,

@@ -7,7 +7,7 @@
 """
 
 
-class CreateCancelChargeRequest():
+class CreateCancelChargeRequest(object):
 
     """Implementation of the 'CreateCancelChargeRequest' model.
 
@@ -50,6 +50,7 @@ class CreateCancelChargeRequest():
 
         # Extract variables from the dictionary
         amount = dictionary.get("amount")
+
         # Return an object of this model
         return cls(amount)
 

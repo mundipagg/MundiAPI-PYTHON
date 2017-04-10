@@ -11,7 +11,7 @@ import mundiapilib.models.get_customer_response
 import mundiapilib.models.get_charge_response
 import mundiapilib.models.get_shipping_response
 
-class GetOrderResponse():
+class GetOrderResponse(object):
 
     """Implementation of the 'GetOrderResponse' model.
 
@@ -113,6 +113,7 @@ class GetOrderResponse():
         invoice_url = dictionary.get("invoice_url")
         shipping = mundiapilib.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(id,
                    code,

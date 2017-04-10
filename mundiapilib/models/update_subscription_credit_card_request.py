@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_credit_card_request
 
-class UpdateSubscriptionCreditCardRequest():
+class UpdateSubscriptionCreditCardRequest(object):
 
     """Implementation of the 'UpdateSubscriptionCreditCardRequest' model.
 
@@ -60,6 +60,7 @@ class UpdateSubscriptionCreditCardRequest():
         credit_card = mundiapilib.models.create_credit_card_request.CreateCreditCardRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
         credit_card_id = dictionary.get("credit_card_id")
         credit_card_gateway_id = dictionary.get("credit_card_gateway_id")
+
         # Return an object of this model
         return cls(credit_card,
                    credit_card_id,

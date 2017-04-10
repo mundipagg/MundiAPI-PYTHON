@@ -7,7 +7,7 @@
 """
 
 
-class GetBillingAddressResponse():
+class GetBillingAddressResponse(object):
 
     """Implementation of the 'GetBillingAddressResponse' model.
 
@@ -85,6 +85,7 @@ class GetBillingAddressResponse():
         state = dictionary.get("state")
         country = dictionary.get("country")
         complement = dictionary.get("complement")
+
         # Return an object of this model
         return cls(street,
                    number,

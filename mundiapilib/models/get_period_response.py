@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_subscription_response
 
-class GetPeriodResponse():
+class GetPeriodResponse(object):
 
     """Implementation of the 'GetPeriodResponse' model.
 
@@ -71,6 +71,7 @@ class GetPeriodResponse():
         id = dictionary.get("id")
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
         subscription = mundiapilib.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get("subscription")) if dictionary.get("subscription") else None
+
         # Return an object of this model
         return cls(start_at,
                    end_at,

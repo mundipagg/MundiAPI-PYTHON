@@ -7,7 +7,7 @@
 """
 
 
-class CreateCaptureChargeRequest():
+class CreateCaptureChargeRequest(object):
 
     """Implementation of the 'CreateCaptureChargeRequest' model.
 
@@ -50,6 +50,7 @@ class CreateCaptureChargeRequest():
 
         # Extract variables from the dictionary
         amount = dictionary.get("amount")
+
         # Return an object of this model
         return cls(amount)
 

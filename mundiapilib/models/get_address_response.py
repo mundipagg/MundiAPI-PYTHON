@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_customer_response
 
-class GetAddressResponse():
+class GetAddressResponse(object):
 
     """Implementation of the 'GetAddressResponse' model.
 
@@ -121,6 +121,7 @@ class GetAddressResponse():
         customer = mundiapilib.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
         metadata = dictionary.get("metadata")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
+
         # Return an object of this model
         return cls(id,
                    street,

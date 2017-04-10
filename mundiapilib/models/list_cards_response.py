@@ -8,7 +8,7 @@
 import mundiapilib.models.get_credit_card_response
 import mundiapilib.models.paging_response
 
-class ListCardsResponse():
+class ListCardsResponse(object):
 
     """Implementation of the 'ListCardsResponse' model.
 
@@ -60,6 +60,7 @@ class ListCardsResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_credit_card_response.GetCreditCardResponse.from_dictionary(structure))
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)

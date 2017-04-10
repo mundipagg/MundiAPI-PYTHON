@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_address_response
 
-class GetCustomerResponse():
+class GetCustomerResponse(object):
 
     """Implementation of the 'GetCustomerResponse' model.
 
@@ -111,6 +111,7 @@ class GetCustomerResponse():
         address = mundiapilib.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
         metadata = dictionary.get("metadata")
         fb_id = dictionary.get("fb_id")
+
         # Return an object of this model
         return cls(id,
                    name,

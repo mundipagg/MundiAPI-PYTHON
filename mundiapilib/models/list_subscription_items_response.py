@@ -8,7 +8,7 @@
 import mundiapilib.models.get_subscription_item_response
 import mundiapilib.models.paging_response
 
-class ListSubscriptionItemsResponse():
+class ListSubscriptionItemsResponse(object):
 
     """Implementation of the 'ListSubscriptionItemsResponse' model.
 
@@ -60,6 +60,7 @@ class ListSubscriptionItemsResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_subscription_item_response.GetSubscriptionItemResponse.from_dictionary(structure))
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)

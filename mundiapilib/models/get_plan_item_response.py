@@ -9,7 +9,7 @@ from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_pricing_scheme_response
 import mundiapilib.models.get_plan_response
 
-class GetPlanItemResponse():
+class GetPlanItemResponse(object):
 
     """Implementation of the 'GetPlanItemResponse' model.
 
@@ -103,6 +103,7 @@ class GetPlanItemResponse():
         quantity = dictionary.get("quantity")
         cycles = dictionary.get("cycles")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
+
         # Return an object of this model
         return cls(id,
                    name,

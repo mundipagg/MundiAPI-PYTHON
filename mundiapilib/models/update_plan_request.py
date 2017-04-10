@@ -7,7 +7,7 @@
 """
 
 
-class UpdatePlanRequest():
+class UpdatePlanRequest(object):
 
     """Implementation of the 'UpdatePlanRequest' model.
 
@@ -123,6 +123,7 @@ class UpdatePlanRequest():
         metadata = dictionary.get("metadata")
         minimum_price = dictionary.get("minimum_price")
         trial_period_days = dictionary.get("trial_period_days")
+
         # Return an object of this model
         return cls(name,
                    description,

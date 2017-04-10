@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.get_address_response
 
-class GetShippingResponse():
+class GetShippingResponse(object):
 
     """Implementation of the 'GetShippingResponse' model.
 
@@ -70,6 +70,7 @@ class GetShippingResponse():
         recipient_name = dictionary.get("recipient_name")
         recipient_phone = dictionary.get("recipient_phone")
         address = mundiapilib.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
+
         # Return an object of this model
         return cls(amount,
                    description,

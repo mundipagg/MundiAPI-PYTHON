@@ -14,7 +14,7 @@ import mundiapilib.models.get_subscription_response
 import mundiapilib.models.get_period_response
 import mundiapilib.models.get_shipping_response
 
-class GetInvoiceResponse():
+class GetInvoiceResponse(object):
 
     """Implementation of the 'GetInvoiceResponse' model.
 
@@ -152,6 +152,7 @@ class GetInvoiceResponse():
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
         seen_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("seen_at")).datetime if dictionary.get("seen_at") else None
+
         # Return an object of this model
         return cls(id,
                    code,

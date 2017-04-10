@@ -7,7 +7,7 @@
 """
 
 
-class GetSetupResponse():
+class GetSetupResponse(object):
 
     """Implementation of the 'GetSetupResponse' model.
 
@@ -65,6 +65,7 @@ class GetSetupResponse():
         description = dictionary.get("description")
         amount = dictionary.get("amount")
         status = dictionary.get("status")
+
         # Return an object of this model
         return cls(id,
                    description,

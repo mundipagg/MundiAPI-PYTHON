@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.get_plan_response
 
-class ListPlansResponse():
+class ListPlansResponse(object):
 
     """Implementation of the 'ListPlansResponse' model.
 
@@ -59,6 +59,7 @@ class ListPlansResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_plan_response.GetPlanResponse.from_dictionary(structure))
         paging = dictionary.get("paging")
+
         # Return an object of this model
         return cls(data,
                    paging)

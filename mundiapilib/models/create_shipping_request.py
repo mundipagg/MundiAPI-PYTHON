@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_address_request
 
-class CreateShippingRequest():
+class CreateShippingRequest(object):
 
     """Implementation of the 'CreateShippingRequest' model.
 
@@ -76,6 +76,7 @@ class CreateShippingRequest():
         recipient_phone = dictionary.get("recipient_phone")
         address_id = dictionary.get("address_id")
         address = mundiapilib.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
+
         # Return an object of this model
         return cls(amount,
                    description,

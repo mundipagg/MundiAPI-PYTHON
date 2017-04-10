@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.update_price_bracket_request
 
-class UpdatePricingSchemeRequest():
+class UpdatePricingSchemeRequest(object):
 
     """Implementation of the 'UpdatePricingSchemeRequest' model.
 
@@ -69,6 +69,7 @@ class UpdatePricingSchemeRequest():
                 price_brackets.append(mundiapilib.models.update_price_bracket_request.UpdatePriceBracketRequest.from_dictionary(structure))
         price = dictionary.get("price")
         minimum_price = dictionary.get("minimum_price")
+
         # Return an object of this model
         return cls(scheme_type,
                    price_brackets,

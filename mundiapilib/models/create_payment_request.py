@@ -8,7 +8,7 @@
 import mundiapilib.models.create_credit_card_payment_request
 import mundiapilib.models.create_boleto_payment_request
 
-class CreatePaymentRequest():
+class CreatePaymentRequest(object):
 
     """Implementation of the 'CreatePaymentRequest' model.
 
@@ -67,6 +67,7 @@ class CreatePaymentRequest():
         credit_card = mundiapilib.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
         boleto = mundiapilib.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
         currency = dictionary.get("currency")
+
         # Return an object of this model
         return cls(payment_method,
                    credit_card,

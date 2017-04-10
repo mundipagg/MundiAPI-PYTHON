@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_plan_item_response
 
-class GetPlanResponse():
+class GetPlanResponse(object):
 
     """Implementation of the 'GetPlanResponse' model.
 
@@ -155,6 +155,7 @@ class GetPlanResponse():
         trial_period_days = dictionary.get("trial_period_days")
         minimum_price = dictionary.get("minimum_price")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
+
         # Return an object of this model
         return cls(id,
                    name,

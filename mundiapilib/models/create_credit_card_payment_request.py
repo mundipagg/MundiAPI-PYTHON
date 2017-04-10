@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_credit_card_request
 
-class CreateCreditCardPaymentRequest():
+class CreateCreditCardPaymentRequest(object):
 
     """Implementation of the 'CreateCreditCardPaymentRequest' model.
 
@@ -83,6 +83,7 @@ class CreateCreditCardPaymentRequest():
         update_subscription_card = dictionary.get("update_subscription_card")
         credit_card_id = dictionary.get("credit_card_id")
         capture = dictionary.get("capture") if dictionary.get("capture") else True
+
         # Return an object of this model
         return cls(installments,
                    statement_descriptor,

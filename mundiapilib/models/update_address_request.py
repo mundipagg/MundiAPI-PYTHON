@@ -7,7 +7,7 @@
 """
 
 
-class UpdateAddressRequest():
+class UpdateAddressRequest(object):
 
     """Implementation of the 'UpdateAddressRequest' model.
 
@@ -60,6 +60,7 @@ class UpdateAddressRequest():
         number = dictionary.get("number")
         complement = dictionary.get("complement")
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(number,
                    complement,

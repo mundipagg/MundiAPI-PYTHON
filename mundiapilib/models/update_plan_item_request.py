@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.update_pricing_scheme_request
 
-class UpdatePlanItemRequest():
+class UpdatePlanItemRequest(object):
 
     """Implementation of the 'UpdatePlanItemRequest' model.
 
@@ -75,6 +75,7 @@ class UpdatePlanItemRequest():
         pricing_scheme = mundiapilib.models.update_pricing_scheme_request.UpdatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
         quantity = dictionary.get("quantity")
         cycles = dictionary.get("cycles")
+
         # Return an object of this model
         return cls(name,
                    description,

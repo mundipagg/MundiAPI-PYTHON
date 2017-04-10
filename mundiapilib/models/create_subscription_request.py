@@ -14,7 +14,7 @@ import mundiapilib.models.create_shipping_request
 import mundiapilib.models.create_discount_request
 import mundiapilib.models.create_setup_request
 
-class CreateSubscriptionRequest():
+class CreateSubscriptionRequest(object):
 
     """Implementation of the 'CreateSubscriptionRequest' model.
 
@@ -188,6 +188,7 @@ class CreateSubscriptionRequest():
         start_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("start_at")).datetime if dictionary.get("start_at") else None
         minimum_price = dictionary.get("minimum_price")
         cycles = dictionary.get("cycles")
+
         # Return an object of this model
         return cls(plan_id,
                    customer,

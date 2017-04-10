@@ -7,7 +7,7 @@
 """
 from mundiapilib.api_helper import APIHelper
 
-class CreateUsageRequest():
+class CreateUsageRequest(object):
 
     """Implementation of the 'CreateUsageRequest' model.
 
@@ -60,6 +60,7 @@ class CreateUsageRequest():
         quantity = dictionary.get("quantity")
         description = dictionary.get("description")
         used_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("used_at")).datetime if dictionary.get("used_at") else None
+
         # Return an object of this model
         return cls(quantity,
                    description,

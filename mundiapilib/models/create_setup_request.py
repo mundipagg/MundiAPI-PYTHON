@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_payment_request
 
-class CreateSetupRequest():
+class CreateSetupRequest(object):
 
     """Implementation of the 'CreateSetupRequest' model.
 
@@ -61,6 +61,7 @@ class CreateSetupRequest():
         amount = dictionary.get("amount")
         description = dictionary.get("description")
         payment = mundiapilib.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get("payment")) if dictionary.get("payment") else None
+
         # Return an object of this model
         return cls(amount,
                    description,

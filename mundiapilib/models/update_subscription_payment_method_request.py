@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_credit_card_request
 
-class UpdateSubscriptionPaymentMethodRequest():
+class UpdateSubscriptionPaymentMethodRequest(object):
 
     """Implementation of the 'UpdateSubscriptionPaymentMethodRequest' model.
 
@@ -65,6 +65,7 @@ class UpdateSubscriptionPaymentMethodRequest():
         credit_card_id = dictionary.get("credit_card_id")
         credit_card_gateway_id = dictionary.get("credit_card_gateway_id")
         credit_card = mundiapilib.models.create_credit_card_request.CreateCreditCardRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
+
         # Return an object of this model
         return cls(payment_method,
                    credit_card_id,

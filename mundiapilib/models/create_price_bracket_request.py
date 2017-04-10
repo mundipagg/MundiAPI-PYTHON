@@ -7,7 +7,7 @@
 """
 
 
-class CreatePriceBracketRequest():
+class CreatePriceBracketRequest(object):
 
     """Implementation of the 'CreatePriceBracketRequest' model.
 
@@ -65,6 +65,7 @@ class CreatePriceBracketRequest():
         price = dictionary.get("price")
         end_quantity = dictionary.get("end_quantity")
         overage_price = dictionary.get("overage_price")
+
         # Return an object of this model
         return cls(start_quantity,
                    price,

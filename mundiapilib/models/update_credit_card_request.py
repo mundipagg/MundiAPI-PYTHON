@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_address_request
 
-class UpdateCreditCardRequest():
+class UpdateCreditCardRequest(object):
 
     """Implementation of the 'UpdateCreditCardRequest' model.
 
@@ -76,6 +76,7 @@ class UpdateCreditCardRequest():
         billing_address_id = dictionary.get("billing_address_id")
         billing_address = mundiapilib.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(holder_name,
                    exp_month,

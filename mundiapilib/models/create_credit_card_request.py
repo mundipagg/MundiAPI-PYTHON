@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_address_request
 
-class CreateCreditCardRequest():
+class CreateCreditCardRequest(object):
 
     """Implementation of the 'CreateCreditCardRequest' model.
 
@@ -97,6 +97,7 @@ class CreateCreditCardRequest():
         token = dictionary.get("token")
         billing_address_id = dictionary.get("billing_address_id")
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(number,
                    holder_name,

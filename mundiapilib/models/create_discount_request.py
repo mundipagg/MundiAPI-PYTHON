@@ -7,7 +7,7 @@
 """
 
 
-class CreateDiscountRequest():
+class CreateDiscountRequest(object):
 
     """Implementation of the 'CreateDiscountRequest' model.
 
@@ -66,6 +66,7 @@ class CreateDiscountRequest():
         discount_type = dictionary.get("discount_type")
         item_id = dictionary.get("item_id")
         cycles = dictionary.get("cycles")
+
         # Return an object of this model
         return cls(value,
                    discount_type,

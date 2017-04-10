@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.create_address_request
 
-class CreateCustomerRequest():
+class CreateCustomerRequest(object):
 
     """Implementation of the 'CreateCustomerRequest' model.
 
@@ -82,6 +82,7 @@ class CreateCustomerRequest():
         person_type = dictionary.get("person_type")
         address = mundiapilib.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
         metadata = dictionary.get("metadata")
+
         # Return an object of this model
         return cls(name,
                    email,

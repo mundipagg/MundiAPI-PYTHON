@@ -8,7 +8,7 @@
 import mundiapilib.models.create_pricing_scheme_request
 import mundiapilib.models.create_discount_request
 
-class CreateSubscriptionItemRequest():
+class CreateSubscriptionItemRequest(object):
 
     """Implementation of the 'CreateSubscriptionItemRequest' model.
 
@@ -90,6 +90,7 @@ class CreateSubscriptionItemRequest():
         cycles = dictionary.get("cycles")
         quantity = dictionary.get("quantity")
         minimum_price = dictionary.get("minimum_price")
+
         # Return an object of this model
         return cls(description,
                    pricing_scheme,

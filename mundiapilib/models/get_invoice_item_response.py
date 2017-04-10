@@ -8,7 +8,7 @@
 import mundiapilib.models.get_pricing_scheme_response
 import mundiapilib.models.get_price_bracket_response
 
-class GetInvoiceItemResponse():
+class GetInvoiceItemResponse(object):
 
     """Implementation of the 'GetInvoiceItemResponse' model.
 
@@ -72,6 +72,7 @@ class GetInvoiceItemResponse():
         pricing_scheme = mundiapilib.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
         price_bracket = mundiapilib.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(dictionary.get("price_bracket")) if dictionary.get("price_bracket") else None
         quantity = dictionary.get("quantity")
+
         # Return an object of this model
         return cls(amount,
                    description,

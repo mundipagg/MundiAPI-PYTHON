@@ -7,7 +7,7 @@
 """
 import mundiapilib.models.paging_response
 
-class ListUsagesResponse():
+class ListUsagesResponse(object):
 
     """Implementation of the 'ListUsagesResponse' model.
 
@@ -55,6 +55,7 @@ class ListUsagesResponse():
         # Extract variables from the dictionary
         data = dictionary.get("data")
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)

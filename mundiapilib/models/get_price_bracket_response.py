@@ -7,7 +7,7 @@
 """
 
 
-class GetPriceBracketResponse():
+class GetPriceBracketResponse(object):
 
     """Implementation of the 'GetPriceBracketResponse' model.
 
@@ -65,6 +65,7 @@ class GetPriceBracketResponse():
         price = dictionary.get("price")
         end_quantity = dictionary.get("end_quantity")
         overage_price = dictionary.get("overage_price")
+
         # Return an object of this model
         return cls(start_quantity,
                    price,

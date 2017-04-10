@@ -8,7 +8,7 @@
 from mundiapilib.api_helper import APIHelper
 import mundiapilib.models.get_credit_card_response
 
-class GetTransactionResponse():
+class GetTransactionResponse(object):
 
     """Implementation of the 'GetTransactionResponse' model.
 
@@ -25,6 +25,7 @@ class GetTransactionResponse():
         attempt_count (int): Number of attempts tried
         max_attempts (int): Max attempts
         next_attempt (datetime): Date and time of the next attempt
+        transaction_type (string): TODO: type description here.
 
     """
 
@@ -39,13 +40,8 @@ class GetTransactionResponse():
         "updated_at" : "updated_at",
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
+        "transaction_type" : "transaction_type",
         "next_attempt" : "next_attempt"
-    }
-
-    # Discriminators for this class
-    _discriminators = lambda: {
-        'boleto': GetBoletoTransactionResponse.from_dictionary,
-        'credit_card': GetCreditCardTransactionResponse.from_dictionary
     }
 
     def __init__(self,
@@ -58,6 +54,7 @@ class GetTransactionResponse():
                  updated_at=None,
                  attempt_count=None,
                  max_attempts=None,
+                 transaction_type=None,
                  next_attempt=None):
         """Constructor for the GetTransactionResponse class"""
 
@@ -72,6 +69,7 @@ class GetTransactionResponse():
         self.attempt_count = attempt_count
         self.max_attempts = max_attempts
         self.next_attempt = APIHelper.RFC3339DateTime(next_attempt) if next_attempt else None
+        self.transaction_type = transaction_type
 
 
     @classmethod
@@ -91,7 +89,14 @@ class GetTransactionResponse():
         if dictionary is None:
             return None
 
-        unboxer = GetTransactionResponse._discriminators().get(dictionary.get('transaction_type'))
+        discriminators = {
+            'boleto': GetBoletoTransactionResponse.from_dictionary,
+            'credit_card': GetCreditCardTransactionResponse.from_dictionary
+        }
+        unboxer = discriminators.get(dictionary.get('transaction_type'))
+
+        # Delegate unboxing to another function if a discriminator
+        # value for a child class is present.
         if unboxer:
             return unboxer(dictionary)
 
@@ -105,7 +110,9 @@ class GetTransactionResponse():
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         attempt_count = dictionary.get("attempt_count")
         max_attempts = dictionary.get("max_attempts")
+        transaction_type = dictionary.get("transaction_type")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+
         # Return an object of this model
         return cls(transaction_type,
                    gateway_id,
@@ -116,6 +123,7 @@ class GetTransactionResponse():
                    updated_at,
                    attempt_count,
                    max_attempts,
+                   transaction_type,
                    next_attempt)
 
 
@@ -133,6 +141,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         bank (string): TODO: type description here.
         document_number (string): TODO: type description here.
         instructions (string): TODO: type description here.
+        transaction_type (string): TODO: type description here.
 
     """
 
@@ -153,6 +162,8 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         "updated_at" : "updated_at",
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
+        "transaction_type" : "transaction_type",
+        "transaction_type" : "transaction_type",
         "next_attempt" : "next_attempt"
     }
 
@@ -172,6 +183,8 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                  updated_at=None,
                  attempt_count=None,
                  max_attempts=None,
+                 transaction_type=None,
+                 transaction_type=None,
                  next_attempt=None):
         """Constructor for the GetBoletoTransactionResponse class"""
 
@@ -182,6 +195,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         self.bank = bank
         self.document_number = document_number
         self.instructions = instructions
+        self.transaction_type = transaction_type
 
         # Call the constructor for the base class
         super(GetBoletoTransactionResponse, self).__init__(transaction_type,
@@ -193,6 +207,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                                                            updated_at,
                                                            attempt_count,
                                                            max_attempts,
+                                                           transaction_type,
                                                            next_attempt)
 
 
@@ -229,7 +244,10 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         attempt_count = dictionary.get("attempt_count")
         max_attempts = dictionary.get("max_attempts")
+        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get("transaction_type")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+
         # Return an object of this model
         return cls(url,
                    bar_code,
@@ -246,6 +264,8 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    updated_at,
                    attempt_count,
                    max_attempts,
+                   transaction_type,
+                   transaction_type,
                    next_attempt)
 
 
@@ -266,6 +286,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         operation_type (string): TODO: type description here.
         credit_card (GetCreditCardResponse): TODO: type description here.
         installments (int): TODO: type description here.
+        transaction_type (string): TODO: type description here.
 
     """
 
@@ -289,6 +310,8 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "installments" : "installments",
+        "transaction_type" : "transaction_type",
+        "transaction_type" : "transaction_type",
         "next_attempt" : "next_attempt"
     }
 
@@ -311,6 +334,8 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  installments=None,
+                 transaction_type=None,
+                 transaction_type=None,
                  next_attempt=None):
         """Constructor for the GetCreditCardTransactionResponse class"""
 
@@ -324,6 +349,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         self.operation_type = operation_type
         self.credit_card = credit_card
         self.installments = installments
+        self.transaction_type = transaction_type
 
         # Call the constructor for the base class
         super(GetCreditCardTransactionResponse, self).__init__(transaction_type,
@@ -335,6 +361,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                                                                updated_at,
                                                                attempt_count,
                                                                max_attempts,
+                                                               transaction_type,
                                                                next_attempt)
 
 
@@ -374,7 +401,10 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         attempt_count = dictionary.get("attempt_count")
         max_attempts = dictionary.get("max_attempts")
         installments = dictionary.get("installments")
+        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get("transaction_type")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+
         # Return an object of this model
         return cls(statement_descriptor,
                    acquirer,
@@ -394,6 +424,8 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    installments,
+                   transaction_type,
+                   transaction_type,
                    next_attempt)
 
 

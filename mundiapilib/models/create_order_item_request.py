@@ -7,7 +7,7 @@
 """
 
 
-class CreateOrderItemRequest():
+class CreateOrderItemRequest(object):
 
     """Implementation of the 'CreateOrderItemRequest' model.
 
@@ -60,6 +60,7 @@ class CreateOrderItemRequest():
         amount = dictionary.get("amount")
         description = dictionary.get("description")
         quantity = dictionary.get("quantity")
+
         # Return an object of this model
         return cls(amount,
                    description,

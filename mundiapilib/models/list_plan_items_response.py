@@ -8,7 +8,7 @@
 import mundiapilib.models.get_plan_item_response
 import mundiapilib.models.paging_response
 
-class ListPlanItemsResponse():
+class ListPlanItemsResponse(object):
 
     """Implementation of the 'ListPlanItemsResponse' model.
 
@@ -60,6 +60,7 @@ class ListPlanItemsResponse():
             for structure in dictionary.get("data"):
                 data.append(mundiapilib.models.get_plan_item_response.GetPlanItemResponse.from_dictionary(structure))
         paging = mundiapilib.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+
         # Return an object of this model
         return cls(data,
                    paging)
