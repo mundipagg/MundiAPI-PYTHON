@@ -15,7 +15,6 @@ class GetTransactionResponse(object):
     Generic response object for getting a transaction.
 
     Attributes:
-        transaction_type (string): Transaction type
         gateway_id (string): Gateway transaction id
         amount (int): Amount in cents
         status (string): Transaction status
@@ -31,7 +30,6 @@ class GetTransactionResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "transaction_type" : "transaction_type",
         "gateway_id" : "gateway_id",
         "amount" : "amount",
         "status" : "status",
@@ -40,12 +38,11 @@ class GetTransactionResponse(object):
         "updated_at" : "updated_at",
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
-        "transaction_type" : "transaction_type",
-        "next_attempt" : "next_attempt"
+        "next_attempt" : "next_attempt",
+        "transaction_type" : "transaction_type"
     }
 
     def __init__(self,
-                 transaction_type=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -54,12 +51,11 @@ class GetTransactionResponse(object):
                  updated_at=None,
                  attempt_count=None,
                  max_attempts=None,
-                 transaction_type=None,
-                 next_attempt=None):
+                 next_attempt=None,
+                 transaction_type=None):
         """Constructor for the GetTransactionResponse class"""
 
         # Initialize members of the class
-        self.transaction_type = transaction_type
         self.gateway_id = gateway_id
         self.amount = amount
         self.status = status
@@ -101,7 +97,6 @@ class GetTransactionResponse(object):
             return unboxer(dictionary)
 
         # Extract variables from the dictionary
-        transaction_type = dictionary.get("transaction_type")
         gateway_id = dictionary.get("gateway_id")
         amount = dictionary.get("amount")
         status = dictionary.get("status")
@@ -110,12 +105,11 @@ class GetTransactionResponse(object):
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         attempt_count = dictionary.get("attempt_count")
         max_attempts = dictionary.get("max_attempts")
-        transaction_type = dictionary.get("transaction_type")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+        transaction_type = dictionary.get("transaction_type")
 
         # Return an object of this model
-        return cls(transaction_type,
-                   gateway_id,
+        return cls(gateway_id,
                    amount,
                    status,
                    success,
@@ -123,8 +117,8 @@ class GetTransactionResponse(object):
                    updated_at,
                    attempt_count,
                    max_attempts,
-                   transaction_type,
-                   next_attempt)
+                   next_attempt,
+                   transaction_type)
 
 
 class GetBoletoTransactionResponse(GetTransactionResponse):
@@ -153,7 +147,6 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         "bank" : "bank",
         "document_number" : "document_number",
         "instructions" : "instructions",
-        "transaction_type" : "transaction_type",
         "gateway_id" : "gateway_id",
         "amount" : "amount",
         "status" : "status",
@@ -174,7 +167,6 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                  bank=None,
                  document_number=None,
                  instructions=None,
-                 transaction_type=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -198,8 +190,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         self.transaction_type = transaction_type
 
         # Call the constructor for the base class
-        super(GetBoletoTransactionResponse, self).__init__(transaction_type,
-                                                           gateway_id,
+        super(GetBoletoTransactionResponse, self).__init__(gateway_id,
                                                            amount,
                                                            status,
                                                            success,
@@ -207,8 +198,8 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                                                            updated_at,
                                                            attempt_count,
                                                            max_attempts,
-                                                           transaction_type,
-                                                           next_attempt)
+                                                           next_attempt,
+                                                           transaction_type)
 
 
     @classmethod
@@ -235,7 +226,6 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         bank = dictionary.get("bank")
         document_number = dictionary.get("document_number")
         instructions = dictionary.get("instructions")
-        transaction_type = dictionary.get("transaction_type")
         gateway_id = dictionary.get("gateway_id")
         amount = dictionary.get("amount")
         status = dictionary.get("status")
@@ -255,7 +245,6 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    bank,
                    document_number,
                    instructions,
-                   transaction_type,
                    gateway_id,
                    amount,
                    status,
@@ -300,7 +289,6 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "acquirer_auth_code" : "acquirer_auth_code",
         "operation_type" : "operation_type",
         "credit_card" : "credit_card",
-        "transaction_type" : "transaction_type",
         "gateway_id" : "gateway_id",
         "amount" : "amount",
         "status" : "status",
@@ -324,7 +312,6 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  acquirer_auth_code=None,
                  operation_type=None,
                  credit_card=None,
-                 transaction_type=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -352,8 +339,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         self.transaction_type = transaction_type
 
         # Call the constructor for the base class
-        super(GetCreditCardTransactionResponse, self).__init__(transaction_type,
-                                                               gateway_id,
+        super(GetCreditCardTransactionResponse, self).__init__(gateway_id,
                                                                amount,
                                                                status,
                                                                success,
@@ -361,8 +347,8 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                                                                updated_at,
                                                                attempt_count,
                                                                max_attempts,
-                                                               transaction_type,
-                                                               next_attempt)
+                                                               next_attempt,
+                                                               transaction_type)
 
 
     @classmethod
@@ -391,7 +377,6 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         acquirer_auth_code = dictionary.get("acquirer_auth_code")
         operation_type = dictionary.get("operation_type")
         credit_card = mundiapilib.models.get_credit_card_response.GetCreditCardResponse.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
-        transaction_type = dictionary.get("transaction_type")
         gateway_id = dictionary.get("gateway_id")
         amount = dictionary.get("amount")
         status = dictionary.get("status")
@@ -414,7 +399,6 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    acquirer_auth_code,
                    operation_type,
                    credit_card,
-                   transaction_type,
                    gateway_id,
                    amount,
                    status,
