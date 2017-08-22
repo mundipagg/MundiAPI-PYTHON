@@ -8,12 +8,12 @@ except(IOError, ImportError):
     long_description = open('README.md').read()
 
 setup(
-    name='mundiapilib',
-    version='1.0.0',
+    name='mundiapi',
+    version='0.6.0',
     description='Mundipagg API',
     long_description=long_description,
-    author='Shahid Khaliq',
-    author_email='shahid.khaliq@apimatic.io',
+    author='APIMatic SDK Generator',
+    author_email='support@apimatic.io',
     url='https://apimatic.io/',
     packages=find_packages(),
     install_requires=[
