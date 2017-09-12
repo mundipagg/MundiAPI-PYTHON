@@ -26,6 +26,7 @@ class CreatePaymentRequest(object):
         bank_transfer (CreateBankTransferPaymentRequest): Settings for bank
             transfer payment
         gateway_affiliation_id (string): Gateway affiliation code
+        amount (int): The amount of the payment, in cents
 
     """
 
@@ -37,7 +38,8 @@ class CreatePaymentRequest(object):
         "currency" : "currency",
         "voucher" : "voucher",
         "bank_transfer" : "bank_transfer",
-        "gateway_affiliation_id" : "gateway_affiliation_id"
+        "gateway_affiliation_id" : "gateway_affiliation_id",
+        "amount" : "amount"
     }
 
     def __init__(self,
@@ -47,7 +49,8 @@ class CreatePaymentRequest(object):
                  currency=None,
                  voucher=None,
                  bank_transfer=None,
-                 gateway_affiliation_id=None):
+                 gateway_affiliation_id=None,
+                 amount=None):
         """Constructor for the CreatePaymentRequest class"""
 
         # Initialize members of the class
@@ -58,6 +61,7 @@ class CreatePaymentRequest(object):
         self.voucher = voucher
         self.bank_transfer = bank_transfer
         self.gateway_affiliation_id = gateway_affiliation_id
+        self.amount = amount
 
 
     @classmethod
@@ -85,6 +89,7 @@ class CreatePaymentRequest(object):
         voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get("voucher")) if dictionary.get("voucher") else None
         bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get("bank_transfer")) if dictionary.get("bank_transfer") else None
         gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
+        amount = dictionary.get("amount")
 
         # Return an object of this model
         return cls(payment_method,
@@ -93,6 +98,7 @@ class CreatePaymentRequest(object):
                    currency,
                    voucher,
                    bank_transfer,
-                   gateway_affiliation_id)
+                   gateway_affiliation_id,
+                   amount)
 
 

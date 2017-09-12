@@ -18,6 +18,7 @@ class UpdateChargeCardRequest(object):
             card must also be updated
         card_id (string): Card id
         card (CreateCardRequest): Card data
+        recurrence (bool): Indicates a recurrence
 
     """
 
@@ -25,19 +26,22 @@ class UpdateChargeCardRequest(object):
     _names = {
         "update_subscription" : "update_subscription",
         "card_id" : "card_id",
-        "card" : "card"
+        "card" : "card",
+        "recurrence" : "recurrence"
     }
 
     def __init__(self,
                  update_subscription=None,
                  card_id=None,
-                 card=None):
+                 card=None,
+                 recurrence=None):
         """Constructor for the UpdateChargeCardRequest class"""
 
         # Initialize members of the class
         self.update_subscription = update_subscription
         self.card_id = card_id
         self.card = card
+        self.recurrence = recurrence
 
 
     @classmethod
@@ -61,10 +65,12 @@ class UpdateChargeCardRequest(object):
         update_subscription = dictionary.get("update_subscription")
         card_id = dictionary.get("card_id")
         card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        recurrence = dictionary.get("recurrence")
 
         # Return an object of this model
         return cls(update_subscription,
                    card_id,
-                   card)
+                   card,
+                   recurrence)
 
 

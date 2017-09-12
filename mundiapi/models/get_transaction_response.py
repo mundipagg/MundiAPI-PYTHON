@@ -524,6 +524,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         acquirer_auth_code (string): Acquirer authorization code
         operation_type (string): Operation type
         card (GetCardResponse): Card data
+        acquirer_message (string): Acquirer message
         installments (int): Number of installments
 
     """
@@ -538,6 +539,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "acquirer_auth_code" : "acquirer_auth_code",
         "operation_type" : "operation_type",
         "card" : "card",
+        "acquirer_message" : "acquirer_message",
         "gateway_id" : "gateway_id",
         "amount" : "amount",
         "status" : "status",
@@ -560,6 +562,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  acquirer_auth_code=None,
                  operation_type=None,
                  card=None,
+                 acquirer_message=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -582,6 +585,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         self.acquirer_auth_code = acquirer_auth_code
         self.operation_type = operation_type
         self.card = card
+        self.acquirer_message = acquirer_message
         self.installments = installments
 
         # Call the constructor for the base class
@@ -623,6 +627,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         acquirer_auth_code = dictionary.get("acquirer_auth_code")
         operation_type = dictionary.get("operation_type")
         card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        acquirer_message = dictionary.get("acquirer_message")
         gateway_id = dictionary.get("gateway_id")
         amount = dictionary.get("amount")
         status = dictionary.get("status")
@@ -644,6 +649,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    acquirer_auth_code,
                    operation_type,
                    card,
+                   acquirer_message,
                    gateway_id,
                    amount,
                    status,

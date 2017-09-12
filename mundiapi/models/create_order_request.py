@@ -24,6 +24,8 @@ class CreateOrderRequest(object):
         customer_id (string): The customer id
         shipping (CreateShippingRequest): Shipping data
         metadata (dict<object, string>): Metadata
+        antifraud_enabled (bool): Defines whether the order will go through
+            anti-fraud
 
     """
 
@@ -35,7 +37,8 @@ class CreateOrderRequest(object):
         "code" : "code",
         "customer_id" : "customer_id",
         "shipping" : "shipping",
-        "metadata" : "metadata"
+        "metadata" : "metadata",
+        "antifraud_enabled" : "antifraud_enabled"
     }
 
     def __init__(self,
@@ -45,7 +48,8 @@ class CreateOrderRequest(object):
                  code=None,
                  customer_id=None,
                  shipping=None,
-                 metadata=None):
+                 metadata=None,
+                 antifraud_enabled=None):
         """Constructor for the CreateOrderRequest class"""
 
         # Initialize members of the class
@@ -56,6 +60,7 @@ class CreateOrderRequest(object):
         self.customer_id = customer_id
         self.shipping = shipping
         self.metadata = metadata
+        self.antifraud_enabled = antifraud_enabled
 
 
     @classmethod
@@ -91,6 +96,7 @@ class CreateOrderRequest(object):
         customer_id = dictionary.get("customer_id")
         shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+        antifraud_enabled = dictionary.get("antifraud_enabled")
 
         # Return an object of this model
         return cls(items,
@@ -99,6 +105,7 @@ class CreateOrderRequest(object):
                    code,
                    customer_id,
                    shipping,
-                   metadata)
+                   metadata,
+                   antifraud_enabled)
 
 
