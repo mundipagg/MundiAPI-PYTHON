@@ -345,6 +345,36 @@ result = charges_client.capture_charge(charge_id, request)
 ```
 
 
+### <a name="update_charge_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".ChargesController.update_charge_metadata") update_charge_metadata
+
+> Updates the metadata from a charge
+
+```python
+def update_charge_metadata(self,
+                               charge_id,
+                               request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| chargeId |  ``` Required ```  | The charge id |
+| request |  ``` Required ```  | Request for updating the charge metadata |
+
+
+
+#### Example Usage
+
+```python
+charge_id = 'charge_id'
+request = UpdateMetadataRequest()
+
+result = charges_client.update_charge_metadata(charge_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="customers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CustomersController") CustomersController
@@ -902,6 +932,36 @@ result = customers_client.get_access_token(customer_id, token_id)
 ```
 
 
+### <a name="update_customer_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.update_customer_metadata") update_customer_metadata
+
+> Updates the metadata a customer
+
+```python
+def update_customer_metadata(self,
+                                 customer_id,
+                                 request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | The customer id |
+| request |  ``` Required ```  | Request for updating the customer metadata |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+request = UpdateMetadataRequest()
+
+result = customers_client.update_customer_metadata(customer_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
@@ -1354,6 +1414,36 @@ result = subscriptions_client.delete_subscription_item(subscription_id, subscrip
 ```
 
 
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
+
+> Updates the metadata from a subscription
+
+```python
+def update_subscription_metadata(self,
+                                     subscription_id,
+                                     request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateMetadataRequest()
+
+result = subscriptions_client.update_subscription_metadata(subscription_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="plans_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PlansController") PlansController
@@ -1365,33 +1455,6 @@ An instance of the ``` PlansController ``` class can be accessed from the API Cl
 ```python
  plans_client = client.plans
 ```
-
-### <a name="get_plan_items"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_items") get_plan_items
-
-> Gets all items from a plan
-
-```python
-def get_plan_items(self,
-                       plan_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-
-result = plans_client.get_plan_items(plan_id)
-
-```
-
 
 ### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_item") update_plan_item
 
@@ -1644,6 +1707,36 @@ result = plans_client.delete_plan_item(plan_id, plan_item_id)
 ```
 
 
+### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_metadata") update_plan_metadata
+
+> Updates the metadata from a plan
+
+```python
+def update_plan_metadata(self,
+                             plan_id,
+                             request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | The plan id |
+| request |  ``` Required ```  | Request for updating the plan metadata |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+request = UpdateMetadataRequest()
+
+result = plans_client.update_plan_metadata(plan_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="invoices_controller"></a>![Class: ](https://apidocs.io/img/class.png ".InvoicesController") InvoicesController
@@ -1754,6 +1847,36 @@ result = invoices_client.get_invoice(invoice_id)
 ```
 
 
+### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.update_invoice_metadata") update_invoice_metadata
+
+> Updates the metadata from an invoice
+
+```python
+def update_invoice_metadata(self,
+                                invoice_id,
+                                request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | The invoice id |
+| request |  ``` Required ```  | Request for updating the invoice metadata |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+request = UpdateMetadataRequest()
+
+result = invoices_client.update_invoice_metadata(invoice_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
@@ -1833,6 +1956,36 @@ def create_order(self,
 body = CreateOrderRequest()
 
 result = orders_client.create_order(body)
+
+```
+
+
+### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_metadata") update_order_metadata
+
+> Updates the metadata from an order
+
+```python
+def update_order_metadata(self,
+                              order_id,
+                              request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | The order id |
+| request |  ``` Required ```  | Request for updating the order metadata |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'order_id'
+request = UpdateMetadataRequest()
+
+result = orders_client.update_order_metadata(order_id, request)
 
 ```
 

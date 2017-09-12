@@ -23,6 +23,7 @@ class CreateCreditCardPaymentRequest(object):
             subscription must be updated
         card_id (string): The credit card id
         card_token (string): TODO: type description here.
+        recurrence (bool): Indicates a recurrence
         capture (bool): Indicates if the operation should be only
             authorization or auth and capture.
 
@@ -37,6 +38,7 @@ class CreateCreditCardPaymentRequest(object):
         "update_subscription_card" : "update_subscription_card",
         "card_id" : "card_id",
         "card_token" : "card_token",
+        "recurrence" : "recurrence",
         "capture" : "capture"
     }
 
@@ -48,6 +50,7 @@ class CreateCreditCardPaymentRequest(object):
                  update_subscription_card=None,
                  card_id=None,
                  card_token=None,
+                 recurrence=None,
                  capture=True):
         """Constructor for the CreateCreditCardPaymentRequest class"""
 
@@ -59,6 +62,7 @@ class CreateCreditCardPaymentRequest(object):
         self.update_subscription_card = update_subscription_card
         self.card_id = card_id
         self.card_token = card_token
+        self.recurrence = recurrence
         self.capture = capture
 
 
@@ -87,6 +91,7 @@ class CreateCreditCardPaymentRequest(object):
         update_subscription_card = dictionary.get("update_subscription_card")
         card_id = dictionary.get("card_id")
         card_token = dictionary.get("card_token")
+        recurrence = dictionary.get("recurrence")
         capture = dictionary.get("capture") if dictionary.get("capture") else True
 
         # Return an object of this model
@@ -97,6 +102,7 @@ class CreateCreditCardPaymentRequest(object):
                    update_subscription_card,
                    card_id,
                    card_token,
+                   recurrence,
                    capture)
 
 

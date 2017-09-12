@@ -10,7 +10,6 @@ from .base_controller import BaseController
 from ..api_helper import APIHelper
 from ..configuration import Configuration
 from ..http.auth.basic_auth import BasicAuth
-from ..models.list_plan_items_response import ListPlanItemsResponse
 from ..models.get_plan_item_response import GetPlanItemResponse
 from ..models.get_plan_response import GetPlanResponse
 from ..models.list_plans_response import ListPlansResponse
@@ -19,48 +18,6 @@ class PlansController(BaseController):
 
     """A Controller to access Endpoints in the mundiapi API."""
 
-
-    def get_plan_items(self,
-                       plan_id):
-        """Does a GET request to /plans/{plan_id}/items.
-
-        Gets all items from a plan
-
-        Args:
-            plan_id (string): Plan id
-
-        Returns:
-            ListPlanItemsResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'plan_id': plan_id
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListPlanItemsResponse.from_dictionary)
 
     def update_plan_item(self,
                          plan_id,
@@ -448,3 +405,49 @@ class PlansController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
+
+    def update_plan_metadata(self,
+                             plan_id,
+                             request):
+        """Does a PATCH request to /Plans/{plan_id}/metadata.
+
+        Updates the metadata from a plan
+
+        Args:
+            plan_id (string): The plan id
+            request (UpdateMetadataRequest): Request for updating the plan
+                metadata
+
+        Returns:
+            GetPlanResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/Plans/{plan_id}/metadata'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'plan_id': plan_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
