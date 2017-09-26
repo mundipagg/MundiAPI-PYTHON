@@ -9,6 +9,7 @@ import mundiapi.models.create_credit_card_payment_request
 import mundiapi.models.create_boleto_payment_request
 import mundiapi.models.create_voucher_payment_request
 import mundiapi.models.create_bank_transfer_payment_request
+import mundiapi.models.create_checkout_payment_request
 
 class CreatePaymentRequest(object):
 
@@ -23,11 +24,13 @@ class CreatePaymentRequest(object):
         boleto (CreateBoletoPaymentRequest): Settings for boleto payment
         currency (string): Currency. Must be informed using 3 characters
         voucher (CreateVoucherPaymentRequest): Settings for voucher payment
-        metadata (list of string): Metadata
+        metadata (dict<object, string>): Metadata
         bank_transfer (CreateBankTransferPaymentRequest): Settings for bank
             transfer payment
         gateway_affiliation_id (string): Gateway affiliation code
         amount (int): The amount of the payment, in cents
+        checkout (CreateCheckoutPaymentRequest): Settings for checkout
+            payment
 
     """
 
@@ -41,7 +44,8 @@ class CreatePaymentRequest(object):
         "metadata" : "metadata",
         "bank_transfer" : "bank_transfer",
         "gateway_affiliation_id" : "gateway_affiliation_id",
-        "amount" : "amount"
+        "amount" : "amount",
+        "checkout" : "checkout"
     }
 
     def __init__(self,
@@ -53,7 +57,8 @@ class CreatePaymentRequest(object):
                  metadata=None,
                  bank_transfer=None,
                  gateway_affiliation_id=None,
-                 amount=None):
+                 amount=None,
+                 checkout=None):
         """Constructor for the CreatePaymentRequest class"""
 
         # Initialize members of the class
@@ -66,6 +71,7 @@ class CreatePaymentRequest(object):
         self.bank_transfer = bank_transfer
         self.gateway_affiliation_id = gateway_affiliation_id
         self.amount = amount
+        self.checkout = checkout
 
 
     @classmethod
@@ -95,6 +101,7 @@ class CreatePaymentRequest(object):
         bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get("bank_transfer")) if dictionary.get("bank_transfer") else None
         gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
         amount = dictionary.get("amount")
+        checkout = mundiapi.models.create_checkout_payment_request.CreateCheckoutPaymentRequest.from_dictionary(dictionary.get("checkout")) if dictionary.get("checkout") else None
 
         # Return an object of this model
         return cls(payment_method,
@@ -105,6 +112,7 @@ class CreatePaymentRequest(object):
                    metadata,
                    bank_transfer,
                    gateway_affiliation_id,
-                   amount)
+                   amount,
+                   checkout)
 
 
