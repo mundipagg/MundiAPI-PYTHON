@@ -11,6 +11,7 @@ import mundiapi.models.get_customer_response
 import mundiapi.models.get_card_response
 import mundiapi.models.get_subscription_item_response
 import mundiapi.models.get_setup_response
+import mundiapi.models.get_discount_response
 
 class GetSubscriptionResponse(object):
 
@@ -33,7 +34,7 @@ class GetSubscriptionResponse(object):
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
         customer (GetCustomerResponse): TODO: type description here.
-        credit_card (GetCardResponse): TODO: type description here.
+        card (GetCardResponse): TODO: type description here.
         items (list of GetSubscriptionItemResponse): TODO: type description
             here.
         statement_descriptor (string): TODO: type description here.
@@ -43,6 +44,7 @@ class GetSubscriptionResponse(object):
         billing_day (int): TODO: type description here.
         minimum_price (int): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
+        discounts (list of GetDiscountResponse): Subscription discounts
 
     """
 
@@ -62,7 +64,7 @@ class GetSubscriptionResponse(object):
         "created_at" : "created_at",
         "updated_at" : "updated_at",
         "customer" : "customer",
-        "credit_card" : "credit_card",
+        "card" : "card",
         "items" : "items",
         "statement_descriptor" : "statement_descriptor",
         "metadata" : "metadata",
@@ -70,7 +72,8 @@ class GetSubscriptionResponse(object):
         "next_billing_at" : "next_billing_at",
         "billing_day" : "billing_day",
         "minimum_price" : "minimum_price",
-        "canceled_at" : "canceled_at"
+        "canceled_at" : "canceled_at",
+        "discounts" : "discounts"
     }
 
     def __init__(self,
@@ -88,7 +91,7 @@ class GetSubscriptionResponse(object):
                  created_at=None,
                  updated_at=None,
                  customer=None,
-                 credit_card=None,
+                 card=None,
                  items=None,
                  statement_descriptor=None,
                  metadata=None,
@@ -96,7 +99,8 @@ class GetSubscriptionResponse(object):
                  next_billing_at=None,
                  billing_day=None,
                  minimum_price=None,
-                 canceled_at=None):
+                 canceled_at=None,
+                 discounts=None):
         """Constructor for the GetSubscriptionResponse class"""
 
         # Initialize members of the class
@@ -114,7 +118,7 @@ class GetSubscriptionResponse(object):
         self.created_at = APIHelper.RFC3339DateTime(created_at) if created_at else None
         self.updated_at = APIHelper.RFC3339DateTime(updated_at) if updated_at else None
         self.customer = customer
-        self.credit_card = credit_card
+        self.card = card
         self.items = items
         self.statement_descriptor = statement_descriptor
         self.metadata = metadata
@@ -123,6 +127,7 @@ class GetSubscriptionResponse(object):
         self.billing_day = billing_day
         self.minimum_price = minimum_price
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
+        self.discounts = discounts
 
 
     @classmethod
@@ -157,7 +162,7 @@ class GetSubscriptionResponse(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        credit_card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
+        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
         items = None
         if dictionary.get("items") != None:
             items = list()
@@ -170,6 +175,11 @@ class GetSubscriptionResponse(object):
         billing_day = dictionary.get("billing_day")
         minimum_price = dictionary.get("minimum_price")
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
+        discounts = None
+        if dictionary.get("discounts") != None:
+            discounts = list()
+            for structure in dictionary.get("discounts"):
+                discounts.append(mundiapi.models.get_discount_response.GetDiscountResponse.from_dictionary(structure))
 
         # Return an object of this model
         return cls(id,
@@ -186,7 +196,7 @@ class GetSubscriptionResponse(object):
                    created_at,
                    updated_at,
                    customer,
-                   credit_card,
+                   card,
                    items,
                    statement_descriptor,
                    metadata,
@@ -194,6 +204,7 @@ class GetSubscriptionResponse(object):
                    next_billing_at,
                    billing_day,
                    minimum_price,
-                   canceled_at)
+                   canceled_at,
+                   discounts)
 
 

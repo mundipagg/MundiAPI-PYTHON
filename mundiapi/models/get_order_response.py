@@ -10,6 +10,7 @@ import mundiapi.models.get_order_item_response
 import mundiapi.models.get_customer_response
 import mundiapi.models.get_charge_response
 import mundiapi.models.get_shipping_response
+import mundiapi.models.get_checkout_payment_settings_response
 
 class GetOrderResponse(object):
 
@@ -30,6 +31,8 @@ class GetOrderResponse(object):
         invoice_url (string): TODO: type description here.
         shipping (GetShippingResponse): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
+        checkouts (list of GetCheckoutPaymentSettingsResponse): Checkout
+            Payment Settings Response
 
     """
 
@@ -46,7 +49,8 @@ class GetOrderResponse(object):
         "charges" : "charges",
         "invoice_url" : "invoice_url",
         "shipping" : "shipping",
-        "metadata" : "metadata"
+        "metadata" : "metadata",
+        "checkouts" : "checkouts"
     }
 
     def __init__(self,
@@ -61,7 +65,8 @@ class GetOrderResponse(object):
                  charges=None,
                  invoice_url=None,
                  shipping=None,
-                 metadata=None):
+                 metadata=None,
+                 checkouts=None):
         """Constructor for the GetOrderResponse class"""
 
         # Initialize members of the class
@@ -77,6 +82,7 @@ class GetOrderResponse(object):
         self.invoice_url = invoice_url
         self.shipping = shipping
         self.metadata = metadata
+        self.checkouts = checkouts
 
 
     @classmethod
@@ -117,6 +123,11 @@ class GetOrderResponse(object):
         invoice_url = dictionary.get("invoice_url")
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+        checkouts = None
+        if dictionary.get("checkouts") != None:
+            checkouts = list()
+            for structure in dictionary.get("checkouts"):
+                checkouts.append(mundiapi.models.get_checkout_payment_settings_response.GetCheckoutPaymentSettingsResponse.from_dictionary(structure))
 
         # Return an object of this model
         return cls(id,
@@ -130,6 +141,7 @@ class GetOrderResponse(object):
                    charges,
                    invoice_url,
                    shipping,
-                   metadata)
+                   metadata,
+                   checkouts)
 
 
