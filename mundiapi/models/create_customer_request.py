@@ -24,6 +24,7 @@ class CreateCustomerRequest(object):
         metadata (dict<object, string>): Metadata
         phones (CreatePhonesRequest): TODO: type description here.
         code (string): Customer code
+        gender (string): Customer Gender
 
     """
 
@@ -36,7 +37,8 @@ class CreateCustomerRequest(object):
         "address" : "address",
         "metadata" : "metadata",
         "phones" : "phones",
-        "code" : "code"
+        "code" : "code",
+        "gender" : "gender"
     }
 
     def __init__(self,
@@ -47,7 +49,8 @@ class CreateCustomerRequest(object):
                  address=None,
                  metadata=None,
                  phones=None,
-                 code=None):
+                 code=None,
+                 gender=None):
         """Constructor for the CreateCustomerRequest class"""
 
         # Initialize members of the class
@@ -59,6 +62,7 @@ class CreateCustomerRequest(object):
         self.metadata = metadata
         self.phones = phones
         self.code = code
+        self.gender = gender
 
 
     @classmethod
@@ -87,6 +91,7 @@ class CreateCustomerRequest(object):
         metadata = dictionary.get("metadata")
         phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get("phones")) if dictionary.get("phones") else None
         code = dictionary.get("code")
+        gender = dictionary.get("gender")
 
         # Return an object of this model
         return cls(name,
@@ -96,6 +101,7 @@ class CreateCustomerRequest(object):
                    address,
                    metadata,
                    phones,
-                   code)
+                   code,
+                   gender)
 
 
