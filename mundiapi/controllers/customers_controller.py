@@ -12,11 +12,11 @@ from ..configuration import Configuration
 from ..http.auth.basic_auth import BasicAuth
 from ..models.list_addresses_response import ListAddressesResponse
 from ..models.list_cards_response import ListCardsResponse
-from ..models.list_customers_response import ListCustomersResponse
 from ..models.get_customer_response import GetCustomerResponse
 from ..models.get_address_response import GetAddressResponse
 from ..models.get_card_response import GetCardResponse
 from ..models.list_access_tokens_response import ListAccessTokensResponse
+from ..models.list_customers_response import ListCustomersResponse
 from ..models.get_access_token_response import GetAccessTokenResponse
 
 class CustomersController(BaseController):
@@ -107,41 +107,6 @@ class CustomersController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListCardsResponse.from_dictionary)
-
-    def get_customers(self):
-        """Does a GET request to /customers.
-
-        Get all Customers
-
-        Returns:
-            ListCustomersResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers'
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListCustomersResponse.from_dictionary)
 
     def create_customer(self,
                         request):
@@ -719,6 +684,59 @@ class CustomersController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListAccessTokensResponse.from_dictionary)
+
+    def get_customers(self,
+                      name=None,
+                      document=None,
+                      page=1,
+                      size=10):
+        """Does a GET request to /customers.
+
+        Get all Customers
+
+        Args:
+            name (string, optional): Name of the Customer
+            document (string, optional): Document of the Customer
+            page (int, optional): Current page the the search
+            size (int, optional): Quantity pages of the search
+
+        Returns:
+            ListCustomersResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/customers'
+        _query_parameters = {
+            'name': name,
+            'document': document,
+            'page': page,
+            'size': size
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListCustomersResponse.from_dictionary)
 
     def delete_access_token(self,
                             customer_id,

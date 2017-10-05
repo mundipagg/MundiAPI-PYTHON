@@ -441,23 +441,6 @@ result = customers_client.get_cards(customer_id)
 ```
 
 
-### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
-
-> Get all Customers
-
-```python
-def get_customers(self)
-```
-
-#### Example Usage
-
-```python
-
-result = customers_client.get_customers()
-
-```
-
-
 ### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
 
 > Creates a new customer
@@ -838,6 +821,42 @@ def get_access_tokens(self,
 customer_id = 'customer_id'
 
 result = customers_client.get_access_tokens(customer_id)
+
+```
+
+
+### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
+
+> Get all Customers
+
+```python
+def get_customers(self,
+                      name=None,
+                      document=None,
+                      page=1,
+                      size=10)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| name |  ``` Optional ```  | Name of the Customer |
+| document |  ``` Optional ```  | Document of the Customer |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
+| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+
+
+
+#### Example Usage
+
+```python
+name = 'name'
+document = 'document'
+page = 1
+size = 10
+
+result = customers_client.get_customers(name, document, page, size)
 
 ```
 
