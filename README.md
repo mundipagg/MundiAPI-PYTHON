@@ -111,9 +111,9 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 
 * [ChargesController](#charges_controller)
 * [CustomersController](#customers_controller)
-* [SubscriptionsController](#subscriptions_controller)
-* [PlansController](#plans_controller)
 * [InvoicesController](#invoices_controller)
+* [PlansController](#plans_controller)
+* [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
 * [TokensController](#tokens_controller)
 
@@ -177,23 +177,6 @@ def retry_charge(self,
 charge_id = 'charge_id'
 
 result = charges_client.retry_charge(charge_id)
-
-```
-
-
-### <a name="get_charges"></a>![Method: ](https://apidocs.io/img/method.png ".ChargesController.get_charges") get_charges
-
-> Lists all charges
-
-```python
-def get_charges(self)
-```
-
-#### Example Usage
-
-```python
-
-result = charges_client.get_charges()
 
 ```
 
@@ -375,6 +358,57 @@ result = charges_client.update_charge_metadata(charge_id, request)
 ```
 
 
+### <a name="get_charges"></a>![Method: ](https://apidocs.io/img/method.png ".ChargesController.get_charges") get_charges
+
+> Lists all charges
+
+```python
+def get_charges(self,
+                    page=None,
+                    size=None,
+                    code=None,
+                    status=None,
+                    payment_method=None,
+                    customer_id=None,
+                    order_id=None,
+                    created_since=None,
+                    created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for charge's code |
+| status |  ``` Optional ```  | Filter for charge's status |
+| paymentMethod |  ``` Optional ```  | Filter for charge's payment method |
+| customerId |  ``` Optional ```  | Filter for charge's customer id |
+| orderId |  ``` Optional ```  | Filter for charge's order id |
+| createdSince |  ``` Optional ```  | Filter for the beginning of the range for charge's creation |
+| createdUntil |  ``` Optional ```  | Filter for the end of the range for charge's creation |
+
+
+
+#### Example Usage
+
+```python
+page = 170
+size = 170
+code = 'code'
+status = 'status'
+payment_method = 'payment_method'
+customer_id = 'customer_id'
+order_id = 'order_id'
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = charges_client.get_charges(page, size, code, status, payment_method, customer_id, order_id, created_since, created_until)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="customers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CustomersController") CustomersController
@@ -386,60 +420,6 @@ An instance of the ``` CustomersController ``` class can be accessed from the AP
 ```python
  customers_client = client.customers
 ```
-
-### <a name="get_addresses"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_addresses") get_addresses
-
-> Gets all adressess from a customer
-
-```python
-def get_addresses(self,
-                      customer_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer id |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-
-result = customers_client.get_addresses(customer_id)
-
-```
-
-
-### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
-
-> Get all cards from a customer
-
-```python
-def get_cards(self,
-                  customer_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-
-result = customers_client.get_cards(customer_id)
-
-```
-
 
 ### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
 
@@ -495,39 +475,6 @@ result = customers_client.get_customer(customer_id)
 ```
 
 
-### <a name="update_address"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.update_address") update_address
-
-> Updates an address
-
-```python
-def update_address(self,
-                       customer_id,
-                       address_id,
-                       request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| addressId |  ``` Required ```  | Address Id |
-| request |  ``` Required ```  | Request for updating an address |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-address_id = 'address_id'
-request = UpdateAddressRequest()
-
-result = customers_client.update_address(customer_id, address_id, request)
-
-```
-
-
 ### <a name="update_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.update_card") update_card
 
 > Updates a card
@@ -557,6 +504,39 @@ card_id = 'card_id'
 request = UpdateCardRequest()
 
 result = customers_client.update_card(customer_id, card_id, request)
+
+```
+
+
+### <a name="update_address"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.update_address") update_address
+
+> Updates an address
+
+```python
+def update_address(self,
+                       customer_id,
+                       address_id,
+                       request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| addressId |  ``` Required ```  | Address Id |
+| request |  ``` Required ```  | Request for updating an address |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+address_id = 'address_id'
+request = UpdateAddressRequest()
+
+result = customers_client.update_address(customer_id, address_id, request)
 
 ```
 
@@ -798,33 +778,6 @@ result = customers_client.delete_access_tokens(customer_id)
 ```
 
 
-### <a name="get_access_tokens"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_access_tokens") get_access_tokens
-
-> Get all access tokens from a customer
-
-```python
-def get_access_tokens(self,
-                          customer_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-
-result = customers_client.get_access_tokens(customer_id)
-
-```
-
-
 ### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
 
 > Get all Customers
@@ -834,7 +787,8 @@ def get_customers(self,
                       name=None,
                       document=None,
                       page=1,
-                      size=10)
+                      size=10,
+                      email=None)
 ```
 
 #### Parameters
@@ -845,6 +799,7 @@ def get_customers(self,
 | document |  ``` Optional ```  | Document of the Customer |
 | page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
 | size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+| email |  ``` Optional ```  | Customer's email |
 
 
 
@@ -855,68 +810,9 @@ name = 'name'
 document = 'document'
 page = 1
 size = 10
+email = 'email'
 
-result = customers_client.get_customers(name, document, page, size)
-
-```
-
-
-### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_access_token") delete_access_token
-
-> Delete a customer's access token
-
-```python
-def delete_access_token(self,
-                            customer_id,
-                            token_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| tokenId |  ``` Required ```  | Token Id |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-token_id = 'token_id'
-
-result = customers_client.delete_access_token(customer_id, token_id)
-
-```
-
-
-### <a name="create_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_access_token") create_access_token
-
-> Creates a access token for a customer
-
-```python
-def create_access_token(self,
-                            customer_id,
-                            request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| request |  ``` Required ```  | Request for creating a access token |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-request = CreateAccessTokenRequest()
-
-result = customers_client.create_access_token(customer_id, request)
+result = customers_client.get_customers(name, document, page, size, email)
 
 ```
 
@@ -951,6 +847,66 @@ result = customers_client.get_access_token(customer_id, token_id)
 ```
 
 
+### <a name="create_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_access_token") create_access_token
+
+> Creates a access token for a customer
+
+```python
+def create_access_token(self,
+                            customer_id,
+                            request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| request |  ``` Required ```  | Request for creating a access token |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+request = CreateAccessTokenRequest()
+
+result = customers_client.create_access_token(customer_id, request)
+
+```
+
+
+### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_access_token") delete_access_token
+
+> Delete a customer's access token
+
+```python
+def delete_access_token(self,
+                            customer_id,
+                            token_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| tokenId |  ``` Required ```  | Token Id |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+token_id = 'token_id'
+
+result = customers_client.delete_access_token(customer_id, token_id)
+
+```
+
+
 ### <a name="update_customer_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.update_customer_metadata") update_customer_metadata
 
 > Updates the metadata a customer
@@ -981,6 +937,576 @@ result = customers_client.update_customer_metadata(customer_id, request)
 ```
 
 
+### <a name="get_access_tokens"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_access_tokens") get_access_tokens
+
+> Get all access tokens from a customer
+
+```python
+def get_access_tokens(self,
+                          customer_id,
+                          page=None,
+                          size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+page = 128
+size = 128
+
+result = customers_client.get_access_tokens(customer_id, page, size)
+
+```
+
+
+### <a name="get_addresses"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_addresses") get_addresses
+
+> Gets all adressess from a customer
+
+```python
+def get_addresses(self,
+                      customer_id,
+                      page=None,
+                      size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+page = 128
+size = 128
+
+result = customers_client.get_addresses(customer_id, page, size)
+
+```
+
+
+### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
+
+> Get all cards from a customer
+
+```python
+def get_cards(self,
+                  customer_id,
+                  page=None,
+                  size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+page = 128
+size = 128
+
+result = customers_client.get_cards(customer_id, page, size)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="invoices_controller"></a>![Class: ](https://apidocs.io/img/class.png ".InvoicesController") InvoicesController
+
+### Get controller instance
+
+An instance of the ``` InvoicesController ``` class can be accessed from the API Client.
+
+```python
+ invoices_client = client.invoices
+```
+
+### <a name="get_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoice") get_invoice
+
+> Gets an invoice
+
+```python
+def get_invoice(self,
+                    invoice_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice Id |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+
+result = invoices_client.get_invoice(invoice_id)
+
+```
+
+
+### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
+
+> Cancels an invoice
+
+```python
+def cancel_invoice(self,
+                       invoice_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice id |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+
+result = invoices_client.cancel_invoice(invoice_id)
+
+```
+
+
+### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.update_invoice_metadata") update_invoice_metadata
+
+> Updates the metadata from an invoice
+
+```python
+def update_invoice_metadata(self,
+                                invoice_id,
+                                request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | The invoice id |
+| request |  ``` Required ```  | Request for updating the invoice metadata |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+request = UpdateMetadataRequest()
+
+result = invoices_client.update_invoice_metadata(invoice_id, request)
+
+```
+
+
+### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoices") get_invoices
+
+> Gets all invoices
+
+```python
+def get_invoices(self,
+                     page=None,
+                     size=None,
+                     code=None,
+                     customer_id=None,
+                     subscription_id=None,
+                     created_since=None,
+                     created_until=None,
+                     status=None,
+                     due_since=None,
+                     due_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for Invoice's code |
+| customerId |  ``` Optional ```  | Filter for Invoice's customer id |
+| subscriptionId |  ``` Optional ```  | Filter for Invoice's subscription id |
+| createdSince |  ``` Optional ```  | Filter for Invoice's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for Invoices creation date end range |
+| status |  ``` Optional ```  | Filter for Invoice's status |
+| dueSince |  ``` Optional ```  | Filter for Invoice's due date start range |
+| dueUntil |  ``` Optional ```  | Filter for Invoice's due date end range |
+
+
+
+#### Example Usage
+
+```python
+page = 128
+size = 128
+code = 'code'
+customer_id = 'customer_id'
+subscription_id = 'subscription_id'
+created_since = datetime.now()
+created_until = datetime.now()
+status = 'status'
+due_since = datetime.now()
+due_until = datetime.now()
+
+result = invoices_client.get_invoices(page, size, code, customer_id, subscription_id, created_since, created_until, status, due_since, due_until)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="plans_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PlansController") PlansController
+
+### Get controller instance
+
+An instance of the ``` PlansController ``` class can be accessed from the API Client.
+
+```python
+ plans_client = client.plans
+```
+
+### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_item") update_plan_item
+
+> Updates a plan item
+
+```python
+def update_plan_item(self,
+                         plan_id,
+                         plan_item_id,
+                         body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+| body |  ``` Required ```  | Request for updating the plan item |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+plan_item_id = 'plan_item_id'
+body = UpdatePlanItemRequest()
+
+result = plans_client.update_plan_item(plan_id, plan_item_id, body)
+
+```
+
+
+### <a name="get_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan") get_plan
+
+> Gets a plan
+
+```python
+def get_plan(self,
+                 plan_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+
+result = plans_client.get_plan(plan_id)
+
+```
+
+
+### <a name="create_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.create_plan_item") create_plan_item
+
+> Adds a new item to a plan
+
+```python
+def create_plan_item(self,
+                         plan_id,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| request |  ``` Required ```  | Request for creating a plan item |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+request = CreatePlanItemRequest()
+
+result = plans_client.create_plan_item(plan_id, request)
+
+```
+
+
+### <a name="update_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan") update_plan
+
+> Updates a plan
+
+```python
+def update_plan(self,
+                    plan_id,
+                    request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| request |  ``` Required ```  | Request for updating a plan |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+request = UpdatePlanRequest()
+
+result = plans_client.update_plan(plan_id, request)
+
+```
+
+
+### <a name="create_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.create_plan") create_plan
+
+> Creates a new plan
+
+```python
+def create_plan(self,
+                    body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a plan |
+
+
+
+#### Example Usage
+
+```python
+body = CreatePlanRequest()
+
+result = plans_client.create_plan(body)
+
+```
+
+
+### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan") delete_plan
+
+> Deletes a plan
+
+```python
+def delete_plan(self,
+                    plan_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+
+result = plans_client.delete_plan(plan_id)
+
+```
+
+
+### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
+
+> Gets a plan item
+
+```python
+def get_plan_item(self,
+                      plan_id,
+                      plan_item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+plan_item_id = 'plan_item_id'
+
+result = plans_client.get_plan_item(plan_id, plan_item_id)
+
+```
+
+
+### <a name="delete_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan_item") delete_plan_item
+
+> Removes an item from a plan
+
+```python
+def delete_plan_item(self,
+                         plan_id,
+                         plan_item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+plan_item_id = 'plan_item_id'
+
+result = plans_client.delete_plan_item(plan_id, plan_item_id)
+
+```
+
+
+### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_metadata") update_plan_metadata
+
+> Updates the metadata from a plan
+
+```python
+def update_plan_metadata(self,
+                             plan_id,
+                             request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | The plan id |
+| request |  ``` Required ```  | Request for updating the plan metadata |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+request = UpdateMetadataRequest()
+
+result = plans_client.update_plan_metadata(plan_id, request)
+
+```
+
+
+### <a name="get_plans"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plans") get_plans
+
+> Gets all plans
+
+```python
+def get_plans(self,
+                  page=None,
+                  size=None,
+                  name=None,
+                  status=None,
+                  billing_type=None,
+                  created_since=None,
+                  created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | Filter for Plan's name |
+| status |  ``` Optional ```  | Filter for Plan's status |
+| billingType |  ``` Optional ```  | Filter for plan's billing type |
+| createdSince |  ``` Optional ```  | Filter for plan's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for plan's creation date end range |
+
+
+
+#### Example Usage
+
+```python
+page = 128
+size = 128
+name = 'name'
+status = 'status'
+billing_type = 'billing_type'
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = plans_client.get_plans(page, size, name, status, billing_type, created_since, created_until)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
@@ -993,22 +1519,24 @@ An instance of the ``` SubscriptionsController ``` class can be accessed from th
  subscriptions_client = client.subscriptions
 ```
 
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
 
-> Updates the billing date from a subscription
+> Updates a subscription item
 
 ```python
-def update_subscription_billing_date(self,
-                                         subscription_id,
-                                         request)
+def update_subscription_item(self,
+                                 subscription_id,
+                                 item_id,
+                                 body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
 
 
 
@@ -1016,9 +1544,10 @@ def update_subscription_billing_date(self,
 
 ```python
 subscription_id = 'subscription_id'
-request = UpdateSubscriptionBillingDateRequest()
+item_id = 'item_id'
+body = UpdateSubscriptionItemRequest()
 
-result = subscriptions_client.update_subscription_billing_date(subscription_id, request)
+result = subscriptions_client.update_subscription_item(subscription_id, item_id, body)
 
 ```
 
@@ -1056,24 +1585,22 @@ result = subscriptions_client.create_usage(subscription_id, item_id, body)
 ```
 
 
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
 
-> Updates a subscription item
+> Updates the billing date from a subscription
 
 ```python
-def update_subscription_item(self,
-                                 subscription_id,
-                                 item_id,
-                                 body)
+def update_subscription_billing_date(self,
+                                         subscription_id,
+                                         request)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
 
 
 
@@ -1081,27 +1608,9 @@ def update_subscription_item(self,
 
 ```python
 subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = UpdateSubscriptionItemRequest()
+request = UpdateSubscriptionBillingDateRequest()
 
-result = subscriptions_client.update_subscription_item(subscription_id, item_id, body)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
-
-> Gets all subscriptions
-
-```python
-def get_subscriptions(self)
-```
-
-#### Example Usage
-
-```python
-
-result = subscriptions_client.get_subscriptions()
+result = subscriptions_client.update_subscription_billing_date(subscription_id, request)
 
 ```
 
@@ -1280,69 +1789,6 @@ result = subscriptions_client.update_subscription_payment_method(subscription_id
 ```
 
 
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
-
-> Lists all usages from a subscription item
-
-```python
-def get_usages(self,
-                   subscription_id,
-                   item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-
-result = subscriptions_client.get_usages(subscription_id, item_id)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
-
-> Deletes a usage
-
-```python
-def delete_usage(self,
-                     subscription_id,
-                     item_id,
-                     usage_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-usage_id = 'usage_id'
-
-result = subscriptions_client.delete_usage(subscription_id, item_id, usage_id)
-
-```
-
-
 ### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
 
 > Deletes a discount
@@ -1433,6 +1879,75 @@ result = subscriptions_client.delete_subscription_item(subscription_id, subscrip
 ```
 
 
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
+
+> Deletes a usage
+
+```python
+def delete_usage(self,
+                     subscription_id,
+                     item_id,
+                     usage_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+usage_id = 'usage_id'
+
+result = subscriptions_client.delete_usage(subscription_id, item_id, usage_id)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
+
+> Lists all usages from a subscription item
+
+```python
+def get_usages(self,
+                   subscription_id,
+                   item_id,
+                   page=None,
+                   size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+page = 220
+size = 220
+
+result = subscriptions_client.get_usages(subscription_id, item_id, page, size)
+
+```
+
+
 ### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
 
 > Updates the metadata from a subscription
@@ -1463,435 +1978,62 @@ result = subscriptions_client.update_subscription_metadata(subscription_id, requ
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
 
-## <a name="plans_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PlansController") PlansController
-
-### Get controller instance
-
-An instance of the ``` PlansController ``` class can be accessed from the API Client.
+> Gets all subscriptions
 
 ```python
- plans_client = client.plans
-```
-
-### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_item") update_plan_item
-
-> Updates a plan item
-
-```python
-def update_plan_item(self,
-                         plan_id,
-                         plan_item_id,
-                         body)
+def get_subscriptions(self,
+                          page=None,
+                          size=None,
+                          code=None,
+                          billing_type=None,
+                          customer_id=None,
+                          plan_id=None,
+                          card_id=None,
+                          status=None,
+                          next_billing_since=None,
+                          next_billing_until=None,
+                          created_since=None,
+                          created_until=None)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-| body |  ``` Required ```  | Request for updating the plan item |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
 
 
 
 #### Example Usage
 
 ```python
+page = 220
+size = 220
+code = 'code'
+billing_type = 'billing_type'
+customer_id = 'customer_id'
 plan_id = 'plan_id'
-plan_item_id = 'plan_item_id'
-body = UpdatePlanItemRequest()
-
-result = plans_client.update_plan_item(plan_id, plan_item_id, body)
-
-```
-
-
-### <a name="get_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan") get_plan
-
-> Gets a plan
-
-```python
-def get_plan(self,
-                 plan_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-
-result = plans_client.get_plan(plan_id)
-
-```
-
-
-### <a name="create_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.create_plan_item") create_plan_item
-
-> Adds a new item to a plan
-
-```python
-def create_plan_item(self,
-                         plan_id,
-                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| request |  ``` Required ```  | Request for creating a plan item |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-request = CreatePlanItemRequest()
-
-result = plans_client.create_plan_item(plan_id, request)
-
-```
-
-
-### <a name="update_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan") update_plan
-
-> Updates a plan
-
-```python
-def update_plan(self,
-                    plan_id,
-                    request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| request |  ``` Required ```  | Request for updating a plan |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-request = UpdatePlanRequest()
-
-result = plans_client.update_plan(plan_id, request)
-
-```
-
-
-### <a name="create_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.create_plan") create_plan
-
-> Creates a new plan
-
-```python
-def create_plan(self,
-                    body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a plan |
-
-
-
-#### Example Usage
-
-```python
-body = CreatePlanRequest()
-
-result = plans_client.create_plan(body)
-
-```
-
-
-### <a name="get_plans"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plans") get_plans
-
-> Gets all plans
-
-```python
-def get_plans(self)
-```
-
-#### Example Usage
-
-```python
-
-result = plans_client.get_plans()
-
-```
-
-
-### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan") delete_plan
-
-> Deletes a plan
-
-```python
-def delete_plan(self,
-                    plan_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-
-result = plans_client.delete_plan(plan_id)
-
-```
-
-
-### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
-
-> Gets a plan item
-
-```python
-def get_plan_item(self,
-                      plan_id,
-                      plan_item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-plan_item_id = 'plan_item_id'
-
-result = plans_client.get_plan_item(plan_id, plan_item_id)
-
-```
-
-
-### <a name="delete_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan_item") delete_plan_item
-
-> Removes an item from a plan
-
-```python
-def delete_plan_item(self,
-                         plan_id,
-                         plan_item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-plan_item_id = 'plan_item_id'
-
-result = plans_client.delete_plan_item(plan_id, plan_item_id)
-
-```
-
-
-### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.update_plan_metadata") update_plan_metadata
-
-> Updates the metadata from a plan
-
-```python
-def update_plan_metadata(self,
-                             plan_id,
-                             request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | The plan id |
-| request |  ``` Required ```  | Request for updating the plan metadata |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-request = UpdateMetadataRequest()
-
-result = plans_client.update_plan_metadata(plan_id, request)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="invoices_controller"></a>![Class: ](https://apidocs.io/img/class.png ".InvoicesController") InvoicesController
-
-### Get controller instance
-
-An instance of the ``` InvoicesController ``` class can be accessed from the API Client.
-
-```python
- invoices_client = client.invoices
-```
-
-### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
-
-> Cancels an invoice
-
-```python
-def cancel_invoice(self,
-                       invoice_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-
-result = invoices_client.cancel_invoice(invoice_id)
-
-```
-
-
-### <a name="get_last_invoice_charge"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_last_invoice_charge") get_last_invoice_charge
-
-> Gets the last charge from an invoice
-
-```python
-def get_last_invoice_charge(self,
-                                invoice_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-
-result = invoices_client.get_last_invoice_charge(invoice_id)
-
-```
-
-
-### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoices") get_invoices
-
-> Gets all invoices
-
-```python
-def get_invoices(self)
-```
-
-#### Example Usage
-
-```python
-
-result = invoices_client.get_invoices()
-
-```
-
-
-### <a name="get_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoice") get_invoice
-
-> Gets an invoice
-
-```python
-def get_invoice(self,
-                    invoice_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice Id |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-
-result = invoices_client.get_invoice(invoice_id)
-
-```
-
-
-### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.update_invoice_metadata") update_invoice_metadata
-
-> Updates the metadata from an invoice
-
-```python
-def update_invoice_metadata(self,
-                                invoice_id,
-                                request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | The invoice id |
-| request |  ``` Required ```  | Request for updating the invoice metadata |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-request = UpdateMetadataRequest()
-
-result = invoices_client.update_invoice_metadata(invoice_id, request)
+card_id = 'card_id'
+status = 'status'
+next_billing_since = datetime.now()
+next_billing_until = datetime.now()
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = subscriptions_client.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
 
 ```
 
@@ -1931,23 +2073,6 @@ def get_order(self,
 order_id = 'order_id'
 
 result = orders_client.get_order(order_id)
-
-```
-
-
-### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_orders") get_orders
-
-> Gets all orders
-
-```python
-def get_orders(self)
-```
-
-#### Example Usage
-
-```python
-
-result = orders_client.get_orders()
 
 ```
 
@@ -2005,6 +2130,51 @@ order_id = 'order_id'
 request = UpdateMetadataRequest()
 
 result = orders_client.update_order_metadata(order_id, request)
+
+```
+
+
+### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_orders") get_orders
+
+> Gets all orders
+
+```python
+def get_orders(self,
+                   page=None,
+                   size=None,
+                   code=None,
+                   status=None,
+                   created_since=None,
+                   created_until=None,
+                   customer_id=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for order's code |
+| status |  ``` Optional ```  | Filter for order's status |
+| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
+| customerId |  ``` Optional ```  | Filter for order's customer id |
+
+
+
+#### Example Usage
+
+```python
+page = 220
+size = 220
+code = 'code'
+status = 'status'
+created_since = datetime.now()
+created_until = datetime.now()
+customer_id = 'customer_id'
+
+result = orders_client.get_orders(page, size, code, status, created_since, created_until, customer_id)
 
 ```
 
