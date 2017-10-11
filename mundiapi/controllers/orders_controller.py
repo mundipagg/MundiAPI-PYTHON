@@ -60,41 +60,6 @@ class OrdersController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetOrderResponse.from_dictionary)
 
-    def get_orders(self):
-        """Does a GET request to /orders.
-
-        Gets all orders
-
-        Returns:
-            ListOrderResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders'
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListOrderResponse.from_dictionary)
-
     def create_order(self,
                      body):
         """Does a POST request to /orders.
@@ -180,3 +145,67 @@ class OrdersController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetOrderResponse.from_dictionary)
+
+    def get_orders(self,
+                   page=None,
+                   size=None,
+                   code=None,
+                   status=None,
+                   created_since=None,
+                   created_until=None,
+                   customer_id=None):
+        """Does a GET request to /orders.
+
+        Gets all orders
+
+        Args:
+            page (int, optional): Page number
+            size (int, optional): Page size
+            code (string, optional): Filter for order's code
+            status (string, optional): Filter for order's status
+            created_since (datetime, optional): Filter for order's creation
+                date start range
+            created_until (datetime, optional): Filter for order's creation
+                date end range
+            customer_id (string, optional): Filter for order's customer id
+
+        Returns:
+            ListOrderResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/orders'
+        _query_parameters = {
+            'page': page,
+            'size': size,
+            'code': code,
+            'status': status,
+            'created_since': APIHelper.RFC3339DateTime(created_since),
+            'created_until': APIHelper.RFC3339DateTime(created_until),
+            'customer_id': customer_id
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListOrderResponse.from_dictionary)

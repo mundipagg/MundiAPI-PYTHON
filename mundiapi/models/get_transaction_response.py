@@ -88,10 +88,10 @@ class GetTransactionResponse(object):
 
         discriminators = {
             'boleto': GetBoletoTransactionResponse.from_dictionary,
-            'bank_transfer': GetBankTransferTransactionResponse.from_dictionary,
-            'safetypay': GetSafetyPayTransactionResponse.from_dictionary,
             'credit_card': GetCreditCardTransactionResponse.from_dictionary,
-            'voucher': GetVoucherTransactionResponse.from_dictionary
+            'voucher': GetVoucherTransactionResponse.from_dictionary,
+            'bank_transfer': GetBankTransferTransactionResponse.from_dictionary,
+            'safetypay': GetSafetyPayTransactionResponse.from_dictionary
         }
         unboxer = discriminators.get(dictionary.get('transaction_type'))
 
@@ -259,250 +259,6 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    updated_at,
                    attempt_count,
                    max_attempts,
-                   next_attempt,
-                   transaction_type)
-
-
-class GetBankTransferTransactionResponse(GetTransactionResponse):
-
-    """Implementation of the 'GetBankTransferTransactionResponse' model.
-
-    Response object for getting a bank transfer transaction
-    NOTE: This class inherits from 'GetTransactionResponse'.
-
-    Attributes:
-        url (string): Payment url
-        bank_tid (string): Transaction identifier for the bank
-        bank (string): Bank
-        paid_at (datetime): Payment date
-        paid_amount (int): Paid amount
-
-    """
-
-    # Create a mapping from Model property names to API property names
-    _names = {
-        "url" : "url",
-        "bank_tid" : "bank_tid",
-        "bank" : "bank",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "paid_at" : "paid_at",
-        "paid_amount" : "paid_amount",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
-    }
-
-    def __init__(self,
-                 url=None,
-                 bank_tid=None,
-                 bank=None,
-                 gateway_id=None,
-                 amount=None,
-                 status=None,
-                 success=None,
-                 created_at=None,
-                 updated_at=None,
-                 attempt_count=None,
-                 max_attempts=None,
-                 paid_at=None,
-                 paid_amount=None,
-                 next_attempt=None,
-                 transaction_type=None):
-        """Constructor for the GetBankTransferTransactionResponse class"""
-
-        # Initialize members of the class
-        self.url = url
-        self.bank_tid = bank_tid
-        self.bank = bank
-        self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
-        self.paid_amount = paid_amount
-
-        # Call the constructor for the base class
-        super(GetBankTransferTransactionResponse, self).__init__(gateway_id,
-                                                                 amount,
-                                                                 status,
-                                                                 success,
-                                                                 created_at,
-                                                                 updated_at,
-                                                                 attempt_count,
-                                                                 max_attempts,
-                                                                 next_attempt,
-                                                                 transaction_type)
-
-
-    @classmethod
-    def from_dictionary(cls,
-                        dictionary):
-        """Creates an instance of this model from a dictionary
-
-        Args:
-            dictionary (dictionary): A dictionary representation of the object as
-            obtained from the deserialization of the server's response. The keys
-            MUST match property names in the API description.
-
-        Returns:
-            object: An instance of this structure class.
-
-        """
-        if dictionary is None:
-            return None
-
-        # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bank_tid = dictionary.get("bank_tid")
-        bank = dictionary.get("bank")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
-        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
-        paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
-        paid_amount = dictionary.get("paid_amount")
-        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
-
-        # Return an object of this model
-        return cls(url,
-                   bank_tid,
-                   bank,
-                   gateway_id,
-                   amount,
-                   status,
-                   success,
-                   created_at,
-                   updated_at,
-                   attempt_count,
-                   max_attempts,
-                   paid_at,
-                   paid_amount,
-                   next_attempt,
-                   transaction_type)
-
-
-class GetSafetyPayTransactionResponse(GetTransactionResponse):
-
-    """Implementation of the 'GetSafetyPayTransactionResponse' model.
-
-    Response object for getting a safety pay transaction
-    NOTE: This class inherits from 'GetTransactionResponse'.
-
-    Attributes:
-        url (string): Payment url
-        bank_tid (string): Transaction identifier on bank
-        paid_at (datetime): Payment date
-        paid_amount (int): Paid amount
-
-    """
-
-    # Create a mapping from Model property names to API property names
-    _names = {
-        "url" : "url",
-        "bank_tid" : "bank_tid",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "paid_at" : "paid_at",
-        "paid_amount" : "paid_amount",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
-    }
-
-    def __init__(self,
-                 url=None,
-                 bank_tid=None,
-                 gateway_id=None,
-                 amount=None,
-                 status=None,
-                 success=None,
-                 created_at=None,
-                 updated_at=None,
-                 attempt_count=None,
-                 max_attempts=None,
-                 paid_at=None,
-                 paid_amount=None,
-                 next_attempt=None,
-                 transaction_type=None):
-        """Constructor for the GetSafetyPayTransactionResponse class"""
-
-        # Initialize members of the class
-        self.url = url
-        self.bank_tid = bank_tid
-        self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
-        self.paid_amount = paid_amount
-
-        # Call the constructor for the base class
-        super(GetSafetyPayTransactionResponse, self).__init__(gateway_id,
-                                                              amount,
-                                                              status,
-                                                              success,
-                                                              created_at,
-                                                              updated_at,
-                                                              attempt_count,
-                                                              max_attempts,
-                                                              next_attempt,
-                                                              transaction_type)
-
-
-    @classmethod
-    def from_dictionary(cls,
-                        dictionary):
-        """Creates an instance of this model from a dictionary
-
-        Args:
-            dictionary (dictionary): A dictionary representation of the object as
-            obtained from the deserialization of the server's response. The keys
-            MUST match property names in the API description.
-
-        Returns:
-            object: An instance of this structure class.
-
-        """
-        if dictionary is None:
-            return None
-
-        # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bank_tid = dictionary.get("bank_tid")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
-        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
-        paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
-        paid_amount = dictionary.get("paid_amount")
-        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
-
-        # Return an object of this model
-        return cls(url,
-                   bank_tid,
-                   gateway_id,
-                   amount,
-                   status,
-                   success,
-                   created_at,
-                   updated_at,
-                   attempt_count,
-                   max_attempts,
-                   paid_at,
-                   paid_amount,
                    next_attempt,
                    transaction_type)
 
@@ -815,6 +571,250 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                    updated_at,
                    attempt_count,
                    max_attempts,
+                   next_attempt,
+                   transaction_type)
+
+
+class GetBankTransferTransactionResponse(GetTransactionResponse):
+
+    """Implementation of the 'GetBankTransferTransactionResponse' model.
+
+    Response object for getting a bank transfer transaction
+    NOTE: This class inherits from 'GetTransactionResponse'.
+
+    Attributes:
+        url (string): Payment url
+        bank_tid (string): Transaction identifier for the bank
+        bank (string): Bank
+        paid_at (datetime): Payment date
+        paid_amount (int): Paid amount
+
+    """
+
+    # Create a mapping from Model property names to API property names
+    _names = {
+        "url" : "url",
+        "bank_tid" : "bank_tid",
+        "bank" : "bank",
+        "gateway_id" : "gateway_id",
+        "amount" : "amount",
+        "status" : "status",
+        "success" : "success",
+        "created_at" : "created_at",
+        "updated_at" : "updated_at",
+        "attempt_count" : "attempt_count",
+        "max_attempts" : "max_attempts",
+        "paid_at" : "paid_at",
+        "paid_amount" : "paid_amount",
+        "next_attempt" : "next_attempt",
+        "transaction_type" : "transaction_type"
+    }
+
+    def __init__(self,
+                 url=None,
+                 bank_tid=None,
+                 bank=None,
+                 gateway_id=None,
+                 amount=None,
+                 status=None,
+                 success=None,
+                 created_at=None,
+                 updated_at=None,
+                 attempt_count=None,
+                 max_attempts=None,
+                 paid_at=None,
+                 paid_amount=None,
+                 next_attempt=None,
+                 transaction_type=None):
+        """Constructor for the GetBankTransferTransactionResponse class"""
+
+        # Initialize members of the class
+        self.url = url
+        self.bank_tid = bank_tid
+        self.bank = bank
+        self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
+        self.paid_amount = paid_amount
+
+        # Call the constructor for the base class
+        super(GetBankTransferTransactionResponse, self).__init__(gateway_id,
+                                                                 amount,
+                                                                 status,
+                                                                 success,
+                                                                 created_at,
+                                                                 updated_at,
+                                                                 attempt_count,
+                                                                 max_attempts,
+                                                                 next_attempt,
+                                                                 transaction_type)
+
+
+    @classmethod
+    def from_dictionary(cls,
+                        dictionary):
+        """Creates an instance of this model from a dictionary
+
+        Args:
+            dictionary (dictionary): A dictionary representation of the object as
+            obtained from the deserialization of the server's response. The keys
+            MUST match property names in the API description.
+
+        Returns:
+            object: An instance of this structure class.
+
+        """
+        if dictionary is None:
+            return None
+
+        # Extract variables from the dictionary
+        url = dictionary.get("url")
+        bank_tid = dictionary.get("bank_tid")
+        bank = dictionary.get("bank")
+        gateway_id = dictionary.get("gateway_id")
+        amount = dictionary.get("amount")
+        status = dictionary.get("status")
+        success = dictionary.get("success")
+        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
+        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
+        attempt_count = dictionary.get("attempt_count")
+        max_attempts = dictionary.get("max_attempts")
+        paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
+        paid_amount = dictionary.get("paid_amount")
+        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+        transaction_type = dictionary.get("transaction_type")
+
+        # Return an object of this model
+        return cls(url,
+                   bank_tid,
+                   bank,
+                   gateway_id,
+                   amount,
+                   status,
+                   success,
+                   created_at,
+                   updated_at,
+                   attempt_count,
+                   max_attempts,
+                   paid_at,
+                   paid_amount,
+                   next_attempt,
+                   transaction_type)
+
+
+class GetSafetyPayTransactionResponse(GetTransactionResponse):
+
+    """Implementation of the 'GetSafetyPayTransactionResponse' model.
+
+    Response object for getting a safety pay transaction
+    NOTE: This class inherits from 'GetTransactionResponse'.
+
+    Attributes:
+        url (string): Payment url
+        bank_tid (string): Transaction identifier on bank
+        paid_at (datetime): Payment date
+        paid_amount (int): Paid amount
+
+    """
+
+    # Create a mapping from Model property names to API property names
+    _names = {
+        "url" : "url",
+        "bank_tid" : "bank_tid",
+        "gateway_id" : "gateway_id",
+        "amount" : "amount",
+        "status" : "status",
+        "success" : "success",
+        "created_at" : "created_at",
+        "updated_at" : "updated_at",
+        "attempt_count" : "attempt_count",
+        "max_attempts" : "max_attempts",
+        "paid_at" : "paid_at",
+        "paid_amount" : "paid_amount",
+        "next_attempt" : "next_attempt",
+        "transaction_type" : "transaction_type"
+    }
+
+    def __init__(self,
+                 url=None,
+                 bank_tid=None,
+                 gateway_id=None,
+                 amount=None,
+                 status=None,
+                 success=None,
+                 created_at=None,
+                 updated_at=None,
+                 attempt_count=None,
+                 max_attempts=None,
+                 paid_at=None,
+                 paid_amount=None,
+                 next_attempt=None,
+                 transaction_type=None):
+        """Constructor for the GetSafetyPayTransactionResponse class"""
+
+        # Initialize members of the class
+        self.url = url
+        self.bank_tid = bank_tid
+        self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
+        self.paid_amount = paid_amount
+
+        # Call the constructor for the base class
+        super(GetSafetyPayTransactionResponse, self).__init__(gateway_id,
+                                                              amount,
+                                                              status,
+                                                              success,
+                                                              created_at,
+                                                              updated_at,
+                                                              attempt_count,
+                                                              max_attempts,
+                                                              next_attempt,
+                                                              transaction_type)
+
+
+    @classmethod
+    def from_dictionary(cls,
+                        dictionary):
+        """Creates an instance of this model from a dictionary
+
+        Args:
+            dictionary (dictionary): A dictionary representation of the object as
+            obtained from the deserialization of the server's response. The keys
+            MUST match property names in the API description.
+
+        Returns:
+            object: An instance of this structure class.
+
+        """
+        if dictionary is None:
+            return None
+
+        # Extract variables from the dictionary
+        url = dictionary.get("url")
+        bank_tid = dictionary.get("bank_tid")
+        gateway_id = dictionary.get("gateway_id")
+        amount = dictionary.get("amount")
+        status = dictionary.get("status")
+        success = dictionary.get("success")
+        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
+        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
+        attempt_count = dictionary.get("attempt_count")
+        max_attempts = dictionary.get("max_attempts")
+        paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
+        paid_amount = dictionary.get("paid_amount")
+        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+        transaction_type = dictionary.get("transaction_type")
+
+        # Return an object of this model
+        return cls(url,
+                   bank_tid,
+                   gateway_id,
+                   amount,
+                   status,
+                   success,
+                   created_at,
+                   updated_at,
+                   attempt_count,
+                   max_attempts,
+                   paid_at,
+                   paid_amount,
                    next_attempt,
                    transaction_type)
 
