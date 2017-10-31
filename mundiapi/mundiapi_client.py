@@ -14,6 +14,7 @@ from .controllers.plans_controller import PlansController
 from .controllers.subscriptions_controller import SubscriptionsController
 from .controllers.orders_controller import OrdersController
 from .controllers.tokens_controller import TokensController
+from .controllers.recipients_controller import RecipientsController
 
 class MundiapiClient(object):
 
@@ -46,6 +47,10 @@ class MundiapiClient(object):
     @lazy_property
     def tokens(self):
         return TokensController()
+
+    @lazy_property
+    def recipients(self):
+        return RecipientsController()
 
 
     def __init__(self, 
