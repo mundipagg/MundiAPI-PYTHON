@@ -8,6 +8,7 @@
 import mundiapi.models.create_credit_card_payment_request
 import mundiapi.models.create_boleto_payment_request
 import mundiapi.models.create_voucher_payment_request
+import mundiapi.models.create_split_request
 import mundiapi.models.create_bank_transfer_payment_request
 import mundiapi.models.create_checkout_payment_request
 
@@ -25,6 +26,7 @@ class CreatePaymentRequest(object):
         currency (string): Currency. Must be informed using 3 characters
         voucher (CreateVoucherPaymentRequest): Settings for voucher payment
         metadata (dict<object, string>): Metadata
+        split (list of CreateSplitRequest): Splits
         bank_transfer (CreateBankTransferPaymentRequest): Settings for bank
             transfer payment
         gateway_affiliation_id (string): Gateway affiliation code
@@ -42,6 +44,7 @@ class CreatePaymentRequest(object):
         "currency" : "currency",
         "voucher" : "voucher",
         "metadata" : "metadata",
+        "split" : "split",
         "bank_transfer" : "bank_transfer",
         "gateway_affiliation_id" : "gateway_affiliation_id",
         "amount" : "amount",
@@ -55,6 +58,7 @@ class CreatePaymentRequest(object):
                  currency=None,
                  voucher=None,
                  metadata=None,
+                 split=None,
                  bank_transfer=None,
                  gateway_affiliation_id=None,
                  amount=None,
@@ -68,6 +72,7 @@ class CreatePaymentRequest(object):
         self.currency = currency
         self.voucher = voucher
         self.metadata = metadata
+        self.split = split
         self.bank_transfer = bank_transfer
         self.gateway_affiliation_id = gateway_affiliation_id
         self.amount = amount
@@ -98,6 +103,11 @@ class CreatePaymentRequest(object):
         currency = dictionary.get("currency")
         voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get("voucher")) if dictionary.get("voucher") else None
         metadata = dictionary.get("metadata")
+        split = None
+        if dictionary.get("split") != None:
+            split = list()
+            for structure in dictionary.get("split"):
+                split.append(mundiapi.models.create_split_request.CreateSplitRequest.from_dictionary(structure))
         bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get("bank_transfer")) if dictionary.get("bank_transfer") else None
         gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
         amount = dictionary.get("amount")
@@ -110,6 +120,7 @@ class CreatePaymentRequest(object):
                    currency,
                    voucher,
                    metadata,
+                   split,
                    bank_transfer,
                    gateway_affiliation_id,
                    amount,

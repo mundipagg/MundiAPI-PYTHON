@@ -116,6 +116,7 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 * [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
 * [TokensController](#tokens_controller)
+* [RecipientsController](#recipients_controller)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
 
@@ -394,8 +395,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 170
-size = 170
+page = 183
+size = 183
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -962,8 +963,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 128
-size = 128
+page = 20
+size = 20
 
 result = customers_client.get_access_tokens(customer_id, page, size)
 
@@ -995,8 +996,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 128
-size = 128
+page = 20
+size = 20
 
 result = customers_client.get_addresses(customer_id, page, size)
 
@@ -1028,8 +1029,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 128
-size = 128
+page = 20
+size = 20
 
 result = customers_client.get_cards(customer_id, page, size)
 
@@ -1170,8 +1171,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 128
-size = 128
+page = 20
+size = 20
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1494,8 +1495,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 128
-size = 128
+page = 111
+size = 111
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1940,8 +1941,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 220
-size = 220
+page = 111
+size = 111
 
 result = subscriptions_client.get_usages(subscription_id, item_id, page, size)
 
@@ -2020,8 +2021,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 220
-size = 220
+page = 111
+size = 111
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2166,8 +2167,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 220
-size = 220
+page = 111
+size = 111
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2251,6 +2252,465 @@ public_key = 'public_key'
 request = CreateTokenRequest()
 
 result = tokens_client.create_token(public_key, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="recipients_controller"></a>![Class: ](https://apidocs.io/img/class.png ".RecipientsController") RecipientsController
+
+### Get controller instance
+
+An instance of the ``` RecipientsController ``` class can be accessed from the API Client.
+
+```python
+ recipients_client = client.recipients
+```
+
+### <a name="create_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_recipient") create_recipient
+
+> Creates a new recipient
+
+```python
+def create_recipient(self,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Recipient data |
+
+
+
+#### Example Usage
+
+```python
+request = CreateRecipientRequest()
+
+result = recipients_client.create_recipient(request)
+
+```
+
+
+### <a name="update_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient") update_recipient
+
+> Updates a recipient
+
+```python
+def update_recipient(self,
+                         recipient_id,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Recipient data |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = UpdateRecipientRequest()
+
+result = recipients_client.update_recipient(recipient_id, request)
+
+```
+
+
+### <a name="update_recipient_default_bank_account"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient_default_bank_account") update_recipient_default_bank_account
+
+> Updates the default bank account from a recipient
+
+```python
+def update_recipient_default_bank_account(self,
+                                              recipient_id,
+                                              request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Bank account data |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = UpdateRecipientBankAccountRequest()
+
+result = recipients_client.update_recipient_default_bank_account(recipient_id, request)
+
+```
+
+
+### <a name="get_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_recipient") get_recipient
+
+> Retrieves recipient information
+
+```python
+def get_recipient(self,
+                      recipient_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipiend id |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+
+result = recipients_client.get_recipient(recipient_id)
+
+```
+
+
+### <a name="get_recipients"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_recipients") get_recipients
+
+> Retrieves paginated recipients information
+
+```python
+def get_recipients(self,
+                       page=None,
+                       size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+page = 70
+size = 70
+
+result = recipients_client.get_recipients(page, size)
+
+```
+
+
+### <a name="get_balance"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_balance") get_balance
+
+> Get balance information for a recipient
+
+```python
+def get_balance(self,
+                    recipient_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+
+result = recipients_client.get_balance(recipient_id)
+
+```
+
+
+### <a name="create_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_transfer") create_transfer
+
+> Creates a transfer for a recipient
+
+```python
+def create_transfer(self,
+                        recipient_id,
+                        request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient Id |
+| request |  ``` Required ```  | Transfer data |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = CreateTransferRequest()
+
+result = recipients_client.create_transfer(recipient_id, request)
+
+```
+
+
+### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfer") get_transfer
+
+> Gets a transfer
+
+```python
+def get_transfer(self,
+                     recipient_id,
+                     transfer_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| transferId |  ``` Required ```  | Transfer id |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+transfer_id = 'transfer_id'
+
+result = recipients_client.get_transfer(recipient_id, transfer_id)
+
+```
+
+
+### <a name="get_transfers"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfers") get_transfers
+
+> Gets a paginated list of transfers for the recipient
+
+```python
+def get_transfers(self,
+                      recipient_id,
+                      page=None,
+                      size=None,
+                      status=None,
+                      created_since=None,
+                      created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for transfer status |
+| createdSince |  ``` Optional ```  | Filter for start range of transfer creation date |
+| createdUntil |  ``` Optional ```  | Filter for end range of transfer creation date |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+page = 70
+size = 70
+status = 'status'
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = recipients_client.get_transfers(recipient_id, page, size, status, created_since, created_until)
+
+```
+
+
+### <a name="create_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_anticipation") create_anticipation
+
+> Creates an anticipation
+
+```python
+def create_anticipation(self,
+                            recipient_id,
+                            request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Anticipation data |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = CreateAnticipationRequest()
+
+result = recipients_client.create_anticipation(recipient_id, request)
+
+```
+
+
+### <a name="get_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation") get_anticipation
+
+> Gets an anticipation
+
+```python
+def get_anticipation(self,
+                         recipient_id,
+                         anticipation_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| anticipationId |  ``` Required ```  | Anticipation id |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+anticipation_id = 'anticipation_id'
+
+result = recipients_client.get_anticipation(recipient_id, anticipation_id)
+
+```
+
+
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
+
+> Gets the anticipation limits for a recipient
+
+```python
+def get_anticipation_limits(self,
+                                recipient_id,
+                                timeframe,
+                                payment_date)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| paymentDate |  ``` Required ```  | Anticipation payment date |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+timeframe = 'timeframe'
+payment_date = datetime.now()
+
+result = recipients_client.get_anticipation_limits(recipient_id, timeframe, payment_date)
+
+```
+
+
+### <a name="get_anticipations"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipations") get_anticipations
+
+> Retrieves a paginated list of anticipations from a recipient
+
+```python
+def get_anticipations(self,
+                          recipient_id,
+                          page=None,
+                          size=None,
+                          status=None,
+                          timeframe=None,
+                          payment_date_since=None,
+                          payment_date_until=None,
+                          created_since=None,
+                          created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for anticipation status |
+| timeframe |  ``` Optional ```  | Filter for anticipation timeframe |
+| paymentDateSince |  ``` Optional ```  | Filter for start range for anticipation payment date |
+| paymentDateUntil |  ``` Optional ```  | Filter for end range for anticipation payment date |
+| createdSince |  ``` Optional ```  | Filter for start range for anticipation creation date |
+| createdUntil |  ``` Optional ```  | Filter for end range for anticipation creation date |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+page = 70
+size = 70
+status = 'status'
+timeframe = 'timeframe'
+payment_date_since = datetime.now()
+payment_date_until = datetime.now()
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = recipients_client.get_anticipations(recipient_id, page, size, status, timeframe, payment_date_since, payment_date_until, created_since, created_until)
+
+```
+
+
+### <a name="update_recipient_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient_metadata") update_recipient_metadata
+
+> Updates recipient metadata
+
+```python
+def update_recipient_metadata(self,
+                                  recipient_id,
+                                  request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Metadata |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = UpdateMetadataRequest()
+
+result = recipients_client.update_recipient_metadata(recipient_id, request)
 
 ```
 
