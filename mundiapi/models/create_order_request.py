@@ -9,6 +9,8 @@ import mundiapi.models.create_order_item_request
 import mundiapi.models.create_customer_request
 import mundiapi.models.create_payment_request
 import mundiapi.models.create_shipping_request
+import mundiapi.models.create_location_request
+import mundiapi.models.create_device_request
 
 class CreateOrderRequest(object):
 
@@ -26,6 +28,10 @@ class CreateOrderRequest(object):
         metadata (dict<object, string>): Metadata
         antifraud_enabled (bool): Defines whether the order will go through
             anti-fraud
+        ip (string): Ip address
+        session_id (string): Session id
+        location (CreateLocationRequest): Request's location
+        device (CreateDeviceRequest): Device's informations
 
     """
 
@@ -38,7 +44,11 @@ class CreateOrderRequest(object):
         "customer_id" : "customer_id",
         "shipping" : "shipping",
         "metadata" : "metadata",
-        "antifraud_enabled" : "antifraud_enabled"
+        "antifraud_enabled" : "antifraud_enabled",
+        "ip" : "ip",
+        "session_id" : "session_id",
+        "location" : "location",
+        "device" : "device"
     }
 
     def __init__(self,
@@ -49,7 +59,11 @@ class CreateOrderRequest(object):
                  customer_id=None,
                  shipping=None,
                  metadata=None,
-                 antifraud_enabled=None):
+                 antifraud_enabled=None,
+                 ip=None,
+                 session_id=None,
+                 location=None,
+                 device=None):
         """Constructor for the CreateOrderRequest class"""
 
         # Initialize members of the class
@@ -61,6 +75,10 @@ class CreateOrderRequest(object):
         self.shipping = shipping
         self.metadata = metadata
         self.antifraud_enabled = antifraud_enabled
+        self.ip = ip
+        self.session_id = session_id
+        self.location = location
+        self.device = device
 
 
     @classmethod
@@ -97,6 +115,10 @@ class CreateOrderRequest(object):
         shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
         antifraud_enabled = dictionary.get("antifraud_enabled")
+        ip = dictionary.get("ip")
+        session_id = dictionary.get("session_id")
+        location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get("location")) if dictionary.get("location") else None
+        device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get("device")) if dictionary.get("device") else None
 
         # Return an object of this model
         return cls(items,
@@ -106,6 +128,10 @@ class CreateOrderRequest(object):
                    customer_id,
                    shipping,
                    metadata,
-                   antifraud_enabled)
+                   antifraud_enabled,
+                   ip,
+                   session_id,
+                   location,
+                   device)
 
 

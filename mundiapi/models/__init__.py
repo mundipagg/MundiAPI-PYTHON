@@ -109,4 +109,8 @@ __all__ = [
     'get_anticipation_limits_response',
     'create_split_request',
     'get_split_response',
+    'get_device_response',
+    'create_device_request',
+    'get_location_response',
+    'create_location_request',
 ]

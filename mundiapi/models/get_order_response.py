@@ -11,6 +11,8 @@ import mundiapi.models.get_customer_response
 import mundiapi.models.get_charge_response
 import mundiapi.models.get_shipping_response
 import mundiapi.models.get_checkout_payment_settings_response
+import mundiapi.models.get_location_response
+import mundiapi.models.get_device_response
 
 class GetOrderResponse(object):
 
@@ -33,6 +35,10 @@ class GetOrderResponse(object):
         metadata (dict<object, string>): TODO: type description here.
         checkouts (list of GetCheckoutPaymentSettingsResponse): Checkout
             Payment Settings Response
+        ip (string): Ip address
+        session_id (string): Session id
+        location (GetLocationResponse): Location
+        device (GetDeviceResponse): Device's informations
 
     """
 
@@ -50,7 +56,11 @@ class GetOrderResponse(object):
         "invoice_url" : "invoice_url",
         "shipping" : "shipping",
         "metadata" : "metadata",
-        "checkouts" : "checkouts"
+        "checkouts" : "checkouts",
+        "ip" : "ip",
+        "session_id" : "session_id",
+        "location" : "location",
+        "device" : "device"
     }
 
     def __init__(self,
@@ -66,7 +76,11 @@ class GetOrderResponse(object):
                  invoice_url=None,
                  shipping=None,
                  metadata=None,
-                 checkouts=None):
+                 checkouts=None,
+                 ip=None,
+                 session_id=None,
+                 location=None,
+                 device=None):
         """Constructor for the GetOrderResponse class"""
 
         # Initialize members of the class
@@ -83,6 +97,10 @@ class GetOrderResponse(object):
         self.shipping = shipping
         self.metadata = metadata
         self.checkouts = checkouts
+        self.ip = ip
+        self.session_id = session_id
+        self.location = location
+        self.device = device
 
 
     @classmethod
@@ -128,6 +146,10 @@ class GetOrderResponse(object):
             checkouts = list()
             for structure in dictionary.get("checkouts"):
                 checkouts.append(mundiapi.models.get_checkout_payment_settings_response.GetCheckoutPaymentSettingsResponse.from_dictionary(structure))
+        ip = dictionary.get("ip")
+        session_id = dictionary.get("session_id")
+        location = mundiapi.models.get_location_response.GetLocationResponse.from_dictionary(dictionary.get("location")) if dictionary.get("location") else None
+        device = mundiapi.models.get_device_response.GetDeviceResponse.from_dictionary(dictionary.get("device")) if dictionary.get("device") else None
 
         # Return an object of this model
         return cls(id,
@@ -142,6 +164,10 @@ class GetOrderResponse(object):
                    invoice_url,
                    shipping,
                    metadata,
-                   checkouts)
+                   checkouts,
+                   ip,
+                   session_id,
+                   location,
+                   device)
 
 

@@ -395,8 +395,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 183
-size = 183
+page = 3
+size = 3
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -963,8 +963,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 20
-size = 20
+page = 3
+size = 3
 
 result = customers_client.get_access_tokens(customer_id, page, size)
 
@@ -996,8 +996,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 20
-size = 20
+page = 3
+size = 3
 
 result = customers_client.get_addresses(customer_id, page, size)
 
@@ -1029,8 +1029,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 20
-size = 20
+page = 3
+size = 3
 
 result = customers_client.get_cards(customer_id, page, size)
 
@@ -1171,8 +1171,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 20
-size = 20
+page = 3
+size = 3
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1183,6 +1183,36 @@ due_since = datetime.now()
 due_until = datetime.now()
 
 result = invoices_client.get_invoices(page, size, code, customer_id, subscription_id, created_since, created_until, status, due_since, due_until)
+
+```
+
+
+### <a name="create_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.create_invoice") create_invoice
+
+> Create an Invoice
+
+```python
+def create_invoice(self,
+                       subscription_id,
+                       cycle_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| cycleId |  ``` Required ```  | Cycle Id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+cycle_id = 'cycle_id'
+
+result = invoices_client.create_invoice(subscription_id, cycle_id)
 
 ```
 
@@ -1495,8 +1525,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 111
-size = 111
+page = 216
+size = 216
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1941,8 +1971,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 111
-size = 111
+page = 216
+size = 216
 
 result = subscriptions_client.get_usages(subscription_id, item_id, page, size)
 
@@ -2021,8 +2051,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 111
-size = 111
+page = 53
+size = 53
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2035,6 +2065,99 @@ created_since = datetime.now()
 created_until = datetime.now()
 
 result = subscriptions_client.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
+
+```
+
+
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
+
+> Create Usage
+
+```python
+def create_an_usage(self,
+                        subscription_id,
+                        item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| itemId |  ``` Required ```  | Item id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_client.create_an_usage(subscription_id, item_id)
+
+```
+
+
+### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_item") get_subscription_item
+
+> Get Subscription Item
+
+```python
+def get_subscription_item(self,
+                              subscription_id,
+                              item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_client.get_subscription_item(subscription_id, item_id)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
+
+> Get Subscription Itens
+
+```python
+def get_subscription_items(self,
+                               subscription_id,
+                               status,
+                               description)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| status |  ``` Required ```  | Status |
+| description |  ``` Required ```  | Description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+status = 'status'
+description = 'description'
+
+result = subscriptions_client.get_subscription_items(subscription_id, status, description)
 
 ```
 
@@ -2167,8 +2290,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 111
-size = 111
+page = 53
+size = 53
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2404,8 +2527,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 70
-size = 70
+page = 53
+size = 53
 
 result = recipients_client.get_recipients(page, size)
 
@@ -2530,8 +2653,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 70
-size = 70
+page = 53
+size = 53
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2671,8 +2794,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 70
-size = 70
+page = 53
+size = 53
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
