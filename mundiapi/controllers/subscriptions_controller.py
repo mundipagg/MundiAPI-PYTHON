@@ -798,3 +798,145 @@ class SubscriptionsController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionsResponse.from_dictionary)
+
+    def create_an_usage(self,
+                        subscription_id,
+                        item_id):
+        """Does a POST request to /subscriptions/{subscription_id}/items/{item_id}/usages.
+
+        Create Usage
+
+        Args:
+            subscription_id (string): Subscription id
+            item_id (string): Item id
+
+        Returns:
+            GetUsageResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'subscription_id': subscription_id,
+            'item_id': item_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetUsageResponse.from_dictionary)
+
+    def get_subscription_item(self,
+                              subscription_id,
+                              item_id):
+        """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}.
+
+        Get Subscription Item
+
+        Args:
+            subscription_id (string): Subscription Id
+            item_id (string): Item id
+
+        Returns:
+            GetSubscriptionItemResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'subscription_id': subscription_id,
+            'item_id': item_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
+
+    def get_subscription_items(self,
+                               subscription_id,
+                               status,
+                               description):
+        """Does a GET request to /subscriptions/{subscription_id}/items.
+
+        Get Subscription Itens
+
+        Args:
+            subscription_id (string): Subscription Id
+            status (string): Status
+            description (string): Description
+
+        Returns:
+            ListSubscriptionsResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/subscriptions/{subscription_id}/items'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'subscription_id': subscription_id
+        })
+        _query_parameters = {
+            'status': status,
+            'description': description
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionsResponse.from_dictionary)
