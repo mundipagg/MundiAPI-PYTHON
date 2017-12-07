@@ -20,6 +20,7 @@ class CreateSubscriptionItemRequest(object):
         id (string): Item id
         plan_item_id (string): Plan item id
         discounts (list of CreateDiscountRequest): Discounts for the item
+        name (string): Item name
         cycles (int): Number of cycles which the item will be charged
         quantity (int): Quantity of items
         minimum_price (int): Minimum price
@@ -33,6 +34,7 @@ class CreateSubscriptionItemRequest(object):
         "id" : "id",
         "plan_item_id" : "plan_item_id",
         "discounts" : "discounts",
+        "name" : "name",
         "cycles" : "cycles",
         "quantity" : "quantity",
         "minimum_price" : "minimum_price"
@@ -44,6 +46,7 @@ class CreateSubscriptionItemRequest(object):
                  id=None,
                  plan_item_id=None,
                  discounts=None,
+                 name=None,
                  cycles=None,
                  quantity=None,
                  minimum_price=None):
@@ -55,6 +58,7 @@ class CreateSubscriptionItemRequest(object):
         self.id = id
         self.plan_item_id = plan_item_id
         self.discounts = discounts
+        self.name = name
         self.cycles = cycles
         self.quantity = quantity
         self.minimum_price = minimum_price
@@ -87,6 +91,7 @@ class CreateSubscriptionItemRequest(object):
             discounts = list()
             for structure in dictionary.get("discounts"):
                 discounts.append(mundiapi.models.create_discount_request.CreateDiscountRequest.from_dictionary(structure))
+        name = dictionary.get("name")
         cycles = dictionary.get("cycles")
         quantity = dictionary.get("quantity")
         minimum_price = dictionary.get("minimum_price")
@@ -97,6 +102,7 @@ class CreateSubscriptionItemRequest(object):
                    id,
                    plan_item_id,
                    discounts,
+                   name,
                    cycles,
                    quantity,
                    minimum_price)

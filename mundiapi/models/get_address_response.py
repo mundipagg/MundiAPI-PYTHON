@@ -29,6 +29,8 @@ class GetAddressResponse(object):
         updated_at (datetime): TODO: type description here.
         customer (GetCustomerResponse): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
+        line_1 (string): Line 1 for address
+        line_2 (string): Line 2 for address
         deleted_at (datetime): TODO: type description here.
 
     """
@@ -49,6 +51,8 @@ class GetAddressResponse(object):
         "updated_at" : "updated_at",
         "customer" : "customer",
         "metadata" : "metadata",
+        "line_1" : "line_1",
+        "line_2" : "line_2",
         "deleted_at" : "deleted_at"
     }
 
@@ -67,6 +71,8 @@ class GetAddressResponse(object):
                  updated_at=None,
                  customer=None,
                  metadata=None,
+                 line_1=None,
+                 line_2=None,
                  deleted_at=None):
         """Constructor for the GetAddressResponse class"""
 
@@ -85,6 +91,8 @@ class GetAddressResponse(object):
         self.updated_at = APIHelper.RFC3339DateTime(updated_at) if updated_at else None
         self.customer = customer
         self.metadata = metadata
+        self.line_1 = line_1
+        self.line_2 = line_2
         self.deleted_at = APIHelper.RFC3339DateTime(deleted_at) if deleted_at else None
 
 
@@ -120,6 +128,8 @@ class GetAddressResponse(object):
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
         metadata = dictionary.get("metadata")
+        line_1 = dictionary.get("line_1")
+        line_2 = dictionary.get("line_2")
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model
@@ -137,6 +147,8 @@ class GetAddressResponse(object):
                    updated_at,
                    customer,
                    metadata,
+                   line_1,
+                   line_2,
                    deleted_at)
 
 

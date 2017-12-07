@@ -21,6 +21,7 @@ class GetInvoiceItemResponse(object):
             here.
         price_bracket (GetPriceBracketResponse): TODO: type description here.
         quantity (int): TODO: type description here.
+        name (string): TODO: type description here.
 
     """
 
@@ -30,7 +31,8 @@ class GetInvoiceItemResponse(object):
         "description" : "description",
         "pricing_scheme" : "pricing_scheme",
         "price_bracket" : "price_bracket",
-        "quantity" : "quantity"
+        "quantity" : "quantity",
+        "name" : "name"
     }
 
     def __init__(self,
@@ -38,7 +40,8 @@ class GetInvoiceItemResponse(object):
                  description=None,
                  pricing_scheme=None,
                  price_bracket=None,
-                 quantity=None):
+                 quantity=None,
+                 name=None):
         """Constructor for the GetInvoiceItemResponse class"""
 
         # Initialize members of the class
@@ -47,6 +50,7 @@ class GetInvoiceItemResponse(object):
         self.pricing_scheme = pricing_scheme
         self.price_bracket = price_bracket
         self.quantity = quantity
+        self.name = name
 
 
     @classmethod
@@ -72,12 +76,14 @@ class GetInvoiceItemResponse(object):
         pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
         price_bracket = mundiapi.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(dictionary.get("price_bracket")) if dictionary.get("price_bracket") else None
         quantity = dictionary.get("quantity")
+        name = dictionary.get("name")
 
         # Return an object of this model
         return cls(amount,
                    description,
                    pricing_scheme,
                    price_bracket,
-                   quantity)
+                   quantity,
+                   name)
 
 

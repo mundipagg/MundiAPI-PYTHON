@@ -26,7 +26,7 @@ class GetSubscriptionResponse(object):
         interval (string): TODO: type description here.
         interval_count (int): TODO: type description here.
         billing_type (string): TODO: type description here.
-        current_period (GetPeriodResponse): TODO: type description here.
+        current_cycle (GetPeriodResponse): TODO: type description here.
         payment_method (string): TODO: type description here.
         currency (string): TODO: type description here.
         installments (int): TODO: type description here.
@@ -40,6 +40,7 @@ class GetSubscriptionResponse(object):
         statement_descriptor (string): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         setup (GetSetupResponse): TODO: type description here.
+        gateway_affiliation_id (string): Affiliation Code
         next_billing_at (datetime): TODO: type description here.
         billing_day (int): TODO: type description here.
         minimum_price (int): TODO: type description here.
@@ -56,7 +57,7 @@ class GetSubscriptionResponse(object):
         "interval" : "interval",
         "interval_count" : "interval_count",
         "billing_type" : "billing_type",
-        "current_period" : "current_period",
+        "current_cycle" : "current_cycle",
         "payment_method" : "payment_method",
         "currency" : "currency",
         "installments" : "installments",
@@ -69,6 +70,7 @@ class GetSubscriptionResponse(object):
         "statement_descriptor" : "statement_descriptor",
         "metadata" : "metadata",
         "setup" : "setup",
+        "gateway_affiliation_id" : "gateway_affiliation_id",
         "next_billing_at" : "next_billing_at",
         "billing_day" : "billing_day",
         "minimum_price" : "minimum_price",
@@ -83,7 +85,7 @@ class GetSubscriptionResponse(object):
                  interval=None,
                  interval_count=None,
                  billing_type=None,
-                 current_period=None,
+                 current_cycle=None,
                  payment_method=None,
                  currency=None,
                  installments=None,
@@ -96,6 +98,7 @@ class GetSubscriptionResponse(object):
                  statement_descriptor=None,
                  metadata=None,
                  setup=None,
+                 gateway_affiliation_id=None,
                  next_billing_at=None,
                  billing_day=None,
                  minimum_price=None,
@@ -110,7 +113,7 @@ class GetSubscriptionResponse(object):
         self.interval = interval
         self.interval_count = interval_count
         self.billing_type = billing_type
-        self.current_period = current_period
+        self.current_cycle = current_cycle
         self.payment_method = payment_method
         self.currency = currency
         self.installments = installments
@@ -123,6 +126,7 @@ class GetSubscriptionResponse(object):
         self.statement_descriptor = statement_descriptor
         self.metadata = metadata
         self.setup = setup
+        self.gateway_affiliation_id = gateway_affiliation_id
         self.next_billing_at = APIHelper.RFC3339DateTime(next_billing_at) if next_billing_at else None
         self.billing_day = billing_day
         self.minimum_price = minimum_price
@@ -154,7 +158,7 @@ class GetSubscriptionResponse(object):
         interval = dictionary.get("interval")
         interval_count = dictionary.get("interval_count")
         billing_type = dictionary.get("billing_type")
-        current_period = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get("current_period")) if dictionary.get("current_period") else None
+        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get("current_cycle")) if dictionary.get("current_cycle") else None
         payment_method = dictionary.get("payment_method")
         currency = dictionary.get("currency")
         installments = dictionary.get("installments")
@@ -171,6 +175,7 @@ class GetSubscriptionResponse(object):
         statement_descriptor = dictionary.get("statement_descriptor")
         metadata = dictionary.get("metadata")
         setup = mundiapi.models.get_setup_response.GetSetupResponse.from_dictionary(dictionary.get("setup")) if dictionary.get("setup") else None
+        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
         billing_day = dictionary.get("billing_day")
         minimum_price = dictionary.get("minimum_price")
@@ -188,7 +193,7 @@ class GetSubscriptionResponse(object):
                    interval,
                    interval_count,
                    billing_type,
-                   current_period,
+                   current_cycle,
                    payment_method,
                    currency,
                    installments,
@@ -201,6 +206,7 @@ class GetSubscriptionResponse(object):
                    statement_descriptor,
                    metadata,
                    setup,
+                   gateway_affiliation_id,
                    next_billing_at,
                    billing_day,
                    minimum_price,
