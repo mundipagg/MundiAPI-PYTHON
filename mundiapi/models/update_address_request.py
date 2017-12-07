@@ -17,6 +17,7 @@ class UpdateAddressRequest(object):
         number (string): Number
         complement (string): Complement
         metadata (dict<object, string>): Metadata
+        line_2 (string): Line 2 for address
 
     """
 
@@ -24,19 +25,22 @@ class UpdateAddressRequest(object):
     _names = {
         "number" : "number",
         "complement" : "complement",
-        "metadata" : "metadata"
+        "metadata" : "metadata",
+        "line_2" : "line_2"
     }
 
     def __init__(self,
                  number=None,
                  complement=None,
-                 metadata=None):
+                 metadata=None,
+                 line_2=None):
         """Constructor for the UpdateAddressRequest class"""
 
         # Initialize members of the class
         self.number = number
         self.complement = complement
         self.metadata = metadata
+        self.line_2 = line_2
 
 
     @classmethod
@@ -60,10 +64,12 @@ class UpdateAddressRequest(object):
         number = dictionary.get("number")
         complement = dictionary.get("complement")
         metadata = dictionary.get("metadata")
+        line_2 = dictionary.get("line_2")
 
         # Return an object of this model
         return cls(number,
                    complement,
-                   metadata)
+                   metadata,
+                   line_2)
 
 

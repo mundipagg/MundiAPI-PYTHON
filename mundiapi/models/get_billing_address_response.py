@@ -22,6 +22,8 @@ class GetBillingAddressResponse(object):
         state (string): TODO: type description here.
         country (string): TODO: type description here.
         complement (string): TODO: type description here.
+        line_1 (string): Line 1 for address
+        line_2 (string): Line 2 for address
 
     """
 
@@ -34,7 +36,9 @@ class GetBillingAddressResponse(object):
         "city" : "city",
         "state" : "state",
         "country" : "country",
-        "complement" : "complement"
+        "complement" : "complement",
+        "line_1" : "line_1",
+        "line_2" : "line_2"
     }
 
     def __init__(self,
@@ -45,7 +49,9 @@ class GetBillingAddressResponse(object):
                  city=None,
                  state=None,
                  country=None,
-                 complement=None):
+                 complement=None,
+                 line_1=None,
+                 line_2=None):
         """Constructor for the GetBillingAddressResponse class"""
 
         # Initialize members of the class
@@ -57,6 +63,8 @@ class GetBillingAddressResponse(object):
         self.state = state
         self.country = country
         self.complement = complement
+        self.line_1 = line_1
+        self.line_2 = line_2
 
 
     @classmethod
@@ -85,6 +93,8 @@ class GetBillingAddressResponse(object):
         state = dictionary.get("state")
         country = dictionary.get("country")
         complement = dictionary.get("complement")
+        line_1 = dictionary.get("line_1")
+        line_2 = dictionary.get("line_2")
 
         # Return an object of this model
         return cls(street,
@@ -94,6 +104,8 @@ class GetBillingAddressResponse(object):
                    city,
                    state,
                    country,
-                   complement)
+                   complement,
+                   line_1,
+                   line_2)
 
 

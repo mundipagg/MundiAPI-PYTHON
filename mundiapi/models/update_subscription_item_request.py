@@ -17,6 +17,7 @@ class UpdateSubscriptionItemRequest(object):
         description (string): Description
         status (string): Status
         pricing_scheme (UpdatePricingSchemeRequest): Pricing scheme
+        name (string): Item name
         cycles (int): Number of cycles that the item will be charged
         quantity (int): Quantity
         minimum_price (int): Minimum price
@@ -28,6 +29,7 @@ class UpdateSubscriptionItemRequest(object):
         "description" : "description",
         "status" : "status",
         "pricing_scheme" : "pricing_scheme",
+        "name" : "name",
         "cycles" : "cycles",
         "quantity" : "quantity",
         "minimum_price" : "minimum_price"
@@ -37,6 +39,7 @@ class UpdateSubscriptionItemRequest(object):
                  description=None,
                  status=None,
                  pricing_scheme=None,
+                 name=None,
                  cycles=None,
                  quantity=None,
                  minimum_price=None):
@@ -46,6 +49,7 @@ class UpdateSubscriptionItemRequest(object):
         self.description = description
         self.status = status
         self.pricing_scheme = pricing_scheme
+        self.name = name
         self.cycles = cycles
         self.quantity = quantity
         self.minimum_price = minimum_price
@@ -72,6 +76,7 @@ class UpdateSubscriptionItemRequest(object):
         description = dictionary.get("description")
         status = dictionary.get("status")
         pricing_scheme = mundiapi.models.update_pricing_scheme_request.UpdatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
+        name = dictionary.get("name")
         cycles = dictionary.get("cycles")
         quantity = dictionary.get("quantity")
         minimum_price = dictionary.get("minimum_price")
@@ -80,6 +85,7 @@ class UpdateSubscriptionItemRequest(object):
         return cls(description,
                    status,
                    pricing_scheme,
+                   name,
                    cycles,
                    quantity,
                    minimum_price)

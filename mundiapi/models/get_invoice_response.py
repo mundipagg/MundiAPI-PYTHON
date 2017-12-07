@@ -37,6 +37,7 @@ class GetInvoiceResponse(object):
         subscription (GetSubscriptionResponse): TODO: type description here.
         cycle (GetPeriodResponse): TODO: type description here.
         shipping (GetShippingResponse): TODO: type description here.
+        metadata (dict<object, string>): TODO: type description here.
         due_at (datetime): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
         billing_at (datetime): TODO: type description here.
@@ -61,6 +62,7 @@ class GetInvoiceResponse(object):
         "subscription" : "subscription",
         "cycle" : "cycle",
         "shipping" : "shipping",
+        "metadata" : "metadata",
         "due_at" : "due_at",
         "canceled_at" : "canceled_at",
         "billing_at" : "billing_at",
@@ -83,6 +85,7 @@ class GetInvoiceResponse(object):
                  subscription=None,
                  cycle=None,
                  shipping=None,
+                 metadata=None,
                  due_at=None,
                  canceled_at=None,
                  billing_at=None,
@@ -105,6 +108,7 @@ class GetInvoiceResponse(object):
         self.subscription = subscription
         self.cycle = cycle
         self.shipping = shipping
+        self.metadata = metadata
         self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
         self.billing_at = APIHelper.RFC3339DateTime(billing_at) if billing_at else None
@@ -148,6 +152,7 @@ class GetInvoiceResponse(object):
         subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get("subscription")) if dictionary.get("subscription") else None
         cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get("cycle")) if dictionary.get("cycle") else None
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
+        metadata = dictionary.get("metadata")
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
@@ -169,6 +174,7 @@ class GetInvoiceResponse(object):
                    subscription,
                    cycle,
                    shipping,
+                   metadata,
                    due_at,
                    canceled_at,
                    billing_at,

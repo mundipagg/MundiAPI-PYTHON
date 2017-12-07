@@ -25,6 +25,8 @@ class CreateAddressRequest(object):
             format. See https://pt.wikipedia.org/wiki/ISO_3166-1_alfa-2
         complement (string): Complement
         metadata (dict<object, string>): Metadata
+        line_1 (string): Line 1 for address
+        line_2 (string): Line 2 for address
 
     """
 
@@ -38,7 +40,9 @@ class CreateAddressRequest(object):
         "state" : "state",
         "country" : "country",
         "complement" : "complement",
-        "metadata" : "metadata"
+        "metadata" : "metadata",
+        "line_1" : "line_1",
+        "line_2" : "line_2"
     }
 
     def __init__(self,
@@ -50,7 +54,9 @@ class CreateAddressRequest(object):
                  state=None,
                  country=None,
                  complement=None,
-                 metadata=None):
+                 metadata=None,
+                 line_1=None,
+                 line_2=None):
         """Constructor for the CreateAddressRequest class"""
 
         # Initialize members of the class
@@ -63,6 +69,8 @@ class CreateAddressRequest(object):
         self.country = country
         self.complement = complement
         self.metadata = metadata
+        self.line_1 = line_1
+        self.line_2 = line_2
 
 
     @classmethod
@@ -92,6 +100,8 @@ class CreateAddressRequest(object):
         country = dictionary.get("country")
         complement = dictionary.get("complement")
         metadata = dictionary.get("metadata")
+        line_1 = dictionary.get("line_1")
+        line_2 = dictionary.get("line_2")
 
         # Return an object of this model
         return cls(street,
@@ -102,6 +112,8 @@ class CreateAddressRequest(object):
                    state,
                    country,
                    complement,
-                   metadata)
+                   metadata,
+                   line_1,
+                   line_2)
 
 
