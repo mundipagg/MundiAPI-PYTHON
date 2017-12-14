@@ -563,8 +563,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 119
-size = 119
+page = 208
+size = 208
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -702,8 +702,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 119
-size = 119
+page = 167
+size = 167
 
 result = subscriptions_controller.get_usages(subscription_id, item_id, page, size)
 
@@ -868,8 +868,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 210
-size = 210
+page = 167
+size = 167
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -1129,8 +1129,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 210
-size = 210
+page = 167
+size = 167
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1396,8 +1396,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 210
-size = 210
+page = 3
+size = 3
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1599,8 +1599,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 168
-size = 168
+page = 3
+size = 3
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1632,8 +1632,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 168
-size = 168
+page = 3
+size = 3
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1665,8 +1665,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 168
-size = 168
+page = 3
+size = 3
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2258,8 +2258,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 168
-size = 168
+page = 95
+size = 95
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -2359,6 +2359,36 @@ charge_id = 'charge_id'
 request = CreateCaptureChargeRequest()
 
 result = charges_controller.capture_charge(charge_id, request)
+
+```
+
+
+### <a name="update_charge_due_date"></a>![Method: ](https://apidocs.io/img/method.png ".ChargesController.update_charge_due_date") update_charge_due_date
+
+> Updates the due date from a charge
+
+```python
+def update_charge_due_date(self,
+                               charge_id,
+                               request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| chargeId |  ``` Required ```  | Charge Id |
+| request |  ``` Required ```  | Request for updating the due date |
+
+
+
+#### Example Usage
+
+```python
+charge_id = 'charge_id'
+request = UpdateChargeDueDateRequest()
+
+result = charges_controller.update_charge_due_date(charge_id, request)
 
 ```
 
@@ -2466,8 +2496,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 5
-size = 5
+page = 95
+size = 95
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2607,8 +2637,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 5
-size = 5
+page = 95
+size = 95
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -2730,8 +2760,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 5
-size = 5
+page = 95
+size = 95
 
 result = recipients_controller.get_recipients(page, size)
 
