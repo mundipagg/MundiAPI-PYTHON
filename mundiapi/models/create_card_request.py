@@ -28,6 +28,7 @@ class CreateCardRequest(object):
         mtype (string): Card type
         options (CreateCardOptionsRequest): Options for creating the card
         holder_document (string): Document number for the card's holder
+        private_label (bool): Indicates whether it is a private label card
 
     """
 
@@ -44,7 +45,8 @@ class CreateCardRequest(object):
         "metadata" : "metadata",
         "mtype" : "type",
         "options" : "options",
-        "holder_document" : "holder_document"
+        "holder_document" : "holder_document",
+        "private_label" : "private_label"
     }
 
     def __init__(self,
@@ -59,7 +61,8 @@ class CreateCardRequest(object):
                  metadata=None,
                  mtype='credit',
                  options=None,
-                 holder_document=None):
+                 holder_document=None,
+                 private_label=None):
         """Constructor for the CreateCardRequest class"""
 
         # Initialize members of the class
@@ -75,6 +78,7 @@ class CreateCardRequest(object):
         self.mtype = mtype
         self.options = options
         self.holder_document = holder_document
+        self.private_label = private_label
 
 
     @classmethod
@@ -107,6 +111,7 @@ class CreateCardRequest(object):
         mtype = dictionary.get("type") if dictionary.get("type") else 'credit'
         options = mundiapi.models.create_card_options_request.CreateCardOptionsRequest.from_dictionary(dictionary.get("options")) if dictionary.get("options") else None
         holder_document = dictionary.get("holder_document")
+        private_label = dictionary.get("private_label")
 
         # Return an object of this model
         return cls(number,
@@ -120,6 +125,7 @@ class CreateCardRequest(object):
                    metadata,
                    mtype,
                    options,
-                   holder_document)
+                   holder_document,
+                   private_label)
 
 

@@ -24,6 +24,9 @@ class CreateCreditCardPaymentRequest(object):
         card_id (string): The credit card id
         card_token (string): TODO: type description here.
         recurrence (bool): Indicates a recurrence
+        extended_limit_enabled (bool): Indicates whether the extended label
+            (private label) is enabled
+        extended_limit_code (string): Extended Limit Code
         capture (bool): Indicates if the operation should be only
             authorization or auth and capture.
 
@@ -39,6 +42,8 @@ class CreateCreditCardPaymentRequest(object):
         "card_id" : "card_id",
         "card_token" : "card_token",
         "recurrence" : "recurrence",
+        "extended_limit_enabled" : "extended_limit_enabled",
+        "extended_limit_code" : "extended_limit_code",
         "capture" : "capture"
     }
 
@@ -51,6 +56,8 @@ class CreateCreditCardPaymentRequest(object):
                  card_id=None,
                  card_token=None,
                  recurrence=None,
+                 extended_limit_enabled=None,
+                 extended_limit_code=None,
                  capture=True):
         """Constructor for the CreateCreditCardPaymentRequest class"""
 
@@ -63,6 +70,8 @@ class CreateCreditCardPaymentRequest(object):
         self.card_id = card_id
         self.card_token = card_token
         self.recurrence = recurrence
+        self.extended_limit_enabled = extended_limit_enabled
+        self.extended_limit_code = extended_limit_code
         self.capture = capture
 
 
@@ -92,6 +101,8 @@ class CreateCreditCardPaymentRequest(object):
         card_id = dictionary.get("card_id")
         card_token = dictionary.get("card_token")
         recurrence = dictionary.get("recurrence")
+        extended_limit_enabled = dictionary.get("extended_limit_enabled")
+        extended_limit_code = dictionary.get("extended_limit_code")
         capture = dictionary.get("capture") if dictionary.get("capture") else True
 
         # Return an object of this model
@@ -103,6 +114,8 @@ class CreateCreditCardPaymentRequest(object):
                    card_id,
                    card_token,
                    recurrence,
+                   extended_limit_enabled,
+                   extended_limit_code,
                    capture)
 
 

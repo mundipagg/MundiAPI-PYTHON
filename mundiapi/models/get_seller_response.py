@@ -23,7 +23,7 @@ class GetSellerResponse(object):
         created_at (string): Creation date
         updated_at (string): Updated date
         address (GetAddressResponse): Address
-        metadata (object): Metadata
+        metadata (dict<object, string>): Metadata
         deleted_at (string): Deleted date
 
     """

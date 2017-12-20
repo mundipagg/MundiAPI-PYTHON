@@ -115,4 +115,9 @@ __all__ = [
     'update_address_request',
     'create_subscription_item_request',
     'get_subscription_item_response',
+    'update_order_status_request',
+    'update_order_item_request',
+    'get_sellers_request',
+    'update_seller_request',
+    'list_seller_response',
 ]
