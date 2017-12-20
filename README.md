@@ -117,6 +117,7 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 * [ChargesController](#charges_controller)
 * [RecipientsController](#recipients_controller)
 * [TokensController](#tokens_controller)
+* [SellersController](#sellers_controller)
 
 ## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
 
@@ -563,8 +564,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 208
-size = 208
+page = 14
+size = 14
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -702,8 +703,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 167
-size = 167
+page = 14
+size = 14
 
 result = subscriptions_controller.get_usages(subscription_id, item_id, page, size)
 
@@ -868,8 +869,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 167
-size = 167
+page = 227
+size = 227
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -907,6 +908,186 @@ order_id = 'order_id'
 request = UpdateMetadataRequest()
 
 result = orders_controller.update_order_metadata(order_id, request)
+
+```
+
+
+### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_all_order_items") delete_all_order_items
+
+> TODO: Add a method description
+
+```python
+def delete_all_order_items(self,
+                               order_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+
+result = orders_controller.delete_all_order_items(order_id)
+
+```
+
+
+### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_item") update_order_item
+
+> TODO: Add a method description
+
+```python
+def update_order_item(self,
+                          order_id,
+                          item_id,
+                          request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| request |  ``` Required ```  | Item Model |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+request = UpdateOrderItemRequest()
+
+result = orders_controller.update_order_item(order_id, item_id, request)
+
+```
+
+
+### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_order_item") delete_order_item
+
+> TODO: Add a method description
+
+```python
+def delete_order_item(self,
+                          order_id,
+                          item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+
+result = orders_controller.delete_order_item(order_id, item_id)
+
+```
+
+
+### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.create_order_item") create_order_item
+
+> TODO: Add a method description
+
+```python
+def create_order_item(self,
+                          order_id,
+                          request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Order Item Model |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+request = CreateOrderItemRequest()
+
+result = orders_controller.create_order_item(order_id, request)
+
+```
+
+
+### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_order_item") get_order_item
+
+> TODO: Add a method description
+
+```python
+def get_order_item(self,
+                       order_id,
+                       item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+
+result = orders_controller.get_order_item(order_id, item_id)
+
+```
+
+
+### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_status") update_order_status
+
+> TODO: Add a method description
+
+```python
+def update_order_status(self,
+                            id,
+                            request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Update Order Model |
+
+
+
+#### Example Usage
+
+```python
+id = 'id'
+request = UpdateOrderStatusRequest()
+
+result = orders_controller.update_order_status(id, request)
 
 ```
 
@@ -1129,8 +1310,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 167
-size = 167
+page = 227
+size = 227
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1396,8 +1577,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 3
-size = 3
+page = 227
+size = 227
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1599,8 +1780,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 63
+size = 63
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1632,8 +1813,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 63
+size = 63
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1665,8 +1846,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 63
+size = 63
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2258,8 +2439,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 95
-size = 95
+page = 155
+size = 155
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -2496,8 +2677,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 95
-size = 95
+page = 155
+size = 155
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2637,8 +2818,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 95
-size = 95
+page = 155
+size = 155
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -2760,8 +2941,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 95
-size = 95
+page = 113
+size = 113
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -2924,6 +3105,210 @@ public_key = 'public_key'
 request = CreateTokenRequest()
 
 result = tokens_controller.create_token(public_key, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="sellers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SellersController") SellersController
+
+### Get controller instance
+
+An instance of the ``` SellersController ``` class can be accessed from the API Client.
+
+```python
+ sellers_controller = client.sellers
+```
+
+### <a name="get_seller_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.get_seller_by_id") get_seller_by_id
+
+> TODO: Add a method description
+
+```python
+def get_seller_by_id(self,
+                         id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Seller Id |
+
+
+
+#### Example Usage
+
+```python
+id = 'id'
+
+result = sellers_controller.get_seller_by_id(id)
+
+```
+
+
+### <a name="delete_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.delete_seller") delete_seller
+
+> TODO: Add a method description
+
+```python
+def delete_seller(self,
+                      seller_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| sellerId |  ``` Required ```  | Seller Id |
+
+
+
+#### Example Usage
+
+```python
+seller_id = 'sellerId'
+
+result = sellers_controller.delete_seller(seller_id)
+
+```
+
+
+### <a name="create_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.create_seller") create_seller
+
+> TODO: Add a method description
+
+```python
+def create_seller(self,
+                      request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Seller Model |
+
+
+
+#### Example Usage
+
+```python
+request = CreateSellerRequest()
+
+result = sellers_controller.create_seller(request)
+
+```
+
+
+### <a name="get_sellers"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.get_sellers") get_sellers
+
+> TODO: Add a method description
+
+```python
+def get_sellers(self,
+                    page=None,
+                    size=None,
+                    name=None,
+                    document=None,
+                    code=None,
+                    status=None,
+                    mtype=None,
+                    created_since=None,
+                    created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | TODO: Add a parameter description |
+| document |  ``` Optional ```  | TODO: Add a parameter description |
+| code |  ``` Optional ```  | TODO: Add a parameter description |
+| status |  ``` Optional ```  | TODO: Add a parameter description |
+| mtype |  ``` Optional ```  | TODO: Add a parameter description |
+| createdSince |  ``` Optional ```  | TODO: Add a parameter description |
+| createdUntil |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+page = 113
+size = 113
+name = 'name'
+document = 'document'
+code = 'code'
+status = 'status'
+mtype = 'type'
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = sellers_controller.get_sellers(page, size, name, document, code, status, mtype, created_since, created_until)
+
+```
+
+
+### <a name="update_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.update_seller") update_seller
+
+> TODO: Add a method description
+
+```python
+def update_seller(self,
+                      id,
+                      request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Update Seller model |
+
+
+
+#### Example Usage
+
+```python
+id = 'id'
+request = UpdateSellerRequest()
+
+result = sellers_controller.update_seller(id, request)
+
+```
+
+
+### <a name="update_seller_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.update_seller_metadata") update_seller_metadata
+
+> TODO: Add a method description
+
+```python
+def update_seller_metadata(self,
+                               seller_id,
+                               request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| sellerId |  ``` Required ```  | Seller Id |
+| request |  ``` Required ```  | Request for updating the charge metadata |
+
+
+
+#### Example Usage
+
+```python
+seller_id = 'seller_id'
+request = UpdateMetadataRequest()
+
+result = sellers_controller.update_seller_metadata(seller_id, request)
 
 ```
 

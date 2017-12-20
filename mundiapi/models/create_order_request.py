@@ -26,6 +26,7 @@ class CreateOrderRequest(object):
         customer_id (string): The customer id
         shipping (CreateShippingRequest): Shipping data
         metadata (dict<object, string>): Metadata
+        closed (bool): TODO: type description here.
         antifraud_enabled (bool): Defines whether the order will go through
             anti-fraud
         ip (string): Ip address
@@ -44,6 +45,7 @@ class CreateOrderRequest(object):
         "customer_id" : "customer_id",
         "shipping" : "shipping",
         "metadata" : "metadata",
+        "closed" : "closed",
         "antifraud_enabled" : "antifraud_enabled",
         "ip" : "ip",
         "session_id" : "session_id",
@@ -59,6 +61,7 @@ class CreateOrderRequest(object):
                  customer_id=None,
                  shipping=None,
                  metadata=None,
+                 closed=True,
                  antifraud_enabled=None,
                  ip=None,
                  session_id=None,
@@ -74,6 +77,7 @@ class CreateOrderRequest(object):
         self.customer_id = customer_id
         self.shipping = shipping
         self.metadata = metadata
+        self.closed = closed
         self.antifraud_enabled = antifraud_enabled
         self.ip = ip
         self.session_id = session_id
@@ -114,6 +118,7 @@ class CreateOrderRequest(object):
         customer_id = dictionary.get("customer_id")
         shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+        closed = dictionary.get("closed") if dictionary.get("closed") else True
         antifraud_enabled = dictionary.get("antifraud_enabled")
         ip = dictionary.get("ip")
         session_id = dictionary.get("session_id")
@@ -128,6 +133,7 @@ class CreateOrderRequest(object):
                    customer_id,
                    shipping,
                    metadata,
+                   closed,
                    antifraud_enabled,
                    ip,
                    session_id,

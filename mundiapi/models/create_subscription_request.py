@@ -49,6 +49,7 @@ class CreateSubscriptionRequest(object):
         cycles (int): Number of cycles
         card_token (string): Card token
         gateway_affiliation_id (string): Gateway Affiliation code
+        quantity (int): Quantity
 
     """
 
@@ -79,7 +80,8 @@ class CreateSubscriptionRequest(object):
         "minimum_price" : "minimum_price",
         "cycles" : "cycles",
         "card_token" : "card_token",
-        "gateway_affiliation_id" : "gateway_affiliation_id"
+        "gateway_affiliation_id" : "gateway_affiliation_id",
+        "quantity" : "quantity"
     }
 
     def __init__(self,
@@ -108,7 +110,8 @@ class CreateSubscriptionRequest(object):
                  minimum_price=None,
                  cycles=None,
                  card_token=None,
-                 gateway_affiliation_id=None):
+                 gateway_affiliation_id=None,
+                 quantity=None):
         """Constructor for the CreateSubscriptionRequest class"""
 
         # Initialize members of the class
@@ -138,6 +141,7 @@ class CreateSubscriptionRequest(object):
         self.cycles = cycles
         self.card_token = card_token
         self.gateway_affiliation_id = gateway_affiliation_id
+        self.quantity = quantity
 
 
     @classmethod
@@ -192,6 +196,7 @@ class CreateSubscriptionRequest(object):
         cycles = dictionary.get("cycles")
         card_token = dictionary.get("card_token")
         gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
+        quantity = dictionary.get("quantity")
 
         # Return an object of this model
         return cls(customer,
@@ -219,6 +224,7 @@ class CreateSubscriptionRequest(object):
                    minimum_price,
                    cycles,
                    card_token,
-                   gateway_affiliation_id)
+                   gateway_affiliation_id,
+                   quantity)
 
 

@@ -33,6 +33,7 @@ class GetOrderResponse(object):
         invoice_url (string): TODO: type description here.
         shipping (GetShippingResponse): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
+        closed (bool): Indicates whether the order is closed
         checkouts (list of GetCheckoutPaymentSettingsResponse): Checkout
             Payment Settings Response
         ip (string): Ip address
@@ -56,6 +57,7 @@ class GetOrderResponse(object):
         "invoice_url" : "invoice_url",
         "shipping" : "shipping",
         "metadata" : "metadata",
+        "closed" : "closed",
         "checkouts" : "checkouts",
         "ip" : "ip",
         "session_id" : "session_id",
@@ -76,6 +78,7 @@ class GetOrderResponse(object):
                  invoice_url=None,
                  shipping=None,
                  metadata=None,
+                 closed=None,
                  checkouts=None,
                  ip=None,
                  session_id=None,
@@ -96,6 +99,7 @@ class GetOrderResponse(object):
         self.invoice_url = invoice_url
         self.shipping = shipping
         self.metadata = metadata
+        self.closed = closed
         self.checkouts = checkouts
         self.ip = ip
         self.session_id = session_id
@@ -141,6 +145,7 @@ class GetOrderResponse(object):
         invoice_url = dictionary.get("invoice_url")
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
         metadata = dictionary.get("metadata")
+        closed = dictionary.get("closed")
         checkouts = None
         if dictionary.get("checkouts") != None:
             checkouts = list()
@@ -164,6 +169,7 @@ class GetOrderResponse(object):
                    invoice_url,
                    shipping,
                    metadata,
+                   closed,
                    checkouts,
                    ip,
                    session_id,
