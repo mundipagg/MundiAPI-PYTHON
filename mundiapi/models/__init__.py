@@ -23,7 +23,6 @@ __all__ = [
     'get_order_response',
     'create_charge_request',
     'update_card_request',
-    'update_customer_request',
     'update_plan_item_request',
     'update_subscription_item_request',
     'create_plan_item_request',
@@ -120,4 +119,5 @@ __all__ = [
     'update_seller_request',
     'list_seller_response',
     'get_usage_response',
+    'update_customer_request',
 ]

@@ -28,6 +28,8 @@ class GetCustomerResponse(object):
         address (GetAddressResponse): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         phones (GetPhonesResponse): TODO: type description here.
+        code (string): Código de referência do cliente no sistema da loja.
+            Max: 52 caracteres
         fb_id (long|int): TODO: type description here.
 
     """
@@ -46,6 +48,7 @@ class GetCustomerResponse(object):
         "address" : "address",
         "metadata" : "metadata",
         "phones" : "phones",
+        "code" : "code",
         "fb_id" : "fb_id"
     }
 
@@ -62,6 +65,7 @@ class GetCustomerResponse(object):
                  address=None,
                  metadata=None,
                  phones=None,
+                 code=None,
                  fb_id=None):
         """Constructor for the GetCustomerResponse class"""
 
@@ -78,6 +82,7 @@ class GetCustomerResponse(object):
         self.address = address
         self.metadata = metadata
         self.phones = phones
+        self.code = code
         self.fb_id = fb_id
 
 
@@ -111,6 +116,7 @@ class GetCustomerResponse(object):
         address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
         metadata = dictionary.get("metadata")
         phones = mundiapi.models.get_phones_response.GetPhonesResponse.from_dictionary(dictionary.get("phones")) if dictionary.get("phones") else None
+        code = dictionary.get("code")
         fb_id = dictionary.get("fb_id")
 
         # Return an object of this model
@@ -126,6 +132,7 @@ class GetCustomerResponse(object):
                    address,
                    metadata,
                    phones,
+                   code,
                    fb_id)
 
 

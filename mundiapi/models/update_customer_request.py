@@ -21,6 +21,8 @@ class UpdateCustomerRequest(object):
         mtype (string): Person type
         address (CreateAddressRequest): Address
         metadata (dict<object, string>): Metadata
+        code (string): Código de referência do cliente no sistema da loja.
+            Max: 52 caracteres
         phones (CreatePhonesRequest): TODO: type description here.
 
     """
@@ -33,6 +35,7 @@ class UpdateCustomerRequest(object):
         "mtype" : "type",
         "address" : "address",
         "metadata" : "metadata",
+        "code" : "code",
         "phones" : "phones"
     }
 
@@ -43,6 +46,7 @@ class UpdateCustomerRequest(object):
                  mtype=None,
                  address=None,
                  metadata=None,
+                 code=None,
                  phones=None):
         """Constructor for the UpdateCustomerRequest class"""
 
@@ -53,6 +57,7 @@ class UpdateCustomerRequest(object):
         self.mtype = mtype
         self.address = address
         self.metadata = metadata
+        self.code = code
         self.phones = phones
 
 
@@ -80,6 +85,7 @@ class UpdateCustomerRequest(object):
         mtype = dictionary.get("type")
         address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
         metadata = dictionary.get("metadata")
+        code = dictionary.get("code")
         phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get("phones")) if dictionary.get("phones") else None
 
         # Return an object of this model
@@ -89,6 +95,7 @@ class UpdateCustomerRequest(object):
                    mtype,
                    address,
                    metadata,
+                   code,
                    phones)
 
 

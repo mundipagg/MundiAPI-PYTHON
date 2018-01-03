@@ -26,6 +26,7 @@ class GetTransactionResponse(object):
         attempt_count (int): Number of attempts tried
         max_attempts (int): Max attempts
         splits (list of GetSplitResponse): Splits
+        id (string): Código da transação
         next_attempt (datetime): Date and time of the next attempt
         transaction_type (string): TODO: type description here.
 
@@ -42,6 +43,7 @@ class GetTransactionResponse(object):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "next_attempt" : "next_attempt",
         "transaction_type" : "transaction_type"
     }
@@ -56,6 +58,7 @@ class GetTransactionResponse(object):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetTransactionResponse class"""
@@ -70,6 +73,7 @@ class GetTransactionResponse(object):
         self.attempt_count = attempt_count
         self.max_attempts = max_attempts
         self.splits = splits
+        self.id = id
         self.next_attempt = APIHelper.RFC3339DateTime(next_attempt) if next_attempt else None
         self.transaction_type = transaction_type
 
@@ -119,6 +123,7 @@ class GetTransactionResponse(object):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get("transaction_type")
 
@@ -132,6 +137,7 @@ class GetTransactionResponse(object):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    next_attempt,
                    transaction_type)
 
@@ -173,6 +179,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "next_attempt" : "next_attempt",
         "transaction_type" : "transaction_type"
     }
@@ -194,6 +201,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetBoletoTransactionResponse class"""
@@ -217,6 +225,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                                                            attempt_count,
                                                            max_attempts,
                                                            splits,
+                                                           id,
                                                            next_attempt,
                                                            transaction_type)
 
@@ -259,6 +268,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get("transaction_type")
 
@@ -279,6 +289,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    next_attempt,
                    transaction_type)
 
@@ -327,6 +338,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "installments" : "installments",
         "next_attempt" : "next_attempt",
         "transaction_type" : "transaction_type"
@@ -352,6 +364,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  installments=None,
                  next_attempt=None,
                  transaction_type=None):
@@ -380,6 +393,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                                                                attempt_count,
                                                                max_attempts,
                                                                splits,
+                                                               id,
                                                                next_attempt,
                                                                transaction_type)
 
@@ -425,6 +439,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         installments = dictionary.get("installments")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get("transaction_type")
@@ -449,6 +464,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    installments,
                    next_attempt,
                    transaction_type)
@@ -497,6 +513,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "next_attempt" : "next_attempt",
         "transaction_type" : "transaction_type"
     }
@@ -521,6 +538,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetVoucherTransactionResponse class"""
@@ -547,6 +565,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                                                             attempt_count,
                                                             max_attempts,
                                                             splits,
+                                                            id,
                                                             next_attempt,
                                                             transaction_type)
 
@@ -592,6 +611,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get("transaction_type")
 
@@ -615,6 +635,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    next_attempt,
                    transaction_type)
 
@@ -649,6 +670,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "paid_at" : "paid_at",
         "paid_amount" : "paid_amount",
         "next_attempt" : "next_attempt",
@@ -668,6 +690,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  paid_at=None,
                  paid_amount=None,
                  next_attempt=None,
@@ -691,6 +714,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                                                                  attempt_count,
                                                                  max_attempts,
                                                                  splits,
+                                                                 id,
                                                                  next_attempt,
                                                                  transaction_type)
 
@@ -729,6 +753,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         paid_amount = dictionary.get("paid_amount")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
@@ -747,6 +772,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    paid_at,
                    paid_amount,
                    next_attempt,
@@ -781,6 +807,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
         "attempt_count" : "attempt_count",
         "max_attempts" : "max_attempts",
         "splits" : "splits",
+        "id" : "id",
         "paid_at" : "paid_at",
         "paid_amount" : "paid_amount",
         "next_attempt" : "next_attempt",
@@ -799,6 +826,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                  attempt_count=None,
                  max_attempts=None,
                  splits=None,
+                 id=None,
                  paid_at=None,
                  paid_amount=None,
                  next_attempt=None,
@@ -821,6 +849,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                                                               attempt_count,
                                                               max_attempts,
                                                               splits,
+                                                              id,
                                                               next_attempt,
                                                               transaction_type)
 
@@ -858,6 +887,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
             splits = list()
             for structure in dictionary.get("splits"):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         paid_amount = dictionary.get("paid_amount")
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
@@ -875,6 +905,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                    attempt_count,
                    max_attempts,
                    splits,
+                   id,
                    paid_at,
                    paid_amount,
                    next_attempt,
