@@ -7,8 +7,8 @@
 """
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_split_response
-import mundiapi.models.get_billing_address_response
 import mundiapi.models.get_card_response
+import mundiapi.models.get_billing_address_response
 
 class GetTransactionResponse(object):
 
@@ -96,11 +96,11 @@ class GetTransactionResponse(object):
             return None
 
         discriminators = {
-            'boleto': GetBoletoTransactionResponse.from_dictionary,
             'credit_card': GetCreditCardTransactionResponse.from_dictionary,
             'voucher': GetVoucherTransactionResponse.from_dictionary,
             'bank_transfer': GetBankTransferTransactionResponse.from_dictionary,
-            'safetypay': GetSafetyPayTransactionResponse.from_dictionary
+            'safetypay': GetSafetyPayTransactionResponse.from_dictionary,
+            'boleto': GetBoletoTransactionResponse.from_dictionary
         }
         unboxer = discriminators.get(dictionary.get('transaction_type'))
 
@@ -129,158 +129,6 @@ class GetTransactionResponse(object):
 
         # Return an object of this model
         return cls(gateway_id,
-                   amount,
-                   status,
-                   success,
-                   created_at,
-                   updated_at,
-                   attempt_count,
-                   max_attempts,
-                   splits,
-                   id,
-                   next_attempt,
-                   transaction_type)
-
-
-class GetBoletoTransactionResponse(GetTransactionResponse):
-
-    """Implementation of the 'GetBoletoTransactionResponse' model.
-
-    Response object for getting a boleto transaction
-    NOTE: This class inherits from 'GetTransactionResponse'.
-
-    Attributes:
-        url (string): TODO: type description here.
-        bar_code (string): TODO: type description here.
-        nosso_numero (string): TODO: type description here.
-        bank (string): TODO: type description here.
-        document_number (string): TODO: type description here.
-        instructions (string): TODO: type description here.
-        billing_address (GetBillingAddressResponse): TODO: type description
-            here.
-
-    """
-
-    # Create a mapping from Model property names to API property names
-    _names = {
-        "url" : "url",
-        "bar_code" : "bar_code",
-        "nosso_numero" : "nosso_numero",
-        "bank" : "bank",
-        "document_number" : "document_number",
-        "instructions" : "instructions",
-        "billing_address" : "billing_address",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
-    }
-
-    def __init__(self,
-                 url=None,
-                 bar_code=None,
-                 nosso_numero=None,
-                 bank=None,
-                 document_number=None,
-                 instructions=None,
-                 billing_address=None,
-                 gateway_id=None,
-                 amount=None,
-                 status=None,
-                 success=None,
-                 created_at=None,
-                 updated_at=None,
-                 attempt_count=None,
-                 max_attempts=None,
-                 splits=None,
-                 id=None,
-                 next_attempt=None,
-                 transaction_type=None):
-        """Constructor for the GetBoletoTransactionResponse class"""
-
-        # Initialize members of the class
-        self.url = url
-        self.bar_code = bar_code
-        self.nosso_numero = nosso_numero
-        self.bank = bank
-        self.document_number = document_number
-        self.instructions = instructions
-        self.billing_address = billing_address
-
-        # Call the constructor for the base class
-        super(GetBoletoTransactionResponse, self).__init__(gateway_id,
-                                                           amount,
-                                                           status,
-                                                           success,
-                                                           created_at,
-                                                           updated_at,
-                                                           attempt_count,
-                                                           max_attempts,
-                                                           splits,
-                                                           id,
-                                                           next_attempt,
-                                                           transaction_type)
-
-
-    @classmethod
-    def from_dictionary(cls,
-                        dictionary):
-        """Creates an instance of this model from a dictionary
-
-        Args:
-            dictionary (dictionary): A dictionary representation of the object as
-            obtained from the deserialization of the server's response. The keys
-            MUST match property names in the API description.
-
-        Returns:
-            object: An instance of this structure class.
-
-        """
-        if dictionary is None:
-            return None
-
-        # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bar_code = dictionary.get("bar_code")
-        nosso_numero = dictionary.get("nosso_numero")
-        bank = dictionary.get("bank")
-        document_number = dictionary.get("document_number")
-        instructions = dictionary.get("instructions")
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
-        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
-        splits = None
-        if dictionary.get("splits") != None:
-            splits = list()
-            for structure in dictionary.get("splits"):
-                splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
-        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
-
-        # Return an object of this model
-        return cls(url,
-                   bar_code,
-                   nosso_numero,
-                   bank,
-                   document_number,
-                   instructions,
-                   billing_address,
-                   gateway_id,
                    amount,
                    status,
                    success,
@@ -908,6 +756,206 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                    id,
                    paid_at,
                    paid_amount,
+                   next_attempt,
+                   transaction_type)
+
+
+class GetBoletoTransactionResponse(GetTransactionResponse):
+
+    """Implementation of the 'GetBoletoTransactionResponse' model.
+
+    Response object for getting a boleto transaction
+    NOTE: This class inherits from 'GetTransactionResponse'.
+
+    Attributes:
+        url (string): TODO: type description here.
+        bar_code (string): TODO: type description here.
+        nosso_numero (string): TODO: type description here.
+        bank (string): TODO: type description here.
+        document_number (string): TODO: type description here.
+        instructions (string): TODO: type description here.
+        billing_address (GetBillingAddressResponse): TODO: type description
+            here.
+        qr_code (string): TODO: type description here.
+        line (string): TODO: type description here.
+        pdf_password (string): TODO: type description here.
+        pdf (string): TODO: type description here.
+        paid_amount (string): TODO: type description here.
+        mtype (string): TODO: type description here.
+        due_at (datetime): TODO: type description here.
+        paid_at (datetime): TODO: type description here.
+
+    """
+
+    # Create a mapping from Model property names to API property names
+    _names = {
+        "url" : "url",
+        "bar_code" : "bar_code",
+        "nosso_numero" : "nosso_numero",
+        "bank" : "bank",
+        "document_number" : "document_number",
+        "instructions" : "instructions",
+        "billing_address" : "billing_address",
+        "qr_code" : "qr_code",
+        "line" : "line",
+        "pdf_password" : "pdf_password",
+        "pdf" : "pdf",
+        "paid_amount" : "paid_amount",
+        "mtype" : "type",
+        "gateway_id" : "gateway_id",
+        "amount" : "amount",
+        "status" : "status",
+        "success" : "success",
+        "created_at" : "created_at",
+        "updated_at" : "updated_at",
+        "attempt_count" : "attempt_count",
+        "max_attempts" : "max_attempts",
+        "splits" : "splits",
+        "id" : "id",
+        "due_at" : "due_at",
+        "paid_at" : "paid_at",
+        "next_attempt" : "next_attempt",
+        "transaction_type" : "transaction_type"
+    }
+
+    def __init__(self,
+                 url=None,
+                 bar_code=None,
+                 nosso_numero=None,
+                 bank=None,
+                 document_number=None,
+                 instructions=None,
+                 billing_address=None,
+                 qr_code=None,
+                 line=None,
+                 pdf_password=None,
+                 pdf=None,
+                 paid_amount=None,
+                 mtype=None,
+                 gateway_id=None,
+                 amount=None,
+                 status=None,
+                 success=None,
+                 created_at=None,
+                 updated_at=None,
+                 attempt_count=None,
+                 max_attempts=None,
+                 splits=None,
+                 id=None,
+                 due_at=None,
+                 paid_at=None,
+                 next_attempt=None,
+                 transaction_type=None):
+        """Constructor for the GetBoletoTransactionResponse class"""
+
+        # Initialize members of the class
+        self.url = url
+        self.bar_code = bar_code
+        self.nosso_numero = nosso_numero
+        self.bank = bank
+        self.document_number = document_number
+        self.instructions = instructions
+        self.billing_address = billing_address
+        self.qr_code = qr_code
+        self.line = line
+        self.pdf_password = pdf_password
+        self.pdf = pdf
+        self.paid_amount = paid_amount
+        self.mtype = mtype
+        self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
+        self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
+
+        # Call the constructor for the base class
+        super(GetBoletoTransactionResponse, self).__init__(gateway_id,
+                                                           amount,
+                                                           status,
+                                                           success,
+                                                           created_at,
+                                                           updated_at,
+                                                           attempt_count,
+                                                           max_attempts,
+                                                           splits,
+                                                           id,
+                                                           next_attempt,
+                                                           transaction_type)
+
+
+    @classmethod
+    def from_dictionary(cls,
+                        dictionary):
+        """Creates an instance of this model from a dictionary
+
+        Args:
+            dictionary (dictionary): A dictionary representation of the object as
+            obtained from the deserialization of the server's response. The keys
+            MUST match property names in the API description.
+
+        Returns:
+            object: An instance of this structure class.
+
+        """
+        if dictionary is None:
+            return None
+
+        # Extract variables from the dictionary
+        url = dictionary.get("url")
+        bar_code = dictionary.get("bar_code")
+        nosso_numero = dictionary.get("nosso_numero")
+        bank = dictionary.get("bank")
+        document_number = dictionary.get("document_number")
+        instructions = dictionary.get("instructions")
+        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
+        qr_code = dictionary.get("qr_code")
+        line = dictionary.get("line")
+        pdf_password = dictionary.get("pdf_password")
+        pdf = dictionary.get("pdf")
+        paid_amount = dictionary.get("paid_amount")
+        mtype = dictionary.get("type")
+        gateway_id = dictionary.get("gateway_id")
+        amount = dictionary.get("amount")
+        status = dictionary.get("status")
+        success = dictionary.get("success")
+        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
+        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
+        attempt_count = dictionary.get("attempt_count")
+        max_attempts = dictionary.get("max_attempts")
+        splits = None
+        if dictionary.get("splits") != None:
+            splits = list()
+            for structure in dictionary.get("splits"):
+                splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get("id")
+        due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
+        paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
+        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+        transaction_type = dictionary.get("transaction_type")
+
+        # Return an object of this model
+        return cls(url,
+                   bar_code,
+                   nosso_numero,
+                   bank,
+                   document_number,
+                   instructions,
+                   billing_address,
+                   qr_code,
+                   line,
+                   pdf_password,
+                   pdf,
+                   paid_amount,
+                   mtype,
+                   gateway_id,
+                   amount,
+                   status,
+                   success,
+                   created_at,
+                   updated_at,
+                   attempt_count,
+                   max_attempts,
+                   splits,
+                   id,
+                   due_at,
+                   paid_at,
                    next_attempt,
                    transaction_type)
 
