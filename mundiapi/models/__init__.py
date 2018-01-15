@@ -1,4 +1,7 @@
 __all__ = [
+    'get_checkout_boleto_payment_response',
+    'get_checkout_card_payment_response',
+    'get_checkout_card_installment_options_response',
     'create_cancel_charge_request',
     'list_customers_response',
     'list_cards_response',
@@ -77,7 +80,6 @@ __all__ = [
     'create_checkout_card_installment_option_request',
     'create_checkout_boleto_payment_request',
     'create_checkout_card_payment_request',
-    'create_checkout_payment_request',
     'get_checkout_payment_settings_response',
     'create_seller_request',
     'get_seller_response',
@@ -120,4 +122,6 @@ __all__ = [
     'update_order_status_request',
     'get_usage_response',
     'update_customer_request',
+    'get_checkout_payment_response',
+    'create_checkout_payment_request',
 ]

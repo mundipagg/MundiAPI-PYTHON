@@ -21,6 +21,7 @@ class CreateCheckoutPaymentRequest(object):
         gateway_affiliation_id (string): Gateway Affiliation Id
         credit_card (CreateCheckoutCardPaymentRequest): Card payment request
         boleto (CreateCheckoutBoletoPaymentRequest): Boleto payment request
+        customer_editable (bool): Torna o objeto editável
 
     """
 
@@ -31,7 +32,8 @@ class CreateCheckoutPaymentRequest(object):
         "default_payment_method" : "default_payment_method",
         "gateway_affiliation_id" : "gateway_affiliation_id",
         "credit_card" : "credit_card",
-        "boleto" : "boleto"
+        "boleto" : "boleto",
+        "customer_editable" : "customer_editable"
     }
 
     def __init__(self,
@@ -40,7 +42,8 @@ class CreateCheckoutPaymentRequest(object):
                  default_payment_method=None,
                  gateway_affiliation_id=None,
                  credit_card=None,
-                 boleto=None):
+                 boleto=None,
+                 customer_editable=None):
         """Constructor for the CreateCheckoutPaymentRequest class"""
 
         # Initialize members of the class
@@ -50,6 +53,7 @@ class CreateCheckoutPaymentRequest(object):
         self.gateway_affiliation_id = gateway_affiliation_id
         self.credit_card = credit_card
         self.boleto = boleto
+        self.customer_editable = customer_editable
 
 
     @classmethod
@@ -76,6 +80,7 @@ class CreateCheckoutPaymentRequest(object):
         gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
         credit_card = mundiapi.models.create_checkout_card_payment_request.CreateCheckoutCardPaymentRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
         boleto = mundiapi.models.create_checkout_boleto_payment_request.CreateCheckoutBoletoPaymentRequest.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
+        customer_editable = dictionary.get("customer_editable")
 
         # Return an object of this model
         return cls(accepted_payment_methods,
@@ -83,6 +88,7 @@ class CreateCheckoutPaymentRequest(object):
                    default_payment_method,
                    gateway_affiliation_id,
                    credit_card,
-                   boleto)
+                   boleto,
+                   customer_editable)
 
 

@@ -10,7 +10,7 @@ import mundiapi.models.get_order_item_response
 import mundiapi.models.get_customer_response
 import mundiapi.models.get_charge_response
 import mundiapi.models.get_shipping_response
-import mundiapi.models.get_checkout_payment_settings_response
+import mundiapi.models.get_checkout_payment_response
 import mundiapi.models.get_location_response
 import mundiapi.models.get_device_response
 
@@ -34,8 +34,8 @@ class GetOrderResponse(object):
         shipping (GetShippingResponse): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         closed (bool): Indicates whether the order is closed
-        checkouts (list of GetCheckoutPaymentSettingsResponse): Checkout
-            Payment Settings Response
+        checkouts (list of GetCheckoutPaymentResponse): Checkout Payment
+            Settings Response
         ip (string): Ip address
         session_id (string): Session id
         location (GetLocationResponse): Location
@@ -150,7 +150,7 @@ class GetOrderResponse(object):
         if dictionary.get("checkouts") != None:
             checkouts = list()
             for structure in dictionary.get("checkouts"):
-                checkouts.append(mundiapi.models.get_checkout_payment_settings_response.GetCheckoutPaymentSettingsResponse.from_dictionary(structure))
+                checkouts.append(mundiapi.models.get_checkout_payment_response.GetCheckoutPaymentResponse.from_dictionary(structure))
         ip = dictionary.get("ip")
         session_id = dictionary.get("session_id")
         location = mundiapi.models.get_location_response.GetLocationResponse.from_dictionary(dictionary.get("location")) if dictionary.get("location") else None
