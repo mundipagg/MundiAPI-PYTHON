@@ -23,6 +23,7 @@ class CreateBoletoPaymentRequest(object):
         due_at (datetime): Boleto due date
         billing_address (CreateAddressRequest): Card's billing address
         billing_address_id (string): The address id for the billing address
+        nosso_numero (string): Número de identificação do cliente com o banco
 
     """
 
@@ -33,7 +34,8 @@ class CreateBoletoPaymentRequest(object):
         "instructions" : "instructions",
         "due_at" : "due_at",
         "billing_address" : "billing_address",
-        "billing_address_id" : "billing_address_id"
+        "billing_address_id" : "billing_address_id",
+        "nosso_numero" : "nosso_numero"
     }
 
     def __init__(self,
@@ -42,7 +44,8 @@ class CreateBoletoPaymentRequest(object):
                  instructions=None,
                  due_at=None,
                  billing_address=None,
-                 billing_address_id=None):
+                 billing_address_id=None,
+                 nosso_numero=None):
         """Constructor for the CreateBoletoPaymentRequest class"""
 
         # Initialize members of the class
@@ -52,6 +55,7 @@ class CreateBoletoPaymentRequest(object):
         self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.billing_address = billing_address
         self.billing_address_id = billing_address_id
+        self.nosso_numero = nosso_numero
 
 
     @classmethod
@@ -78,6 +82,7 @@ class CreateBoletoPaymentRequest(object):
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
         billing_address_id = dictionary.get("billing_address_id")
+        nosso_numero = dictionary.get("nosso_numero")
 
         # Return an object of this model
         return cls(retries,
@@ -85,6 +90,7 @@ class CreateBoletoPaymentRequest(object):
                    instructions,
                    due_at,
                    billing_address,
-                   billing_address_id)
+                   billing_address_id,
+                   nosso_numero)
 
 

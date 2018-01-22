@@ -58,7 +58,6 @@ __all__ = [
     'get_period_response',
     'get_plan_item_response',
     'get_plan_response',
-    'create_boleto_payment_request',
     'create_phone_request',
     'create_phones_request',
     'get_phone_response',
@@ -124,4 +123,5 @@ __all__ = [
     'update_customer_request',
     'get_checkout_payment_response',
     'create_checkout_payment_request',
+    'create_boleto_payment_request',
 ]
