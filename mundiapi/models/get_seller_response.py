@@ -30,17 +30,17 @@ class GetSellerResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "name" : "name",
-        "code" : "code",
-        "document" : "document",
-        "description" : "description",
-        "status" : "Status",
-        "created_at" : "CreatedAt",
-        "updated_at" : "UpdatedAt",
-        "address" : "Address",
-        "metadata" : "Metadata",
-        "deleted_at" : "DeletedAt"
+        "id":'id',
+        "name":'name',
+        "code":'code',
+        "document":'document',
+        "description":'description',
+        "status":'Status',
+        "created_at":'CreatedAt',
+        "updated_at":'UpdatedAt',
+        "address":'Address',
+        "metadata":'Metadata',
+        "deleted_at":'DeletedAt'
     }
 
     def __init__(self,
@@ -89,17 +89,17 @@ class GetSellerResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        name = dictionary.get("name")
-        code = dictionary.get("code")
-        document = dictionary.get("document")
-        description = dictionary.get("description")
-        status = dictionary.get("Status")
-        created_at = dictionary.get("CreatedAt")
-        updated_at = dictionary.get("UpdatedAt")
-        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("Address")) if dictionary.get("Address") else None
-        metadata = dictionary.get("Metadata")
-        deleted_at = dictionary.get("DeletedAt")
+        id = dictionary.get('id')
+        name = dictionary.get('name')
+        code = dictionary.get('code')
+        document = dictionary.get('document')
+        description = dictionary.get('description')
+        status = dictionary.get('Status')
+        created_at = dictionary.get('CreatedAt')
+        updated_at = dictionary.get('UpdatedAt')
+        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('Address')) if dictionary.get('Address') else None
+        metadata = dictionary.get('Metadata')
+        deleted_at = dictionary.get('DeletedAt')
 
         # Return an object of this model
         return cls(id,

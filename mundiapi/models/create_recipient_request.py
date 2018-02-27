@@ -26,13 +26,13 @@ class CreateRecipientRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "email" : "email",
-        "description" : "description",
-        "document" : "document",
-        "mtype" : "type",
-        "default_bank_account" : "default_bank_account",
-        "metadata" : "metadata"
+        "name":'name',
+        "email":'email',
+        "description":'description',
+        "document":'document',
+        "mtype":'type',
+        "default_bank_account":'default_bank_account',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -73,13 +73,13 @@ class CreateRecipientRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        email = dictionary.get("email")
-        description = dictionary.get("description")
-        document = dictionary.get("document")
-        mtype = dictionary.get("type")
-        default_bank_account = mundiapi.models.create_bank_account_request.CreateBankAccountRequest.from_dictionary(dictionary.get("default_bank_account")) if dictionary.get("default_bank_account") else None
-        metadata = dictionary.get("metadata")
+        name = dictionary.get('name')
+        email = dictionary.get('email')
+        description = dictionary.get('description')
+        document = dictionary.get('document')
+        mtype = dictionary.get('type')
+        default_bank_account = mundiapi.models.create_bank_account_request.CreateBankAccountRequest.from_dictionary(dictionary.get('default_bank_account')) if dictionary.get('default_bank_account') else None
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(name,

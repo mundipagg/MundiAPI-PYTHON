@@ -55,33 +55,33 @@ class CreateSubscriptionRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "customer" : "customer",
-        "card" : "card",
-        "code" : "code",
-        "payment_method" : "payment_method",
-        "billing_type" : "billing_type",
-        "statement_descriptor" : "statement_descriptor",
-        "description" : "description",
-        "currency" : "currency",
-        "interval" : "interval",
-        "interval_count" : "interval_count",
-        "pricing_scheme" : "pricing_scheme",
-        "items" : "items",
-        "shipping" : "shipping",
-        "discounts" : "discounts",
-        "metadata" : "metadata",
-        "setup" : "setup",
-        "plan_id" : "plan_id",
-        "customer_id" : "customer_id",
-        "card_id" : "card_id",
-        "billing_day" : "billing_day",
-        "installments" : "installments",
-        "start_at" : "start_at",
-        "minimum_price" : "minimum_price",
-        "cycles" : "cycles",
-        "card_token" : "card_token",
-        "gateway_affiliation_id" : "gateway_affiliation_id",
-        "quantity" : "quantity"
+        "customer":'customer',
+        "card":'card',
+        "code":'code',
+        "payment_method":'payment_method',
+        "billing_type":'billing_type',
+        "statement_descriptor":'statement_descriptor',
+        "description":'description',
+        "currency":'currency',
+        "interval":'interval',
+        "interval_count":'interval_count',
+        "pricing_scheme":'pricing_scheme',
+        "items":'items',
+        "shipping":'shipping',
+        "discounts":'discounts',
+        "metadata":'metadata',
+        "setup":'setup',
+        "plan_id":'plan_id',
+        "customer_id":'customer_id',
+        "card_id":'card_id',
+        "billing_day":'billing_day',
+        "installments":'installments',
+        "start_at":'start_at',
+        "minimum_price":'minimum_price',
+        "cycles":'cycles',
+        "card_token":'card_token',
+        "gateway_affiliation_id":'gateway_affiliation_id',
+        "quantity":'quantity'
     }
 
     def __init__(self,
@@ -162,41 +162,41 @@ class CreateSubscriptionRequest(object):
             return None
 
         # Extract variables from the dictionary
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        code = dictionary.get("code")
-        payment_method = dictionary.get("payment_method")
-        billing_type = dictionary.get("billing_type")
-        statement_descriptor = dictionary.get("statement_descriptor")
-        description = dictionary.get("description")
-        currency = dictionary.get("currency")
-        interval = dictionary.get("interval")
-        interval_count = dictionary.get("interval_count")
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
+        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        code = dictionary.get('code')
+        payment_method = dictionary.get('payment_method')
+        billing_type = dictionary.get('billing_type')
+        statement_descriptor = dictionary.get('statement_descriptor')
+        description = dictionary.get('description')
+        currency = dictionary.get('currency')
+        interval = dictionary.get('interval')
+        interval_count = dictionary.get('interval_count')
+        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.create_subscription_item_request.CreateSubscriptionItemRequest.from_dictionary(structure))
-        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
+        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         discounts = None
-        if dictionary.get("discounts") != None:
+        if dictionary.get('discounts') != None:
             discounts = list()
-            for structure in dictionary.get("discounts"):
+            for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.create_discount_request.CreateDiscountRequest.from_dictionary(structure))
-        metadata = dictionary.get("metadata")
-        setup = mundiapi.models.create_setup_request.CreateSetupRequest.from_dictionary(dictionary.get("setup")) if dictionary.get("setup") else None
-        plan_id = dictionary.get("plan_id")
-        customer_id = dictionary.get("customer_id")
-        card_id = dictionary.get("card_id")
-        billing_day = dictionary.get("billing_day")
-        installments = dictionary.get("installments")
+        metadata = dictionary.get('metadata')
+        setup = mundiapi.models.create_setup_request.CreateSetupRequest.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
+        plan_id = dictionary.get('plan_id')
+        customer_id = dictionary.get('customer_id')
+        card_id = dictionary.get('card_id')
+        billing_day = dictionary.get('billing_day')
+        installments = dictionary.get('installments')
         start_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("start_at")).datetime if dictionary.get("start_at") else None
-        minimum_price = dictionary.get("minimum_price")
-        cycles = dictionary.get("cycles")
-        card_token = dictionary.get("card_token")
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
-        quantity = dictionary.get("quantity")
+        minimum_price = dictionary.get('minimum_price')
+        cycles = dictionary.get('cycles')
+        card_token = dictionary.get('card_token')
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
+        quantity = dictionary.get('quantity')
 
         # Return an object of this model
         return cls(customer,

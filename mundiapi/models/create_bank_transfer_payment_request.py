@@ -21,8 +21,8 @@ class CreateBankTransferPaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "bank" : "bank",
-        "retries" : "retries"
+        "bank":'bank',
+        "retries":'retries'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class CreateBankTransferPaymentRequest(object):
             return None
 
         # Extract variables from the dictionary
-        bank = dictionary.get("bank")
-        retries = dictionary.get("retries")
+        bank = dictionary.get('bank')
+        retries = dictionary.get('retries')
 
         # Return an object of this model
         return cls(bank,

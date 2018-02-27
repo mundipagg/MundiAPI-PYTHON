@@ -35,19 +35,19 @@ class GetRecipientResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "name" : "name",
-        "email" : "email",
-        "document" : "document",
-        "description" : "description",
-        "mtype" : "type",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "deleted_at" : "deleted_at",
-        "default_bank_account" : "default_bank_account",
-        "gateway_recipients" : "gateway_recipients",
-        "metadata" : "metadata"
+        "id":'id',
+        "name":'name',
+        "email":'email',
+        "document":'document',
+        "description":'description',
+        "mtype":'type',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "deleted_at":'deleted_at',
+        "default_bank_account":'default_bank_account',
+        "gateway_recipients":'gateway_recipients',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -100,23 +100,23 @@ class GetRecipientResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        name = dictionary.get("name")
-        email = dictionary.get("email")
-        document = dictionary.get("document")
-        description = dictionary.get("description")
-        mtype = dictionary.get("type")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        name = dictionary.get('name')
+        email = dictionary.get('email')
+        document = dictionary.get('document')
+        description = dictionary.get('description')
+        mtype = dictionary.get('type')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
-        default_bank_account = mundiapi.models.get_bank_account_response.GetBankAccountResponse.from_dictionary(dictionary.get("default_bank_account")) if dictionary.get("default_bank_account") else None
+        default_bank_account = mundiapi.models.get_bank_account_response.GetBankAccountResponse.from_dictionary(dictionary.get('default_bank_account')) if dictionary.get('default_bank_account') else None
         gateway_recipients = None
-        if dictionary.get("gateway_recipients") != None:
+        if dictionary.get('gateway_recipients') != None:
             gateway_recipients = list()
-            for structure in dictionary.get("gateway_recipients"):
+            for structure in dictionary.get('gateway_recipients'):
                 gateway_recipients.append(mundiapi.models.get_gateway_recipient_response.GetGatewayRecipientResponse.from_dictionary(structure))
-        metadata = dictionary.get("metadata")
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(id,

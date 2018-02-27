@@ -28,13 +28,13 @@ class CreateChargeRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "code" : "code",
-        "amount" : "amount",
-        "customer_id" : "customer_id",
-        "customer" : "customer",
-        "payment" : "payment",
-        "metadata" : "metadata",
-        "due_at" : "due_at"
+        "code":'code',
+        "amount":'amount',
+        "customer_id":'customer_id',
+        "customer":'customer',
+        "payment":'payment',
+        "metadata":'metadata',
+        "due_at":'due_at'
     }
 
     def __init__(self,
@@ -75,12 +75,12 @@ class CreateChargeRequest(object):
             return None
 
         # Extract variables from the dictionary
-        code = dictionary.get("code")
-        amount = dictionary.get("amount")
-        customer_id = dictionary.get("customer_id")
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get("payment")) if dictionary.get("payment") else None
-        metadata = dictionary.get("metadata")
+        code = dictionary.get('code')
+        amount = dictionary.get('amount')
+        customer_id = dictionary.get('customer_id')
+        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
+        metadata = dictionary.get('metadata')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
 
         # Return an object of this model

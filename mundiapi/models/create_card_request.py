@@ -34,19 +34,19 @@ class CreateCardRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "number" : "number",
-        "holder_name" : "holder_name",
-        "exp_month" : "exp_month",
-        "exp_year" : "exp_year",
-        "cvv" : "cvv",
-        "billing_address" : "billing_address",
-        "brand" : "brand",
-        "billing_address_id" : "billing_address_id",
-        "metadata" : "metadata",
-        "mtype" : "type",
-        "options" : "options",
-        "holder_document" : "holder_document",
-        "private_label" : "private_label"
+        "number":'number',
+        "holder_name":'holder_name',
+        "exp_month":'exp_month',
+        "exp_year":'exp_year',
+        "cvv":'cvv',
+        "billing_address":'billing_address',
+        "brand":'brand',
+        "billing_address_id":'billing_address_id',
+        "metadata":'metadata',
+        "mtype":'type',
+        "options":'options',
+        "holder_document":'holder_document',
+        "private_label":'private_label'
     }
 
     def __init__(self,
@@ -99,19 +99,19 @@ class CreateCardRequest(object):
             return None
 
         # Extract variables from the dictionary
-        number = dictionary.get("number")
-        holder_name = dictionary.get("holder_name")
-        exp_month = dictionary.get("exp_month")
-        exp_year = dictionary.get("exp_year")
-        cvv = dictionary.get("cvv")
-        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        brand = dictionary.get("brand")
-        billing_address_id = dictionary.get("billing_address_id")
-        metadata = dictionary.get("metadata")
+        number = dictionary.get('number')
+        holder_name = dictionary.get('holder_name')
+        exp_month = dictionary.get('exp_month')
+        exp_year = dictionary.get('exp_year')
+        cvv = dictionary.get('cvv')
+        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        brand = dictionary.get('brand')
+        billing_address_id = dictionary.get('billing_address_id')
+        metadata = dictionary.get('metadata')
         mtype = dictionary.get("type") if dictionary.get("type") else 'credit'
-        options = mundiapi.models.create_card_options_request.CreateCardOptionsRequest.from_dictionary(dictionary.get("options")) if dictionary.get("options") else None
-        holder_document = dictionary.get("holder_document")
-        private_label = dictionary.get("private_label")
+        options = mundiapi.models.create_card_options_request.CreateCardOptionsRequest.from_dictionary(dictionary.get('options')) if dictionary.get('options') else None
+        holder_document = dictionary.get('holder_document')
+        private_label = dictionary.get('private_label')
 
         # Return an object of this model
         return cls(number,

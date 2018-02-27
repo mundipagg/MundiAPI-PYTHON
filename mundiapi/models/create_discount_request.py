@@ -24,10 +24,10 @@ class CreateDiscountRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "value" : "value",
-        "discount_type" : "discount_type",
-        "item_id" : "item_id",
-        "cycles" : "cycles"
+        "value":'value',
+        "discount_type":'discount_type',
+        "item_id":'item_id',
+        "cycles":'cycles'
     }
 
     def __init__(self,
@@ -62,10 +62,10 @@ class CreateDiscountRequest(object):
             return None
 
         # Extract variables from the dictionary
-        value = dictionary.get("value")
-        discount_type = dictionary.get("discount_type")
-        item_id = dictionary.get("item_id")
-        cycles = dictionary.get("cycles")
+        value = dictionary.get('value')
+        discount_type = dictionary.get('discount_type')
+        item_id = dictionary.get('item_id')
+        cycles = dictionary.get('cycles')
 
         # Return an object of this model
         return cls(value,

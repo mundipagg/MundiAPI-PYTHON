@@ -26,12 +26,12 @@ class CreateCardTokenRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "number" : "number",
-        "holder_name" : "holder_name",
-        "exp_month" : "exp_month",
-        "exp_year" : "exp_year",
-        "cvv" : "cvv",
-        "brand" : "brand"
+        "number":'number',
+        "holder_name":'holder_name',
+        "exp_month":'exp_month',
+        "exp_year":'exp_year',
+        "cvv":'cvv',
+        "brand":'brand'
     }
 
     def __init__(self,
@@ -70,12 +70,12 @@ class CreateCardTokenRequest(object):
             return None
 
         # Extract variables from the dictionary
-        number = dictionary.get("number")
-        holder_name = dictionary.get("holder_name")
-        exp_month = dictionary.get("exp_month")
-        exp_year = dictionary.get("exp_year")
-        cvv = dictionary.get("cvv")
-        brand = dictionary.get("brand")
+        number = dictionary.get('number')
+        holder_name = dictionary.get('holder_name')
+        exp_month = dictionary.get('exp_month')
+        exp_year = dictionary.get('exp_year')
+        cvv = dictionary.get('cvv')
+        brand = dictionary.get('brand')
 
         # Return an object of this model
         return cls(number,

@@ -27,11 +27,11 @@ class UpdateChargePaymentMethodRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "update_subscription" : "update_subscription",
-        "payment_method" : "payment_method",
-        "credit_card" : "credit_card",
-        "boleto" : "boleto",
-        "voucher" : "voucher"
+        "update_subscription":'update_subscription',
+        "payment_method":'payment_method',
+        "credit_card":'credit_card',
+        "boleto":'boleto',
+        "voucher":'voucher'
     }
 
     def __init__(self,
@@ -68,11 +68,11 @@ class UpdateChargePaymentMethodRequest(object):
             return None
 
         # Extract variables from the dictionary
-        update_subscription = dictionary.get("update_subscription")
-        payment_method = dictionary.get("payment_method")
-        credit_card = mundiapi.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
-        boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
-        voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get("voucher")) if dictionary.get("voucher") else None
+        update_subscription = dictionary.get('update_subscription')
+        payment_method = dictionary.get('payment_method')
+        credit_card = mundiapi.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
+        boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
+        voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get('voucher')) if dictionary.get('voucher') else None
 
         # Return an object of this model
         return cls(update_subscription,

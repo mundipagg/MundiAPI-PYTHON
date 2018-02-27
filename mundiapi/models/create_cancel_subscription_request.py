@@ -21,7 +21,7 @@ class CreateCancelSubscriptionRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "cancel_pending_invoices" : "cancel_pending_invoices"
+        "cancel_pending_invoices":'cancel_pending_invoices'
     }
 
     def __init__(self,

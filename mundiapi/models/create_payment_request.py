@@ -41,19 +41,19 @@ class CreatePaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "payment_method" : "payment_method",
-        "credit_card" : "credit_card",
-        "boleto" : "boleto",
-        "currency" : "currency",
-        "voucher" : "voucher",
-        "metadata" : "metadata",
-        "split" : "split",
-        "customer_id" : "customer_id",
-        "customer" : "customer",
-        "bank_transfer" : "bank_transfer",
-        "gateway_affiliation_id" : "gateway_affiliation_id",
-        "amount" : "amount",
-        "checkout" : "checkout"
+        "payment_method":'payment_method',
+        "credit_card":'credit_card',
+        "boleto":'boleto',
+        "currency":'currency',
+        "voucher":'voucher',
+        "metadata":'metadata',
+        "split":'split',
+        "customer_id":'customer_id',
+        "customer":'customer',
+        "bank_transfer":'bank_transfer',
+        "gateway_affiliation_id":'gateway_affiliation_id',
+        "amount":'amount',
+        "checkout":'checkout'
     }
 
     def __init__(self,
@@ -106,23 +106,23 @@ class CreatePaymentRequest(object):
             return None
 
         # Extract variables from the dictionary
-        payment_method = dictionary.get("payment_method")
-        credit_card = mundiapi.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get("credit_card")) if dictionary.get("credit_card") else None
-        boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
-        currency = dictionary.get("currency")
-        voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get("voucher")) if dictionary.get("voucher") else None
-        metadata = dictionary.get("metadata")
+        payment_method = dictionary.get('payment_method')
+        credit_card = mundiapi.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
+        boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
+        currency = dictionary.get('currency')
+        voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get('voucher')) if dictionary.get('voucher') else None
+        metadata = dictionary.get('metadata')
         split = None
-        if dictionary.get("split") != None:
+        if dictionary.get('split') != None:
             split = list()
-            for structure in dictionary.get("split"):
+            for structure in dictionary.get('split'):
                 split.append(mundiapi.models.create_split_request.CreateSplitRequest.from_dictionary(structure))
-        customer_id = dictionary.get("customer_id")
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get("bank_transfer")) if dictionary.get("bank_transfer") else None
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
-        amount = dictionary.get("amount")
-        checkout = mundiapi.models.create_checkout_payment_request.CreateCheckoutPaymentRequest.from_dictionary(dictionary.get("checkout")) if dictionary.get("checkout") else None
+        customer_id = dictionary.get('customer_id')
+        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
+        amount = dictionary.get('amount')
+        checkout = mundiapi.models.create_checkout_payment_request.CreateCheckoutPaymentRequest.from_dictionary(dictionary.get('checkout')) if dictionary.get('checkout') else None
 
         # Return an object of this model
         return cls(payment_method,

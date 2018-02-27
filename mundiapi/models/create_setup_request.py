@@ -23,9 +23,9 @@ class CreateSetupRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "description" : "description",
-        "payment" : "payment"
+        "amount":'amount',
+        "description":'description',
+        "payment":'payment'
     }
 
     def __init__(self,
@@ -58,9 +58,9 @@ class CreateSetupRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get("payment")) if dictionary.get("payment") else None
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
 
         # Return an object of this model
         return cls(amount,

@@ -22,9 +22,9 @@ class CreateUsageRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "quantity" : "quantity",
-        "description" : "description",
-        "used_at" : "used_at"
+        "quantity":'quantity',
+        "description":'description',
+        "used_at":'used_at'
     }
 
     def __init__(self,
@@ -57,8 +57,8 @@ class CreateUsageRequest(object):
             return None
 
         # Extract variables from the dictionary
-        quantity = dictionary.get("quantity")
-        description = dictionary.get("description")
+        quantity = dictionary.get('quantity')
+        description = dictionary.get('description')
         used_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("used_at")).datetime if dictionary.get("used_at") else None
 
         # Return an object of this model

@@ -51,31 +51,31 @@ class GetSubscriptionResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "code" : "code",
-        "start_at" : "start_at",
-        "interval" : "interval",
-        "interval_count" : "interval_count",
-        "billing_type" : "billing_type",
-        "current_cycle" : "current_cycle",
-        "payment_method" : "payment_method",
-        "currency" : "currency",
-        "installments" : "installments",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "customer" : "customer",
-        "card" : "card",
-        "items" : "items",
-        "statement_descriptor" : "statement_descriptor",
-        "metadata" : "metadata",
-        "setup" : "setup",
-        "gateway_affiliation_id" : "gateway_affiliation_id",
-        "next_billing_at" : "next_billing_at",
-        "billing_day" : "billing_day",
-        "minimum_price" : "minimum_price",
-        "canceled_at" : "canceled_at",
-        "discounts" : "discounts"
+        "id":'id',
+        "code":'code',
+        "start_at":'start_at',
+        "interval":'interval',
+        "interval_count":'interval_count',
+        "billing_type":'billing_type',
+        "current_cycle":'current_cycle',
+        "payment_method":'payment_method',
+        "currency":'currency',
+        "installments":'installments',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "customer":'customer',
+        "card":'card',
+        "items":'items',
+        "statement_descriptor":'statement_descriptor',
+        "metadata":'metadata',
+        "setup":'setup',
+        "gateway_affiliation_id":'gateway_affiliation_id',
+        "next_billing_at":'next_billing_at',
+        "billing_day":'billing_day',
+        "minimum_price":'minimum_price',
+        "canceled_at":'canceled_at',
+        "discounts":'discounts'
     }
 
     def __init__(self,
@@ -152,38 +152,38 @@ class GetSubscriptionResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        code = dictionary.get("code")
+        id = dictionary.get('id')
+        code = dictionary.get('code')
         start_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("start_at")).datetime if dictionary.get("start_at") else None
-        interval = dictionary.get("interval")
-        interval_count = dictionary.get("interval_count")
-        billing_type = dictionary.get("billing_type")
-        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get("current_cycle")) if dictionary.get("current_cycle") else None
-        payment_method = dictionary.get("payment_method")
-        currency = dictionary.get("currency")
-        installments = dictionary.get("installments")
-        status = dictionary.get("status")
+        interval = dictionary.get('interval')
+        interval_count = dictionary.get('interval_count')
+        billing_type = dictionary.get('billing_type')
+        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('current_cycle')) if dictionary.get('current_cycle') else None
+        payment_method = dictionary.get('payment_method')
+        currency = dictionary.get('currency')
+        installments = dictionary.get('installments')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_subscription_item_response.GetSubscriptionItemResponse.from_dictionary(structure))
-        statement_descriptor = dictionary.get("statement_descriptor")
-        metadata = dictionary.get("metadata")
-        setup = mundiapi.models.get_setup_response.GetSetupResponse.from_dictionary(dictionary.get("setup")) if dictionary.get("setup") else None
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
+        statement_descriptor = dictionary.get('statement_descriptor')
+        metadata = dictionary.get('metadata')
+        setup = mundiapi.models.get_setup_response.GetSetupResponse.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
-        billing_day = dictionary.get("billing_day")
-        minimum_price = dictionary.get("minimum_price")
+        billing_day = dictionary.get('billing_day')
+        minimum_price = dictionary.get('minimum_price')
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         discounts = None
-        if dictionary.get("discounts") != None:
+        if dictionary.get('discounts') != None:
             discounts = list()
-            for structure in dictionary.get("discounts"):
+            for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.get_discount_response.GetDiscountResponse.from_dictionary(structure))
 
         # Return an object of this model

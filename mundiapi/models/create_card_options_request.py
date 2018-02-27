@@ -22,7 +22,7 @@ class CreateCardOptionsRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "verify_card" : "verify_card"
+        "verify_card":'verify_card'
     }
 
     def __init__(self,
@@ -51,7 +51,7 @@ class CreateCardOptionsRequest(object):
             return None
 
         # Extract variables from the dictionary
-        verify_card = dictionary.get("verify_card")
+        verify_card = dictionary.get('verify_card')
 
         # Return an object of this model
         return cls(verify_card)

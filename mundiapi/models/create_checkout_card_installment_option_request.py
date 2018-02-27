@@ -21,8 +21,8 @@ class CreateCheckoutCardInstallmentOptionRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "number" : "number",
-        "total" : "total"
+        "number":'number',
+        "total":'total'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class CreateCheckoutCardInstallmentOptionRequest(object):
             return None
 
         # Extract variables from the dictionary
-        number = dictionary.get("number")
-        total = dictionary.get("total")
+        number = dictionary.get('number')
+        total = dictionary.get('total')
 
         # Return an object of this model
         return cls(number,

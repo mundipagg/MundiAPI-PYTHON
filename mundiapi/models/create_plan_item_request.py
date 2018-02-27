@@ -25,12 +25,12 @@ class CreatePlanItemRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "pricing_scheme" : "pricing_scheme",
-        "id" : "id",
-        "description" : "description",
-        "cycles" : "cycles",
-        "quantity" : "quantity"
+        "name":'name',
+        "pricing_scheme":'pricing_scheme',
+        "id":'id',
+        "description":'description',
+        "cycles":'cycles',
+        "quantity":'quantity'
     }
 
     def __init__(self,
@@ -69,12 +69,12 @@ class CreatePlanItemRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        id = dictionary.get("id")
-        description = dictionary.get("description")
-        cycles = dictionary.get("cycles")
-        quantity = dictionary.get("quantity")
+        name = dictionary.get('name')
+        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        id = dictionary.get('id')
+        description = dictionary.get('description')
+        cycles = dictionary.get('cycles')
+        quantity = dictionary.get('quantity')
 
         # Return an object of this model
         return cls(name,

@@ -21,8 +21,8 @@ class GetAnticipationLimitResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "anticipation_fee" : "anticipation_fee"
+        "amount":'amount',
+        "anticipation_fee":'anticipation_fee'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class GetAnticipationLimitResponse(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        anticipation_fee = dictionary.get("anticipation_fee")
+        amount = dictionary.get('amount')
+        anticipation_fee = dictionary.get('anticipation_fee')
 
         # Return an object of this model
         return cls(amount,

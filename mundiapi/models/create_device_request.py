@@ -20,7 +20,7 @@ class CreateDeviceRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "platform" : "platform"
+        "platform":'platform'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class CreateDeviceRequest(object):
             return None
 
         # Extract variables from the dictionary
-        platform = dictionary.get("platform")
+        platform = dictionary.get('platform')
 
         # Return an object of this model
         return cls(platform)

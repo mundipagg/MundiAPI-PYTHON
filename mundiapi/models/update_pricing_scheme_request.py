@@ -23,10 +23,10 @@ class UpdatePricingSchemeRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "scheme_type" : "scheme_type",
-        "price_brackets" : "price_brackets",
-        "price" : "price",
-        "minimum_price" : "minimum_price"
+        "scheme_type":'scheme_type',
+        "price_brackets":'price_brackets',
+        "price":'price',
+        "minimum_price":'minimum_price'
     }
 
     def __init__(self,
@@ -61,14 +61,14 @@ class UpdatePricingSchemeRequest(object):
             return None
 
         # Extract variables from the dictionary
-        scheme_type = dictionary.get("scheme_type")
+        scheme_type = dictionary.get('scheme_type')
         price_brackets = None
-        if dictionary.get("price_brackets") != None:
+        if dictionary.get('price_brackets') != None:
             price_brackets = list()
-            for structure in dictionary.get("price_brackets"):
+            for structure in dictionary.get('price_brackets'):
                 price_brackets.append(mundiapi.models.update_price_bracket_request.UpdatePriceBracketRequest.from_dictionary(structure))
-        price = dictionary.get("price")
-        minimum_price = dictionary.get("minimum_price")
+        price = dictionary.get('price')
+        minimum_price = dictionary.get('minimum_price')
 
         # Return an object of this model
         return cls(scheme_type,

@@ -21,8 +21,8 @@ class UpdateSubscriptionCardRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "card" : "card",
-        "card_id" : "card_id"
+        "card":'card',
+        "card_id":'card_id'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class UpdateSubscriptionCardRequest(object):
             return None
 
         # Extract variables from the dictionary
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        card_id = dictionary.get("card_id")
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card_id = dictionary.get('card_id')
 
         # Return an object of this model
         return cls(card,

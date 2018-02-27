@@ -22,8 +22,8 @@ class ListCardsResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "data" : "data",
-        "paging" : "paging"
+        "data":'data',
+        "paging":'paging'
     }
 
     def __init__(self,
@@ -55,11 +55,11 @@ class ListCardsResponse(object):
 
         # Extract variables from the dictionary
         data = None
-        if dictionary.get("data") != None:
+        if dictionary.get('data') != None:
             data = list()
-            for structure in dictionary.get("data"):
+            for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_card_response.GetCardResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get("paging")) if dictionary.get("paging") else None
+        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

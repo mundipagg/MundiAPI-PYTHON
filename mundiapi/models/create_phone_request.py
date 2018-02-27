@@ -22,9 +22,9 @@ class CreatePhoneRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "country_code" : "country_code",
-        "number" : "number",
-        "area_code" : "area_code"
+        "country_code":'country_code',
+        "number":'number',
+        "area_code":'area_code'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class CreatePhoneRequest(object):
             return None
 
         # Extract variables from the dictionary
-        country_code = dictionary.get("country_code")
-        number = dictionary.get("number")
-        area_code = dictionary.get("area_code")
+        country_code = dictionary.get('country_code')
+        number = dictionary.get('number')
+        area_code = dictionary.get('area_code')
 
         # Return an object of this model
         return cls(country_code,

@@ -35,18 +35,18 @@ class GetSubscriptionItemResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "description" : "description",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "pricing_scheme" : "pricing_scheme",
-        "discounts" : "discounts",
-        "subscription" : "subscription",
-        "name" : "name",
-        "quantity" : "quantity",
-        "cycles" : "cycles",
-        "deleted_at" : "deleted_at"
+        "id":'id',
+        "description":'description',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "pricing_scheme":'pricing_scheme',
+        "discounts":'discounts',
+        "subscription":'subscription',
+        "name":'name',
+        "quantity":'quantity',
+        "cycles":'cycles',
+        "deleted_at":'deleted_at'
     }
 
     def __init__(self,
@@ -97,21 +97,21 @@ class GetSubscriptionItemResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        description = dictionary.get("description")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        description = dictionary.get('description')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
+        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         discounts = None
-        if dictionary.get("discounts") != None:
+        if dictionary.get('discounts') != None:
             discounts = list()
-            for structure in dictionary.get("discounts"):
+            for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.get_discount_response.GetDiscountResponse.from_dictionary(structure))
-        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get("subscription")) if dictionary.get("subscription") else None
-        name = dictionary.get("name")
-        quantity = dictionary.get("quantity")
-        cycles = dictionary.get("cycles")
+        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
+        name = dictionary.get('name')
+        quantity = dictionary.get('quantity')
+        cycles = dictionary.get('cycles')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

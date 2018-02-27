@@ -26,13 +26,13 @@ class GetSellersRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "document" : "document",
-        "code" : "code",
-        "status" : "status",
-        "mtype" : "type",
-        "created_since" : "created_Since",
-        "created_until" : "created_Until"
+        "name":'name',
+        "document":'document',
+        "code":'code',
+        "status":'status',
+        "mtype":'type',
+        "created_since":'created_Since',
+        "created_until":'created_Until'
     }
 
     def __init__(self,
@@ -73,13 +73,13 @@ class GetSellersRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        document = dictionary.get("document")
-        code = dictionary.get("code")
-        status = dictionary.get("status")
-        mtype = dictionary.get("type")
-        created_since = dictionary.get("created_Since")
-        created_until = dictionary.get("created_Until")
+        name = dictionary.get('name')
+        document = dictionary.get('document')
+        code = dictionary.get('code')
+        status = dictionary.get('status')
+        mtype = dictionary.get('type')
+        created_since = dictionary.get('created_Since')
+        created_until = dictionary.get('created_Until')
 
         # Return an object of this model
         return cls(name,

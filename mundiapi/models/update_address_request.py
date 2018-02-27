@@ -23,10 +23,10 @@ class UpdateAddressRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "number" : "number",
-        "complement" : "complement",
-        "metadata" : "metadata",
-        "line_2" : "line_2"
+        "number":'number',
+        "complement":'complement',
+        "metadata":'metadata',
+        "line_2":'line_2'
     }
 
     def __init__(self,
@@ -61,10 +61,10 @@ class UpdateAddressRequest(object):
             return None
 
         # Extract variables from the dictionary
-        number = dictionary.get("number")
-        complement = dictionary.get("complement")
-        metadata = dictionary.get("metadata")
-        line_2 = dictionary.get("line_2")
+        number = dictionary.get('number')
+        complement = dictionary.get('complement')
+        metadata = dictionary.get('metadata')
+        line_2 = dictionary.get('line_2')
 
         # Return an object of this model
         return cls(number,

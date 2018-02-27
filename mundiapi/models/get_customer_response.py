@@ -36,20 +36,20 @@ class GetCustomerResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "name" : "name",
-        "email" : "email",
-        "delinquent" : "delinquent",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "document" : "document",
-        "mtype" : "type",
-        "fb_access_token" : "fb_access_token",
-        "address" : "address",
-        "metadata" : "metadata",
-        "phones" : "phones",
-        "code" : "code",
-        "fb_id" : "fb_id"
+        "id":'id',
+        "name":'name',
+        "email":'email',
+        "delinquent":'delinquent',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "document":'document',
+        "mtype":'type',
+        "fb_access_token":'fb_access_token',
+        "address":'address',
+        "metadata":'metadata',
+        "phones":'phones',
+        "code":'code',
+        "fb_id":'fb_id'
     }
 
     def __init__(self,
@@ -104,20 +104,20 @@ class GetCustomerResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        name = dictionary.get("name")
-        email = dictionary.get("email")
-        delinquent = dictionary.get("delinquent")
+        id = dictionary.get('id')
+        name = dictionary.get('name')
+        email = dictionary.get('email')
+        delinquent = dictionary.get('delinquent')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        document = dictionary.get("document")
-        mtype = dictionary.get("type")
-        fb_access_token = dictionary.get("fb_access_token")
-        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
-        metadata = dictionary.get("metadata")
-        phones = mundiapi.models.get_phones_response.GetPhonesResponse.from_dictionary(dictionary.get("phones")) if dictionary.get("phones") else None
-        code = dictionary.get("code")
-        fb_id = dictionary.get("fb_id")
+        document = dictionary.get('document')
+        mtype = dictionary.get('type')
+        fb_access_token = dictionary.get('fb_access_token')
+        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        metadata = dictionary.get('metadata')
+        phones = mundiapi.models.get_phones_response.GetPhonesResponse.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
+        code = dictionary.get('code')
+        fb_id = dictionary.get('fb_id')
 
         # Return an object of this model
         return cls(id,

@@ -22,8 +22,8 @@ class CreateCheckoutCardPaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "statement_descriptor" : "statement_descriptor",
-        "installments" : "installments"
+        "statement_descriptor":'statement_descriptor',
+        "installments":'installments'
     }
 
     def __init__(self,
@@ -54,11 +54,11 @@ class CreateCheckoutCardPaymentRequest(object):
             return None
 
         # Extract variables from the dictionary
-        statement_descriptor = dictionary.get("statement_descriptor")
+        statement_descriptor = dictionary.get('statement_descriptor')
         installments = None
-        if dictionary.get("installments") != None:
+        if dictionary.get('installments') != None:
             installments = list()
-            for structure in dictionary.get("installments"):
+            for structure in dictionary.get('installments'):
                 installments.append(mundiapi.models.create_checkout_card_installment_option_request.CreateCheckoutCardInstallmentOptionRequest.from_dictionary(structure))
 
         # Return an object of this model

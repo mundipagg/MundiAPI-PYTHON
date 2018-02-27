@@ -33,17 +33,17 @@ class GetPlanItemResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "name" : "name",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "pricing_scheme" : "pricing_scheme",
-        "description" : "description",
-        "plan" : "plan",
-        "quantity" : "quantity",
-        "cycles" : "cycles",
-        "deleted_at" : "deleted_at"
+        "id":'id',
+        "name":'name',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "pricing_scheme":'pricing_scheme',
+        "description":'description',
+        "plan":'plan',
+        "quantity":'quantity',
+        "cycles":'cycles',
+        "deleted_at":'deleted_at'
     }
 
     def __init__(self,
@@ -92,16 +92,16 @@ class GetPlanItemResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        name = dictionary.get("name")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        name = dictionary.get('name')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        description = dictionary.get("description")
-        plan = mundiapi.models.get_plan_response.GetPlanResponse.from_dictionary(dictionary.get("plan")) if dictionary.get("plan") else None
-        quantity = dictionary.get("quantity")
-        cycles = dictionary.get("cycles")
+        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        description = dictionary.get('description')
+        plan = mundiapi.models.get_plan_response.GetPlanResponse.from_dictionary(dictionary.get('plan')) if dictionary.get('plan') else None
+        quantity = dictionary.get('quantity')
+        cycles = dictionary.get('cycles')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

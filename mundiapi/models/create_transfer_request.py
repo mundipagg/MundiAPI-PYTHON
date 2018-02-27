@@ -21,8 +21,8 @@ class CreateTransferRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "metadata" : "metadata"
+        "amount":'amount',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class CreateTransferRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        metadata = dictionary.get("metadata")
+        amount = dictionary.get('amount')
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(amount,

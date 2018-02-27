@@ -24,11 +24,11 @@ class GetShippingResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "description" : "description",
-        "recipient_name" : "recipient_name",
-        "recipient_phone" : "recipient_phone",
-        "address" : "address"
+        "amount":'amount',
+        "description":'description',
+        "recipient_name":'recipient_name',
+        "recipient_phone":'recipient_phone',
+        "address":'address'
     }
 
     def __init__(self,
@@ -65,11 +65,11 @@ class GetShippingResponse(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        recipient_name = dictionary.get("recipient_name")
-        recipient_phone = dictionary.get("recipient_phone")
-        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        recipient_name = dictionary.get('recipient_name')
+        recipient_phone = dictionary.get('recipient_phone')
+        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
 
         # Return an object of this model
         return cls(amount,

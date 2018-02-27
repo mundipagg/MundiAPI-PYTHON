@@ -44,24 +44,24 @@ class CreatePlanRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "description" : "description",
-        "statement_descriptor" : "statement_descriptor",
-        "items" : "items",
-        "shippable" : "shippable",
-        "payment_methods" : "payment_methods",
-        "installments" : "installments",
-        "currency" : "currency",
-        "interval" : "interval",
-        "interval_count" : "interval_count",
-        "billing_days" : "billing_days",
-        "billing_type" : "billing_type",
-        "pricing_scheme" : "pricing_scheme",
-        "metadata" : "metadata",
-        "minimum_price" : "minimum_price",
-        "cycles" : "cycles",
-        "quantity" : "quantity",
-        "trial_period_days" : "trial_period_days"
+        "name":'name',
+        "description":'description',
+        "statement_descriptor":'statement_descriptor',
+        "items":'items',
+        "shippable":'shippable',
+        "payment_methods":'payment_methods',
+        "installments":'installments',
+        "currency":'currency',
+        "interval":'interval',
+        "interval_count":'interval_count',
+        "billing_days":'billing_days',
+        "billing_type":'billing_type',
+        "pricing_scheme":'pricing_scheme',
+        "metadata":'metadata',
+        "minimum_price":'minimum_price',
+        "cycles":'cycles',
+        "quantity":'quantity',
+        "trial_period_days":'trial_period_days'
     }
 
     def __init__(self,
@@ -124,28 +124,28 @@ class CreatePlanRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        description = dictionary.get("description")
-        statement_descriptor = dictionary.get("statement_descriptor")
+        name = dictionary.get('name')
+        description = dictionary.get('description')
+        statement_descriptor = dictionary.get('statement_descriptor')
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.create_plan_item_request.CreatePlanItemRequest.from_dictionary(structure))
-        shippable = dictionary.get("shippable")
-        payment_methods = dictionary.get("payment_methods")
-        installments = dictionary.get("installments")
-        currency = dictionary.get("currency")
-        interval = dictionary.get("interval")
-        interval_count = dictionary.get("interval_count")
-        billing_days = dictionary.get("billing_days")
-        billing_type = dictionary.get("billing_type")
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        metadata = dictionary.get("metadata")
-        minimum_price = dictionary.get("minimum_price")
-        cycles = dictionary.get("cycles")
-        quantity = dictionary.get("quantity")
-        trial_period_days = dictionary.get("trial_period_days")
+        shippable = dictionary.get('shippable')
+        payment_methods = dictionary.get('payment_methods')
+        installments = dictionary.get('installments')
+        currency = dictionary.get('currency')
+        interval = dictionary.get('interval')
+        interval_count = dictionary.get('interval_count')
+        billing_days = dictionary.get('billing_days')
+        billing_type = dictionary.get('billing_type')
+        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        metadata = dictionary.get('metadata')
+        minimum_price = dictionary.get('minimum_price')
+        cycles = dictionary.get('cycles')
+        quantity = dictionary.get('quantity')
+        trial_period_days = dictionary.get('trial_period_days')
 
         # Return an object of this model
         return cls(name,

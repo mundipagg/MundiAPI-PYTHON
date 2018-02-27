@@ -25,12 +25,12 @@ class CreateOrderItemRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "description" : "description",
-        "quantity" : "quantity",
-        "category" : "category",
-        "seller" : "seller",
-        "seller_id" : "seller_id"
+        "amount":'amount',
+        "description":'description',
+        "quantity":'quantity',
+        "category":'category',
+        "seller":'seller',
+        "seller_id":'seller_id'
     }
 
     def __init__(self,
@@ -69,12 +69,12 @@ class CreateOrderItemRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        quantity = dictionary.get("quantity")
-        category = dictionary.get("category")
-        seller = mundiapi.models.create_seller_request.CreateSellerRequest.from_dictionary(dictionary.get("seller")) if dictionary.get("seller") else None
-        seller_id = dictionary.get("seller_id")
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        quantity = dictionary.get('quantity')
+        category = dictionary.get('category')
+        seller = mundiapi.models.create_seller_request.CreateSellerRequest.from_dictionary(dictionary.get('seller')) if dictionary.get('seller') else None
+        seller_id = dictionary.get('seller_id')
 
         # Return an object of this model
         return cls(amount,

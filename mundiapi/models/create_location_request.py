@@ -21,8 +21,8 @@ class CreateLocationRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "latitude" : "latitude",
-        "longitude" : "longitude"
+        "latitude":'latitude',
+        "longitude":'longitude'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class CreateLocationRequest(object):
             return None
 
         # Extract variables from the dictionary
-        latitude = dictionary.get("latitude")
-        longitude = dictionary.get("longitude")
+        latitude = dictionary.get('latitude')
+        longitude = dictionary.get('longitude')
 
         # Return an object of this model
         return cls(latitude,

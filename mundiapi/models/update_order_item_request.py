@@ -23,10 +23,10 @@ class UpdateOrderItemRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "description" : "description",
-        "quantity" : "quantity",
-        "category" : "category"
+        "amount":'amount',
+        "description":'description',
+        "quantity":'quantity',
+        "category":'category'
     }
 
     def __init__(self,
@@ -61,10 +61,10 @@ class UpdateOrderItemRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        quantity = dictionary.get("quantity")
-        category = dictionary.get("category")
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        quantity = dictionary.get('quantity')
+        category = dictionary.get('category')
 
         # Return an object of this model
         return cls(amount,

@@ -27,14 +27,14 @@ class GetCheckoutPaymentSettingsResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "success_url" : "success_url",
-        "payment_url" : "payment_url",
-        "accepted_payment_methods" : "accepted_payment_methods",
-        "status" : "status",
-        "customer" : "customer",
-        "amount" : "amount",
-        "default_payment_method" : "default_payment_method",
-        "gateway_affiliation_id" : "gateway_affiliation_id"
+        "success_url":'success_url',
+        "payment_url":'payment_url',
+        "accepted_payment_methods":'accepted_payment_methods',
+        "status":'status',
+        "customer":'customer',
+        "amount":'amount',
+        "default_payment_method":'default_payment_method',
+        "gateway_affiliation_id":'gateway_affiliation_id'
     }
 
     def __init__(self,
@@ -77,14 +77,14 @@ class GetCheckoutPaymentSettingsResponse(object):
             return None
 
         # Extract variables from the dictionary
-        success_url = dictionary.get("success_url")
-        payment_url = dictionary.get("payment_url")
-        accepted_payment_methods = dictionary.get("accepted_payment_methods")
-        status = dictionary.get("status")
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        amount = dictionary.get("amount")
-        default_payment_method = dictionary.get("default_payment_method")
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
+        success_url = dictionary.get('success_url')
+        payment_url = dictionary.get('payment_url')
+        accepted_payment_methods = dictionary.get('accepted_payment_methods')
+        status = dictionary.get('status')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        amount = dictionary.get('amount')
+        default_payment_method = dictionary.get('default_payment_method')
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
 
         # Return an object of this model
         return cls(success_url,

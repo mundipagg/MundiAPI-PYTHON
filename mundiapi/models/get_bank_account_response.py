@@ -35,21 +35,21 @@ class GetBankAccountResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "holder_name" : "holder_name",
-        "holder_type" : "holder_type",
-        "bank" : "bank",
-        "branch_number" : "branch_number",
-        "branch_check_digit" : "branch_check_digit",
-        "account_number" : "account_number",
-        "account_check_digit" : "account_check_digit",
-        "mtype" : "type",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "deleted_at" : "deleted_at",
-        "recipient" : "recipient",
-        "metadata" : "metadata"
+        "id":'id',
+        "holder_name":'holder_name',
+        "holder_type":'holder_type',
+        "bank":'bank',
+        "branch_number":'branch_number',
+        "branch_check_digit":'branch_check_digit',
+        "account_number":'account_number',
+        "account_check_digit":'account_check_digit',
+        "mtype":'type',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "deleted_at":'deleted_at',
+        "recipient":'recipient',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -106,21 +106,21 @@ class GetBankAccountResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        holder_name = dictionary.get("holder_name")
-        holder_type = dictionary.get("holder_type")
-        bank = dictionary.get("bank")
-        branch_number = dictionary.get("branch_number")
-        branch_check_digit = dictionary.get("branch_check_digit")
-        account_number = dictionary.get("account_number")
-        account_check_digit = dictionary.get("account_check_digit")
-        mtype = dictionary.get("type")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        holder_name = dictionary.get('holder_name')
+        holder_type = dictionary.get('holder_type')
+        bank = dictionary.get('bank')
+        branch_number = dictionary.get('branch_number')
+        branch_check_digit = dictionary.get('branch_check_digit')
+        account_number = dictionary.get('account_number')
+        account_check_digit = dictionary.get('account_check_digit')
+        mtype = dictionary.get('type')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get("recipient")) if dictionary.get("recipient") else None
-        metadata = dictionary.get("metadata")
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(id,

@@ -22,8 +22,8 @@ class CreateCaptureChargeRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "code" : "code",
-        "amount" : "amount"
+        "code":'code',
+        "amount":'amount'
     }
 
     def __init__(self,
@@ -54,8 +54,8 @@ class CreateCaptureChargeRequest(object):
             return None
 
         # Extract variables from the dictionary
-        code = dictionary.get("code")
-        amount = dictionary.get("amount")
+        code = dictionary.get('code')
+        amount = dictionary.get('amount')
 
         # Return an object of this model
         return cls(code,

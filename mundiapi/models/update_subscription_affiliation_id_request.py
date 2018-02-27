@@ -20,7 +20,7 @@ class UpdateSubscriptionAffiliationIdRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "gateway_affiliation_id" : "gateway_affiliation_id"
+        "gateway_affiliation_id":'gateway_affiliation_id'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class UpdateSubscriptionAffiliationIdRequest(object):
             return None
 
         # Extract variables from the dictionary
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
 
         # Return an object of this model
         return cls(gateway_affiliation_id)
