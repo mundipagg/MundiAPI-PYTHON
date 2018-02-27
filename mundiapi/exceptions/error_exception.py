@@ -32,6 +32,6 @@ class ErrorException(mundiapi.exceptions.api_exception.APIException):
             MUST match property names in the API description.
 
         """
-        self.message = dictionary.get("message")
-        self.errors = dictionary.get("errors")
-        self.request = dictionary.get("request")
+        self.message = dictionary.get('message')
+        self.errors = dictionary.get('errors')
+        self.request = dictionary.get('request')

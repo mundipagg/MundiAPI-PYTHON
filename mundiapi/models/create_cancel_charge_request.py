@@ -20,7 +20,7 @@ class CreateCancelChargeRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount"
+        "amount":'amount'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class CreateCancelChargeRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
+        amount = dictionary.get('amount')
 
         # Return an object of this model
         return cls(amount)

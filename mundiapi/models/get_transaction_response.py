@@ -34,18 +34,18 @@ class GetTransactionResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -110,22 +110,22 @@ class GetTransactionResponse(object):
             return unboxer(dictionary)
 
         # Extract variables from the dictionary
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(gateway_id,
@@ -167,29 +167,29 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "statement_descriptor" : "statement_descriptor",
-        "acquirer_name" : "acquirer_name",
-        "acquirer_affiliation_code" : "acquirer_affiliation_code",
-        "acquirer_tid" : "acquirer_tid",
-        "acquirer_nsu" : "acquirer_nsu",
-        "acquirer_auth_code" : "acquirer_auth_code",
-        "operation_type" : "operation_type",
-        "card" : "card",
-        "acquirer_message" : "acquirer_message",
-        "acquirer_return_code" : "acquirer_return_code",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "installments" : "installments",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "statement_descriptor":'statement_descriptor',
+        "acquirer_name":'acquirer_name',
+        "acquirer_affiliation_code":'acquirer_affiliation_code',
+        "acquirer_tid":'acquirer_tid',
+        "acquirer_nsu":'acquirer_nsu',
+        "acquirer_auth_code":'acquirer_auth_code',
+        "operation_type":'operation_type',
+        "card":'card',
+        "acquirer_message":'acquirer_message',
+        "acquirer_return_code":'acquirer_return_code',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "installments":'installments',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -264,33 +264,33 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
             return None
 
         # Extract variables from the dictionary
-        statement_descriptor = dictionary.get("statement_descriptor")
-        acquirer_name = dictionary.get("acquirer_name")
-        acquirer_affiliation_code = dictionary.get("acquirer_affiliation_code")
-        acquirer_tid = dictionary.get("acquirer_tid")
-        acquirer_nsu = dictionary.get("acquirer_nsu")
-        acquirer_auth_code = dictionary.get("acquirer_auth_code")
-        operation_type = dictionary.get("operation_type")
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        acquirer_message = dictionary.get("acquirer_message")
-        acquirer_return_code = dictionary.get("acquirer_return_code")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        statement_descriptor = dictionary.get('statement_descriptor')
+        acquirer_name = dictionary.get('acquirer_name')
+        acquirer_affiliation_code = dictionary.get('acquirer_affiliation_code')
+        acquirer_tid = dictionary.get('acquirer_tid')
+        acquirer_nsu = dictionary.get('acquirer_nsu')
+        acquirer_auth_code = dictionary.get('acquirer_auth_code')
+        operation_type = dictionary.get('operation_type')
+        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        acquirer_message = dictionary.get('acquirer_message')
+        acquirer_return_code = dictionary.get('acquirer_return_code')
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
-        installments = dictionary.get("installments")
+        id = dictionary.get('id')
+        installments = dictionary.get('installments')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -342,28 +342,28 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "statement_descriptor" : "statement_descriptor",
-        "acquirer_name" : "acquirer_name",
-        "acquirer_affiliation_code" : "acquirer_affiliation_code",
-        "acquirer_tid" : "acquirer_tid",
-        "acquirer_nsu" : "acquirer_nsu",
-        "acquirer_auth_code" : "acquirer_auth_code",
-        "acquirer_message" : "acquirer_message",
-        "acquirer_return_code" : "acquirer_return_code",
-        "operation_type" : "operation_type",
-        "card" : "card",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "statement_descriptor":'statement_descriptor',
+        "acquirer_name":'acquirer_name',
+        "acquirer_affiliation_code":'acquirer_affiliation_code',
+        "acquirer_tid":'acquirer_tid',
+        "acquirer_nsu":'acquirer_nsu',
+        "acquirer_auth_code":'acquirer_auth_code',
+        "acquirer_message":'acquirer_message',
+        "acquirer_return_code":'acquirer_return_code',
+        "operation_type":'operation_type',
+        "card":'card',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -436,32 +436,32 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
             return None
 
         # Extract variables from the dictionary
-        statement_descriptor = dictionary.get("statement_descriptor")
-        acquirer_name = dictionary.get("acquirer_name")
-        acquirer_affiliation_code = dictionary.get("acquirer_affiliation_code")
-        acquirer_tid = dictionary.get("acquirer_tid")
-        acquirer_nsu = dictionary.get("acquirer_nsu")
-        acquirer_auth_code = dictionary.get("acquirer_auth_code")
-        acquirer_message = dictionary.get("acquirer_message")
-        acquirer_return_code = dictionary.get("acquirer_return_code")
-        operation_type = dictionary.get("operation_type")
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        statement_descriptor = dictionary.get('statement_descriptor')
+        acquirer_name = dictionary.get('acquirer_name')
+        acquirer_affiliation_code = dictionary.get('acquirer_affiliation_code')
+        acquirer_tid = dictionary.get('acquirer_tid')
+        acquirer_nsu = dictionary.get('acquirer_nsu')
+        acquirer_auth_code = dictionary.get('acquirer_auth_code')
+        acquirer_message = dictionary.get('acquirer_message')
+        acquirer_return_code = dictionary.get('acquirer_return_code')
+        operation_type = dictionary.get('operation_type')
+        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -506,23 +506,23 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "url" : "url",
-        "bank_tid" : "bank_tid",
-        "bank" : "bank",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "paid_at" : "paid_at",
-        "paid_amount" : "paid_amount",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "url":'url',
+        "bank_tid":'bank_tid',
+        "bank":'bank',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "paid_at":'paid_at',
+        "paid_amount":'paid_amount',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -585,27 +585,27 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
             return None
 
         # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bank_tid = dictionary.get("bank_tid")
-        bank = dictionary.get("bank")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        url = dictionary.get('url')
+        bank_tid = dictionary.get('bank_tid')
+        bank = dictionary.get('bank')
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
-        paid_amount = dictionary.get("paid_amount")
+        paid_amount = dictionary.get('paid_amount')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(url,
@@ -644,22 +644,22 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "url" : "url",
-        "bank_tid" : "bank_tid",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "paid_at" : "paid_at",
-        "paid_amount" : "paid_amount",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "url":'url',
+        "bank_tid":'bank_tid',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "paid_at":'paid_at',
+        "paid_amount":'paid_amount',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -720,26 +720,26 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
             return None
 
         # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bank_tid = dictionary.get("bank_tid")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        url = dictionary.get('url')
+        bank_tid = dictionary.get('bank_tid')
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
-        paid_amount = dictionary.get("paid_amount")
+        paid_amount = dictionary.get('paid_amount')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(url,
@@ -789,33 +789,33 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "url" : "url",
-        "bar_code" : "bar_code",
-        "nosso_numero" : "nosso_numero",
-        "bank" : "bank",
-        "document_number" : "document_number",
-        "instructions" : "instructions",
-        "billing_address" : "billing_address",
-        "qr_code" : "qr_code",
-        "line" : "line",
-        "pdf_password" : "pdf_password",
-        "pdf" : "pdf",
-        "paid_amount" : "paid_amount",
-        "mtype" : "type",
-        "gateway_id" : "gateway_id",
-        "amount" : "amount",
-        "status" : "status",
-        "success" : "success",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "attempt_count" : "attempt_count",
-        "max_attempts" : "max_attempts",
-        "splits" : "splits",
-        "id" : "id",
-        "due_at" : "due_at",
-        "paid_at" : "paid_at",
-        "next_attempt" : "next_attempt",
-        "transaction_type" : "transaction_type"
+        "url":'url',
+        "bar_code":'bar_code',
+        "nosso_numero":'nosso_numero',
+        "bank":'bank',
+        "document_number":'document_number',
+        "instructions":'instructions',
+        "billing_address":'billing_address',
+        "qr_code":'qr_code',
+        "line":'line',
+        "pdf_password":'pdf_password',
+        "pdf":'pdf',
+        "paid_amount":'paid_amount',
+        "mtype":'type',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "due_at":'due_at',
+        "paid_at":'paid_at',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
     }
 
     def __init__(self,
@@ -898,37 +898,37 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
             return None
 
         # Extract variables from the dictionary
-        url = dictionary.get("url")
-        bar_code = dictionary.get("bar_code")
-        nosso_numero = dictionary.get("nosso_numero")
-        bank = dictionary.get("bank")
-        document_number = dictionary.get("document_number")
-        instructions = dictionary.get("instructions")
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        qr_code = dictionary.get("qr_code")
-        line = dictionary.get("line")
-        pdf_password = dictionary.get("pdf_password")
-        pdf = dictionary.get("pdf")
-        paid_amount = dictionary.get("paid_amount")
-        mtype = dictionary.get("type")
-        gateway_id = dictionary.get("gateway_id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
-        success = dictionary.get("success")
+        url = dictionary.get('url')
+        bar_code = dictionary.get('bar_code')
+        nosso_numero = dictionary.get('nosso_numero')
+        bank = dictionary.get('bank')
+        document_number = dictionary.get('document_number')
+        instructions = dictionary.get('instructions')
+        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        qr_code = dictionary.get('qr_code')
+        line = dictionary.get('line')
+        pdf_password = dictionary.get('pdf_password')
+        pdf = dictionary.get('pdf')
+        paid_amount = dictionary.get('paid_amount')
+        mtype = dictionary.get('type')
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        attempt_count = dictionary.get("attempt_count")
-        max_attempts = dictionary.get("max_attempts")
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
         splits = None
-        if dictionary.get("splits") != None:
+        if dictionary.get('splits') != None:
             splits = list()
-            for structure in dictionary.get("splits"):
+            for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
-        transaction_type = dictionary.get("transaction_type")
+        transaction_type = dictionary.get('transaction_type')
 
         # Return an object of this model
         return cls(url,

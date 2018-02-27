@@ -20,7 +20,7 @@ class CreateAccessTokenRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "expires_in" : "expires_in"
+        "expires_in":'expires_in'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class CreateAccessTokenRequest(object):
             return None
 
         # Extract variables from the dictionary
-        expires_in = dictionary.get("expires_in")
+        expires_in = dictionary.get('expires_in')
 
         # Return an object of this model
         return cls(expires_in)

@@ -34,17 +34,17 @@ class CreateCreditCardPaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "installments" : "installments",
-        "statement_descriptor" : "statement_descriptor",
-        "card" : "card",
-        "retries" : "retries",
-        "update_subscription_card" : "update_subscription_card",
-        "card_id" : "card_id",
-        "card_token" : "card_token",
-        "recurrence" : "recurrence",
-        "extended_limit_enabled" : "extended_limit_enabled",
-        "extended_limit_code" : "extended_limit_code",
-        "capture" : "capture"
+        "installments":'installments',
+        "statement_descriptor":'statement_descriptor',
+        "card":'card',
+        "retries":'retries',
+        "update_subscription_card":'update_subscription_card',
+        "card_id":'card_id',
+        "card_token":'card_token',
+        "recurrence":'recurrence',
+        "extended_limit_enabled":'extended_limit_enabled',
+        "extended_limit_code":'extended_limit_code',
+        "capture":'capture'
     }
 
     def __init__(self,
@@ -94,15 +94,15 @@ class CreateCreditCardPaymentRequest(object):
 
         # Extract variables from the dictionary
         installments = dictionary.get("installments") if dictionary.get("installments") else 1
-        statement_descriptor = dictionary.get("statement_descriptor")
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        retries = dictionary.get("retries")
-        update_subscription_card = dictionary.get("update_subscription_card")
-        card_id = dictionary.get("card_id")
-        card_token = dictionary.get("card_token")
-        recurrence = dictionary.get("recurrence")
-        extended_limit_enabled = dictionary.get("extended_limit_enabled")
-        extended_limit_code = dictionary.get("extended_limit_code")
+        statement_descriptor = dictionary.get('statement_descriptor')
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        retries = dictionary.get('retries')
+        update_subscription_card = dictionary.get('update_subscription_card')
+        card_id = dictionary.get('card_id')
+        card_token = dictionary.get('card_token')
+        recurrence = dictionary.get('recurrence')
+        extended_limit_enabled = dictionary.get('extended_limit_enabled')
+        extended_limit_code = dictionary.get('extended_limit_code')
         capture = dictionary.get("capture") if dictionary.get("capture") else True
 
         # Return an object of this model

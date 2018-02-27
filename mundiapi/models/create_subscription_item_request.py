@@ -29,15 +29,15 @@ class CreateSubscriptionItemRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "description" : "description",
-        "pricing_scheme" : "pricing_scheme",
-        "id" : "id",
-        "plan_item_id" : "plan_item_id",
-        "discounts" : "discounts",
-        "name" : "name",
-        "cycles" : "cycles",
-        "quantity" : "quantity",
-        "minimum_price" : "minimum_price"
+        "description":'description',
+        "pricing_scheme":'pricing_scheme',
+        "id":'id',
+        "plan_item_id":'plan_item_id',
+        "discounts":'discounts',
+        "name":'name',
+        "cycles":'cycles',
+        "quantity":'quantity',
+        "minimum_price":'minimum_price'
     }
 
     def __init__(self,
@@ -82,19 +82,19 @@ class CreateSubscriptionItemRequest(object):
             return None
 
         # Extract variables from the dictionary
-        description = dictionary.get("description")
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        id = dictionary.get("id")
-        plan_item_id = dictionary.get("plan_item_id")
+        description = dictionary.get('description')
+        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        id = dictionary.get('id')
+        plan_item_id = dictionary.get('plan_item_id')
         discounts = None
-        if dictionary.get("discounts") != None:
+        if dictionary.get('discounts') != None:
             discounts = list()
-            for structure in dictionary.get("discounts"):
+            for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.create_discount_request.CreateDiscountRequest.from_dictionary(structure))
-        name = dictionary.get("name")
-        cycles = dictionary.get("cycles")
-        quantity = dictionary.get("quantity")
-        minimum_price = dictionary.get("minimum_price")
+        name = dictionary.get('name')
+        cycles = dictionary.get('cycles')
+        quantity = dictionary.get('quantity')
+        minimum_price = dictionary.get('minimum_price')
 
         # Return an object of this model
         return cls(description,

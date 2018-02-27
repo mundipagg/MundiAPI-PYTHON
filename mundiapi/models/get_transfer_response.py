@@ -27,13 +27,13 @@ class GetTransferResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "amount" : "amount",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "bank_account" : "bank_account",
-        "metadata" : "metadata"
+        "id":'id',
+        "amount":'amount',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "bank_account":'bank_account',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -74,13 +74,13 @@ class GetTransferResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        bank_account = mundiapi.models.get_bank_account_response.GetBankAccountResponse.from_dictionary(dictionary.get("bank_account")) if dictionary.get("bank_account") else None
-        metadata = dictionary.get("metadata")
+        bank_account = mundiapi.models.get_bank_account_response.GetBankAccountResponse.from_dictionary(dictionary.get('bank_account')) if dictionary.get('bank_account') else None
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(id,

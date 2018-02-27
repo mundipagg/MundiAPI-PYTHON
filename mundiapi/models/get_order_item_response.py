@@ -25,12 +25,12 @@ class GetOrderItemResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "Id",
-        "amount" : "amount",
-        "description" : "description",
-        "quantity" : "quantity",
-        "category" : "category",
-        "get_seller_response" : "GetSellerResponse"
+        "id":'Id',
+        "amount":'amount',
+        "description":'description',
+        "quantity":'quantity',
+        "category":'category',
+        "get_seller_response":'GetSellerResponse'
     }
 
     def __init__(self,
@@ -69,12 +69,12 @@ class GetOrderItemResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("Id")
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        quantity = dictionary.get("quantity")
-        category = dictionary.get("category")
-        get_seller_response = mundiapi.models.get_seller_response.GetSellerResponse.from_dictionary(dictionary.get("GetSellerResponse")) if dictionary.get("GetSellerResponse") else None
+        id = dictionary.get('Id')
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        quantity = dictionary.get('quantity')
+        category = dictionary.get('category')
+        get_seller_response = mundiapi.models.get_seller_response.GetSellerResponse.from_dictionary(dictionary.get('GetSellerResponse')) if dictionary.get('GetSellerResponse') else None
 
         # Return an object of this model
         return cls(id,

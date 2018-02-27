@@ -26,11 +26,11 @@ class CreateVoucherPaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "capture" : "capture",
-        "statement_descriptor" : "statement_descriptor",
-        "card_id" : "card_id",
-        "card_token" : "card_token",
-        "card" : "Card"
+        "capture":'capture',
+        "statement_descriptor":'statement_descriptor',
+        "card_id":'card_id',
+        "card_token":'card_token',
+        "card":'Card'
     }
 
     def __init__(self,
@@ -67,11 +67,11 @@ class CreateVoucherPaymentRequest(object):
             return None
 
         # Extract variables from the dictionary
-        capture = dictionary.get("capture")
-        statement_descriptor = dictionary.get("statement_descriptor")
-        card_id = dictionary.get("card_id")
-        card_token = dictionary.get("card_token")
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("Card")) if dictionary.get("Card") else None
+        capture = dictionary.get('capture')
+        statement_descriptor = dictionary.get('statement_descriptor')
+        card_id = dictionary.get('card_id')
+        card_token = dictionary.get('card_token')
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('Card')) if dictionary.get('Card') else None
 
         # Return an object of this model
         return cls(capture,

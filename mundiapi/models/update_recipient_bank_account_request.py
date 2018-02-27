@@ -20,7 +20,7 @@ class UpdateRecipientBankAccountRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "bank_account" : "bank_account"
+        "bank_account":'bank_account'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class UpdateRecipientBankAccountRequest(object):
             return None
 
         # Extract variables from the dictionary
-        bank_account = mundiapi.models.create_bank_account_request.CreateBankAccountRequest.from_dictionary(dictionary.get("bank_account")) if dictionary.get("bank_account") else None
+        bank_account = mundiapi.models.create_bank_account_request.CreateBankAccountRequest.from_dictionary(dictionary.get('bank_account')) if dictionary.get('bank_account') else None
 
         # Return an object of this model
         return cls(bank_account)

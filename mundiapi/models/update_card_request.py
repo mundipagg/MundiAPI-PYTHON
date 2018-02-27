@@ -26,12 +26,12 @@ class UpdateCardRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "holder_name" : "holder_name",
-        "exp_month" : "exp_month",
-        "exp_year" : "exp_year",
-        "billing_address_id" : "billing_address_id",
-        "billing_address" : "billing_address",
-        "metadata" : "metadata"
+        "holder_name":'holder_name',
+        "exp_month":'exp_month',
+        "exp_year":'exp_year',
+        "billing_address_id":'billing_address_id',
+        "billing_address":'billing_address',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -70,12 +70,12 @@ class UpdateCardRequest(object):
             return None
 
         # Extract variables from the dictionary
-        holder_name = dictionary.get("holder_name")
-        exp_month = dictionary.get("exp_month")
-        exp_year = dictionary.get("exp_year")
-        billing_address_id = dictionary.get("billing_address_id")
-        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        metadata = dictionary.get("metadata")
+        holder_name = dictionary.get('holder_name')
+        exp_month = dictionary.get('exp_month')
+        exp_year = dictionary.get('exp_year')
+        billing_address_id = dictionary.get('billing_address_id')
+        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(holder_name,

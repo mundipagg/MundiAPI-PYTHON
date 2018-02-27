@@ -23,10 +23,10 @@ class GetSetupResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "description" : "description",
-        "amount" : "amount",
-        "status" : "status"
+        "id":'id',
+        "description":'description',
+        "amount":'amount',
+        "status":'status'
     }
 
     def __init__(self,
@@ -61,10 +61,10 @@ class GetSetupResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        description = dictionary.get("description")
-        amount = dictionary.get("amount")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        description = dictionary.get('description')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
 
         # Return an object of this model
         return cls(id,

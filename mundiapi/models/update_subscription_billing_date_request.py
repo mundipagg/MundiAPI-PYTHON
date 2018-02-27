@@ -21,7 +21,7 @@ class UpdateSubscriptionBillingDateRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "next_billing_at" : "next_billing_at"
+        "next_billing_at":'next_billing_at'
     }
 
     def __init__(self,

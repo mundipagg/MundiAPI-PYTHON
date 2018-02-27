@@ -37,23 +37,23 @@ class GetAddressResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "street" : "street",
-        "number" : "number",
-        "complement" : "complement",
-        "zip_code" : "zip_code",
-        "neighborhood" : "neighborhood",
-        "city" : "city",
-        "state" : "state",
-        "country" : "country",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "customer" : "customer",
-        "metadata" : "metadata",
-        "line_1" : "line_1",
-        "line_2" : "line_2",
-        "deleted_at" : "deleted_at"
+        "id":'id',
+        "street":'street',
+        "number":'number',
+        "complement":'complement',
+        "zip_code":'zip_code',
+        "neighborhood":'neighborhood',
+        "city":'city',
+        "state":'state',
+        "country":'country',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "customer":'customer',
+        "metadata":'metadata',
+        "line_1":'line_1',
+        "line_2":'line_2',
+        "deleted_at":'deleted_at'
     }
 
     def __init__(self,
@@ -114,22 +114,22 @@ class GetAddressResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        street = dictionary.get("street")
-        number = dictionary.get("number")
-        complement = dictionary.get("complement")
-        zip_code = dictionary.get("zip_code")
-        neighborhood = dictionary.get("neighborhood")
-        city = dictionary.get("city")
-        state = dictionary.get("state")
-        country = dictionary.get("country")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        street = dictionary.get('street')
+        number = dictionary.get('number')
+        complement = dictionary.get('complement')
+        zip_code = dictionary.get('zip_code')
+        neighborhood = dictionary.get('neighborhood')
+        city = dictionary.get('city')
+        state = dictionary.get('state')
+        country = dictionary.get('country')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        metadata = dictionary.get("metadata")
-        line_1 = dictionary.get("line_1")
-        line_2 = dictionary.get("line_2")
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        metadata = dictionary.get('metadata')
+        line_1 = dictionary.get('line_1')
+        line_2 = dictionary.get('line_2')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

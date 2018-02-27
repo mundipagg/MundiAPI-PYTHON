@@ -21,8 +21,8 @@ class GetCheckoutBoletoPaymentResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "due_at" : "due_at",
-        "instructions" : "instructions"
+        "due_at":'due_at',
+        "instructions":'instructions'
     }
 
     def __init__(self,
@@ -54,7 +54,7 @@ class GetCheckoutBoletoPaymentResponse(object):
 
         # Extract variables from the dictionary
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
-        instructions = dictionary.get("instructions")
+        instructions = dictionary.get('instructions')
 
         # Return an object of this model
         return cls(due_at,

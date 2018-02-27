@@ -24,10 +24,10 @@ class GetPricingSchemeResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "price" : "price",
-        "scheme_type" : "scheme_type",
-        "price_brackets" : "price_brackets",
-        "minimum_price" : "minimum_price"
+        "price":'price',
+        "scheme_type":'scheme_type',
+        "price_brackets":'price_brackets',
+        "minimum_price":'minimum_price'
     }
 
     def __init__(self,
@@ -62,14 +62,14 @@ class GetPricingSchemeResponse(object):
             return None
 
         # Extract variables from the dictionary
-        price = dictionary.get("price")
-        scheme_type = dictionary.get("scheme_type")
+        price = dictionary.get('price')
+        scheme_type = dictionary.get('scheme_type')
         price_brackets = None
-        if dictionary.get("price_brackets") != None:
+        if dictionary.get('price_brackets') != None:
             price_brackets = list()
-            for structure in dictionary.get("price_brackets"):
+            for structure in dictionary.get('price_brackets'):
                 price_brackets.append(mundiapi.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(structure))
-        minimum_price = dictionary.get("minimum_price")
+        minimum_price = dictionary.get('minimum_price')
 
         # Return an object of this model
         return cls(price,

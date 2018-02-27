@@ -20,6 +20,7 @@ class GetInvoiceItemResponse(object):
         pricing_scheme (GetPricingSchemeResponse): TODO: type description
             here.
         price_bracket (GetPriceBracketResponse): TODO: type description here.
+        subscription_item_id (string): Subscription Item Id
         quantity (int): TODO: type description here.
         name (string): TODO: type description here.
 
@@ -27,12 +28,13 @@ class GetInvoiceItemResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "description" : "description",
-        "pricing_scheme" : "pricing_scheme",
-        "price_bracket" : "price_bracket",
-        "quantity" : "quantity",
-        "name" : "name"
+        "amount":'amount',
+        "description":'description',
+        "pricing_scheme":'pricing_scheme',
+        "price_bracket":'price_bracket',
+        "subscription_item_id":'subscription_item_id',
+        "quantity":'quantity',
+        "name":'name'
     }
 
     def __init__(self,
@@ -40,6 +42,7 @@ class GetInvoiceItemResponse(object):
                  description=None,
                  pricing_scheme=None,
                  price_bracket=None,
+                 subscription_item_id=None,
                  quantity=None,
                  name=None):
         """Constructor for the GetInvoiceItemResponse class"""
@@ -49,6 +52,7 @@ class GetInvoiceItemResponse(object):
         self.description = description
         self.pricing_scheme = pricing_scheme
         self.price_bracket = price_bracket
+        self.subscription_item_id = subscription_item_id
         self.quantity = quantity
         self.name = name
 
@@ -71,18 +75,20 @@ class GetInvoiceItemResponse(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        description = dictionary.get("description")
-        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        price_bracket = mundiapi.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(dictionary.get("price_bracket")) if dictionary.get("price_bracket") else None
-        quantity = dictionary.get("quantity")
-        name = dictionary.get("name")
+        amount = dictionary.get('amount')
+        description = dictionary.get('description')
+        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        price_bracket = mundiapi.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(dictionary.get('price_bracket')) if dictionary.get('price_bracket') else None
+        subscription_item_id = dictionary.get('subscription_item_id')
+        quantity = dictionary.get('quantity')
+        name = dictionary.get('name')
 
         # Return an object of this model
         return cls(amount,
                    description,
                    pricing_scheme,
                    price_bracket,
+                   subscription_item_id,
                    quantity,
                    name)
 

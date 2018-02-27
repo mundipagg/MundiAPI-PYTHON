@@ -26,13 +26,13 @@ class GetCardTokenResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "last_four_digits" : "last_four_digits",
-        "holder_name" : "holder_name",
-        "holder_document" : "holder_document",
-        "exp_month" : "exp_month",
-        "exp_year" : "exp_year",
-        "brand" : "brand",
-        "mtype" : "type"
+        "last_four_digits":'last_four_digits',
+        "holder_name":'holder_name',
+        "holder_document":'holder_document',
+        "exp_month":'exp_month',
+        "exp_year":'exp_year',
+        "brand":'brand',
+        "mtype":'type'
     }
 
     def __init__(self,
@@ -73,13 +73,13 @@ class GetCardTokenResponse(object):
             return None
 
         # Extract variables from the dictionary
-        last_four_digits = dictionary.get("last_four_digits")
-        holder_name = dictionary.get("holder_name")
-        holder_document = dictionary.get("holder_document")
-        exp_month = dictionary.get("exp_month")
-        exp_year = dictionary.get("exp_year")
-        brand = dictionary.get("brand")
-        mtype = dictionary.get("type")
+        last_four_digits = dictionary.get('last_four_digits')
+        holder_name = dictionary.get('holder_name')
+        holder_document = dictionary.get('holder_document')
+        exp_month = dictionary.get('exp_month')
+        exp_year = dictionary.get('exp_year')
+        brand = dictionary.get('brand')
+        mtype = dictionary.get('type')
 
         # Return an object of this model
         return cls(last_four_digits,

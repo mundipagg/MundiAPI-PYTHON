@@ -20,7 +20,7 @@ class UpdateChargeDueDateRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "due_at" : "due_at"
+        "due_at":'due_at'
     }
 
     def __init__(self,

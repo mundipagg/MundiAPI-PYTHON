@@ -45,24 +45,24 @@ class GetOrderResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "code" : "code",
-        "currency" : "currency",
-        "items" : "items",
-        "customer" : "customer",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "charges" : "charges",
-        "invoice_url" : "invoice_url",
-        "shipping" : "shipping",
-        "metadata" : "metadata",
-        "closed" : "closed",
-        "checkouts" : "checkouts",
-        "ip" : "ip",
-        "session_id" : "session_id",
-        "location" : "location",
-        "device" : "device"
+        "id":'id',
+        "code":'code',
+        "currency":'currency',
+        "items":'items',
+        "customer":'customer',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "charges":'charges',
+        "invoice_url":'invoice_url',
+        "shipping":'shipping',
+        "metadata":'metadata',
+        "closed":'closed',
+        "checkouts":'checkouts',
+        "ip":'ip',
+        "session_id":'session_id',
+        "location":'location',
+        "device":'device'
     }
 
     def __init__(self,
@@ -125,36 +125,36 @@ class GetOrderResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        code = dictionary.get("code")
-        currency = dictionary.get("currency")
+        id = dictionary.get('id')
+        code = dictionary.get('code')
+        currency = dictionary.get('currency')
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_order_item_response.GetOrderItemResponse.from_dictionary(structure))
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        status = dictionary.get("status")
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         charges = None
-        if dictionary.get("charges") != None:
+        if dictionary.get('charges') != None:
             charges = list()
-            for structure in dictionary.get("charges"):
+            for structure in dictionary.get('charges'):
                 charges.append(mundiapi.models.get_charge_response.GetChargeResponse.from_dictionary(structure))
-        invoice_url = dictionary.get("invoice_url")
-        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
-        metadata = dictionary.get("metadata")
-        closed = dictionary.get("closed")
+        invoice_url = dictionary.get('invoice_url')
+        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        metadata = dictionary.get('metadata')
+        closed = dictionary.get('closed')
         checkouts = None
-        if dictionary.get("checkouts") != None:
+        if dictionary.get('checkouts') != None:
             checkouts = list()
-            for structure in dictionary.get("checkouts"):
+            for structure in dictionary.get('checkouts'):
                 checkouts.append(mundiapi.models.get_checkout_payment_response.GetCheckoutPaymentResponse.from_dictionary(structure))
-        ip = dictionary.get("ip")
-        session_id = dictionary.get("session_id")
-        location = mundiapi.models.get_location_response.GetLocationResponse.from_dictionary(dictionary.get("location")) if dictionary.get("location") else None
-        device = mundiapi.models.get_device_response.GetDeviceResponse.from_dictionary(dictionary.get("device")) if dictionary.get("device") else None
+        ip = dictionary.get('ip')
+        session_id = dictionary.get('session_id')
+        location = mundiapi.models.get_location_response.GetLocationResponse.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
+        device = mundiapi.models.get_device_response.GetDeviceResponse.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
 
         # Return an object of this model
         return cls(id,

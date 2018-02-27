@@ -32,17 +32,17 @@ class CreateAddressRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "street" : "street",
-        "number" : "number",
-        "zip_code" : "zip_code",
-        "neighborhood" : "neighborhood",
-        "city" : "city",
-        "state" : "state",
-        "country" : "country",
-        "complement" : "complement",
-        "metadata" : "metadata",
-        "line_1" : "line_1",
-        "line_2" : "line_2"
+        "street":'street',
+        "number":'number',
+        "zip_code":'zip_code',
+        "neighborhood":'neighborhood',
+        "city":'city',
+        "state":'state',
+        "country":'country',
+        "complement":'complement',
+        "metadata":'metadata',
+        "line_1":'line_1',
+        "line_2":'line_2'
     }
 
     def __init__(self,
@@ -91,17 +91,17 @@ class CreateAddressRequest(object):
             return None
 
         # Extract variables from the dictionary
-        street = dictionary.get("street")
-        number = dictionary.get("number")
-        zip_code = dictionary.get("zip_code")
-        neighborhood = dictionary.get("neighborhood")
-        city = dictionary.get("city")
-        state = dictionary.get("state")
-        country = dictionary.get("country")
-        complement = dictionary.get("complement")
-        metadata = dictionary.get("metadata")
-        line_1 = dictionary.get("line_1")
-        line_2 = dictionary.get("line_2")
+        street = dictionary.get('street')
+        number = dictionary.get('number')
+        zip_code = dictionary.get('zip_code')
+        neighborhood = dictionary.get('neighborhood')
+        city = dictionary.get('city')
+        state = dictionary.get('state')
+        country = dictionary.get('country')
+        complement = dictionary.get('complement')
+        metadata = dictionary.get('metadata')
+        line_1 = dictionary.get('line_1')
+        line_2 = dictionary.get('line_2')
 
         # Return an object of this model
         return cls(street,

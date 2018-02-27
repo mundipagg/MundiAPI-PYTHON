@@ -22,9 +22,9 @@ class UpdateSubscriptionPaymentMethodRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "payment_method" : "payment_method",
-        "card_id" : "card_id",
-        "card" : "card"
+        "payment_method":'payment_method',
+        "card_id":'card_id',
+        "card":'card'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class UpdateSubscriptionPaymentMethodRequest(object):
             return None
 
         # Extract variables from the dictionary
-        payment_method = dictionary.get("payment_method")
-        card_id = dictionary.get("card_id")
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        payment_method = dictionary.get('payment_method')
+        card_id = dictionary.get('card_id')
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
 
         # Return an object of this model
         return cls(payment_method,

@@ -23,10 +23,10 @@ class CreatePriceBracketRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "start_quantity" : "start_quantity",
-        "price" : "price",
-        "end_quantity" : "end_quantity",
-        "overage_price" : "overage_price"
+        "start_quantity":'start_quantity',
+        "price":'price',
+        "end_quantity":'end_quantity',
+        "overage_price":'overage_price'
     }
 
     def __init__(self,
@@ -61,10 +61,10 @@ class CreatePriceBracketRequest(object):
             return None
 
         # Extract variables from the dictionary
-        start_quantity = dictionary.get("start_quantity")
-        price = dictionary.get("price")
-        end_quantity = dictionary.get("end_quantity")
-        overage_price = dictionary.get("overage_price")
+        start_quantity = dictionary.get('start_quantity')
+        price = dictionary.get('price')
+        end_quantity = dictionary.get('end_quantity')
+        overage_price = dictionary.get('overage_price')
 
         # Return an object of this model
         return cls(start_quantity,

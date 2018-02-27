@@ -22,9 +22,9 @@ class GetSplitResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "mtype" : "type",
-        "amount" : "amount",
-        "recipient" : "recipient"
+        "mtype":'type',
+        "amount":'amount',
+        "recipient":'recipient'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class GetSplitResponse(object):
             return None
 
         # Extract variables from the dictionary
-        mtype = dictionary.get("type")
-        amount = dictionary.get("amount")
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get("recipient")) if dictionary.get("recipient") else None
+        mtype = dictionary.get('type')
+        amount = dictionary.get('amount')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(mtype,

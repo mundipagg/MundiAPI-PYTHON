@@ -30,15 +30,15 @@ class CreateCustomerRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "email" : "email",
-        "document" : "document",
-        "mtype" : "type",
-        "address" : "address",
-        "metadata" : "metadata",
-        "phones" : "phones",
-        "code" : "code",
-        "gender" : "gender"
+        "name":'name',
+        "email":'email',
+        "document":'document',
+        "mtype":'type',
+        "address":'address',
+        "metadata":'metadata',
+        "phones":'phones',
+        "code":'code',
+        "gender":'gender'
     }
 
     def __init__(self,
@@ -83,15 +83,15 @@ class CreateCustomerRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        email = dictionary.get("email")
-        document = dictionary.get("document")
-        mtype = dictionary.get("type")
-        address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
-        metadata = dictionary.get("metadata")
-        phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get("phones")) if dictionary.get("phones") else None
-        code = dictionary.get("code")
-        gender = dictionary.get("gender")
+        name = dictionary.get('name')
+        email = dictionary.get('email')
+        document = dictionary.get('document')
+        mtype = dictionary.get('type')
+        address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        metadata = dictionary.get('metadata')
+        phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
+        code = dictionary.get('code')
+        gender = dictionary.get('gender')
 
         # Return an object of this model
         return cls(name,

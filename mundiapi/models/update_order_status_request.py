@@ -20,7 +20,7 @@ class UpdateOrderStatusRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "status" : "status"
+        "status":'status'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class UpdateOrderStatusRequest(object):
             return None
 
         # Extract variables from the dictionary
-        status = dictionary.get("status")
+        status = dictionary.get('status')
 
         # Return an object of this model
         return cls(status)

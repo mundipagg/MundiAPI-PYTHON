@@ -21,8 +21,8 @@ class GetPhonesResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "home_phone" : "home_phone",
-        "mobile_phone" : "mobile_phone"
+        "home_phone":'home_phone',
+        "mobile_phone":'mobile_phone'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class GetPhonesResponse(object):
             return None
 
         # Extract variables from the dictionary
-        home_phone = mundiapi.models.get_phone_response.GetPhoneResponse.from_dictionary(dictionary.get("home_phone")) if dictionary.get("home_phone") else None
-        mobile_phone = mundiapi.models.get_phone_response.GetPhoneResponse.from_dictionary(dictionary.get("mobile_phone")) if dictionary.get("mobile_phone") else None
+        home_phone = mundiapi.models.get_phone_response.GetPhoneResponse.from_dictionary(dictionary.get('home_phone')) if dictionary.get('home_phone') else None
+        mobile_phone = mundiapi.models.get_phone_response.GetPhoneResponse.from_dictionary(dictionary.get('mobile_phone')) if dictionary.get('mobile_phone') else None
 
         # Return an object of this model
         return cls(home_phone,

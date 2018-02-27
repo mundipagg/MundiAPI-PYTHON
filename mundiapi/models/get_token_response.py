@@ -25,11 +25,11 @@ class GetTokenResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "mtype" : "type",
-        "created_at" : "created_at",
-        "expires_at" : "expires_at",
-        "card" : "card"
+        "id":'id',
+        "mtype":'type',
+        "created_at":'created_at',
+        "expires_at":'expires_at',
+        "card":'card'
     }
 
     def __init__(self,
@@ -66,11 +66,11 @@ class GetTokenResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        mtype = dictionary.get("type")
+        id = dictionary.get('id')
+        mtype = dictionary.get('type')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        expires_at = dictionary.get("expires_at")
-        card = mundiapi.models.get_card_token_response.GetCardTokenResponse.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        expires_at = dictionary.get('expires_at')
+        card = mundiapi.models.get_card_token_response.GetCardTokenResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
 
         # Return an object of this model
         return cls(id,

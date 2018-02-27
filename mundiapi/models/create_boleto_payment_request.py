@@ -29,13 +29,13 @@ class CreateBoletoPaymentRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "retries" : "retries",
-        "bank" : "bank",
-        "instructions" : "instructions",
-        "due_at" : "due_at",
-        "billing_address" : "billing_address",
-        "billing_address_id" : "billing_address_id",
-        "nosso_numero" : "nosso_numero"
+        "retries":'retries',
+        "bank":'bank',
+        "instructions":'instructions',
+        "due_at":'due_at',
+        "billing_address":'billing_address',
+        "billing_address_id":'billing_address_id',
+        "nosso_numero":'nosso_numero'
     }
 
     def __init__(self,
@@ -76,13 +76,13 @@ class CreateBoletoPaymentRequest(object):
             return None
 
         # Extract variables from the dictionary
-        retries = dictionary.get("retries")
-        bank = dictionary.get("bank")
-        instructions = dictionary.get("instructions")
+        retries = dictionary.get('retries')
+        bank = dictionary.get('bank')
+        instructions = dictionary.get('instructions')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
-        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        billing_address_id = dictionary.get("billing_address_id")
-        nosso_numero = dictionary.get("nosso_numero")
+        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        billing_address_id = dictionary.get('billing_address_id')
+        nosso_numero = dictionary.get('nosso_numero')
 
         # Return an object of this model
         return cls(retries,

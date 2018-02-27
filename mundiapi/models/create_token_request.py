@@ -21,8 +21,8 @@ class CreateTokenRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "mtype" : "type",
-        "card" : "card"
+        "mtype":'type',
+        "card":'card'
     }
 
     def __init__(self,
@@ -54,7 +54,7 @@ class CreateTokenRequest(object):
 
         # Extract variables from the dictionary
         mtype = dictionary.get("type") if dictionary.get("type") else 'card'
-        card = mundiapi.models.create_card_token_request.CreateCardTokenRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
+        card = mundiapi.models.create_card_token_request.CreateCardTokenRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
 
         # Return an object of this model
         return cls(mtype,

@@ -22,9 +22,9 @@ class CreateSplitRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "mtype" : "type",
-        "amount" : "amount",
-        "recipient_id" : "recipient_id"
+        "mtype":'type',
+        "amount":'amount',
+        "recipient_id":'recipient_id'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class CreateSplitRequest(object):
             return None
 
         # Extract variables from the dictionary
-        mtype = dictionary.get("type")
-        amount = dictionary.get("amount")
-        recipient_id = dictionary.get("recipient_id")
+        mtype = dictionary.get('type')
+        amount = dictionary.get('amount')
+        recipient_id = dictionary.get('recipient_id')
 
         # Return an object of this model
         return cls(mtype,

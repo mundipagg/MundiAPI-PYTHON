@@ -10,6 +10,7 @@ import mundiapi.models.get_customer_response
 import mundiapi.models.get_address_response
 import mundiapi.models.get_checkout_card_payment_response
 import mundiapi.models.get_checkout_boleto_payment_response
+import mundiapi.models.get_shipping_response
 
 class GetCheckoutPaymentResponse(object):
 
@@ -38,30 +39,43 @@ class GetCheckoutPaymentResponse(object):
         credit_card (GetCheckoutCardPaymentResponse): Configurações de cartão
             de crédito
         boleto (GetCheckoutBoletoPaymentResponse): Configurações de boleto
+        billing_address_editable (bool): Indica se o billing address poderá
+            ser editado
+        shipping (GetShippingResponse): Configurações  de entrega
+        shippable (bool): Indica se possui entrega
+        currency (string): Moeda
         amount (int): Valor em centavos
         canceled_at (datetime): Data de cancelamento
+        closed_at (datetime): Data de fechamento
+        expires_at (datetime): Data de expiração
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "default_payment_method" : "default_payment_method",
-        "success_url" : "success_url",
-        "payment_url" : "payment_url",
-        "gateway_affiliation_id" : "gateway_affiliation_id",
-        "accepted_payment_methods" : "accepted_payment_methods",
-        "status" : "status",
-        "skip_checkout_success_page" : "skip_checkout_success_page",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "customer_editable" : "customer_editable",
-        "customer" : "customer",
-        "billingaddress" : "billingaddress",
-        "credit_card" : "credit_Card",
-        "boleto" : "boleto",
-        "amount" : "amount",
-        "canceled_at" : "canceled_at"
+        "id":'id',
+        "default_payment_method":'default_payment_method',
+        "success_url":'success_url',
+        "payment_url":'payment_url',
+        "gateway_affiliation_id":'gateway_affiliation_id',
+        "accepted_payment_methods":'accepted_payment_methods',
+        "status":'status',
+        "skip_checkout_success_page":'skip_checkout_success_page',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "customer_editable":'customer_editable',
+        "customer":'customer',
+        "billingaddress":'billingaddress',
+        "credit_card":'credit_Card',
+        "boleto":'boleto',
+        "billing_address_editable":'billing_address_editable',
+        "shipping":'shipping',
+        "shippable":'shippable',
+        "currency":'currency',
+        "amount":'amount',
+        "canceled_at":'canceled_at',
+        "closed_at":'closed_at',
+        "expires_at":'expires_at'
     }
 
     def __init__(self,
@@ -80,8 +94,14 @@ class GetCheckoutPaymentResponse(object):
                  billingaddress=None,
                  credit_card=None,
                  boleto=None,
+                 billing_address_editable=None,
+                 shipping=None,
+                 shippable=None,
+                 currency=None,
                  amount=None,
-                 canceled_at=None):
+                 canceled_at=None,
+                 closed_at=None,
+                 expires_at=None):
         """Constructor for the GetCheckoutPaymentResponse class"""
 
         # Initialize members of the class
@@ -100,8 +120,14 @@ class GetCheckoutPaymentResponse(object):
         self.billingaddress = billingaddress
         self.credit_card = credit_card
         self.boleto = boleto
+        self.billing_address_editable = billing_address_editable
+        self.shipping = shipping
+        self.shippable = shippable
+        self.currency = currency
         self.amount = amount
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
+        self.closed_at = APIHelper.RFC3339DateTime(closed_at) if closed_at else None
+        self.expires_at = APIHelper.RFC3339DateTime(expires_at) if expires_at else None
 
 
     @classmethod
@@ -122,23 +148,29 @@ class GetCheckoutPaymentResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        default_payment_method = dictionary.get("default_payment_method")
-        success_url = dictionary.get("success_url")
-        payment_url = dictionary.get("payment_url")
-        gateway_affiliation_id = dictionary.get("gateway_affiliation_id")
-        accepted_payment_methods = dictionary.get("accepted_payment_methods")
-        status = dictionary.get("status")
-        skip_checkout_success_page = dictionary.get("skip_checkout_success_page")
+        id = dictionary.get('id')
+        default_payment_method = dictionary.get('default_payment_method')
+        success_url = dictionary.get('success_url')
+        payment_url = dictionary.get('payment_url')
+        gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
+        accepted_payment_methods = dictionary.get('accepted_payment_methods')
+        status = dictionary.get('status')
+        skip_checkout_success_page = dictionary.get('skip_checkout_success_page')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        customer_editable = dictionary.get("customer_editable")
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        billingaddress = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get("billingaddress")) if dictionary.get("billingaddress") else None
-        credit_card = mundiapi.models.get_checkout_card_payment_response.GetCheckoutCardPaymentResponse.from_dictionary(dictionary.get("credit_Card")) if dictionary.get("credit_Card") else None
-        boleto = mundiapi.models.get_checkout_boleto_payment_response.GetCheckoutBoletoPaymentResponse.from_dictionary(dictionary.get("boleto")) if dictionary.get("boleto") else None
-        amount = dictionary.get("amount")
+        customer_editable = dictionary.get('customer_editable')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        billingaddress = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('billingaddress')) if dictionary.get('billingaddress') else None
+        credit_card = mundiapi.models.get_checkout_card_payment_response.GetCheckoutCardPaymentResponse.from_dictionary(dictionary.get('credit_Card')) if dictionary.get('credit_Card') else None
+        boleto = mundiapi.models.get_checkout_boleto_payment_response.GetCheckoutBoletoPaymentResponse.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
+        billing_address_editable = dictionary.get('billing_address_editable')
+        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        shippable = dictionary.get('shippable')
+        currency = dictionary.get('currency')
+        amount = dictionary.get('amount')
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
+        closed_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("closed_at")).datetime if dictionary.get("closed_at") else None
+        expires_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("expires_at")).datetime if dictionary.get("expires_at") else None
 
         # Return an object of this model
         return cls(id,
@@ -156,7 +188,13 @@ class GetCheckoutPaymentResponse(object):
                    billingaddress,
                    credit_card,
                    boleto,
+                   billing_address_editable,
+                   shipping,
+                   shippable,
+                   currency,
                    amount,
-                   canceled_at)
+                   canceled_at,
+                   closed_at,
+                   expires_at)
 
 

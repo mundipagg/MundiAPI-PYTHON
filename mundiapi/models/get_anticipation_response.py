@@ -30,16 +30,16 @@ class GetAnticipationResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "requested_amount" : "requested_amount",
-        "approved_amount" : "approved_amount",
-        "recipient" : "recipient",
-        "pgid" : "pgid",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "payment_date" : "payment_date",
-        "status" : "status",
-        "timeframe" : "timeframe"
+        "id":'id',
+        "requested_amount":'requested_amount',
+        "approved_amount":'approved_amount',
+        "recipient":'recipient',
+        "pgid":'pgid',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "payment_date":'payment_date',
+        "status":'status',
+        "timeframe":'timeframe'
     }
 
     def __init__(self,
@@ -86,16 +86,16 @@ class GetAnticipationResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        requested_amount = dictionary.get("requested_amount")
-        approved_amount = dictionary.get("approved_amount")
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get("recipient")) if dictionary.get("recipient") else None
-        pgid = dictionary.get("pgid")
+        id = dictionary.get('id')
+        requested_amount = dictionary.get('requested_amount')
+        approved_amount = dictionary.get('approved_amount')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
+        pgid = dictionary.get('pgid')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         payment_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("payment_date")).datetime if dictionary.get("payment_date") else None
-        status = dictionary.get("status")
-        timeframe = dictionary.get("timeframe")
+        status = dictionary.get('status')
+        timeframe = dictionary.get('timeframe')
 
         # Return an object of this model
         return cls(id,

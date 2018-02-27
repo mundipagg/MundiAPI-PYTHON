@@ -26,13 +26,13 @@ class UpdateSubscriptionItemRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "description" : "description",
-        "status" : "status",
-        "pricing_scheme" : "pricing_scheme",
-        "name" : "name",
-        "cycles" : "cycles",
-        "quantity" : "quantity",
-        "minimum_price" : "minimum_price"
+        "description":'description',
+        "status":'status',
+        "pricing_scheme":'pricing_scheme',
+        "name":'name',
+        "cycles":'cycles',
+        "quantity":'quantity',
+        "minimum_price":'minimum_price'
     }
 
     def __init__(self,
@@ -73,13 +73,13 @@ class UpdateSubscriptionItemRequest(object):
             return None
 
         # Extract variables from the dictionary
-        description = dictionary.get("description")
-        status = dictionary.get("status")
-        pricing_scheme = mundiapi.models.update_pricing_scheme_request.UpdatePricingSchemeRequest.from_dictionary(dictionary.get("pricing_scheme")) if dictionary.get("pricing_scheme") else None
-        name = dictionary.get("name")
-        cycles = dictionary.get("cycles")
-        quantity = dictionary.get("quantity")
-        minimum_price = dictionary.get("minimum_price")
+        description = dictionary.get('description')
+        status = dictionary.get('status')
+        pricing_scheme = mundiapi.models.update_pricing_scheme_request.UpdatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        name = dictionary.get('name')
+        cycles = dictionary.get('cycles')
+        quantity = dictionary.get('quantity')
+        minimum_price = dictionary.get('minimum_price')
 
         # Return an object of this model
         return cls(description,

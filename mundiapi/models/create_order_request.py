@@ -38,19 +38,19 @@ class CreateOrderRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "items" : "items",
-        "customer" : "customer",
-        "payments" : "payments",
-        "code" : "code",
-        "customer_id" : "customer_id",
-        "shipping" : "shipping",
-        "metadata" : "metadata",
-        "closed" : "closed",
-        "antifraud_enabled" : "antifraud_enabled",
-        "ip" : "ip",
-        "session_id" : "session_id",
-        "location" : "location",
-        "device" : "device"
+        "items":'items',
+        "customer":'customer',
+        "payments":'payments',
+        "code":'code',
+        "customer_id":'customer_id',
+        "shipping":'shipping',
+        "metadata":'metadata',
+        "closed":'closed',
+        "antifraud_enabled":'antifraud_enabled',
+        "ip":'ip',
+        "session_id":'session_id',
+        "location":'location',
+        "device":'device'
     }
 
     def __init__(self,
@@ -104,26 +104,26 @@ class CreateOrderRequest(object):
 
         # Extract variables from the dictionary
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.create_order_item_request.CreateOrderItemRequest.from_dictionary(structure))
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
+        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         payments = None
-        if dictionary.get("payments") != None:
+        if dictionary.get('payments') != None:
             payments = list()
-            for structure in dictionary.get("payments"):
+            for structure in dictionary.get('payments'):
                 payments.append(mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(structure))
-        code = dictionary.get("code")
-        customer_id = dictionary.get("customer_id")
-        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get("shipping")) if dictionary.get("shipping") else None
-        metadata = dictionary.get("metadata")
+        code = dictionary.get('code')
+        customer_id = dictionary.get('customer_id')
+        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        metadata = dictionary.get('metadata')
         closed = dictionary.get("closed") if dictionary.get("closed") else True
-        antifraud_enabled = dictionary.get("antifraud_enabled")
-        ip = dictionary.get("ip")
-        session_id = dictionary.get("session_id")
-        location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get("location")) if dictionary.get("location") else None
-        device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get("device")) if dictionary.get("device") else None
+        antifraud_enabled = dictionary.get('antifraud_enabled')
+        ip = dictionary.get('ip')
+        session_id = dictionary.get('session_id')
+        location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
+        device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
 
         # Return an object of this model
         return cls(items,

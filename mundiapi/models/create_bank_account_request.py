@@ -29,16 +29,16 @@ class CreateBankAccountRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "holder_name" : "holder_name",
-        "holder_type" : "holder_type",
-        "holder_document" : "holder_document",
-        "bank" : "bank",
-        "branch_number" : "branch_number",
-        "branch_check_digit" : "branch_check_digit",
-        "account_number" : "account_number",
-        "account_check_digit" : "account_check_digit",
-        "mtype" : "type",
-        "metadata" : "metadata"
+        "holder_name":'holder_name',
+        "holder_type":'holder_type',
+        "holder_document":'holder_document',
+        "bank":'bank',
+        "branch_number":'branch_number',
+        "branch_check_digit":'branch_check_digit',
+        "account_number":'account_number',
+        "account_check_digit":'account_check_digit',
+        "mtype":'type',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -85,16 +85,16 @@ class CreateBankAccountRequest(object):
             return None
 
         # Extract variables from the dictionary
-        holder_name = dictionary.get("holder_name")
-        holder_type = dictionary.get("holder_type")
-        holder_document = dictionary.get("holder_document")
-        bank = dictionary.get("bank")
-        branch_number = dictionary.get("branch_number")
-        branch_check_digit = dictionary.get("branch_check_digit")
-        account_number = dictionary.get("account_number")
-        account_check_digit = dictionary.get("account_check_digit")
-        mtype = dictionary.get("type")
-        metadata = dictionary.get("metadata")
+        holder_name = dictionary.get('holder_name')
+        holder_type = dictionary.get('holder_type')
+        holder_document = dictionary.get('holder_document')
+        bank = dictionary.get('bank')
+        branch_number = dictionary.get('branch_number')
+        branch_check_digit = dictionary.get('branch_check_digit')
+        account_number = dictionary.get('account_number')
+        account_check_digit = dictionary.get('account_check_digit')
+        mtype = dictionary.get('type')
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(holder_name,

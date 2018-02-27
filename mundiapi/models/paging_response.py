@@ -22,9 +22,9 @@ class PagingResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "total" : "total",
-        "previous" : "previous",
-        "next" : "next"
+        "total":'total',
+        "previous":'previous',
+        "next":'next'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class PagingResponse(object):
             return None
 
         # Extract variables from the dictionary
-        total = dictionary.get("total")
-        previous = dictionary.get("previous")
-        next = dictionary.get("next")
+        total = dictionary.get('total')
+        previous = dictionary.get('previous')
+        next = dictionary.get('next')
 
         # Return an object of this model
         return cls(total,

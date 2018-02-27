@@ -24,11 +24,11 @@ class GetGatewayRecipientResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "gateway" : "gateway",
-        "status" : "status",
-        "pgid" : "pgid",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at"
+        "gateway":'gateway',
+        "status":'status',
+        "pgid":'pgid',
+        "created_at":'created_at',
+        "updated_at":'updated_at'
     }
 
     def __init__(self,
@@ -65,11 +65,11 @@ class GetGatewayRecipientResponse(object):
             return None
 
         # Extract variables from the dictionary
-        gateway = dictionary.get("gateway")
-        status = dictionary.get("status")
-        pgid = dictionary.get("pgid")
-        created_at = dictionary.get("created_at")
-        updated_at = dictionary.get("updated_at")
+        gateway = dictionary.get('gateway')
+        status = dictionary.get('status')
+        pgid = dictionary.get('pgid')
+        created_at = dictionary.get('created_at')
+        updated_at = dictionary.get('updated_at')
 
         # Return an object of this model
         return cls(gateway,

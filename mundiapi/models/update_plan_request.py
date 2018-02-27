@@ -37,21 +37,21 @@ class UpdatePlanRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "description" : "description",
-        "installments" : "installments",
-        "statement_descriptor" : "statement_descriptor",
-        "currency" : "currency",
-        "interval" : "interval",
-        "interval_count" : "interval_count",
-        "payment_methods" : "payment_methods",
-        "billing_type" : "billing_type",
-        "status" : "status",
-        "shippable" : "shippable",
-        "billing_days" : "billing_days",
-        "metadata" : "metadata",
-        "minimum_price" : "minimum_price",
-        "trial_period_days" : "trial_period_days"
+        "name":'name',
+        "description":'description',
+        "installments":'installments',
+        "statement_descriptor":'statement_descriptor',
+        "currency":'currency',
+        "interval":'interval',
+        "interval_count":'interval_count',
+        "payment_methods":'payment_methods',
+        "billing_type":'billing_type',
+        "status":'status',
+        "shippable":'shippable',
+        "billing_days":'billing_days',
+        "metadata":'metadata',
+        "minimum_price":'minimum_price',
+        "trial_period_days":'trial_period_days'
     }
 
     def __init__(self,
@@ -108,21 +108,21 @@ class UpdatePlanRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        description = dictionary.get("description")
-        installments = dictionary.get("installments")
-        statement_descriptor = dictionary.get("statement_descriptor")
-        currency = dictionary.get("currency")
-        interval = dictionary.get("interval")
-        interval_count = dictionary.get("interval_count")
-        payment_methods = dictionary.get("payment_methods")
-        billing_type = dictionary.get("billing_type")
-        status = dictionary.get("status")
-        shippable = dictionary.get("shippable")
-        billing_days = dictionary.get("billing_days")
-        metadata = dictionary.get("metadata")
-        minimum_price = dictionary.get("minimum_price")
-        trial_period_days = dictionary.get("trial_period_days")
+        name = dictionary.get('name')
+        description = dictionary.get('description')
+        installments = dictionary.get('installments')
+        statement_descriptor = dictionary.get('statement_descriptor')
+        currency = dictionary.get('currency')
+        interval = dictionary.get('interval')
+        interval_count = dictionary.get('interval_count')
+        payment_methods = dictionary.get('payment_methods')
+        billing_type = dictionary.get('billing_type')
+        status = dictionary.get('status')
+        shippable = dictionary.get('shippable')
+        billing_days = dictionary.get('billing_days')
+        metadata = dictionary.get('metadata')
+        minimum_price = dictionary.get('minimum_price')
+        trial_period_days = dictionary.get('trial_period_days')
 
         # Return an object of this model
         return cls(name,

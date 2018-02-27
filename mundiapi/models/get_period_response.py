@@ -25,11 +25,11 @@ class GetPeriodResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "start_at" : "start_at",
-        "end_at" : "end_at",
-        "id" : "id",
-        "billing_at" : "billing_at",
-        "subscription" : "subscription"
+        "start_at":'start_at',
+        "end_at":'end_at',
+        "id":'id',
+        "billing_at":'billing_at',
+        "subscription":'subscription'
     }
 
     def __init__(self,
@@ -68,9 +68,9 @@ class GetPeriodResponse(object):
         # Extract variables from the dictionary
         start_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("start_at")).datetime if dictionary.get("start_at") else None
         end_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("end_at")).datetime if dictionary.get("end_at") else None
-        id = dictionary.get("id")
+        id = dictionary.get('id')
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
-        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get("subscription")) if dictionary.get("subscription") else None
+        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
 
         # Return an object of this model
         return cls(start_at,

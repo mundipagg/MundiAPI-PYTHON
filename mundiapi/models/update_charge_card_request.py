@@ -24,10 +24,10 @@ class UpdateChargeCardRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "update_subscription" : "update_subscription",
-        "card_id" : "card_id",
-        "card" : "card",
-        "recurrence" : "recurrence"
+        "update_subscription":'update_subscription',
+        "card_id":'card_id',
+        "card":'card',
+        "recurrence":'recurrence'
     }
 
     def __init__(self,
@@ -62,10 +62,10 @@ class UpdateChargeCardRequest(object):
             return None
 
         # Extract variables from the dictionary
-        update_subscription = dictionary.get("update_subscription")
-        card_id = dictionary.get("card_id")
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get("card")) if dictionary.get("card") else None
-        recurrence = dictionary.get("recurrence")
+        update_subscription = dictionary.get('update_subscription')
+        card_id = dictionary.get('card_id')
+        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        recurrence = dictionary.get('recurrence')
 
         # Return an object of this model
         return cls(update_subscription,

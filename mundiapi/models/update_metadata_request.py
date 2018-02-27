@@ -20,7 +20,7 @@ class UpdateMetadataRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "metadata" : "metadata"
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -49,7 +49,7 @@ class UpdateMetadataRequest(object):
             return None
 
         # Extract variables from the dictionary
-        metadata = dictionary.get("metadata")
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(metadata)

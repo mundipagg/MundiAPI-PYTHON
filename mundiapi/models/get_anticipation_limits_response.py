@@ -21,8 +21,8 @@ class GetAnticipationLimitsResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "max" : "max",
-        "min" : "min"
+        "max":'max',
+        "min":'min'
     }
 
     def __init__(self,
@@ -53,8 +53,8 @@ class GetAnticipationLimitsResponse(object):
             return None
 
         # Extract variables from the dictionary
-        max = mundiapi.models.get_anticipation_limit_response.GetAnticipationLimitResponse.from_dictionary(dictionary.get("max")) if dictionary.get("max") else None
-        min = mundiapi.models.get_anticipation_limit_response.GetAnticipationLimitResponse.from_dictionary(dictionary.get("min")) if dictionary.get("min") else None
+        max = mundiapi.models.get_anticipation_limit_response.GetAnticipationLimitResponse.from_dictionary(dictionary.get('max')) if dictionary.get('max') else None
+        min = mundiapi.models.get_anticipation_limit_response.GetAnticipationLimitResponse.from_dictionary(dictionary.get('min')) if dictionary.get('min') else None
 
         # Return an object of this model
         return cls(max,

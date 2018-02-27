@@ -41,27 +41,27 @@ class GetPlanResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "name" : "name",
-        "description" : "description",
-        "url" : "url",
-        "statement_descriptor" : "statement_descriptor",
-        "interval" : "interval",
-        "interval_count" : "interval_count",
-        "billing_type" : "billing_type",
-        "payment_methods" : "payment_methods",
-        "installments" : "installments",
-        "status" : "status",
-        "currency" : "currency",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "items" : "items",
-        "billing_days" : "billing_days",
-        "shippable" : "shippable",
-        "metadata" : "metadata",
-        "trial_period_days" : "trial_period_days",
-        "minimum_price" : "minimum_price",
-        "deleted_at" : "deleted_at"
+        "id":'id',
+        "name":'name',
+        "description":'description',
+        "url":'url',
+        "statement_descriptor":'statement_descriptor',
+        "interval":'interval',
+        "interval_count":'interval_count',
+        "billing_type":'billing_type',
+        "payment_methods":'payment_methods',
+        "installments":'installments',
+        "status":'status',
+        "currency":'currency',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "items":'items',
+        "billing_days":'billing_days',
+        "shippable":'shippable',
+        "metadata":'metadata',
+        "trial_period_days":'trial_period_days',
+        "minimum_price":'minimum_price',
+        "deleted_at":'deleted_at'
     }
 
     def __init__(self,
@@ -130,30 +130,30 @@ class GetPlanResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        name = dictionary.get("name")
-        description = dictionary.get("description")
-        url = dictionary.get("url")
-        statement_descriptor = dictionary.get("statement_descriptor")
-        interval = dictionary.get("interval")
-        interval_count = dictionary.get("interval_count")
-        billing_type = dictionary.get("billing_type")
-        payment_methods = dictionary.get("payment_methods")
-        installments = dictionary.get("installments")
-        status = dictionary.get("status")
-        currency = dictionary.get("currency")
+        id = dictionary.get('id')
+        name = dictionary.get('name')
+        description = dictionary.get('description')
+        url = dictionary.get('url')
+        statement_descriptor = dictionary.get('statement_descriptor')
+        interval = dictionary.get('interval')
+        interval_count = dictionary.get('interval_count')
+        billing_type = dictionary.get('billing_type')
+        payment_methods = dictionary.get('payment_methods')
+        installments = dictionary.get('installments')
+        status = dictionary.get('status')
+        currency = dictionary.get('currency')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         items = None
-        if dictionary.get("items") != None:
+        if dictionary.get('items') != None:
             items = list()
-            for structure in dictionary.get("items"):
+            for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_plan_item_response.GetPlanItemResponse.from_dictionary(structure))
-        billing_days = dictionary.get("billing_days")
-        shippable = dictionary.get("shippable")
-        metadata = dictionary.get("metadata")
-        trial_period_days = dictionary.get("trial_period_days")
-        minimum_price = dictionary.get("minimum_price")
+        billing_days = dictionary.get('billing_days')
+        shippable = dictionary.get('shippable')
+        metadata = dictionary.get('metadata')
+        trial_period_days = dictionary.get('trial_period_days')
+        minimum_price = dictionary.get('minimum_price')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

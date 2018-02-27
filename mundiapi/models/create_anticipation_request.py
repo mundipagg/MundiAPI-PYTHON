@@ -22,9 +22,9 @@ class CreateAnticipationRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "amount" : "amount",
-        "timeframe" : "timeframe",
-        "payment_date" : "payment_date"
+        "amount":'amount',
+        "timeframe":'timeframe',
+        "payment_date":'payment_date'
     }
 
     def __init__(self,
@@ -57,8 +57,8 @@ class CreateAnticipationRequest(object):
             return None
 
         # Extract variables from the dictionary
-        amount = dictionary.get("amount")
-        timeframe = dictionary.get("timeframe")
+        amount = dictionary.get('amount')
+        timeframe = dictionary.get('timeframe')
         payment_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("payment_date")).datetime if dictionary.get("payment_date") else None
 
         # Return an object of this model

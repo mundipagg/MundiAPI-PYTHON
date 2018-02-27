@@ -25,12 +25,12 @@ class UpdateRecipientRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "email" : "email",
-        "description" : "description",
-        "mtype" : "type",
-        "status" : "status",
-        "metadata" : "metadata"
+        "name":'name',
+        "email":'email',
+        "description":'description',
+        "mtype":'type',
+        "status":'status',
+        "metadata":'metadata'
     }
 
     def __init__(self,
@@ -69,12 +69,12 @@ class UpdateRecipientRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        email = dictionary.get("email")
-        description = dictionary.get("description")
-        mtype = dictionary.get("type")
-        status = dictionary.get("status")
-        metadata = dictionary.get("metadata")
+        name = dictionary.get('name')
+        email = dictionary.get('email')
+        description = dictionary.get('description')
+        mtype = dictionary.get('type')
+        status = dictionary.get('status')
+        metadata = dictionary.get('metadata')
 
         # Return an object of this model
         return cls(name,

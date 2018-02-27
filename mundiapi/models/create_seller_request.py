@@ -26,13 +26,13 @@ class CreateSellerRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "name" : "name",
-        "metadata" : "metadata",
-        "code" : "code",
-        "description" : "description",
-        "document" : "document",
-        "address" : "address",
-        "mtype" : "type"
+        "name":'name',
+        "metadata":'metadata',
+        "code":'code',
+        "description":'description',
+        "document":'document',
+        "address":'address',
+        "mtype":'type'
     }
 
     def __init__(self,
@@ -73,13 +73,13 @@ class CreateSellerRequest(object):
             return None
 
         # Extract variables from the dictionary
-        name = dictionary.get("name")
-        metadata = dictionary.get("metadata")
-        code = dictionary.get("code")
-        description = dictionary.get("description")
-        document = dictionary.get("document")
-        address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get("address")) if dictionary.get("address") else None
-        mtype = dictionary.get("type")
+        name = dictionary.get('name')
+        metadata = dictionary.get('metadata')
+        code = dictionary.get('code')
+        description = dictionary.get('description')
+        document = dictionary.get('document')
+        address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        mtype = dictionary.get('type')
 
         # Return an object of this model
         return cls(name,

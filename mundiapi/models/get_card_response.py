@@ -37,21 +37,21 @@ class GetCardResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "last_four_digits" : "last_four_digits",
-        "brand" : "brand",
-        "holder_name" : "holder_name",
-        "exp_month" : "exp_month",
-        "exp_year" : "exp_year",
-        "status" : "status",
-        "created_at" : "created_at",
-        "updated_at" : "updated_at",
-        "billing_address" : "billing_address",
-        "customer" : "customer",
-        "metadata" : "metadata",
-        "mtype" : "type",
-        "holder_document" : "holder_document",
-        "deleted_at" : "deleted_at"
+        "id":'id',
+        "last_four_digits":'last_four_digits',
+        "brand":'brand',
+        "holder_name":'holder_name',
+        "exp_month":'exp_month',
+        "exp_year":'exp_year',
+        "status":'status',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "billing_address":'billing_address',
+        "customer":'customer',
+        "metadata":'metadata',
+        "mtype":'type',
+        "holder_document":'holder_document',
+        "deleted_at":'deleted_at'
     }
 
     def __init__(self,
@@ -108,20 +108,20 @@ class GetCardResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        last_four_digits = dictionary.get("last_four_digits")
-        brand = dictionary.get("brand")
-        holder_name = dictionary.get("holder_name")
-        exp_month = dictionary.get("exp_month")
-        exp_year = dictionary.get("exp_year")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        last_four_digits = dictionary.get('last_four_digits')
+        brand = dictionary.get('brand')
+        holder_name = dictionary.get('holder_name')
+        exp_month = dictionary.get('exp_month')
+        exp_year = dictionary.get('exp_year')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get("billing_address")) if dictionary.get("billing_address") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
-        metadata = dictionary.get("metadata")
-        mtype = dictionary.get("type")
-        holder_document = dictionary.get("holder_document")
+        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        metadata = dictionary.get('metadata')
+        mtype = dictionary.get('type')
+        holder_document = dictionary.get('holder_document')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

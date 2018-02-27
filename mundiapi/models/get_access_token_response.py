@@ -25,11 +25,11 @@ class GetAccessTokenResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id" : "id",
-        "code" : "code",
-        "status" : "status",
-        "created_at" : "created_at",
-        "customer" : "customer"
+        "id":'id',
+        "code":'code',
+        "status":'status',
+        "created_at":'created_at',
+        "customer":'customer'
     }
 
     def __init__(self,
@@ -66,11 +66,11 @@ class GetAccessTokenResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get("id")
-        code = dictionary.get("code")
-        status = dictionary.get("status")
+        id = dictionary.get('id')
+        code = dictionary.get('code')
+        status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get("customer")) if dictionary.get("customer") else None
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
 
         # Return an object of this model
         return cls(id,

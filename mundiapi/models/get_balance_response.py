@@ -22,9 +22,9 @@ class GetBalanceResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "currency" : "currency",
-        "available_amount" : "available_amount",
-        "recipient" : "recipient"
+        "currency":'currency',
+        "available_amount":'available_amount',
+        "recipient":'recipient'
     }
 
     def __init__(self,
@@ -57,9 +57,9 @@ class GetBalanceResponse(object):
             return None
 
         # Extract variables from the dictionary
-        currency = dictionary.get("currency")
-        available_amount = dictionary.get("available_amount")
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get("recipient")) if dictionary.get("recipient") else None
+        currency = dictionary.get('currency')
+        available_amount = dictionary.get('available_amount')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(currency,
