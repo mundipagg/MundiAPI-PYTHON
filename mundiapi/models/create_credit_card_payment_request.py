@@ -29,6 +29,7 @@ class CreateCreditCardPaymentRequest(object):
         extended_limit_code (string): Extended Limit Code
         capture (bool): Indicates if the operation should be only
             authorization or auth and capture.
+        merchant_category_code (long|int): Customer business segment code
 
     """
 
@@ -44,7 +45,8 @@ class CreateCreditCardPaymentRequest(object):
         "recurrence":'recurrence',
         "extended_limit_enabled":'extended_limit_enabled',
         "extended_limit_code":'extended_limit_code',
-        "capture":'capture'
+        "capture":'capture',
+        "merchant_category_code":'merchant_category_code'
     }
 
     def __init__(self,
@@ -58,7 +60,8 @@ class CreateCreditCardPaymentRequest(object):
                  recurrence=None,
                  extended_limit_enabled=None,
                  extended_limit_code=None,
-                 capture=True):
+                 capture=True,
+                 merchant_category_code=None):
         """Constructor for the CreateCreditCardPaymentRequest class"""
 
         # Initialize members of the class
@@ -73,6 +76,7 @@ class CreateCreditCardPaymentRequest(object):
         self.extended_limit_enabled = extended_limit_enabled
         self.extended_limit_code = extended_limit_code
         self.capture = capture
+        self.merchant_category_code = merchant_category_code
 
 
     @classmethod
@@ -104,6 +108,7 @@ class CreateCreditCardPaymentRequest(object):
         extended_limit_enabled = dictionary.get('extended_limit_enabled')
         extended_limit_code = dictionary.get('extended_limit_code')
         capture = dictionary.get("capture") if dictionary.get("capture") else True
+        merchant_category_code = dictionary.get('merchant_category_code')
 
         # Return an object of this model
         return cls(installments,
@@ -116,6 +121,7 @@ class CreateCreditCardPaymentRequest(object):
                    recurrence,
                    extended_limit_enabled,
                    extended_limit_code,
-                   capture)
+                   capture,
+                   merchant_category_code)
 
 

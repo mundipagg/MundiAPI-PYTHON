@@ -47,7 +47,6 @@ __all__ = [
     'get_setup_response',
     'get_subscription_response',
     'create_address_request',
-    'create_credit_card_payment_request',
     'create_card_request',
     'create_plan_request',
     'create_pricing_scheme_request',
@@ -124,4 +123,6 @@ __all__ = [
     'create_checkout_payment_request',
     'create_boleto_payment_request',
     'get_invoice_item_response',
+    'create_credit_card_payment_request',
+    'list_discounts_response',
 ]
