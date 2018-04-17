@@ -46,6 +46,7 @@ class GetSubscriptionResponse(object):
         minimum_price (int): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
         discounts (list of GetDiscountResponse): Subscription discounts
+        boleto_due_days (int): Days until boleto expires
 
     """
 
@@ -75,7 +76,8 @@ class GetSubscriptionResponse(object):
         "billing_day":'billing_day',
         "minimum_price":'minimum_price',
         "canceled_at":'canceled_at',
-        "discounts":'discounts'
+        "discounts":'discounts',
+        "boleto_due_days":'boleto_due_days'
     }
 
     def __init__(self,
@@ -103,7 +105,8 @@ class GetSubscriptionResponse(object):
                  billing_day=None,
                  minimum_price=None,
                  canceled_at=None,
-                 discounts=None):
+                 discounts=None,
+                 boleto_due_days=None):
         """Constructor for the GetSubscriptionResponse class"""
 
         # Initialize members of the class
@@ -132,6 +135,7 @@ class GetSubscriptionResponse(object):
         self.minimum_price = minimum_price
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
         self.discounts = discounts
+        self.boleto_due_days = boleto_due_days
 
 
     @classmethod
@@ -185,6 +189,7 @@ class GetSubscriptionResponse(object):
             discounts = list()
             for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.get_discount_response.GetDiscountResponse.from_dictionary(structure))
+        boleto_due_days = dictionary.get('boleto_due_days')
 
         # Return an object of this model
         return cls(id,
@@ -211,6 +216,7 @@ class GetSubscriptionResponse(object):
                    billing_day,
                    minimum_price,
                    canceled_at,
-                   discounts)
+                   discounts,
+                   boleto_due_days)
 
 

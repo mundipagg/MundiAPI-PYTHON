@@ -20,9 +20,9 @@ class CreateBoletoPaymentRequest(object):
             available codes are on the API specification
         instructions (string): The instructions field that will be printed on
             the boleto.
-        due_at (datetime): Boleto due date
         billing_address (CreateAddressRequest): Card's billing address
         billing_address_id (string): The address id for the billing address
+        due_at (datetime): Boleto due date
         nosso_numero (string): Número de identificação do cliente com o banco
 
     """
@@ -32,9 +32,9 @@ class CreateBoletoPaymentRequest(object):
         "retries":'retries',
         "bank":'bank',
         "instructions":'instructions',
-        "due_at":'due_at',
         "billing_address":'billing_address',
         "billing_address_id":'billing_address_id',
+        "due_at":'due_at',
         "nosso_numero":'nosso_numero'
     }
 
@@ -42,9 +42,9 @@ class CreateBoletoPaymentRequest(object):
                  retries=None,
                  bank=None,
                  instructions=None,
-                 due_at=None,
                  billing_address=None,
                  billing_address_id=None,
+                 due_at=None,
                  nosso_numero=None):
         """Constructor for the CreateBoletoPaymentRequest class"""
 
@@ -52,9 +52,9 @@ class CreateBoletoPaymentRequest(object):
         self.retries = retries
         self.bank = bank
         self.instructions = instructions
-        self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.billing_address = billing_address
         self.billing_address_id = billing_address_id
+        self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.nosso_numero = nosso_numero
 
 
@@ -79,18 +79,18 @@ class CreateBoletoPaymentRequest(object):
         retries = dictionary.get('retries')
         bank = dictionary.get('bank')
         instructions = dictionary.get('instructions')
-        due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         billing_address_id = dictionary.get('billing_address_id')
+        due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         nosso_numero = dictionary.get('nosso_numero')
 
         # Return an object of this model
         return cls(retries,
                    bank,
                    instructions,
-                   due_at,
                    billing_address,
                    billing_address_id,
+                   due_at,
                    nosso_numero)
 
 
