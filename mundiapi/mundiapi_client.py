@@ -7,19 +7,35 @@
 """
 from .decorators import lazy_property
 from .configuration import Configuration
+from .controllers.charges_controller import ChargesController
+from .controllers.customers_controller import CustomersController
+from .controllers.invoices_controller import InvoicesController
+from .controllers.plans_controller import PlansController
 from .controllers.subscriptions_controller import SubscriptionsController
 from .controllers.orders_controller import OrdersController
-from .controllers.plans_controller import PlansController
-from .controllers.invoices_controller import InvoicesController
-from .controllers.customers_controller import CustomersController
-from .controllers.charges_controller import ChargesController
-from .controllers.recipients_controller import RecipientsController
 from .controllers.tokens_controller import TokensController
+from .controllers.recipients_controller import RecipientsController
 from .controllers.sellers_controller import SellersController
 
 class MundiapiClient(object):
 
     config = Configuration
+
+    @lazy_property
+    def charges(self):
+        return ChargesController()
+
+    @lazy_property
+    def customers(self):
+        return CustomersController()
+
+    @lazy_property
+    def invoices(self):
+        return InvoicesController()
+
+    @lazy_property
+    def plans(self):
+        return PlansController()
 
     @lazy_property
     def subscriptions(self):
@@ -30,28 +46,12 @@ class MundiapiClient(object):
         return OrdersController()
 
     @lazy_property
-    def plans(self):
-        return PlansController()
-
-    @lazy_property
-    def invoices(self):
-        return InvoicesController()
-
-    @lazy_property
-    def customers(self):
-        return CustomersController()
-
-    @lazy_property
-    def charges(self):
-        return ChargesController()
+    def tokens(self):
+        return TokensController()
 
     @lazy_property
     def recipients(self):
         return RecipientsController()
-
-    @lazy_property
-    def tokens(self):
-        return TokensController()
 
     @lazy_property
     def sellers(self):
