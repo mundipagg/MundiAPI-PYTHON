@@ -200,11 +200,11 @@ class InvoicesController(BaseController):
             'code': code,
             'customer_id': customer_id,
             'subscription_id': subscription_id,
-            'created_since': APIHelper.RFC3339DateTime(created_since),
-            'created_until': APIHelper.RFC3339DateTime(created_until),
+            'created_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_since),
+            'created_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_until),
             'status': status,
-            'due_since': APIHelper.RFC3339DateTime(due_since),
-            'due_until': APIHelper.RFC3339DateTime(due_until)
+            'due_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, due_since),
+            'due_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, due_until)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

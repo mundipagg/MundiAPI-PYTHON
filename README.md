@@ -396,8 +396,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 13
-size = 13
+page = 21
+size = 21
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -955,8 +955,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 112
+size = 112
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -988,8 +988,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 112
+size = 112
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1021,8 +1021,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 112
+size = 112
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1205,8 +1205,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 227
-size = 227
+page = 112
+size = 112
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1589,8 +1589,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 63
-size = 63
+page = 204
+size = 204
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2035,8 +2035,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 155
-size = 155
+page = 204
+size = 204
 
 result = subscriptions_controller.get_usages(subscription_id, item_id, page, size)
 
@@ -2115,8 +2115,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 155
-size = 155
+page = 162
+size = 162
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2311,8 +2311,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 155
-size = 155
+page = 162
+size = 162
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2345,6 +2345,99 @@ subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
 
 result = subscriptions_controller.get_subscription_usages_details(subscription_id, cycle_id)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
+
+> Creates a increment
+
+```python
+def create_increment(self,
+                         subscription_id,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateIncrementRequest()
+
+result = subscriptions_controller.create_increment(subscription_id, request)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
+
+> TODO: Add a method description
+
+```python
+def get_increments(self,
+                       subscription_id,
+                       page,
+                       size)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 162
+size = 162
+
+result = subscriptions_controller.get_increments(subscription_id, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
+
+> Deletes a increment
+
+```python
+def delete_increment(self,
+                         subscription_id,
+                         increment_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.delete_increment(subscription_id, increment_id)
 
 ```
 
@@ -2477,8 +2570,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 155
-size = 155
+page = 162
+size = 162
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2894,8 +2987,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 113
-size = 113
+page = 254
+size = 254
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3020,8 +3113,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 113
-size = 113
+page = 254
+size = 254
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3161,8 +3254,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 113
-size = 113
+page = 254
+size = 254
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3334,8 +3427,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 113
-size = 113
+page = 254
+size = 254
 name = 'name'
 document = 'document'
 code = 'code'

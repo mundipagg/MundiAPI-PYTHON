@@ -191,8 +191,8 @@ class SellersController(BaseController):
             'code': code,
             'status': status,
             'type': mtype,
-            'created_Since': APIHelper.RFC3339DateTime(created_since),
-            'created_Until': APIHelper.RFC3339DateTime(created_until)
+            'created_Since': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_since),
+            'created_Until': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_until)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

@@ -19,6 +19,8 @@ class GetSubscriptionUsagesDetailsResponse(object):
         total_amount (int): Current Invoice Amount
         period (GetPeriodResponse): Period Details
         usages (list of GetUsageResponse): Usages Details
+        total_discount (int): Total discounted value
+        total_increment (int): Total inremented value
 
     """
 
@@ -27,14 +29,18 @@ class GetSubscriptionUsagesDetailsResponse(object):
         "subscription_id":'subscription_id',
         "total_amount":'total_amount',
         "period":'Period',
-        "usages":'Usages'
+        "usages":'Usages',
+        "total_discount":'total_discount',
+        "total_increment":'total_increment'
     }
 
     def __init__(self,
                  subscription_id=None,
                  total_amount=None,
                  period=None,
-                 usages=None):
+                 usages=None,
+                 total_discount=None,
+                 total_increment=None):
         """Constructor for the GetSubscriptionUsagesDetailsResponse class"""
 
         # Initialize members of the class
@@ -42,6 +48,8 @@ class GetSubscriptionUsagesDetailsResponse(object):
         self.total_amount = total_amount
         self.period = period
         self.usages = usages
+        self.total_discount = total_discount
+        self.total_increment = total_increment
 
 
     @classmethod
@@ -70,11 +78,15 @@ class GetSubscriptionUsagesDetailsResponse(object):
             usages = list()
             for structure in dictionary.get('Usages'):
                 usages.append(mundiapi.models.get_usage_response.GetUsageResponse.from_dictionary(structure))
+        total_discount = dictionary.get('total_discount')
+        total_increment = dictionary.get('total_increment')
 
         # Return an object of this model
         return cls(subscription_id,
                    total_amount,
                    period,
-                   usages)
+                   usages,
+                   total_discount,
+                   total_increment)
 
 

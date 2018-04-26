@@ -8,6 +8,7 @@
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_pricing_scheme_response
 import mundiapi.models.get_discount_response
+import mundiapi.models.get_increment_response
 import mundiapi.models.get_subscription_response
 
 class GetSubscriptionItemResponse(object):
@@ -25,6 +26,8 @@ class GetSubscriptionItemResponse(object):
         pricing_scheme (GetPricingSchemeResponse): TODO: type description
             here.
         discounts (list of GetDiscountResponse): TODO: type description here.
+        increments (list of GetIncrementResponse): TODO: type description
+            here.
         subscription (GetSubscriptionResponse): TODO: type description here.
         name (string): Item name
         quantity (int): TODO: type description here.
@@ -42,6 +45,7 @@ class GetSubscriptionItemResponse(object):
         "updated_at":'updated_at',
         "pricing_scheme":'pricing_scheme',
         "discounts":'discounts',
+        "increments":'increments',
         "subscription":'subscription',
         "name":'name',
         "quantity":'quantity',
@@ -57,6 +61,7 @@ class GetSubscriptionItemResponse(object):
                  updated_at=None,
                  pricing_scheme=None,
                  discounts=None,
+                 increments=None,
                  subscription=None,
                  name=None,
                  quantity=None,
@@ -72,6 +77,7 @@ class GetSubscriptionItemResponse(object):
         self.updated_at = APIHelper.RFC3339DateTime(updated_at) if updated_at else None
         self.pricing_scheme = pricing_scheme
         self.discounts = discounts
+        self.increments = increments
         self.subscription = subscription
         self.name = name
         self.quantity = quantity
@@ -108,6 +114,11 @@ class GetSubscriptionItemResponse(object):
             discounts = list()
             for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.get_discount_response.GetDiscountResponse.from_dictionary(structure))
+        increments = None
+        if dictionary.get('increments') != None:
+            increments = list()
+            for structure in dictionary.get('increments'):
+                increments.append(mundiapi.models.get_increment_response.GetIncrementResponse.from_dictionary(structure))
         subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
         name = dictionary.get('name')
         quantity = dictionary.get('quantity')
@@ -122,6 +133,7 @@ class GetSubscriptionItemResponse(object):
                    updated_at,
                    pricing_scheme,
                    discounts,
+                   increments,
                    subscription,
                    name,
                    quantity,
