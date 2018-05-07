@@ -333,6 +333,10 @@ class APIHelper(object):
         # Return the result
         return dictionary
 
+    @staticmethod
+    def when_defined(func, value):
+        return func(value) if value else None
+
     class CustomDate(object):
 
         """ A base class for wrapper classes of datetime.

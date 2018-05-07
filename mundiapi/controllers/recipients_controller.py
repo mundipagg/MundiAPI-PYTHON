@@ -417,8 +417,8 @@ class RecipientsController(BaseController):
             'page': page,
             'size': size,
             'status': status,
-            'created_since': APIHelper.RFC3339DateTime(created_since),
-            'created_until': APIHelper.RFC3339DateTime(created_until)
+            'created_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_since),
+            'created_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_until)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
@@ -560,7 +560,7 @@ class RecipientsController(BaseController):
         })
         _query_parameters = {
             'timeframe': timeframe,
-            'payment_date': APIHelper.RFC3339DateTime(payment_date)
+            'payment_date': APIHelper.when_defined(APIHelper.RFC3339DateTime, payment_date)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
@@ -631,10 +631,10 @@ class RecipientsController(BaseController):
             'size': size,
             'status': status,
             'timeframe': timeframe,
-            'payment_date_since': APIHelper.RFC3339DateTime(payment_date_since),
-            'payment_date_until': APIHelper.RFC3339DateTime(payment_date_until),
-            'created_since': APIHelper.RFC3339DateTime(created_since),
-            'created_until': APIHelper.RFC3339DateTime(created_until)
+            'payment_date_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, payment_date_since),
+            'payment_date_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, payment_date_until),
+            'created_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_since),
+            'created_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_until)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

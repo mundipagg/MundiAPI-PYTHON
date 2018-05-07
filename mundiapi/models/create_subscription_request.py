@@ -13,6 +13,7 @@ import mundiapi.models.create_subscription_item_request
 import mundiapi.models.create_shipping_request
 import mundiapi.models.create_discount_request
 import mundiapi.models.create_setup_request
+import mundiapi.models.create_increment_request
 
 class CreateSubscriptionRequest(object):
 
@@ -39,6 +40,7 @@ class CreateSubscriptionRequest(object):
         discounts (list of CreateDiscountRequest): Discounts
         metadata (dict<object, string>): Metadata
         setup (CreateSetupRequest): Setup data
+        increments (list of CreateIncrementRequest): Increments
         plan_id (string): Plan id
         customer_id (string): Customer id
         card_id (string): Card id
@@ -72,6 +74,7 @@ class CreateSubscriptionRequest(object):
         "discounts":'discounts',
         "metadata":'metadata',
         "setup":'setup',
+        "increments":'increments',
         "plan_id":'plan_id',
         "customer_id":'customer_id',
         "card_id":'card_id',
@@ -103,6 +106,7 @@ class CreateSubscriptionRequest(object):
                  discounts=None,
                  metadata=None,
                  setup=None,
+                 increments=None,
                  plan_id=None,
                  customer_id=None,
                  card_id=None,
@@ -134,6 +138,7 @@ class CreateSubscriptionRequest(object):
         self.discounts = discounts
         self.metadata = metadata
         self.setup = setup
+        self.increments = increments
         self.plan_id = plan_id
         self.customer_id = customer_id
         self.card_id = card_id
@@ -190,6 +195,11 @@ class CreateSubscriptionRequest(object):
                 discounts.append(mundiapi.models.create_discount_request.CreateDiscountRequest.from_dictionary(structure))
         metadata = dictionary.get('metadata')
         setup = mundiapi.models.create_setup_request.CreateSetupRequest.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
+        increments = None
+        if dictionary.get('increments') != None:
+            increments = list()
+            for structure in dictionary.get('increments'):
+                increments.append(mundiapi.models.create_increment_request.CreateIncrementRequest.from_dictionary(structure))
         plan_id = dictionary.get('plan_id')
         customer_id = dictionary.get('customer_id')
         card_id = dictionary.get('card_id')
@@ -220,6 +230,7 @@ class CreateSubscriptionRequest(object):
                    discounts,
                    metadata,
                    setup,
+                   increments,
                    plan_id,
                    customer_id,
                    card_id,

@@ -396,8 +396,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 13
-size = 13
+page = 132
+size = 132
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -955,8 +955,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 90
+size = 90
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -988,8 +988,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 90
+size = 90
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1021,8 +1021,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 227
-size = 227
+page = 90
+size = 90
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1205,8 +1205,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 227
-size = 227
+page = 90
+size = 90
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1589,8 +1589,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 63
-size = 63
+page = 90
+size = 90
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2007,42 +2007,6 @@ result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_i
 ```
 
 
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
-
-> Lists all usages from a subscription item
-
-```python
-def get_usages(self,
-                   subscription_id,
-                   item_id,
-                   page=None,
-                   size=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-page = 155
-size = 155
-
-result = subscriptions_controller.get_usages(subscription_id, item_id, page, size)
-
-```
-
-
 ### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
 
 > Updates the metadata from a subscription
@@ -2115,8 +2079,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 155
-size = 155
+page = 181
+size = 181
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2311,22 +2275,117 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 155
-size = 155
+page = 18
+size = 18
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
 ```
 
 
-### <a name="get_subscription_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_usages_details") get_subscription_usages_details
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
+
+> Creates a increment
+
+```python
+def create_increment(self,
+                         subscription_id,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateIncrementRequest()
+
+result = subscriptions_controller.create_increment(subscription_id, request)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
 
 > TODO: Add a method description
 
 ```python
-def get_subscription_usages_details(self,
-                                        subscription_id,
-                                        cycle_id=None)
+def get_increments(self,
+                       subscription_id,
+                       page=None,
+                       size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 18
+size = 18
+
+result = subscriptions_controller.get_increments(subscription_id, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
+
+> Deletes a increment
+
+```python
+def delete_increment(self,
+                         subscription_id,
+                         increment_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.delete_increment(subscription_id, increment_id)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
+
+> TODO: Add a method description
+
+```python
+def get_usages_details(self,
+                           subscription_id,
+                           cycle_id=None,
+                           size=None,
+                           page=None)
 ```
 
 #### Parameters
@@ -2335,6 +2394,8 @@ def get_subscription_usages_details(self,
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription Identifier |
 | cycleId |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
 
 
 
@@ -2343,8 +2404,49 @@ def get_subscription_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
+size = 18
+page = 18
 
-result = subscriptions_controller.get_subscription_usages_details(subscription_id, cycle_id)
+result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
+
+> Lists all usages from a subscription item
+
+```python
+def get_usages(self,
+                   subscription_id,
+                   item_id,
+                   page=None,
+                   size=None,
+                   code=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+page = 18
+size = 18
+code = 'code'
+
+result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code)
 
 ```
 
@@ -2477,8 +2579,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 155
-size = 155
+page = 18
+size = 18
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2894,8 +2996,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 113
-size = 113
+page = 231
+size = 231
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3020,8 +3122,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 113
-size = 113
+page = 231
+size = 231
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3161,8 +3263,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 113
-size = 113
+page = 231
+size = 231
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3334,8 +3436,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 113
-size = 113
+page = 231
+size = 231
 name = 'name'
 document = 'document'
 code = 'code'

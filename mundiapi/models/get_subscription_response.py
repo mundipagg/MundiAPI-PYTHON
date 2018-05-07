@@ -11,6 +11,7 @@ import mundiapi.models.get_customer_response
 import mundiapi.models.get_card_response
 import mundiapi.models.get_subscription_item_response
 import mundiapi.models.get_setup_response
+import mundiapi.models.get_increment_response
 import mundiapi.models.get_discount_response
 
 class GetSubscriptionResponse(object):
@@ -41,6 +42,7 @@ class GetSubscriptionResponse(object):
         metadata (dict<object, string>): TODO: type description here.
         setup (GetSetupResponse): TODO: type description here.
         gateway_affiliation_id (string): Affiliation Code
+        increments (list of GetIncrementResponse): Subscription increments
         next_billing_at (datetime): TODO: type description here.
         billing_day (int): TODO: type description here.
         minimum_price (int): TODO: type description here.
@@ -72,6 +74,7 @@ class GetSubscriptionResponse(object):
         "metadata":'metadata',
         "setup":'setup',
         "gateway_affiliation_id":'gateway_affiliation_id',
+        "increments":'increments',
         "next_billing_at":'next_billing_at',
         "billing_day":'billing_day',
         "minimum_price":'minimum_price',
@@ -101,6 +104,7 @@ class GetSubscriptionResponse(object):
                  metadata=None,
                  setup=None,
                  gateway_affiliation_id=None,
+                 increments=None,
                  next_billing_at=None,
                  billing_day=None,
                  minimum_price=None,
@@ -130,6 +134,7 @@ class GetSubscriptionResponse(object):
         self.metadata = metadata
         self.setup = setup
         self.gateway_affiliation_id = gateway_affiliation_id
+        self.increments = increments
         self.next_billing_at = APIHelper.RFC3339DateTime(next_billing_at) if next_billing_at else None
         self.billing_day = billing_day
         self.minimum_price = minimum_price
@@ -180,6 +185,11 @@ class GetSubscriptionResponse(object):
         metadata = dictionary.get('metadata')
         setup = mundiapi.models.get_setup_response.GetSetupResponse.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
         gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
+        increments = None
+        if dictionary.get('increments') != None:
+            increments = list()
+            for structure in dictionary.get('increments'):
+                increments.append(mundiapi.models.get_increment_response.GetIncrementResponse.from_dictionary(structure))
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
         billing_day = dictionary.get('billing_day')
         minimum_price = dictionary.get('minimum_price')
@@ -212,6 +222,7 @@ class GetSubscriptionResponse(object):
                    metadata,
                    setup,
                    gateway_affiliation_id,
+                   increments,
                    next_billing_at,
                    billing_day,
                    minimum_price,

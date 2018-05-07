@@ -31,6 +31,7 @@ class GetCardResponse(object):
         metadata (dict<object, string>): TODO: type description here.
         mtype (string): Card type
         holder_document (string): Document number for the card's holder
+        first_six_digits (string): First six digits
         deleted_at (datetime): TODO: type description here.
 
     """
@@ -51,6 +52,7 @@ class GetCardResponse(object):
         "metadata":'metadata',
         "mtype":'type',
         "holder_document":'holder_document',
+        "first_six_digits":'first_six_digits',
         "deleted_at":'deleted_at'
     }
 
@@ -69,6 +71,7 @@ class GetCardResponse(object):
                  metadata=None,
                  mtype=None,
                  holder_document=None,
+                 first_six_digits=None,
                  deleted_at=None):
         """Constructor for the GetCardResponse class"""
 
@@ -87,6 +90,7 @@ class GetCardResponse(object):
         self.metadata = metadata
         self.mtype = mtype
         self.holder_document = holder_document
+        self.first_six_digits = first_six_digits
         self.deleted_at = APIHelper.RFC3339DateTime(deleted_at) if deleted_at else None
 
 
@@ -122,6 +126,7 @@ class GetCardResponse(object):
         metadata = dictionary.get('metadata')
         mtype = dictionary.get('type')
         holder_document = dictionary.get('holder_document')
+        first_six_digits = dictionary.get('first_six_digits')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model
@@ -139,6 +144,7 @@ class GetCardResponse(object):
                    metadata,
                    mtype,
                    holder_document,
+                   first_six_digits,
                    deleted_at)
 
 

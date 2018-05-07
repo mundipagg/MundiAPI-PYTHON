@@ -42,6 +42,8 @@ class GetInvoiceResponse(object):
         canceled_at (datetime): TODO: type description here.
         billing_at (datetime): TODO: type description here.
         seen_at (datetime): TODO: type description here.
+        total_discount (int): Total discounted value
+        total_increment (int): Total discounted value
 
     """
 
@@ -66,7 +68,9 @@ class GetInvoiceResponse(object):
         "due_at":'due_at',
         "canceled_at":'canceled_at',
         "billing_at":'billing_at',
-        "seen_at":'seen_at'
+        "seen_at":'seen_at',
+        "total_discount":'total_discount',
+        "total_increment":'total_increment'
     }
 
     def __init__(self,
@@ -89,7 +93,9 @@ class GetInvoiceResponse(object):
                  due_at=None,
                  canceled_at=None,
                  billing_at=None,
-                 seen_at=None):
+                 seen_at=None,
+                 total_discount=None,
+                 total_increment=None):
         """Constructor for the GetInvoiceResponse class"""
 
         # Initialize members of the class
@@ -113,6 +119,8 @@ class GetInvoiceResponse(object):
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
         self.billing_at = APIHelper.RFC3339DateTime(billing_at) if billing_at else None
         self.seen_at = APIHelper.RFC3339DateTime(seen_at) if seen_at else None
+        self.total_discount = total_discount
+        self.total_increment = total_increment
 
 
     @classmethod
@@ -157,6 +165,8 @@ class GetInvoiceResponse(object):
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
         seen_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("seen_at")).datetime if dictionary.get("seen_at") else None
+        total_discount = dictionary.get('total_discount')
+        total_increment = dictionary.get('total_increment')
 
         # Return an object of this model
         return cls(id,
@@ -178,6 +188,8 @@ class GetInvoiceResponse(object):
                    due_at,
                    canceled_at,
                    billing_at,
-                   seen_at)
+                   seen_at,
+                   total_discount,
+                   total_increment)
 
 
