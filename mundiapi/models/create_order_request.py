@@ -33,6 +33,7 @@ class CreateOrderRequest(object):
         session_id (string): Session id
         location (CreateLocationRequest): Request's location
         device (CreateDeviceRequest): Device's informations
+        currency (string): Currency
 
     """
 
@@ -50,7 +51,8 @@ class CreateOrderRequest(object):
         "ip":'ip',
         "session_id":'session_id',
         "location":'location',
-        "device":'device'
+        "device":'device',
+        "currency":'currency'
     }
 
     def __init__(self,
@@ -66,7 +68,8 @@ class CreateOrderRequest(object):
                  ip=None,
                  session_id=None,
                  location=None,
-                 device=None):
+                 device=None,
+                 currency=None):
         """Constructor for the CreateOrderRequest class"""
 
         # Initialize members of the class
@@ -83,6 +86,7 @@ class CreateOrderRequest(object):
         self.session_id = session_id
         self.location = location
         self.device = device
+        self.currency = currency
 
 
     @classmethod
@@ -124,6 +128,7 @@ class CreateOrderRequest(object):
         session_id = dictionary.get('session_id')
         location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
         device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
+        currency = dictionary.get('currency')
 
         # Return an object of this model
         return cls(items,
@@ -138,6 +143,7 @@ class CreateOrderRequest(object):
                    ip,
                    session_id,
                    location,
-                   device)
+                   device,
+                   currency)
 
 
