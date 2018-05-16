@@ -18,6 +18,7 @@ class CreateUsageRequest(object):
         description (string): TODO: type description here.
         used_at (datetime): TODO: type description here.
         code (string): Identification code in the client system
+        group (string): identification group in the client system
 
     """
 
@@ -26,14 +27,16 @@ class CreateUsageRequest(object):
         "quantity":'quantity',
         "description":'description',
         "used_at":'used_at',
-        "code":'code'
+        "code":'code',
+        "group":'group'
     }
 
     def __init__(self,
                  quantity=None,
                  description=None,
                  used_at=None,
-                 code=None):
+                 code=None,
+                 group=None):
         """Constructor for the CreateUsageRequest class"""
 
         # Initialize members of the class
@@ -41,6 +44,7 @@ class CreateUsageRequest(object):
         self.description = description
         self.used_at = APIHelper.RFC3339DateTime(used_at) if used_at else None
         self.code = code
+        self.group = group
 
 
     @classmethod
@@ -65,11 +69,13 @@ class CreateUsageRequest(object):
         description = dictionary.get('description')
         used_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("used_at")).datetime if dictionary.get("used_at") else None
         code = dictionary.get('code')
+        group = dictionary.get('group')
 
         # Return an object of this model
         return cls(quantity,
                    description,
                    used_at,
-                   code)
+                   code,
+                   group)
 
 

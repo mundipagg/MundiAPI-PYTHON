@@ -838,58 +838,6 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
 
-    def get_subscription_items(self,
-                               subscription_id,
-                               status,
-                               description):
-        """Does a GET request to /subscriptions/{subscription_id}/items.
-
-        Get Subscription Itens
-
-        Args:
-            subscription_id (string): Subscription Id
-            status (string): Status
-            description (string): Description
-
-        Returns:
-            ListSubscriptionsResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'subscription_id': subscription_id
-        })
-        _query_parameters = {
-            'status': status,
-            'description': description
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionsResponse.from_dictionary)
-
     def update_subscription_affiliation_id(self,
                                            subscription_id,
                                            request):
@@ -1180,7 +1128,8 @@ class SubscriptionsController(BaseController):
                            subscription_id,
                            cycle_id=None,
                            size=None,
-                           page=None):
+                           page=None,
+                           item_id=None):
         """Does a GET request to /subscriptions/{subscription_id}/usages-details/.
 
         TODO: type endpoint description here.
@@ -1190,6 +1139,7 @@ class SubscriptionsController(BaseController):
             cycle_id (string, optional): Cycle id
             size (int, optional): Page size
             page (int, optional): Page number
+            item_id (string, optional): Identificador do item
 
         Returns:
             GetUsagesDetailsResponse: Response from the API. 
@@ -1211,7 +1161,8 @@ class SubscriptionsController(BaseController):
         _query_parameters = {
             'cycle_id': cycle_id,
             'size': size,
-            'page': page
+            'page': page,
+            'item_id': item_id
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
@@ -1236,7 +1187,8 @@ class SubscriptionsController(BaseController):
                    item_id,
                    page=None,
                    size=None,
-                   code=None):
+                   code=None,
+                   group=None):
         """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}/usages.
 
         Lists all usages from a subscription item
@@ -1247,6 +1199,8 @@ class SubscriptionsController(BaseController):
             page (int, optional): Page number
             size (int, optional): Page size
             code (string, optional): Identification code in the client system
+            group (string, optional): Identification group in the client
+                system
 
         Returns:
             ListUsagesResponse: Response from the API. 
@@ -1269,7 +1223,8 @@ class SubscriptionsController(BaseController):
         _query_parameters = {
             'page': page,
             'size': size,
-            'code': code
+            'code': code,
+            'group': group
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
