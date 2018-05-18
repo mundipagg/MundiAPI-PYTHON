@@ -7,11 +7,11 @@
 """
 from .decorators import lazy_property
 from .configuration import Configuration
+from .controllers.subscriptions_controller import SubscriptionsController
 from .controllers.charges_controller import ChargesController
 from .controllers.customers_controller import CustomersController
 from .controllers.invoices_controller import InvoicesController
 from .controllers.plans_controller import PlansController
-from .controllers.subscriptions_controller import SubscriptionsController
 from .controllers.orders_controller import OrdersController
 from .controllers.tokens_controller import TokensController
 from .controllers.recipients_controller import RecipientsController
@@ -20,6 +20,10 @@ from .controllers.sellers_controller import SellersController
 class MundiapiClient(object):
 
     config = Configuration
+
+    @lazy_property
+    def subscriptions(self):
+        return SubscriptionsController()
 
     @lazy_property
     def charges(self):
@@ -36,10 +40,6 @@ class MundiapiClient(object):
     @lazy_property
     def plans(self):
         return PlansController()
-
-    @lazy_property
-    def subscriptions(self):
-        return SubscriptionsController()
 
     @lazy_property
     def orders(self):

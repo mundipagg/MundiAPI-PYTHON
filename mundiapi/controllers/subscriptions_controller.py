@@ -10,21 +10,67 @@ from .base_controller import BaseController
 from ..api_helper import APIHelper
 from ..configuration import Configuration
 from ..http.auth.basic_auth import BasicAuth
+from ..models.get_increment_response import GetIncrementResponse
 from ..models.get_subscription_item_response import GetSubscriptionItemResponse
 from ..models.get_usage_response import GetUsageResponse
 from ..models.get_subscription_response import GetSubscriptionResponse
 from ..models.get_discount_response import GetDiscountResponse
 from ..models.list_subscriptions_response import ListSubscriptionsResponse
 from ..models.list_discounts_response import ListDiscountsResponse
-from ..models.get_increment_response import GetIncrementResponse
 from ..models.list_increments_response import ListIncrementsResponse
 from ..models.get_usages_details_response import GetUsagesDetailsResponse
 from ..models.list_usages_response import ListUsagesResponse
+from ..models.list_subscription_items_response import ListSubscriptionItemsResponse
 
 class SubscriptionsController(BaseController):
 
     """A Controller to access Endpoints in the mundiapi API."""
 
+
+    def get_increment_by_id(self,
+                            subscription_id,
+                            increment_id):
+        """Does a GET request to /subscriptions/{subscription_id}/increments/{increment_id}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription Id
+            increment_id (string): The increment Id
+
+        Returns:
+            GetIncrementResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/subscriptions/{subscription_id}/increments/{increment_id}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'subscription_id': subscription_id,
+            'increment_id': increment_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
 
     def update_subscription_item(self,
                                  subscription_id,
@@ -892,7 +938,7 @@ class SubscriptionsController(BaseController):
         TODO: type endpoint description here.
 
         Args:
-            subscription_id (string): TODO: type description here. Example: 
+            subscription_id (string): The subscription id
             discount_id (string): TODO: type description here. Example: 
 
         Returns:
@@ -1243,3 +1289,75 @@ class SubscriptionsController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListUsagesResponse.from_dictionary)
+
+    def get_subscription_items(self,
+                               subscription_id,
+                               page=None,
+                               size=None,
+                               name=None,
+                               code=None,
+                               status=None,
+                               description=None,
+                               created_since=None,
+                               created_until=None):
+        """Does a GET request to /subscriptions/{subscription_id}/items.
+
+        Get Subscription Items
+
+        Args:
+            subscription_id (string): The subscription id
+            page (int, optional): Page number
+            size (int, optional): Page size
+            name (string, optional): The item name
+            code (string, optional): Identification code in the client system
+            status (string, optional): The item statis
+            description (string, optional): The item description
+            created_since (string, optional): Filter for item's creation date
+                start range
+            created_until (string, optional): Filter for item's creation date
+                end range
+
+        Returns:
+            ListSubscriptionItemsResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/subscriptions/{subscription_id}/items'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'subscription_id': subscription_id
+        })
+        _query_parameters = {
+            'page': page,
+            'size': size,
+            'name': name,
+            'code': code,
+            'status': status,
+            'description': description,
+            'created_since': created_since,
+            'created_until': created_until
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionItemsResponse.from_dictionary)

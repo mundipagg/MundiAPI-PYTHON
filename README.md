@@ -109,15 +109,918 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [SubscriptionsController](#subscriptions_controller)
 * [ChargesController](#charges_controller)
 * [CustomersController](#customers_controller)
 * [InvoicesController](#invoices_controller)
 * [PlansController](#plans_controller)
-* [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
 * [TokensController](#tokens_controller)
 * [RecipientsController](#recipients_controller)
 * [SellersController](#sellers_controller)
+
+## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
+
+### Get controller instance
+
+An instance of the ``` SubscriptionsController ``` class can be accessed from the API Client.
+
+```python
+ subscriptions_controller = client.subscriptions
+```
+
+### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increment_by_id") get_increment_by_id
+
+> TODO: Add a method description
+
+```python
+def get_increment_by_id(self,
+                            subscription_id,
+                            increment_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription Id |
+| incrementId |  ``` Required ```  | The increment Id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
+
+```
+
+
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
+
+> Updates a subscription item
+
+```python
+def update_subscription_item(self,
+                                 subscription_id,
+                                 item_id,
+                                 body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+body = UpdateSubscriptionItemRequest()
+
+result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body)
+
+```
+
+
+### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
+
+> Creates a usage
+
+```python
+def create_usage(self,
+                     subscription_id,
+                     item_id,
+                     body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for creating a usage |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+body = CreateUsageRequest()
+
+result = subscriptions_controller.create_usage(subscription_id, item_id, body)
+
+```
+
+
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
+
+> Updates the billing date from a subscription
+
+```python
+def update_subscription_billing_date(self,
+                                         subscription_id,
+                                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionBillingDateRequest()
+
+result = subscriptions_controller.update_subscription_billing_date(subscription_id, request)
+
+```
+
+
+### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
+
+> Updates the credit card from a subscription
+
+```python
+def update_subscription_card(self,
+                                 subscription_id,
+                                 request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating a card |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionCardRequest()
+
+result = subscriptions_controller.update_subscription_card(subscription_id, request)
+
+```
+
+
+### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
+
+> Creates a new subscription
+
+```python
+def create_subscription(self,
+                            body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a subscription |
+
+
+
+#### Example Usage
+
+```python
+body = CreateSubscriptionRequest()
+
+result = subscriptions_controller.create_subscription(body)
+
+```
+
+
+### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
+
+> Creates a new Subscription item
+
+```python
+def create_subscription_item(self,
+                                 subscription_id,
+                                 request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a subscription item |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateSubscriptionItemRequest()
+
+result = subscriptions_controller.create_subscription_item(subscription_id, request)
+
+```
+
+
+### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
+
+> Creates a discount
+
+```python
+def create_discount(self,
+                        subscription_id,
+                        request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a discount |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateDiscountRequest()
+
+result = subscriptions_controller.create_discount(subscription_id, request)
+
+```
+
+
+### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
+
+> Gets a subscription
+
+```python
+def get_subscription(self,
+                         subscription_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+
+result = subscriptions_controller.get_subscription(subscription_id)
+
+```
+
+
+### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
+
+> Updates the payment method from a subscription
+
+```python
+def update_subscription_payment_method(self,
+                                           subscription_id,
+                                           request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionPaymentMethodRequest()
+
+result = subscriptions_controller.update_subscription_payment_method(subscription_id, request)
+
+```
+
+
+### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
+
+> Deletes a discount
+
+```python
+def delete_discount(self,
+                        subscription_id,
+                        discount_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| discountId |  ``` Required ```  | Discount Id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+discount_id = 'discount_id'
+
+result = subscriptions_controller.delete_discount(subscription_id, discount_id)
+
+```
+
+
+### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
+
+> Cancels a subscription
+
+```python
+def cancel_subscription(self,
+                            subscription_id,
+                            request=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Optional ```  | Request for cancelling a subscription |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateCancelSubscriptionRequest()
+
+result = subscriptions_controller.cancel_subscription(subscription_id, request)
+
+```
+
+
+### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
+
+> Deletes a subscription item
+
+```python
+def delete_subscription_item(self,
+                                 subscription_id,
+                                 subscription_item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| subscriptionItemId |  ``` Required ```  | Subscription item id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+subscription_item_id = 'subscription_item_id'
+
+result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id)
+
+```
+
+
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
+
+> Deletes a usage
+
+```python
+def delete_usage(self,
+                     subscription_id,
+                     item_id,
+                     usage_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+usage_id = 'usage_id'
+
+result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id)
+
+```
+
+
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
+
+> Updates the metadata from a subscription
+
+```python
+def update_subscription_metadata(self,
+                                     subscription_id,
+                                     request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateMetadataRequest()
+
+result = subscriptions_controller.update_subscription_metadata(subscription_id, request)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
+
+> Gets all subscriptions
+
+```python
+def get_subscriptions(self,
+                          page=None,
+                          size=None,
+                          code=None,
+                          billing_type=None,
+                          customer_id=None,
+                          plan_id=None,
+                          card_id=None,
+                          status=None,
+                          next_billing_since=None,
+                          next_billing_until=None,
+                          created_since=None,
+                          created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+
+#### Example Usage
+
+```python
+page = 50
+size = 50
+code = 'code'
+billing_type = 'billing_type'
+customer_id = 'customer_id'
+plan_id = 'plan_id'
+card_id = 'card_id'
+status = 'status'
+next_billing_since = datetime.now()
+next_billing_until = datetime.now()
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
+
+```
+
+
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
+
+> Create Usage
+
+```python
+def create_an_usage(self,
+                        subscription_id,
+                        item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| itemId |  ``` Required ```  | Item id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_controller.create_an_usage(subscription_id, item_id)
+
+```
+
+
+### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_item") get_subscription_item
+
+> Get Subscription Item
+
+```python
+def get_subscription_item(self,
+                              subscription_id,
+                              item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
+
+```
+
+
+### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_affiliation_id") update_subscription_affiliation_id
+
+> TODO: Add a method description
+
+```python
+def update_subscription_affiliation_id(self,
+                                           subscription_id,
+                                           request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating a subscription affiliation id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionAffiliationIdRequest()
+
+result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
+
+> TODO: Add a method description
+
+```python
+def get_discount_by_id(self,
+                           subscription_id,
+                           discount_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+discount_id = 'discountId'
+
+result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
+
+```
+
+
+### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
+
+> TODO: Add a method description
+
+```python
+def get_discounts(self,
+                      subscription_id,
+                      page,
+                      size)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 50
+size = 50
+
+result = subscriptions_controller.get_discounts(subscription_id, page, size)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
+
+> Creates a increment
+
+```python
+def create_increment(self,
+                         subscription_id,
+                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateIncrementRequest()
+
+result = subscriptions_controller.create_increment(subscription_id, request)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
+
+> TODO: Add a method description
+
+```python
+def get_increments(self,
+                       subscription_id,
+                       page=None,
+                       size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 142
+size = 142
+
+result = subscriptions_controller.get_increments(subscription_id, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
+
+> Deletes a increment
+
+```python
+def delete_increment(self,
+                         subscription_id,
+                         increment_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.delete_increment(subscription_id, increment_id)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
+
+> TODO: Add a method description
+
+```python
+def get_usages_details(self,
+                           subscription_id,
+                           cycle_id=None,
+                           size=None,
+                           page=None,
+                           item_id=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Identifier |
+| cycleId |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
+| itemId |  ``` Optional ```  | Identificador do item |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+cycle_id = 'cycle_id'
+size = 142
+page = 142
+item_id = 'item_id'
+
+result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
+
+> Lists all usages from a subscription item
+
+```python
+def get_usages(self,
+                   subscription_id,
+                   item_id,
+                   page=None,
+                   size=None,
+                   code=None,
+                   group=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+page = 142
+size = 142
+code = 'code'
+group = 'group'
+
+result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
+
+> Get Subscription Items
+
+```python
+def get_subscription_items(self,
+                               subscription_id,
+                               page=None,
+                               size=None,
+                               name=None,
+                               code=None,
+                               status=None,
+                               description=None,
+                               created_since=None,
+                               created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 142
+size = 142
+name = 'name'
+code = 'code'
+status = 'status'
+description = 'description'
+created_since = 'created_since'
+created_until = 'created_until'
+
+result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
 
@@ -396,8 +1299,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 134
-size = 134
+page = 142
+size = 142
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -955,8 +1858,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 92
-size = 92
+page = 100
+size = 100
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -988,8 +1891,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 92
-size = 92
+page = 100
+size = 100
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1021,8 +1924,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 92
-size = 92
+page = 100
+size = 100
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1205,8 +2108,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 92
-size = 92
+page = 100
+size = 100
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1589,8 +2492,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 183
-size = 183
+page = 191
+size = 191
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1598,828 +2501,6 @@ created_since = datetime.now()
 created_until = datetime.now()
 
 result = plans_controller.get_plans(page, size, name, status, billing_type, created_since, created_until)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
-
-### Get controller instance
-
-An instance of the ``` SubscriptionsController ``` class can be accessed from the API Client.
-
-```python
- subscriptions_controller = client.subscriptions
-```
-
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
-
-> Updates a subscription item
-
-```python
-def update_subscription_item(self,
-                                 subscription_id,
-                                 item_id,
-                                 body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = UpdateSubscriptionItemRequest()
-
-result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body)
-
-```
-
-
-### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
-
-> Creates a usage
-
-```python
-def create_usage(self,
-                     subscription_id,
-                     item_id,
-                     body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for creating a usage |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = CreateUsageRequest()
-
-result = subscriptions_controller.create_usage(subscription_id, item_id, body)
-
-```
-
-
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
-
-> Updates the billing date from a subscription
-
-```python
-def update_subscription_billing_date(self,
-                                         subscription_id,
-                                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionBillingDateRequest()
-
-result = subscriptions_controller.update_subscription_billing_date(subscription_id, request)
-
-```
-
-
-### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
-
-> Updates the credit card from a subscription
-
-```python
-def update_subscription_card(self,
-                                 subscription_id,
-                                 request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating a card |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionCardRequest()
-
-result = subscriptions_controller.update_subscription_card(subscription_id, request)
-
-```
-
-
-### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
-
-> Creates a new subscription
-
-```python
-def create_subscription(self,
-                            body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a subscription |
-
-
-
-#### Example Usage
-
-```python
-body = CreateSubscriptionRequest()
-
-result = subscriptions_controller.create_subscription(body)
-
-```
-
-
-### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
-
-> Creates a new Subscription item
-
-```python
-def create_subscription_item(self,
-                                 subscription_id,
-                                 request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a subscription item |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateSubscriptionItemRequest()
-
-result = subscriptions_controller.create_subscription_item(subscription_id, request)
-
-```
-
-
-### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
-
-> Creates a discount
-
-```python
-def create_discount(self,
-                        subscription_id,
-                        request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a discount |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateDiscountRequest()
-
-result = subscriptions_controller.create_discount(subscription_id, request)
-
-```
-
-
-### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
-
-> Gets a subscription
-
-```python
-def get_subscription(self,
-                         subscription_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-
-result = subscriptions_controller.get_subscription(subscription_id)
-
-```
-
-
-### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
-
-> Updates the payment method from a subscription
-
-```python
-def update_subscription_payment_method(self,
-                                           subscription_id,
-                                           request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionPaymentMethodRequest()
-
-result = subscriptions_controller.update_subscription_payment_method(subscription_id, request)
-
-```
-
-
-### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
-
-> Deletes a discount
-
-```python
-def delete_discount(self,
-                        subscription_id,
-                        discount_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| discountId |  ``` Required ```  | Discount Id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-discount_id = 'discount_id'
-
-result = subscriptions_controller.delete_discount(subscription_id, discount_id)
-
-```
-
-
-### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
-
-> Cancels a subscription
-
-```python
-def cancel_subscription(self,
-                            subscription_id,
-                            request=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Optional ```  | Request for cancelling a subscription |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateCancelSubscriptionRequest()
-
-result = subscriptions_controller.cancel_subscription(subscription_id, request)
-
-```
-
-
-### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
-
-> Deletes a subscription item
-
-```python
-def delete_subscription_item(self,
-                                 subscription_id,
-                                 subscription_item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| subscriptionItemId |  ``` Required ```  | Subscription item id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-subscription_item_id = 'subscription_item_id'
-
-result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
-
-> Deletes a usage
-
-```python
-def delete_usage(self,
-                     subscription_id,
-                     item_id,
-                     usage_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-usage_id = 'usage_id'
-
-result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id)
-
-```
-
-
-### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
-
-> Updates the metadata from a subscription
-
-```python
-def update_subscription_metadata(self,
-                                     subscription_id,
-                                     request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscrption metadata |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateMetadataRequest()
-
-result = subscriptions_controller.update_subscription_metadata(subscription_id, request)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
-
-> Gets all subscriptions
-
-```python
-def get_subscriptions(self,
-                          page=None,
-                          size=None,
-                          code=None,
-                          billing_type=None,
-                          customer_id=None,
-                          plan_id=None,
-                          card_id=None,
-                          status=None,
-                          next_billing_since=None,
-                          next_billing_until=None,
-                          created_since=None,
-                          created_until=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billingType |  ``` Optional ```  | Filter for subscription's billing type |
-| customerId |  ``` Optional ```  | Filter for subscription's customer id |
-| planId |  ``` Optional ```  | Filter for subscription's plan id |
-| cardId |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-
-#### Example Usage
-
-```python
-page = 20
-size = 20
-code = 'code'
-billing_type = 'billing_type'
-customer_id = 'customer_id'
-plan_id = 'plan_id'
-card_id = 'card_id'
-status = 'status'
-next_billing_since = datetime.now()
-next_billing_until = datetime.now()
-created_since = datetime.now()
-created_until = datetime.now()
-
-result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
-
-```
-
-
-### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
-
-> Create Usage
-
-```python
-def create_an_usage(self,
-                        subscription_id,
-                        item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| itemId |  ``` Required ```  | Item id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-
-result = subscriptions_controller.create_an_usage(subscription_id, item_id)
-
-```
-
-
-### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_item") get_subscription_item
-
-> Get Subscription Item
-
-```python
-def get_subscription_item(self,
-                              subscription_id,
-                              item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-
-result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
-
-```
-
-
-### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_affiliation_id") update_subscription_affiliation_id
-
-> TODO: Add a method description
-
-```python
-def update_subscription_affiliation_id(self,
-                                           subscription_id,
-                                           request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating a subscription affiliation id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionAffiliationIdRequest()
-
-result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
-
-> TODO: Add a method description
-
-```python
-def get_discount_by_id(self,
-                           subscription_id,
-                           discount_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-discount_id = 'discountId'
-
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
-
-```
-
-
-### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
-
-> TODO: Add a method description
-
-```python
-def get_discounts(self,
-                      subscription_id,
-                      page,
-                      size)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 20
-size = 20
-
-result = subscriptions_controller.get_discounts(subscription_id, page, size)
-
-```
-
-
-### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
-
-> Creates a increment
-
-```python
-def create_increment(self,
-                         subscription_id,
-                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a increment |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateIncrementRequest()
-
-result = subscriptions_controller.create_increment(subscription_id, request)
-
-```
-
-
-### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
-
-> TODO: Add a method description
-
-```python
-def get_increments(self,
-                       subscription_id,
-                       page=None,
-                       size=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 20
-size = 20
-
-result = subscriptions_controller.get_increments(subscription_id, page, size)
-
-```
-
-
-### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
-
-> Deletes a increment
-
-```python
-def delete_increment(self,
-                         subscription_id,
-                         increment_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| incrementId |  ``` Required ```  | Increment id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-increment_id = 'increment_id'
-
-result = subscriptions_controller.delete_increment(subscription_id, increment_id)
-
-```
-
-
-### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
-
-> TODO: Add a method description
-
-```python
-def get_usages_details(self,
-                           subscription_id,
-                           cycle_id=None,
-                           size=None,
-                           page=None,
-                           item_id=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Identifier |
-| cycleId |  ``` Optional ```  | Cycle id |
-| size |  ``` Optional ```  | Page size |
-| page |  ``` Optional ```  | Page number |
-| itemId |  ``` Optional ```  | Identificador do item |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-cycle_id = 'cycle_id'
-size = 233
-page = 233
-item_id = 'item_id'
-
-result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
-
-```
-
-
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
-
-> Lists all usages from a subscription item
-
-```python
-def get_usages(self,
-                   subscription_id,
-                   item_id,
-                   page=None,
-                   size=None,
-                   code=None,
-                   group=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Identification code in the client system |
-| group |  ``` Optional ```  | Identification group in the client system |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-page = 233
-size = 233
-code = 'code'
-group = 'group'
-
-result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
 
 ```
 
@@ -2552,8 +2633,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 233
-size = 233
+page = 191
+size = 191
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2969,8 +3050,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 233
-size = 233
+page = 191
+size = 191
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3095,8 +3176,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 233
-size = 233
+page = 191
+size = 191
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3236,8 +3317,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 70
-size = 70
+page = 28
+size = 28
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3409,8 +3490,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 70
-size = 70
+page = 28
+size = 28
 name = 'name'
 document = 'document'
 code = 'code'
