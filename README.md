@@ -624,8 +624,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 50
-size = 50
+page = 75
+size = 75
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -787,8 +787,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 50
-size = 50
+page = 75
+size = 75
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -850,8 +850,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 142
-size = 142
+page = 75
+size = 75
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -918,8 +918,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 142
-page = 142
+size = 75
+page = 75
 item_id = 'item_id'
 
 result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
@@ -959,8 +959,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 142
-size = 142
+page = 166
+size = 166
 code = 'code'
 group = 'group'
 
@@ -1006,8 +1006,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 142
-size = 142
+page = 166
+size = 166
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1299,8 +1299,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 142
-size = 142
+page = 166
+size = 166
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1858,8 +1858,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 100
-size = 100
+page = 3
+size = 3
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1891,8 +1891,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 100
-size = 100
+page = 3
+size = 3
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1924,8 +1924,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 100
-size = 100
+page = 3
+size = 3
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2108,8 +2108,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 100
-size = 100
+page = 216
+size = 216
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2492,8 +2492,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 191
-size = 191
+page = 216
+size = 216
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2633,8 +2633,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 191
-size = 191
+page = 216
+size = 216
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3050,8 +3050,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 191
-size = 191
+page = 53
+size = 53
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3176,8 +3176,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 191
-size = 191
+page = 53
+size = 53
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3317,8 +3317,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 28
-size = 28
+page = 53
+size = 53
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3357,6 +3357,36 @@ recipient_id = 'recipient_id'
 request = UpdateMetadataRequest()
 
 result = recipients_controller.update_recipient_metadata(recipient_id, request)
+
+```
+
+
+### <a name="update_recipient_transfer_settings"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient_transfer_settings") update_recipient_transfer_settings
+
+> TODO: Add a method description
+
+```python
+def update_recipient_transfer_settings(self,
+                                           recipient_id,
+                                           request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient Identificator |
+| request |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = UpdateTransferSettingsRequest()
+
+result = recipients_controller.update_recipient_transfer_settings(recipient_id, request)
 
 ```
 
@@ -3490,8 +3520,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 28
-size = 28
+page = 144
+size = 144
 name = 'name'
 document = 'document'
 code = 'code'

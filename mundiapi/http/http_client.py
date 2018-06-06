@@ -76,6 +76,27 @@ class HttpClient(object):
                            None,
                            None)
 
+    def head(self, query_url,
+            headers={},
+            query_parameters={}):
+        """Create a simple HEAD HttpRequest object for the given parameters
+
+        Args:
+            query_url (string): The URL to send the request to.
+            headers (dict, optional): The headers for the HTTP Request.
+            query_parameters (dict, optional): Query parameters to add in the URL.
+
+        Returns:
+            HttpRequest: The generated HttpRequest for the given paremeters.
+
+        """
+        return HttpRequest(HttpMethodEnum.HEAD,
+                           query_url,
+                           headers,
+                           query_parameters,
+                           None,
+                           None)
+
     def post(self, query_url,
              headers={},
              query_parameters={},

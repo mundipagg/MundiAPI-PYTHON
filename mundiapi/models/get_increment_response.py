@@ -7,6 +7,7 @@
 """
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_subscription_response
+import mundiapi.models.get_subscription_item_response
 
 class GetIncrementResponse(object):
 
@@ -20,10 +21,12 @@ class GetIncrementResponse(object):
         increment_type (string): TODO: type description here.
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
-        subscription (GetSubscriptionResponse): TODO: type description here.
         cycles (int): TODO: type description here.
         deleted_at (datetime): TODO: type description here.
         description (string): TODO: type description here.
+        subscription (GetSubscriptionResponse): TODO: type description here.
+        subscription_item (GetSubscriptionItemResponse): The Subscription
+            Item
 
     """
 
@@ -34,10 +37,11 @@ class GetIncrementResponse(object):
         "increment_type":'increment_type',
         "status":'status',
         "created_at":'created_at',
-        "subscription":'subscription',
         "cycles":'cycles',
         "deleted_at":'deleted_at',
-        "description":'description'
+        "description":'description',
+        "subscription":'subscription',
+        "subscription_item":'subscription_item'
     }
 
     def __init__(self,
@@ -46,10 +50,11 @@ class GetIncrementResponse(object):
                  increment_type=None,
                  status=None,
                  created_at=None,
-                 subscription=None,
                  cycles=None,
                  deleted_at=None,
-                 description=None):
+                 description=None,
+                 subscription=None,
+                 subscription_item=None):
         """Constructor for the GetIncrementResponse class"""
 
         # Initialize members of the class
@@ -58,10 +63,11 @@ class GetIncrementResponse(object):
         self.increment_type = increment_type
         self.status = status
         self.created_at = APIHelper.RFC3339DateTime(created_at) if created_at else None
-        self.subscription = subscription
         self.cycles = cycles
         self.deleted_at = APIHelper.RFC3339DateTime(deleted_at) if deleted_at else None
         self.description = description
+        self.subscription = subscription
+        self.subscription_item = subscription_item
 
 
     @classmethod
@@ -87,10 +93,11 @@ class GetIncrementResponse(object):
         increment_type = dictionary.get('increment_type')
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
-        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
         cycles = dictionary.get('cycles')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
         description = dictionary.get('description')
+        subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
+        subscription_item = mundiapi.models.get_subscription_item_response.GetSubscriptionItemResponse.from_dictionary(dictionary.get('subscription_item')) if dictionary.get('subscription_item') else None
 
         # Return an object of this model
         return cls(id,
@@ -98,9 +105,10 @@ class GetIncrementResponse(object):
                    increment_type,
                    status,
                    created_at,
-                   subscription,
                    cycles,
                    deleted_at,
-                   description)
+                   description,
+                   subscription,
+                   subscription_item)
 
 

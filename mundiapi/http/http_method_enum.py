@@ -29,6 +29,7 @@ class HttpMethodEnum(object):
 
     DELETE = "DELETE"
 
+    HEAD = "HEAD"
 
     @classmethod
     def to_string(cls, val):
