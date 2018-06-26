@@ -13,6 +13,7 @@ import mundiapi.models.create_split_request
 import mundiapi.models.create_bank_transfer_payment_request
 import mundiapi.models.create_checkout_payment_request
 import mundiapi.models.create_customer_request
+import mundiapi.models.create_cash_payment_request
 
 class CreatePaymentRequest(object):
 
@@ -39,6 +40,7 @@ class CreatePaymentRequest(object):
         customer_id (string): Customer Id
         customer (CreateCustomerRequest): Customer
         metadata (dict<object, string>): Metadata
+        cash (CreateCashPaymentRequest): Settings for cash payment
 
     """
 
@@ -57,7 +59,8 @@ class CreatePaymentRequest(object):
         "checkout":'checkout',
         "customer_id":'customer_id',
         "customer":'customer',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "cash":'cash'
     }
 
     def __init__(self,
@@ -74,7 +77,8 @@ class CreatePaymentRequest(object):
                  checkout=None,
                  customer_id=None,
                  customer=None,
-                 metadata=None):
+                 metadata=None,
+                 cash=None):
         """Constructor for the CreatePaymentRequest class"""
 
         # Initialize members of the class
@@ -92,6 +96,7 @@ class CreatePaymentRequest(object):
         self.customer_id = customer_id
         self.customer = customer
         self.metadata = metadata
+        self.cash = cash
 
 
     @classmethod
@@ -130,6 +135,7 @@ class CreatePaymentRequest(object):
         customer_id = dictionary.get('customer_id')
         customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         metadata = dictionary.get('metadata')
+        cash = mundiapi.models.create_cash_payment_request.CreateCashPaymentRequest.from_dictionary(dictionary.get('cash')) if dictionary.get('cash') else None
 
         # Return an object of this model
         return cls(payment_method,
@@ -145,6 +151,7 @@ class CreatePaymentRequest(object):
                    checkout,
                    customer_id,
                    customer,
-                   metadata)
+                   metadata,
+                   cash)
 
 
