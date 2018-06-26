@@ -140,4 +140,6 @@ __all__ = [
     'apple_pay_header_request',
     'apple_pay_request',
     'get_transaction_response',
+    'create_cash_payment_request',
+    'create_confirm_payment_request',
 ]

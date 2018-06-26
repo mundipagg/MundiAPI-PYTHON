@@ -106,7 +106,8 @@ class GetTransactionResponse(object):
             'bank_transfer': GetBankTransferTransactionResponse.from_dictionary,
             'safetypay': GetSafetyPayTransactionResponse.from_dictionary,
             'boleto': GetBoletoTransactionResponse.from_dictionary,
-            'debit_card': GetDebitCardTransactionResponse.from_dictionary
+            'debit_card': GetDebitCardTransactionResponse.from_dictionary,
+            'cash': GetCashTransactionResponse.from_dictionary
         }
         unboxer = discriminators.get(dictionary.get('transaction_type'))
 
@@ -1177,6 +1178,126 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                    eci,
                    authentication_type,
                    authentication_url,
+                   gateway_id,
+                   amount,
+                   status,
+                   success,
+                   created_at,
+                   updated_at,
+                   attempt_count,
+                   max_attempts,
+                   splits,
+                   id,
+                   gateway_response,
+                   next_attempt,
+                   transaction_type)
+
+
+class GetCashTransactionResponse(GetTransactionResponse):
+
+    """Implementation of the 'GetCashTransactionResponse' model.
+
+    Response object for getting a cash transaction
+    NOTE: This class inherits from 'GetTransactionResponse'.
+
+    Attributes:
+        description (string): Description
+
+    """
+
+    # Create a mapping from Model property names to API property names
+    _names = {
+        "description":'description',
+        "gateway_id":'gateway_id',
+        "amount":'amount',
+        "status":'status',
+        "success":'success',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "attempt_count":'attempt_count',
+        "max_attempts":'max_attempts',
+        "splits":'splits',
+        "id":'id',
+        "gateway_response":'gateway_response',
+        "next_attempt":'next_attempt',
+        "transaction_type":'transaction_type'
+    }
+
+    def __init__(self,
+                 description=None,
+                 gateway_id=None,
+                 amount=None,
+                 status=None,
+                 success=None,
+                 created_at=None,
+                 updated_at=None,
+                 attempt_count=None,
+                 max_attempts=None,
+                 splits=None,
+                 id=None,
+                 gateway_response=None,
+                 next_attempt=None,
+                 transaction_type=None):
+        """Constructor for the GetCashTransactionResponse class"""
+
+        # Initialize members of the class
+        self.description = description
+
+        # Call the constructor for the base class
+        super(GetCashTransactionResponse, self).__init__(gateway_id,
+                                                         amount,
+                                                         status,
+                                                         success,
+                                                         created_at,
+                                                         updated_at,
+                                                         attempt_count,
+                                                         max_attempts,
+                                                         splits,
+                                                         id,
+                                                         gateway_response,
+                                                         next_attempt,
+                                                         transaction_type)
+
+
+    @classmethod
+    def from_dictionary(cls,
+                        dictionary):
+        """Creates an instance of this model from a dictionary
+
+        Args:
+            dictionary (dictionary): A dictionary representation of the object as
+            obtained from the deserialization of the server's response. The keys
+            MUST match property names in the API description.
+
+        Returns:
+            object: An instance of this structure class.
+
+        """
+        if dictionary is None:
+            return None
+
+        # Extract variables from the dictionary
+        description = dictionary.get('description')
+        gateway_id = dictionary.get('gateway_id')
+        amount = dictionary.get('amount')
+        status = dictionary.get('status')
+        success = dictionary.get('success')
+        created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
+        updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
+        attempt_count = dictionary.get('attempt_count')
+        max_attempts = dictionary.get('max_attempts')
+        splits = None
+        if dictionary.get('splits') != None:
+            splits = list()
+            for structure in dictionary.get('splits'):
+                splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        id = dictionary.get('id')
+        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
+        transaction_type = dictionary.get('transaction_type')
+
+        # Return an object of this model
+        return cls(description,
                    gateway_id,
                    amount,
                    status,

@@ -624,8 +624,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 75
-size = 75
+page = 238
+size = 238
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -787,8 +787,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 75
-size = 75
+page = 74
+size = 74
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -850,8 +850,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 75
-size = 75
+page = 74
+size = 74
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -918,8 +918,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 75
-page = 75
+size = 74
+page = 74
 item_id = 'item_id'
 
 result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
@@ -959,8 +959,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 166
-size = 166
+page = 74
+size = 74
 code = 'code'
 group = 'group'
 
@@ -1006,8 +1006,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 166
-size = 166
+page = 74
+size = 74
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1299,8 +1299,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 166
-size = 166
+page = 74
+size = 74
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1340,6 +1340,36 @@ charge_id = 'charge_id'
 request = UpdateChargeDueDateRequest()
 
 result = charges_controller.update_charge_due_date(charge_id, request)
+
+```
+
+
+### <a name="confirm_payment"></a>![Method: ](https://apidocs.io/img/method.png ".ChargesController.confirm_payment") confirm_payment
+
+> TODO: Add a method description
+
+```python
+def confirm_payment(self,
+                        charge_id,
+                        request=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| chargeId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Optional ```  | Request for confirm payment |
+
+
+
+#### Example Usage
+
+```python
+charge_id = 'charge_id'
+request = CreateConfirmPaymentRequest()
+
+result = charges_controller.confirm_payment(charge_id, request)
 
 ```
 
@@ -1858,8 +1888,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 166
+size = 166
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1891,8 +1921,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 166
+size = 166
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1924,8 +1954,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 3
-size = 3
+page = 166
+size = 166
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1970,6 +2000,36 @@ email = 'email'
 code = 'Code'
 
 result = customers_controller.get_customers(name, document, page, size, email, code)
+
+```
+
+
+### <a name="renew_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.renew_card") renew_card
+
+> Renew a card
+
+```python
+def renew_card(self,
+                   customer_id,
+                   card_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer id |
+| cardId |  ``` Required ```  | Card Id |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+card_id = 'card_id'
+
+result = customers_controller.renew_card(customer_id, card_id)
 
 ```
 
@@ -2108,8 +2168,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 216
-size = 216
+page = 166
+size = 166
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2492,8 +2552,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 216
-size = 216
+page = 124
+size = 124
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2633,8 +2693,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 216
-size = 216
+page = 124
+size = 124
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3050,8 +3110,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 53
-size = 53
+page = 216
+size = 216
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3176,8 +3236,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 53
-size = 53
+page = 216
+size = 216
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3317,8 +3377,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 53
-size = 53
+page = 216
+size = 216
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3520,8 +3580,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 144
-size = 144
+page = 216
+size = 216
 name = 'name'
 document = 'document'
 code = 'code'
