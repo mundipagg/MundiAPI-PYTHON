@@ -624,8 +624,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 238
-size = 238
+page = 197
+size = 197
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -787,8 +787,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 74
-size = 74
+page = 239
+size = 239
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -850,8 +850,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 74
-size = 74
+page = 239
+size = 239
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -918,8 +918,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 74
-page = 74
+size = 239
+page = 239
 item_id = 'item_id'
 
 result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
@@ -959,8 +959,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 74
-size = 74
+page = 239
+size = 239
 code = 'code'
 group = 'group'
 
@@ -1006,8 +1006,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 74
-size = 74
+page = 239
+size = 239
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1016,6 +1016,66 @@ created_since = 'created_since'
 created_until = 'created_until'
 
 result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
+
+```
+
+
+### <a name="update_subscription_due_days"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_due_days") update_subscription_due_days
+
+> Updates the boleto due days from a subscription
+
+```python
+def update_subscription_due_days(self,
+                                     subscription_id,
+                                     request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionDueDaysRequest()
+
+result = subscriptions_controller.update_subscription_due_days(subscription_id, request)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
+
+> Atualização do valor mínimo da assinatura
+
+```python
+def update_subscription_minium_price(self,
+                                         subscription_id,
+                                         request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionMinimumPriceRequest()
+
+result = subscriptions_controller.update_subscription_minium_price(subscription_id, request)
 
 ```
 
@@ -1299,8 +1359,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 74
-size = 74
+page = 239
+size = 239
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1888,8 +1948,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 166
-size = 166
+page = 189
+size = 189
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1921,8 +1981,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 166
-size = 166
+page = 189
+size = 189
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1954,8 +2014,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 166
-size = 166
+page = 189
+size = 189
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2168,8 +2228,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 166
-size = 166
+page = 189
+size = 189
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2552,8 +2612,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 124
-size = 124
+page = 189
+size = 189
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2693,8 +2753,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 124
-size = 124
+page = 189
+size = 189
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3110,8 +3170,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 216
-size = 216
+page = 98
+size = 98
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3236,8 +3296,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 216
-size = 216
+page = 98
+size = 98
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3377,8 +3437,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 216
-size = 216
+page = 98
+size = 98
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3580,8 +3640,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 216
-size = 216
+page = 48
+size = 48
 name = 'name'
 document = 'document'
 code = 'code'
