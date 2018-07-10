@@ -20,6 +20,7 @@ class CreateOrderItemRequest(object):
         category (string): Category
         seller (CreateSellerRequest): Item seller
         seller_id (string): seller identificator
+        code (string): The item code passed by the client
 
     """
 
@@ -30,7 +31,8 @@ class CreateOrderItemRequest(object):
         "quantity":'quantity',
         "category":'category',
         "seller":'seller',
-        "seller_id":'seller_id'
+        "seller_id":'seller_id',
+        "code":'code'
     }
 
     def __init__(self,
@@ -39,7 +41,8 @@ class CreateOrderItemRequest(object):
                  quantity=None,
                  category=None,
                  seller=None,
-                 seller_id=None):
+                 seller_id=None,
+                 code=None):
         """Constructor for the CreateOrderItemRequest class"""
 
         # Initialize members of the class
@@ -49,6 +52,7 @@ class CreateOrderItemRequest(object):
         self.category = category
         self.seller = seller
         self.seller_id = seller_id
+        self.code = code
 
 
     @classmethod
@@ -75,6 +79,7 @@ class CreateOrderItemRequest(object):
         category = dictionary.get('category')
         seller = mundiapi.models.create_seller_request.CreateSellerRequest.from_dictionary(dictionary.get('seller')) if dictionary.get('seller') else None
         seller_id = dictionary.get('seller_id')
+        code = dictionary.get('code')
 
         # Return an object of this model
         return cls(amount,
@@ -82,6 +87,7 @@ class CreateOrderItemRequest(object):
                    quantity,
                    category,
                    seller,
-                   seller_id)
+                   seller_id,
+                   code)
 
 

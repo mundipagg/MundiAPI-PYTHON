@@ -72,7 +72,6 @@ __all__ = [
     'get_checkout_payment_settings_response',
     'create_seller_request',
     'get_seller_response',
-    'create_order_item_request',
     'get_order_item_response',
     'create_transfer_request',
     'get_transfer_response',
@@ -144,4 +143,5 @@ __all__ = [
     'create_confirm_payment_request',
     'update_subscription_due_days_request',
     'update_subscription_minimum_price_request',
+    'create_order_item_request',
 ]
