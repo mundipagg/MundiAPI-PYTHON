@@ -624,8 +624,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 95
-size = 95
+page = 243
+size = 243
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -787,8 +787,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 95
-size = 95
+page = 201
+size = 201
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -850,8 +850,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 3
-size = 3
+page = 201
+size = 201
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -918,8 +918,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 3
-page = 3
+size = 201
+page = 201
 item_id = 'item_id'
 
 result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
@@ -959,8 +959,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 3
-size = 3
+page = 201
+size = 201
 code = 'code'
 group = 'group'
 
@@ -1006,8 +1006,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 3
-size = 3
+page = 201
+size = 201
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1359,8 +1359,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 3
-size = 3
+page = 201
+size = 201
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1948,8 +1948,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 45
-size = 45
+page = 38
+size = 38
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -1981,8 +1981,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 45
-size = 45
+page = 38
+size = 38
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2014,8 +2014,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 45
-size = 45
+page = 38
+size = 38
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2228,8 +2228,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 45
-size = 45
+page = 251
+size = 251
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2612,8 +2612,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 208
-size = 208
+page = 251
+size = 251
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2753,8 +2753,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 208
-size = 208
+page = 251
+size = 251
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3170,8 +3170,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 117
-size = 117
+page = 87
+size = 87
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3296,8 +3296,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 117
-size = 117
+page = 87
+size = 87
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3437,8 +3437,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 117
-size = 117
+page = 87
+size = 87
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3640,8 +3640,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 117
-size = 117
+page = 87
+size = 87
 name = 'name'
 document = 'document'
 code = 'code'
