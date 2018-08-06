@@ -17,6 +17,8 @@ class CreateCheckoutPaymentRequest(object):
 
     Attributes:
         accepted_payment_methods (list of string): Accepted Payment Methods
+        accepted_multi_payment_methods (list of object): Accepted Multi
+            Payment Methods
         success_url (string): Success url
         skip_checkout_success_page (bool): Pular tela de sucesso
             pós-pagamento?
@@ -35,6 +37,7 @@ class CreateCheckoutPaymentRequest(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "accepted_payment_methods":'accepted_payment_methods',
+        "accepted_multi_payment_methods":'accepted_multi_payment_methods',
         "success_url":'success_url',
         "skip_checkout_success_page":'skip_checkout_success_page',
         "billing_address_editable":'billing_address_editable',
@@ -49,6 +52,7 @@ class CreateCheckoutPaymentRequest(object):
 
     def __init__(self,
                  accepted_payment_methods=None,
+                 accepted_multi_payment_methods=None,
                  success_url=None,
                  skip_checkout_success_page=None,
                  billing_address_editable=None,
@@ -63,6 +67,7 @@ class CreateCheckoutPaymentRequest(object):
 
         # Initialize members of the class
         self.accepted_payment_methods = accepted_payment_methods
+        self.accepted_multi_payment_methods = accepted_multi_payment_methods
         self.success_url = success_url
         self.skip_checkout_success_page = skip_checkout_success_page
         self.billing_address_editable = billing_address_editable
@@ -94,6 +99,7 @@ class CreateCheckoutPaymentRequest(object):
 
         # Extract variables from the dictionary
         accepted_payment_methods = dictionary.get('accepted_payment_methods')
+        accepted_multi_payment_methods = dictionary.get('accepted_multi_payment_methods')
         success_url = dictionary.get('success_url')
         skip_checkout_success_page = dictionary.get('skip_checkout_success_page')
         billing_address_editable = dictionary.get('billing_address_editable')
@@ -107,6 +113,7 @@ class CreateCheckoutPaymentRequest(object):
 
         # Return an object of this model
         return cls(accepted_payment_methods,
+                   accepted_multi_payment_methods,
                    success_url,
                    skip_checkout_success_page,
                    billing_address_editable,
