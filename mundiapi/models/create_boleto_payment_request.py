@@ -22,8 +22,9 @@ class CreateBoletoPaymentRequest(object):
             the boleto.
         billing_address (CreateAddressRequest): Card's billing address
         billing_address_id (string): The address id for the billing address
+        document_number (string): Boleto identification
         due_at (datetime): Boleto due date
-        nosso_numero (string): Número de identificação do cliente com o banco
+        nosso_numero (string): Customer identification number with the bank
 
     """
 
@@ -34,6 +35,7 @@ class CreateBoletoPaymentRequest(object):
         "instructions":'instructions',
         "billing_address":'billing_address',
         "billing_address_id":'billing_address_id',
+        "document_number":'document_number',
         "due_at":'due_at',
         "nosso_numero":'nosso_numero'
     }
@@ -44,6 +46,7 @@ class CreateBoletoPaymentRequest(object):
                  instructions=None,
                  billing_address=None,
                  billing_address_id=None,
+                 document_number=None,
                  due_at=None,
                  nosso_numero=None):
         """Constructor for the CreateBoletoPaymentRequest class"""
@@ -54,6 +57,7 @@ class CreateBoletoPaymentRequest(object):
         self.instructions = instructions
         self.billing_address = billing_address
         self.billing_address_id = billing_address_id
+        self.document_number = document_number
         self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.nosso_numero = nosso_numero
 
@@ -81,6 +85,7 @@ class CreateBoletoPaymentRequest(object):
         instructions = dictionary.get('instructions')
         billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         billing_address_id = dictionary.get('billing_address_id')
+        document_number = dictionary.get('document_number')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         nosso_numero = dictionary.get('nosso_numero')
 
@@ -90,6 +95,7 @@ class CreateBoletoPaymentRequest(object):
                    instructions,
                    billing_address,
                    billing_address_id,
+                   document_number,
                    due_at,
                    nosso_numero)
 

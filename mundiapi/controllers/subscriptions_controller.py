@@ -72,17 +72,17 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
 
-    def update_subscription_billing_date(self,
-                                         subscription_id,
-                                         request):
-        """Does a PATCH request to /subscriptions/{subscription_id}/billing-date.
+    def update_subscription_start_at(self,
+                                     subscription_id,
+                                     request):
+        """Does a PATCH request to /subscriptions/{subscription_id}/start-at.
 
-        Updates the billing date from a subscription
+        Updates the start at date from a subscription
 
         Args:
             subscription_id (string): The subscription id
-            request (UpdateSubscriptionBillingDateRequest): Request for
-                updating the subscription billing date
+            request (UpdateSubscriptionStartDateRequest): Request for updating
+                the subscription start date
 
         Returns:
             GetSubscriptionResponse: Response from the API. 
@@ -97,7 +97,7 @@ class SubscriptionsController(BaseController):
 
         # Prepare query URL
         _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/billing-date'
+        _query_builder += '/subscriptions/{subscription_id}/start-at'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'subscription_id': subscription_id
         })

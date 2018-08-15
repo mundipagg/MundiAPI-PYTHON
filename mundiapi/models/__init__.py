@@ -145,4 +145,5 @@ __all__ = [
     'create_checkout_payment_request',
     'create_shipping_request',
     'get_shipping_response',
+    'update_subscription_start_date_request',
 ]
