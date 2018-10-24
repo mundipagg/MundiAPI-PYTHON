@@ -107,7 +107,7 @@ class CreateCreditCardPaymentRequest(object):
         card_id = dictionary.get('card_id')
         card_token = dictionary.get('card_token')
         recurrence = dictionary.get('recurrence')
-        capture = dictionary.get("capture") if dictionary.get("capture") else True
+        capture = bool(dictionary.get('capture', True))
         extended_limit_enabled = dictionary.get('extended_limit_enabled')
         extended_limit_code = dictionary.get('extended_limit_code')
         merchant_category_code = dictionary.get('merchant_category_code')
