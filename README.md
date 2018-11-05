@@ -561,8 +561,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 81
-size = 81
+page = 242
+size = 242
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -787,8 +787,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 245
-size = 245
+page = 242
+size = 242
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -850,8 +850,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 245
-size = 245
+page = 242
+size = 242
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -920,8 +920,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 245
-page = 245
+size = 242
+page = 242
 item_id = 'item_id'
 group = 'group'
 
@@ -962,8 +962,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 245
-size = 245
+page = 242
+size = 242
 code = 'code'
 group = 'group'
 
@@ -1009,8 +1009,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 245
-size = 245
+page = 242
+size = 242
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1143,6 +1143,36 @@ result = subscriptions_controller.update_current_cycle_end_date(subscription_id,
 ```
 
 
+### <a name="update_current_cycle_status"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_current_cycle_status") update_current_cycle_status
+
+> TODO: Add a method description
+
+```python
+def update_current_cycle_status(self,
+                                    subscription_id,
+                                    request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request for updating the end date of the subscription current status |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateCurrentCycleStatusRequest()
+
+subscriptions_controller.update_current_cycle_status(subscription_id, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
@@ -1241,8 +1271,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 245
-size = 245
+page = 201
+size = 201
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -1682,8 +1712,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 153
-size = 153
+page = 37
+size = 37
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1949,8 +1979,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 153
-size = 153
+page = 37
+size = 37
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1991,6 +2021,63 @@ invoice_id = 'invoice_id'
 request = UpdateMetadataRequest()
 
 result = invoices_controller.update_invoice_metadata(invoice_id, request)
+
+```
+
+
+### <a name="remove_invoice_usage"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.remove_invoice_usage") remove_invoice_usage
+
+> Remove a usage from an invoice
+
+```python
+def remove_invoice_usage(self,
+                             invoice_id,
+                             usage_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice Id |
+| usageId |  ``` Required ```  | Usage Id |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+usage_id = 'usage_id'
+
+result = invoices_controller.remove_invoice_usage(invoice_id, usage_id)
+
+```
+
+
+### <a name="remove_invoice_usages"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.remove_invoice_usages") remove_invoice_usages
+
+> Remove usages from an invoice
+
+```python
+def remove_invoice_usages(self,
+                              invoice_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice Id |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+
+result = invoices_controller.remove_invoice_usages(invoice_id)
 
 ```
 
@@ -2152,8 +2239,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 153
-size = 153
+page = 37
+size = 37
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2185,8 +2272,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 195
-size = 195
+page = 37
+size = 37
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2218,8 +2305,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 195
-size = 195
+page = 37
+size = 37
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2844,8 +2931,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 103
-size = 103
+page = 129
+size = 129
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3112,8 +3199,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 103
-size = 103
+page = 87
+size = 87
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3253,8 +3340,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 103
-size = 103
+page = 87
+size = 87
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3376,8 +3463,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 103
-size = 103
+page = 87
+size = 87
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3703,8 +3790,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 12
-size = 12
+page = 178
+size = 178
 name = 'name'
 document = 'document'
 code = 'code'

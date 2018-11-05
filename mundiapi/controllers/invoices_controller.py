@@ -314,3 +314,90 @@ class InvoicesController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetInvoiceResponse.from_dictionary)
+
+    def remove_invoice_usage(self,
+                             invoice_id,
+                             usage_id):
+        """Does a DELETE request to /invoices/{invoice_id}/usages/{usage_id}.
+
+        Remove a usage from an invoice
+
+        Args:
+            invoice_id (string): Invoice Id
+            usage_id (string): Usage Id
+
+        Returns:
+            GetInvoiceResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/invoices/{invoice_id}/usages/{usage_id}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'invoice_id': invoice_id,
+            'usage_id': usage_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetInvoiceResponse.from_dictionary)
+
+    def remove_invoice_usages(self,
+                              invoice_id):
+        """Does a DELETE request to /invoices/{invoice_id}/usages.
+
+        Remove usages from an invoice
+
+        Args:
+            invoice_id (string): Invoice Id
+
+        Returns:
+            GetInvoiceResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.base_uri
+        _query_builder += '/invoices/{invoice_id}/usages'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'invoice_id': invoice_id
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetInvoiceResponse.from_dictionary)

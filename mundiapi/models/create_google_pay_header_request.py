@@ -7,37 +7,29 @@
 """
 
 
-class ApplePayHeaderRequest(object):
+class CreateGooglePayHeaderRequest(object):
 
-    """Implementation of the 'ApplePayHeaderRequest' model.
+    """Implementation of the 'CreateGooglePayHeaderRequest' model.
 
-    The apple pay header request
+    The GooglePay header request
 
     Attributes:
-        public_key_hash (string): SHA–256 hash, Base64 string codified
         ephemeral_public_key (string): X.509 encoded key bytes, Base64 encoded
             as a string
-        transaction_id (string): Transaction identifier, generated on Device
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "ephemeral_public_key":'ephemeral_public_key',
-        "public_key_hash":'public_key_hash',
-        "transaction_id":'transaction_id'
+        "ephemeral_public_key":'ephemeral_public_key'
     }
 
     def __init__(self,
-                 ephemeral_public_key=None,
-                 public_key_hash=None,
-                 transaction_id=None):
-        """Constructor for the ApplePayHeaderRequest class"""
+                 ephemeral_public_key=None):
+        """Constructor for the CreateGooglePayHeaderRequest class"""
 
         # Initialize members of the class
-        self.public_key_hash = public_key_hash
         self.ephemeral_public_key = ephemeral_public_key
-        self.transaction_id = transaction_id
 
 
     @classmethod
@@ -59,12 +51,8 @@ class ApplePayHeaderRequest(object):
 
         # Extract variables from the dictionary
         ephemeral_public_key = dictionary.get('ephemeral_public_key')
-        public_key_hash = dictionary.get('public_key_hash')
-        transaction_id = dictionary.get('transaction_id')
 
         # Return an object of this model
-        return cls(ephemeral_public_key,
-                   public_key_hash,
-                   transaction_id)
+        return cls(ephemeral_public_key)
 
 
