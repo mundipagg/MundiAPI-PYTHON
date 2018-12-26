@@ -38,6 +38,7 @@ class GetChargeResponse(object):
         paid_at (datetime): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
         canceled_amount (int): Canceled Amount
+        paid_amount (int): Paid amount
 
     """
 
@@ -59,6 +60,7 @@ class GetChargeResponse(object):
         "customer":'customer',
         "metadata":'metadata',
         "canceled_amount":'canceled_amount',
+        "paid_amount":'paid_amount',
         "paid_at":'paid_at',
         "canceled_at":'canceled_at'
     }
@@ -80,6 +82,7 @@ class GetChargeResponse(object):
                  customer=None,
                  metadata=None,
                  canceled_amount=None,
+                 paid_amount=None,
                  paid_at=None,
                  canceled_at=None):
         """Constructor for the GetChargeResponse class"""
@@ -103,6 +106,7 @@ class GetChargeResponse(object):
         self.paid_at = APIHelper.RFC3339DateTime(paid_at) if paid_at else None
         self.canceled_at = APIHelper.RFC3339DateTime(canceled_at) if canceled_at else None
         self.canceled_amount = canceled_amount
+        self.paid_amount = paid_amount
 
 
     @classmethod
@@ -139,6 +143,7 @@ class GetChargeResponse(object):
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         metadata = dictionary.get('metadata')
         canceled_amount = dictionary.get('canceled_amount')
+        paid_amount = dictionary.get('paid_amount')
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
 
@@ -159,6 +164,7 @@ class GetChargeResponse(object):
                    customer,
                    metadata,
                    canceled_amount,
+                   paid_amount,
                    paid_at,
                    canceled_at)
 

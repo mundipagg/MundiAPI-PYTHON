@@ -34,6 +34,8 @@ class CreateCreditCardPaymentRequest(object):
             authentication request
         token (CreateCardPaymentTokenRequest): The Credit card payment token
             request
+        auto_recovery (bool): Indicates whether a particular payment will
+            enter the offline retry flow
 
     """
 
@@ -50,7 +52,8 @@ class CreateCreditCardPaymentRequest(object):
         "extended_limit_code":'extended_limit_code',
         "merchant_category_code":'merchant_category_code',
         "authentication":'authentication',
-        "token":'token'
+        "token":'token',
+        "auto_recovery":'auto_recovery'
     }
 
     def __init__(self,
@@ -65,7 +68,8 @@ class CreateCreditCardPaymentRequest(object):
                  extended_limit_code=None,
                  merchant_category_code=None,
                  authentication=None,
-                 token=None):
+                 token=None,
+                 auto_recovery=None):
         """Constructor for the CreateCreditCardPaymentRequest class"""
 
         # Initialize members of the class
@@ -81,6 +85,7 @@ class CreateCreditCardPaymentRequest(object):
         self.merchant_category_code = merchant_category_code
         self.authentication = authentication
         self.token = token
+        self.auto_recovery = auto_recovery
 
 
     @classmethod
@@ -113,6 +118,7 @@ class CreateCreditCardPaymentRequest(object):
         merchant_category_code = dictionary.get('merchant_category_code')
         authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
         token = mundiapi.models.create_card_payment_token_request.CreateCardPaymentTokenRequest.from_dictionary(dictionary.get('token')) if dictionary.get('token') else None
+        auto_recovery = dictionary.get('auto_recovery')
 
         # Return an object of this model
         return cls(installments,
@@ -126,6 +132,7 @@ class CreateCreditCardPaymentRequest(object):
                    extended_limit_code,
                    merchant_category_code,
                    authentication,
-                   token)
+                   token,
+                   auto_recovery)
 
 

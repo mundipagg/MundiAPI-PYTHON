@@ -17,6 +17,7 @@ from .controllers.charges_controller import ChargesController
 from .controllers.recipients_controller import RecipientsController
 from .controllers.tokens_controller import TokensController
 from .controllers.sellers_controller import SellersController
+from .controllers.transactions_controller import TransactionsController
 
 class MundiapiClient(object):
 
@@ -57,6 +58,10 @@ class MundiapiClient(object):
     @lazy_property
     def sellers(self):
         return SellersController()
+
+    @lazy_property
+    def transactions(self):
+        return TransactionsController()
 
 
     def __init__(self, 

@@ -9,4 +9,5 @@ __all__ = [
     'recipients_controller',
     'tokens_controller',
     'sellers_controller',
+    'transactions_controller',
 ]

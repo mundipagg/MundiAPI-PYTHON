@@ -32,7 +32,7 @@ class BaseController(object):
     http_call_back = None
 
     global_headers = {
-        'user-agent': 'MundiSDK - Python 0.13.41'
+        'user-agent': 'MundiSDK - Python 0.13.42'
     }
 
     def __init__(self, client=None, call_back=None):
