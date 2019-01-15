@@ -49,12 +49,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards/{card_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards/{card_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'card_id': card_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -97,12 +98,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/addresses/{address_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/addresses/{address_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'address_id': address_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -141,8 +143,9 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/customers'
         _query_builder = Configuration.base_uri
-        _query_builder += '/customers'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -181,11 +184,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -227,11 +231,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/access-tokens'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/access-tokens'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -279,11 +284,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/addresses'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/addresses'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -331,11 +337,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -379,11 +386,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/access-tokens/'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/access-tokens/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -423,12 +431,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/access-tokens/{token_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/access-tokens/{token_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'token_id': token_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -469,11 +478,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/access-tokens'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/access-tokens'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -514,12 +524,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/access-tokens/{token_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/access-tokens/{token_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'token_id': token_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -560,11 +571,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Customers/{customer_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Customers/{customer_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -605,11 +617,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -650,12 +663,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/addresses/{address_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/addresses/{address_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'address_id': address_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -695,12 +709,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/addresses/{address_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/addresses/{address_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'address_id': address_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -740,12 +755,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards/{card_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards/{card_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'card_id': card_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -785,11 +801,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/addresses'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/addresses'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -830,12 +847,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards/{card_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards/{card_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'card_id': card_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -875,11 +893,12 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -928,8 +947,9 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/customers'
         _query_builder = Configuration.base_uri
-        _query_builder += '/customers'
+        _query_builder += _url_path
         _query_parameters = {
             'name': name,
             'document': document,
@@ -979,12 +999,13 @@ class CustomersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/customers/{customer_id}/cards/{card_id}/renew'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/customers/{customer_id}/cards/{card_id}/renew'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'customer_id': customer_id,
             'card_id': card_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

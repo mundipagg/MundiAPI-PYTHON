@@ -39,11 +39,12 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/sellers/{id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/sellers/{id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'id': id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -81,11 +82,12 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/sellers/{sellerId}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/sellers/{sellerId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'sellerId': seller_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -123,8 +125,9 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/sellers/'
         _query_builder = Configuration.base_uri
-        _query_builder += '/sellers/'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -181,8 +184,9 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/sellers'
         _query_builder = Configuration.base_uri
-        _query_builder += '/sellers'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -235,11 +239,12 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/sellers/{id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/sellers/{id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'id': id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -281,11 +286,12 @@ class SellersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/sellers/{seller_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/sellers/{seller_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'seller_id': seller_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

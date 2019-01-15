@@ -18,6 +18,7 @@ class UpdateSubscriptionPaymentMethodRequest(object):
         payment_method (string): The new payment method
         card_id (string): Card id
         card (CreateCardRequest): Card data
+        card_token (string): The Card Token
 
     """
 
@@ -25,19 +26,22 @@ class UpdateSubscriptionPaymentMethodRequest(object):
     _names = {
         "payment_method":'payment_method',
         "card_id":'card_id',
-        "card":'card'
+        "card":'card',
+        "card_token":'card_token'
     }
 
     def __init__(self,
                  payment_method=None,
                  card_id=None,
-                 card=None):
+                 card=None,
+                 card_token=None):
         """Constructor for the UpdateSubscriptionPaymentMethodRequest class"""
 
         # Initialize members of the class
         self.payment_method = payment_method
         self.card_id = card_id
         self.card = card
+        self.card_token = card_token
 
 
     @classmethod
@@ -61,10 +65,12 @@ class UpdateSubscriptionPaymentMethodRequest(object):
         payment_method = dictionary.get('payment_method')
         card_id = dictionary.get('card_id')
         card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card_token = dictionary.get('card_token')
 
         # Return an object of this model
         return cls(payment_method,
                    card_id,
-                   card)
+                   card,
+                   card_token)
 
 

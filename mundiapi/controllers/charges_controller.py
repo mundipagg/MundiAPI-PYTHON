@@ -43,11 +43,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/card'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/card'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -89,11 +90,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/payment-method'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/payment-method'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -132,8 +134,9 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/Charges'
         _query_builder = Configuration.base_uri
-        _query_builder += '/Charges'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -172,11 +175,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -214,11 +218,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/retry'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/retry'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -275,8 +280,9 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/charges'
         _query_builder = Configuration.base_uri
-        _query_builder += '/charges'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -330,11 +336,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Charges/{charge_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Charges/{charge_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -376,11 +383,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -422,11 +430,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/capture'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/capture'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -468,11 +477,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Charges/{charge_id}/due-date'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Charges/{charge_id}/due-date'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -514,11 +524,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/confirm-payment'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/confirm-payment'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -561,11 +572,12 @@ class ChargesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/charges/{charge_id}/transactions'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/charges/{charge_id}/transactions'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'charge_id': charge_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size

@@ -38,11 +38,12 @@ class TransactionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/transactions/{transaction_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/transactions/{transaction_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'transaction_id': transaction_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

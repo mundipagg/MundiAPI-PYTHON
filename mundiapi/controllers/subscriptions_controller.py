@@ -50,12 +50,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/increments/{increment_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/increments/{increment_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'increment_id': increment_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -96,11 +97,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/start-at'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/start-at'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -142,11 +144,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/card'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/card'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -190,12 +193,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -238,12 +242,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -282,11 +287,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -327,11 +333,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/payment-method'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/payment-method'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -371,8 +378,9 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/subscriptions'
         _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -414,11 +422,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -459,11 +468,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/discounts'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/discounts'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -504,12 +514,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -550,11 +561,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/gateway-affiliation-id'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/gateway-affiliation-id'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -595,12 +607,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -666,8 +679,9 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/subscriptions'
         _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -724,11 +738,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Subscriptions/{subscription_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Subscriptions/{subscription_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -769,12 +784,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{subscription_item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{subscription_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'subscription_item_id': subscription_item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -816,13 +832,14 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id,
             'usage_id': usage_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -862,12 +879,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/discounts/{discount_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/discounts/{discount_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'discount_id': discount_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -908,11 +926,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -953,12 +972,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/discounts/{discountId}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/discounts/{discountId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'discountId': discount_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1000,11 +1020,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/discounts/'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/discounts/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -1051,11 +1072,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/increments'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/increments'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1098,11 +1120,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/increments/'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/increments/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -1148,12 +1171,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/increments/{increment_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/increments/{increment_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'increment_id': increment_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1202,11 +1226,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/usages-details/'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/usages-details/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'cycle_id': cycle_id,
             'size': size,
@@ -1264,12 +1289,13 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'item_id': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -1333,11 +1359,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -1390,11 +1417,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/boleto-due-days'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/boleto-due-days'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1436,11 +1464,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/minimum_price'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/minimum_price'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1482,11 +1511,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/billing-date'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/billing-date'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1528,11 +1558,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/cycle-end-date'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/cycle-end-date'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -1574,11 +1605,12 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/cycle-status'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/cycle-status'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

@@ -40,11 +40,12 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{order_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{order_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'order_id': order_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -82,8 +83,9 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/orders'
         _query_builder = Configuration.base_uri
-        _query_builder += '/orders'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -136,8 +138,9 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/orders'
         _query_builder = Configuration.base_uri
-        _query_builder += '/orders'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -189,11 +192,12 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Orders/{order_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Orders/{order_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'order_id': order_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -232,11 +236,12 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{orderId}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{orderId}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'orderId': order_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -278,12 +283,13 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{orderId}/items/{itemId}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{orderId}/items/{itemId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'orderId': order_id,
             'itemId': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -324,12 +330,13 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{orderId}/items/{itemId}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{orderId}/items/{itemId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'orderId': order_id,
             'itemId': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -369,11 +376,12 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{orderId}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{orderId}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'orderId': order_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -414,12 +422,13 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{orderId}/items/{itemId}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{orderId}/items/{itemId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'orderId': order_id,
             'itemId': item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -459,11 +468,12 @@ class OrdersController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/orders/{id}/closed'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/orders/{id}/closed'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'id': id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

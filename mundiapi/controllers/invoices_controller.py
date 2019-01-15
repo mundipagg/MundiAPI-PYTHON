@@ -39,11 +39,12 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -81,11 +82,12 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -125,12 +127,13 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
             'cycle_id': cycle_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -171,11 +174,12 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}/status'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}/status'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -237,8 +241,9 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/invoices'
         _query_builder = Configuration.base_uri
-        _query_builder += '/invoices'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -293,11 +298,12 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -338,12 +344,13 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}/usages/{usage_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}/usages/{usage_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id,
             'usage_id': usage_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -381,11 +388,12 @@ class InvoicesController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/invoices/{invoice_id}/usages'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/invoices/{invoice_id}/usages'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'invoice_id': invoice_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

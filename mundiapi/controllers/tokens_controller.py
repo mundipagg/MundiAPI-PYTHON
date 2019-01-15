@@ -39,12 +39,13 @@ class TokensController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/tokens/{id}?appId={public_key}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/tokens/{id}?appId={public_key}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'id': id,
             'public_key': public_key
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -83,11 +84,12 @@ class TokensController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/tokens?appId={public_key}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/tokens?appId={public_key}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'public_key': public_key
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

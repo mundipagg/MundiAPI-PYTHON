@@ -47,11 +47,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -92,12 +93,13 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/transfers/{transfer_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/transfers/{transfer_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id,
             'transfer_id': transfer_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -147,11 +149,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/transfers'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/transfers'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -200,11 +203,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/anticipations'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/anticipations'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -245,12 +249,13 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/anticipations/{anticipation_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/anticipations/{anticipation_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id,
             'anticipation_id': anticipation_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -292,11 +297,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/anticipation_limits'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/anticipation_limits'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'timeframe': timeframe,
             'payment_date': APIHelper.when_defined(APIHelper.RFC3339DateTime, payment_date)
@@ -360,11 +366,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/anticipations'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/anticipations'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -416,11 +423,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -461,11 +469,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/default-bank-account'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/default-bank-account'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -504,11 +513,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -548,8 +558,9 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/recipients'
         _query_builder = Configuration.base_uri
-        _query_builder += '/recipients'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size
@@ -593,11 +604,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/balance'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/balance'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -637,11 +649,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/transfers'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/transfers'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -680,8 +693,9 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/recipients'
         _query_builder = Configuration.base_uri
-        _query_builder += '/recipients'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -723,11 +737,12 @@ class RecipientsController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/recipients/{recipient_id}/transfer-settings'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/recipients/{recipient_id}/transfer-settings'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'recipient_id': recipient_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

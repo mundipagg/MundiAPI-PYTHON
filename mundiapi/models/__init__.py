@@ -4,7 +4,6 @@ __all__ = [
     'update_subscription_billing_date_request',
     'list_subscription_items_response',
     'list_usages_response',
-    'update_subscription_payment_method_request',
     'create_card_options_request',
     'update_subscription_card_request',
     'list_order_response',
@@ -160,4 +159,5 @@ __all__ = [
     'create_google_pay_request',
     'create_google_pay_header_request',
     'create_card_payment_token_request',
+    'update_subscription_payment_method_request',
 ]

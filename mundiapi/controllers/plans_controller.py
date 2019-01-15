@@ -42,11 +42,12 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}/items'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -89,12 +90,13 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}/items/{plan_item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}/items/{plan_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id,
             'plan_item_id': plan_item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -133,11 +135,12 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -175,11 +178,12 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -219,11 +223,12 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -262,8 +267,9 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/plans'
         _query_builder = Configuration.base_uri
-        _query_builder += '/plans'
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -316,8 +322,9 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
+        _url_path = '/plans'
         _query_builder = Configuration.base_uri
-        _query_builder += '/plans'
+        _query_builder += _url_path
         _query_parameters = {
             'page': page,
             'size': size,
@@ -369,11 +376,12 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/Plans/{plan_id}/metadata'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/Plans/{plan_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -414,12 +422,13 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}/items/{plan_item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}/items/{plan_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id,
             'plan_item_id': plan_item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
@@ -459,12 +468,13 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _query_builder = Configuration.base_uri
-        _query_builder += '/plans/{plan_id}/items/{plan_item_id}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+        _url_path = '/plans/{plan_id}/items/{plan_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id,
             'plan_item_id': plan_item_id
         })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
