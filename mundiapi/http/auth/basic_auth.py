@@ -7,7 +7,8 @@
 """
 
 import base64
-from ...configuration import Configuration
+from mundiapi.configuration import Configuration
+
 
 class BasicAuth:
 

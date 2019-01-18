@@ -7,17 +7,18 @@
 """
 
 from .decorators import lazy_property
-from .configuration import Configuration
-from .controllers.subscriptions_controller import SubscriptionsController
-from .controllers.orders_controller import OrdersController
-from .controllers.plans_controller import PlansController
-from .controllers.invoices_controller import InvoicesController
-from .controllers.customers_controller import CustomersController
-from .controllers.charges_controller import ChargesController
-from .controllers.recipients_controller import RecipientsController
-from .controllers.tokens_controller import TokensController
-from .controllers.sellers_controller import SellersController
-from .controllers.transactions_controller import TransactionsController
+from mundiapi.configuration import Configuration
+from mundiapi.controllers.subscriptions_controller import SubscriptionsController
+from mundiapi.controllers.orders_controller import OrdersController
+from mundiapi.controllers.plans_controller import PlansController
+from mundiapi.controllers.invoices_controller import InvoicesController
+from mundiapi.controllers.customers_controller import CustomersController
+from mundiapi.controllers.charges_controller import ChargesController
+from mundiapi.controllers.recipients_controller import RecipientsController
+from mundiapi.controllers.tokens_controller import TokensController
+from mundiapi.controllers.sellers_controller import SellersController
+from mundiapi.controllers.transactions_controller import TransactionsController
+
 
 class MundiapiClient(object):
 

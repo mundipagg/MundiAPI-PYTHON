@@ -9,7 +9,7 @@ except(IOError, ImportError):
 
 setup(
     name='mundiapi',
-    version='0.13.43',
+    version='0.14.0',
     description='Mundipagg API',
     long_description=long_description,
     author='APIMatic SDK Generator',

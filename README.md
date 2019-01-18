@@ -562,8 +562,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 15
-size = 15
+page = 112
+size = 112
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -788,8 +788,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 57
-size = 57
+page = 112
+size = 112
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -851,8 +851,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 57
-size = 57
+page = 112
+size = 112
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -921,8 +921,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 57
-page = 57
+size = 154
+page = 154
 item_id = 'item_id'
 group = 'group'
 
@@ -963,8 +963,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 57
-size = 57
+page = 154
+size = 154
 code = 'code'
 group = 'group'
 
@@ -1010,8 +1010,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 57
-size = 57
+page = 154
+size = 154
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1272,8 +1272,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 221
-size = 221
+page = 154
+size = 154
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -1713,8 +1713,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 129
-size = 129
+page = 62
+size = 62
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1889,7 +1889,8 @@ result = invoices_controller.get_invoice(invoice_id)
 ```python
 def create_invoice(self,
                        subscription_id,
-                       cycle_id)
+                       cycle_id,
+                       request=None)
 ```
 
 #### Parameters
@@ -1898,6 +1899,7 @@ def create_invoice(self,
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription Id |
 | cycleId |  ``` Required ```  | Cycle Id |
+| request |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1906,8 +1908,9 @@ def create_invoice(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
+request = CreateInvoiceRequest()
 
-result = invoices_controller.create_invoice(subscription_id, cycle_id)
+result = invoices_controller.create_invoice(subscription_id, cycle_id, request)
 
 ```
 
@@ -1980,8 +1983,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 129
-size = 129
+page = 62
+size = 62
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2022,63 +2025,6 @@ invoice_id = 'invoice_id'
 request = UpdateMetadataRequest()
 
 result = invoices_controller.update_invoice_metadata(invoice_id, request)
-
-```
-
-
-### <a name="remove_invoice_usage"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.remove_invoice_usage") remove_invoice_usage
-
-> Remove a usage from an invoice
-
-```python
-def remove_invoice_usage(self,
-                             invoice_id,
-                             usage_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice Id |
-| usageId |  ``` Required ```  | Usage Id |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-usage_id = 'usage_id'
-
-result = invoices_controller.remove_invoice_usage(invoice_id, usage_id)
-
-```
-
-
-### <a name="remove_invoice_usages"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.remove_invoice_usages") remove_invoice_usages
-
-> Remove usages from an invoice
-
-```python
-def remove_invoice_usages(self,
-                              invoice_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice Id |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-
-result = invoices_controller.remove_invoice_usages(invoice_id)
 
 ```
 
@@ -2240,8 +2186,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 129
-size = 129
+page = 226
+size = 226
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2273,8 +2219,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 129
-size = 129
+page = 226
+size = 226
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2306,8 +2252,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 129
-size = 129
+page = 226
+size = 226
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2932,8 +2878,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 171
-size = 171
+page = 12
+size = 12
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3122,8 +3068,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 171
-size = 171
+page = 12
+size = 12
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3233,8 +3179,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 79
-size = 79
+page = 12
+size = 12
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3374,8 +3320,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 79
-size = 79
+page = 176
+size = 176
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3497,8 +3443,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 79
-size = 79
+page = 176
+size = 176
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3824,8 +3770,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 121
-size = 121
+page = 176
+size = 176
 name = 'name'
 document = 'document'
 code = 'code'
