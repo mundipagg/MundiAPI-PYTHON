@@ -159,5 +159,6 @@ __all__ = [
     'create_google_pay_request',
     'create_google_pay_header_request',
     'create_card_payment_token_request',
+    'create_invoice_request',
     'update_subscription_payment_method_request',
 ]

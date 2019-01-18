@@ -12,9 +12,9 @@ from cachecontrol import CacheControl
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-from .http_client import HttpClient
-from .http_response import HttpResponse
-from .http_method_enum import HttpMethodEnum
+from mundiapi.http.http_client import HttpClient
+from mundiapi.http.http_method_enum import HttpMethodEnum
+from mundiapi.http.http_response import HttpResponse
 
 
 class RequestsClient(HttpClient):
