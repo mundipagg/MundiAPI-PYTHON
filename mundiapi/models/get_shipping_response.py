@@ -23,6 +23,7 @@ class GetShippingResponse(object):
         address (GetAddressResponse): TODO: type description here.
         max_delivery_date (datetime): Data máxima de entrega
         estimated_delivery_date (datetime): Prazo estimado de entrega
+        mtype (string): Shipping Type
 
     """
 
@@ -33,6 +34,7 @@ class GetShippingResponse(object):
         "recipient_name":'recipient_name',
         "recipient_phone":'recipient_phone',
         "address":'address',
+        "mtype":'type',
         "max_delivery_date":'max_delivery_date',
         "estimated_delivery_date":'estimated_delivery_date'
     }
@@ -43,6 +45,7 @@ class GetShippingResponse(object):
                  recipient_name=None,
                  recipient_phone=None,
                  address=None,
+                 mtype=None,
                  max_delivery_date=None,
                  estimated_delivery_date=None):
         """Constructor for the GetShippingResponse class"""
@@ -55,6 +58,7 @@ class GetShippingResponse(object):
         self.address = address
         self.max_delivery_date = APIHelper.RFC3339DateTime(max_delivery_date) if max_delivery_date else None
         self.estimated_delivery_date = APIHelper.RFC3339DateTime(estimated_delivery_date) if estimated_delivery_date else None
+        self.mtype = mtype
 
 
     @classmethod
@@ -80,6 +84,7 @@ class GetShippingResponse(object):
         recipient_name = dictionary.get('recipient_name')
         recipient_phone = dictionary.get('recipient_phone')
         address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        mtype = dictionary.get('type')
         max_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("max_delivery_date")).datetime if dictionary.get("max_delivery_date") else None
         estimated_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("estimated_delivery_date")).datetime if dictionary.get("estimated_delivery_date") else None
 
@@ -89,6 +94,7 @@ class GetShippingResponse(object):
                    recipient_name,
                    recipient_phone,
                    address,
+                   mtype,
                    max_delivery_date,
                    estimated_delivery_date)
 
