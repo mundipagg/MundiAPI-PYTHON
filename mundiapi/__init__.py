@@ -6,5 +6,5 @@ __all__ = [
     'http',
     'exceptions',
     'decorators',
-    'mundi_api_client',
+    'mundiapi_client',
 ]

@@ -25,6 +25,7 @@ class CreateShippingRequest(object):
         address (CreateAddressRequest): Address data
         max_delivery_date (datetime): Data máxima de entrega
         estimated_delivery_date (datetime): Prazo estimado de entrega
+        mtype (string): Shipping type
 
     """
 
@@ -36,6 +37,7 @@ class CreateShippingRequest(object):
         "recipient_phone":'recipient_phone',
         "address_id":'address_id',
         "address":'address',
+        "mtype":'type',
         "max_delivery_date":'max_delivery_date',
         "estimated_delivery_date":'estimated_delivery_date'
     }
@@ -47,6 +49,7 @@ class CreateShippingRequest(object):
                  recipient_phone=None,
                  address_id=None,
                  address=None,
+                 mtype=None,
                  max_delivery_date=None,
                  estimated_delivery_date=None):
         """Constructor for the CreateShippingRequest class"""
@@ -60,6 +63,7 @@ class CreateShippingRequest(object):
         self.address = address
         self.max_delivery_date = APIHelper.RFC3339DateTime(max_delivery_date) if max_delivery_date else None
         self.estimated_delivery_date = APIHelper.RFC3339DateTime(estimated_delivery_date) if estimated_delivery_date else None
+        self.mtype = mtype
 
 
     @classmethod
@@ -86,6 +90,7 @@ class CreateShippingRequest(object):
         recipient_phone = dictionary.get('recipient_phone')
         address_id = dictionary.get('address_id')
         address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        mtype = dictionary.get('type')
         max_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("max_delivery_date")).datetime if dictionary.get("max_delivery_date") else None
         estimated_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("estimated_delivery_date")).datetime if dictionary.get("estimated_delivery_date") else None
 
@@ -96,6 +101,7 @@ class CreateShippingRequest(object):
                    recipient_phone,
                    address_id,
                    address,
+                   mtype,
                    max_delivery_date,
                    estimated_delivery_date)
 

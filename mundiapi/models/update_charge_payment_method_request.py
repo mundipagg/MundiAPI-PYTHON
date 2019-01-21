@@ -10,6 +10,8 @@ import mundiapi.models.create_credit_card_payment_request
 import mundiapi.models.create_debit_card_payment_request
 import mundiapi.models.create_boleto_payment_request
 import mundiapi.models.create_voucher_payment_request
+import mundiapi.models.create_cash_payment_request
+import mundiapi.models.create_bank_transfer_payment_request
 
 class UpdateChargePaymentMethodRequest(object):
 
@@ -25,6 +27,8 @@ class UpdateChargePaymentMethodRequest(object):
         debit_card (CreateDebitCardPaymentRequest): Debit card data
         boleto (CreateBoletoPaymentRequest): Boleto data
         voucher (CreateVoucherPaymentRequest): Voucher data
+        cash (CreateCashPaymentRequest): Cash data
+        bank_transfer (CreateBankTransferPaymentRequest): Bank Transfer data
 
     """
 
@@ -35,7 +39,9 @@ class UpdateChargePaymentMethodRequest(object):
         "credit_card":'credit_card',
         "debit_card":'debit_card',
         "boleto":'boleto',
-        "voucher":'voucher'
+        "voucher":'voucher',
+        "cash":'cash',
+        "bank_transfer":'bank_transfer'
     }
 
     def __init__(self,
@@ -44,7 +50,9 @@ class UpdateChargePaymentMethodRequest(object):
                  credit_card=None,
                  debit_card=None,
                  boleto=None,
-                 voucher=None):
+                 voucher=None,
+                 cash=None,
+                 bank_transfer=None):
         """Constructor for the UpdateChargePaymentMethodRequest class"""
 
         # Initialize members of the class
@@ -54,6 +62,8 @@ class UpdateChargePaymentMethodRequest(object):
         self.debit_card = debit_card
         self.boleto = boleto
         self.voucher = voucher
+        self.cash = cash
+        self.bank_transfer = bank_transfer
 
 
     @classmethod
@@ -80,6 +90,8 @@ class UpdateChargePaymentMethodRequest(object):
         debit_card = mundiapi.models.create_debit_card_payment_request.CreateDebitCardPaymentRequest.from_dictionary(dictionary.get('debit_card')) if dictionary.get('debit_card') else None
         boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
         voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get('voucher')) if dictionary.get('voucher') else None
+        cash = mundiapi.models.create_cash_payment_request.CreateCashPaymentRequest.from_dictionary(dictionary.get('cash')) if dictionary.get('cash') else None
+        bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
 
         # Return an object of this model
         return cls(update_subscription,
@@ -87,6 +99,8 @@ class UpdateChargePaymentMethodRequest(object):
                    credit_card,
                    debit_card,
                    boleto,
-                   voucher)
+                   voucher,
+                   cash,
+                   bank_transfer)
 
 
