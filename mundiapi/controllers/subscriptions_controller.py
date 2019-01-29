@@ -21,6 +21,8 @@ from mundiapi.models.list_increments_response import ListIncrementsResponse
 from mundiapi.models.get_usages_details_response import GetUsagesDetailsResponse
 from mundiapi.models.list_usages_response import ListUsagesResponse
 from mundiapi.models.list_subscription_items_response import ListSubscriptionItemsResponse
+from mundiapi.models.list_cycles_response import ListCyclesResponse
+from mundiapi.models.get_period_response import GetPeriodResponse
 
 class SubscriptionsController(BaseController):
 
@@ -1623,3 +1625,102 @@ class SubscriptionsController(BaseController):
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
+
+    def get_subscription_cycles(self,
+                                subscription_id,
+                                page,
+                                size):
+        """Does a GET request to /subscriptions/{subscription_id}/cycles.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): Subscription Id
+            page (string): Page number
+            size (string): Page size
+
+        Returns:
+            ListCyclesResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycles'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'page': page,
+            'size': size
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListCyclesResponse.from_dictionary)
+
+    def get_subscription_cycle_by_id(self,
+                                     subscription_id,
+                                     cycle_id):
+        """Does a GET request to /subscriptions/{subscription_id}/cycles/{cycleId}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription id
+            cycle_id (string): TODO: type description here. Example: 
+
+        Returns:
+            GetPeriodResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycles/{cycleId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'cycleId': cycle_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPeriodResponse.from_dictionary)
