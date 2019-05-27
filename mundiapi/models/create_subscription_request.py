@@ -15,6 +15,7 @@ import mundiapi.models.create_shipping_request
 import mundiapi.models.create_discount_request
 import mundiapi.models.create_setup_request
 import mundiapi.models.create_increment_request
+import mundiapi.models.create_period_request
 
 class CreateSubscriptionRequest(object):
 
@@ -54,6 +55,7 @@ class CreateSubscriptionRequest(object):
         quantity (int): Quantity
         boleto_due_days (int): Days until boleto expires
         increments (list of CreateIncrementRequest): Increments
+        period (CreatePeriodRequest): TODO: type description here.
 
     """
 
@@ -87,7 +89,8 @@ class CreateSubscriptionRequest(object):
         "card_token":'card_token',
         "gateway_affiliation_id":'gateway_affiliation_id',
         "quantity":'quantity',
-        "boleto_due_days":'boleto_due_days'
+        "boleto_due_days":'boleto_due_days',
+        "period":'period'
     }
 
     def __init__(self,
@@ -119,7 +122,8 @@ class CreateSubscriptionRequest(object):
                  card_token=None,
                  gateway_affiliation_id=None,
                  quantity=None,
-                 boleto_due_days=None):
+                 boleto_due_days=None,
+                 period=None):
         """Constructor for the CreateSubscriptionRequest class"""
 
         # Initialize members of the class
@@ -152,6 +156,7 @@ class CreateSubscriptionRequest(object):
         self.quantity = quantity
         self.boleto_due_days = boleto_due_days
         self.increments = increments
+        self.period = period
 
 
     @classmethod
@@ -213,6 +218,7 @@ class CreateSubscriptionRequest(object):
         gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
         quantity = dictionary.get('quantity')
         boleto_due_days = dictionary.get('boleto_due_days')
+        period = mundiapi.models.create_period_request.CreatePeriodRequest.from_dictionary(dictionary.get('period')) if dictionary.get('period') else None
 
         # Return an object of this model
         return cls(customer,
@@ -243,6 +249,7 @@ class CreateSubscriptionRequest(object):
                    card_token,
                    gateway_affiliation_id,
                    quantity,
-                   boleto_due_days)
+                   boleto_due_days,
+                   period)
 
 

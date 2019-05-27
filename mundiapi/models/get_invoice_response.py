@@ -45,6 +45,7 @@ class GetInvoiceResponse(object):
         seen_at (datetime): TODO: type description here.
         total_discount (int): Total discounted value
         total_increment (int): Total discounted value
+        subscription_id (string): Subscription Id
 
     """
 
@@ -66,6 +67,7 @@ class GetInvoiceResponse(object):
         "cycle":'cycle',
         "shipping":'shipping',
         "metadata":'metadata',
+        "subscription_id":'subscription_id',
         "due_at":'due_at',
         "canceled_at":'canceled_at',
         "billing_at":'billing_at',
@@ -91,6 +93,7 @@ class GetInvoiceResponse(object):
                  cycle=None,
                  shipping=None,
                  metadata=None,
+                 subscription_id=None,
                  due_at=None,
                  canceled_at=None,
                  billing_at=None,
@@ -122,6 +125,7 @@ class GetInvoiceResponse(object):
         self.seen_at = APIHelper.RFC3339DateTime(seen_at) if seen_at else None
         self.total_discount = total_discount
         self.total_increment = total_increment
+        self.subscription_id = subscription_id
 
 
     @classmethod
@@ -162,6 +166,7 @@ class GetInvoiceResponse(object):
         cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('cycle')) if dictionary.get('cycle') else None
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
+        subscription_id = dictionary.get('subscription_id')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
@@ -186,6 +191,7 @@ class GetInvoiceResponse(object):
                    cycle,
                    shipping,
                    metadata,
+                   subscription_id,
                    due_at,
                    canceled_at,
                    billing_at,

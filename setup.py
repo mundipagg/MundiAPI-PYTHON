@@ -1,17 +1,14 @@
 from setuptools import setup, find_packages
 
-# Try to convert markdown README to rst format for PyPI.
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except(IOError, ImportError):
-    long_description = open('README.md').read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name='mundiapi',
-    version='0.13.43',
+    version='0.15.1',
     description='Mundipagg API',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     author='APIMatic SDK Generator',
     author_email='support@apimatic.io',
     url='https://apimatic.io',

@@ -9,6 +9,7 @@
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_split_response
 import mundiapi.models.get_gateway_response_response
+import mundiapi.models.get_antifraud_response
 import mundiapi.models.get_card_response
 import mundiapi.models.get_billing_address_response
 
@@ -32,6 +33,8 @@ class GetTransactionResponse(object):
         transaction_type (string): TODO: type description here.
         id (string): Código da transação
         gateway_response (GetGatewayResponseResponse): The Gateway Response
+        antifraud_response (GetAntifraudResponse): TODO: type description
+            here.
 
     """
 
@@ -48,6 +51,7 @@ class GetTransactionResponse(object):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type'
     }
@@ -64,6 +68,7 @@ class GetTransactionResponse(object):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetTransactionResponse class"""
@@ -82,6 +87,7 @@ class GetTransactionResponse(object):
         self.transaction_type = transaction_type
         self.id = id
         self.gateway_response = gateway_response
+        self.antifraud_response = antifraud_response
 
 
     @classmethod
@@ -133,6 +139,7 @@ class GetTransactionResponse(object):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
 
@@ -148,6 +155,7 @@ class GetTransactionResponse(object):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    next_attempt,
                    transaction_type)
 
@@ -197,6 +205,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type'
     }
@@ -223,6 +232,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetVoucherTransactionResponse class"""
@@ -251,6 +261,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                                                             splits,
                                                             id,
                                                             gateway_response,
+                                                            antifraud_response,
                                                             next_attempt,
                                                             transaction_type)
 
@@ -298,6 +309,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
 
@@ -323,6 +335,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    next_attempt,
                    transaction_type)
 
@@ -359,6 +372,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "paid_at":'paid_at',
         "paid_amount":'paid_amount',
         "next_attempt":'next_attempt',
@@ -380,6 +394,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  paid_at=None,
                  paid_amount=None,
                  next_attempt=None,
@@ -405,6 +420,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                                                                  splits,
                                                                  id,
                                                                  gateway_response,
+                                                                 antifraud_response,
                                                                  next_attempt,
                                                                  transaction_type)
 
@@ -445,6 +461,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         paid_amount = dictionary.get('paid_amount')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
@@ -465,6 +482,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    paid_at,
                    paid_amount,
                    next_attempt,
@@ -501,6 +519,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "paid_at":'paid_at',
         "paid_amount":'paid_amount',
         "next_attempt":'next_attempt',
@@ -521,6 +540,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  paid_at=None,
                  paid_amount=None,
                  next_attempt=None,
@@ -545,6 +565,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                                                               splits,
                                                               id,
                                                               gateway_response,
+                                                              antifraud_response,
                                                               next_attempt,
                                                               transaction_type)
 
@@ -584,6 +605,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         paid_amount = dictionary.get('paid_amount')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
@@ -603,6 +625,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    paid_at,
                    paid_amount,
                    next_attempt,
@@ -663,6 +686,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "due_at":'due_at',
         "paid_at":'paid_at',
         "credit_at":'credit_at',
@@ -695,6 +719,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  due_at=None,
                  paid_at=None,
                  credit_at=None,
@@ -732,6 +757,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                                                            splits,
                                                            id,
                                                            gateway_response,
+                                                           antifraud_response,
                                                            next_attempt,
                                                            transaction_type)
 
@@ -782,6 +808,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         credit_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("credit_at")).datetime if dictionary.get("credit_at") else None
@@ -813,6 +840,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    due_at,
                    paid_at,
                    credit_at,
@@ -873,6 +901,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type'
     }
@@ -903,6 +932,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetDebitCardTransactionResponse class"""
@@ -935,6 +965,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                                                               splits,
                                                               id,
                                                               gateway_response,
+                                                              antifraud_response,
                                                               next_attempt,
                                                               transaction_type)
 
@@ -986,6 +1017,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
 
@@ -1015,6 +1047,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    next_attempt,
                    transaction_type)
 
@@ -1045,6 +1078,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type'
     }
@@ -1062,6 +1096,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  next_attempt=None,
                  transaction_type=None):
         """Constructor for the GetCashTransactionResponse class"""
@@ -1081,6 +1116,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
                                                          splits,
                                                          id,
                                                          gateway_response,
+                                                         antifraud_response,
                                                          next_attempt,
                                                          transaction_type)
 
@@ -1119,6 +1155,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
 
@@ -1135,6 +1172,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    next_attempt,
                    transaction_type)
 
@@ -1187,6 +1225,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "splits":'splits',
         "id":'id',
         "gateway_response":'gateway_response',
+        "antifraud_response":'antifraud_response',
         "installments":'installments',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type'
@@ -1215,6 +1254,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  splits=None,
                  id=None,
                  gateway_response=None,
+                 antifraud_response=None,
                  installments=None,
                  next_attempt=None,
                  transaction_type=None):
@@ -1246,6 +1286,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                                                                splits,
                                                                id,
                                                                gateway_response,
+                                                               antifraud_response,
                                                                next_attempt,
                                                                transaction_type)
 
@@ -1294,6 +1335,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
         gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         installments = dictionary.get('installments')
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
@@ -1321,6 +1363,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    splits,
                    id,
                    gateway_response,
+                   antifraud_response,
                    installments,
                    next_attempt,
                    transaction_type)

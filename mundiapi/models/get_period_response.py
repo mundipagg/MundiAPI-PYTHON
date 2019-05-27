@@ -21,6 +21,11 @@ class GetPeriodResponse(object):
         id (string): TODO: type description here.
         billing_at (datetime): TODO: type description here.
         subscription (GetSubscriptionResponse): TODO: type description here.
+        status (string): TODO: type description here.
+        duration (int): TODO: type description here.
+        created_at (string): TODO: type description here.
+        updated_at (string): TODO: type description here.
+        cycle (int): TODO: type description here.
 
     """
 
@@ -30,7 +35,12 @@ class GetPeriodResponse(object):
         "end_at":'end_at',
         "id":'id',
         "billing_at":'billing_at',
-        "subscription":'subscription'
+        "subscription":'subscription',
+        "status":'status',
+        "duration":'duration',
+        "created_at":'created_at',
+        "updated_at":'updated_at',
+        "cycle":'cycle'
     }
 
     def __init__(self,
@@ -38,7 +48,12 @@ class GetPeriodResponse(object):
                  end_at=None,
                  id=None,
                  billing_at=None,
-                 subscription=None):
+                 subscription=None,
+                 status=None,
+                 duration=None,
+                 created_at=None,
+                 updated_at=None,
+                 cycle=None):
         """Constructor for the GetPeriodResponse class"""
 
         # Initialize members of the class
@@ -47,6 +62,11 @@ class GetPeriodResponse(object):
         self.id = id
         self.billing_at = APIHelper.RFC3339DateTime(billing_at) if billing_at else None
         self.subscription = subscription
+        self.status = status
+        self.duration = duration
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.cycle = cycle
 
 
     @classmethod
@@ -72,12 +92,22 @@ class GetPeriodResponse(object):
         id = dictionary.get('id')
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
         subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
+        status = dictionary.get('status')
+        duration = dictionary.get('duration')
+        created_at = dictionary.get('created_at')
+        updated_at = dictionary.get('updated_at')
+        cycle = dictionary.get('cycle')
 
         # Return an object of this model
         return cls(start_at,
                    end_at,
                    id,
                    billing_at,
-                   subscription)
+                   subscription,
+                   status,
+                   duration,
+                   created_at,
+                   updated_at,
+                   cycle)
 
 
