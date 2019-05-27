@@ -13,6 +13,7 @@ import mundiapi.models.get_checkout_credit_card_payment_response
 import mundiapi.models.get_checkout_boleto_payment_response
 import mundiapi.models.get_shipping_response
 import mundiapi.models.get_checkout_debit_card_payment_response
+import mundiapi.models.get_checkout_bank_transfer_payment_response
 
 class GetCheckoutPaymentResponse(object):
 
@@ -52,6 +53,8 @@ class GetCheckoutPaymentResponse(object):
         currency (string): Moeda
         debit_card (GetCheckoutDebitCardPaymentResponse): Configurações de
             cartão de débito
+        bank_transfer (GetCheckoutBankTransferPaymentResponse): Bank transfer
+            payment response
 
     """
 
@@ -80,7 +83,8 @@ class GetCheckoutPaymentResponse(object):
         "canceled_at":'canceled_at',
         "closed_at":'closed_at',
         "expires_at":'expires_at',
-        "debit_card":'debit_card'
+        "debit_card":'debit_card',
+        "bank_transfer":'bank_transfer'
     }
 
     def __init__(self,
@@ -107,7 +111,8 @@ class GetCheckoutPaymentResponse(object):
                  canceled_at=None,
                  closed_at=None,
                  expires_at=None,
-                 debit_card=None):
+                 debit_card=None,
+                 bank_transfer=None):
         """Constructor for the GetCheckoutPaymentResponse class"""
 
         # Initialize members of the class
@@ -135,6 +140,7 @@ class GetCheckoutPaymentResponse(object):
         self.expires_at = APIHelper.RFC3339DateTime(expires_at) if expires_at else None
         self.currency = currency
         self.debit_card = debit_card
+        self.bank_transfer = bank_transfer
 
 
     @classmethod
@@ -179,6 +185,7 @@ class GetCheckoutPaymentResponse(object):
         closed_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("closed_at")).datetime if dictionary.get("closed_at") else None
         expires_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("expires_at")).datetime if dictionary.get("expires_at") else None
         debit_card = mundiapi.models.get_checkout_debit_card_payment_response.GetCheckoutDebitCardPaymentResponse.from_dictionary(dictionary.get('debit_card')) if dictionary.get('debit_card') else None
+        bank_transfer = mundiapi.models.get_checkout_bank_transfer_payment_response.GetCheckoutBankTransferPaymentResponse.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
 
         # Return an object of this model
         return cls(id,
@@ -204,6 +211,7 @@ class GetCheckoutPaymentResponse(object):
                    canceled_at,
                    closed_at,
                    expires_at,
-                   debit_card)
+                   debit_card,
+                   bank_transfer)
 
 
