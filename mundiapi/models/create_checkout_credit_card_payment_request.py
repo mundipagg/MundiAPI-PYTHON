@@ -21,6 +21,7 @@ class CreateCheckoutCreditCardPaymentRequest(object):
             Payment installment options
         authentication (CreatePaymentAuthenticationRequest): Creates payment
             authentication
+        capture (bool): Authorize and capture?
 
     """
 
@@ -28,19 +29,22 @@ class CreateCheckoutCreditCardPaymentRequest(object):
     _names = {
         "statement_descriptor":'statement_descriptor',
         "installments":'installments',
-        "authentication":'authentication'
+        "authentication":'authentication',
+        "capture":'capture'
     }
 
     def __init__(self,
                  statement_descriptor=None,
                  installments=None,
-                 authentication=None):
+                 authentication=None,
+                 capture=None):
         """Constructor for the CreateCheckoutCreditCardPaymentRequest class"""
 
         # Initialize members of the class
         self.statement_descriptor = statement_descriptor
         self.installments = installments
         self.authentication = authentication
+        self.capture = capture
 
 
     @classmethod
@@ -68,10 +72,12 @@ class CreateCheckoutCreditCardPaymentRequest(object):
             for structure in dictionary.get('installments'):
                 installments.append(mundiapi.models.create_checkout_card_installment_option_request.CreateCheckoutCardInstallmentOptionRequest.from_dictionary(structure))
         authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
+        capture = dictionary.get('capture')
 
         # Return an object of this model
         return cls(statement_descriptor,
                    installments,
-                   authentication)
+                   authentication,
+                   capture)
 
 
