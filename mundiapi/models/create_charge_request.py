@@ -9,6 +9,7 @@
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.create_customer_request
 import mundiapi.models.create_payment_request
+import mundiapi.models.create_antifraud_request
 
 class CreateChargeRequest(object):
 
@@ -24,6 +25,7 @@ class CreateChargeRequest(object):
         payment (CreatePaymentRequest): Payment data
         metadata (dict<object, string>): Metadata
         due_at (datetime): The charge due date
+        antifraud (CreateAntifraudRequest): TODO: type description here.
 
     """
 
@@ -35,6 +37,7 @@ class CreateChargeRequest(object):
         "customer":'customer',
         "payment":'payment',
         "metadata":'metadata',
+        "antifraud":'antifraud',
         "due_at":'due_at'
     }
 
@@ -45,6 +48,7 @@ class CreateChargeRequest(object):
                  customer=None,
                  payment=None,
                  metadata=None,
+                 antifraud=None,
                  due_at=None):
         """Constructor for the CreateChargeRequest class"""
 
@@ -56,6 +60,7 @@ class CreateChargeRequest(object):
         self.payment = payment
         self.metadata = metadata
         self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
+        self.antifraud = antifraud
 
 
     @classmethod
@@ -82,6 +87,7 @@ class CreateChargeRequest(object):
         customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
         metadata = dictionary.get('metadata')
+        antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
 
         # Return an object of this model
@@ -91,6 +97,7 @@ class CreateChargeRequest(object):
                    customer,
                    payment,
                    metadata,
+                   antifraud,
                    due_at)
 
 

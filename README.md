@@ -562,8 +562,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 63
-size = 63
+page = 134
+size = 134
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -788,8 +788,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 21
-size = 21
+page = 225
+size = 225
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -851,8 +851,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 21
-size = 21
+page = 62
+size = 62
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -921,8 +921,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 21
-page = 21
+size = 62
+page = 62
 item_id = 'item_id'
 group = 'group'
 
@@ -963,8 +963,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 21
-size = 21
+page = 62
+size = 62
 code = 'code'
 group = 'group'
 
@@ -1010,8 +1010,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 21
-size = 21
+page = 62
+size = 62
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1114,14 +1114,14 @@ result = subscriptions_controller.update_subscription_billing_date(subscription_
 ```
 
 
-### <a name="update_current_cycle_end_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_current_cycle_end_date") update_current_cycle_end_date
+### <a name="update_latest_period_end_at"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_latest_period_end_at") update_latest_period_end_at
 
 > TODO: Add a method description
 
 ```python
-def update_current_cycle_end_date(self,
-                                      subscription_id,
-                                      request)
+def update_latest_period_end_at(self,
+                                    subscription_id,
+                                    request)
 ```
 
 #### Parameters
@@ -1139,7 +1139,7 @@ def update_current_cycle_end_date(self,
 subscription_id = 'subscription_id'
 request = UpdateCurrentCycleEndDateRequest()
 
-result = subscriptions_controller.update_current_cycle_end_date(subscription_id, request)
+result = subscriptions_controller.update_latest_period_end_at(subscription_id, request)
 
 ```
 
@@ -1233,6 +1233,33 @@ subscription_id = 'subscription_id'
 cycle_id = 'cycleId'
 
 result = subscriptions_controller.get_subscription_cycle_by_id(subscription_id, cycle_id)
+
+```
+
+
+### <a name="renew_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.renew_subscription") renew_subscription
+
+> TODO: Add a method description
+
+```python
+def renew_subscription(self,
+                           subscription_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+
+result = subscriptions_controller.renew_subscription(subscription_id)
 
 ```
 
@@ -1335,8 +1362,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 21
-size = 21
+page = 20
+size = 20
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -1776,8 +1803,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 113
-size = 113
+page = 20
+size = 20
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2046,8 +2073,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 71
-size = 71
+page = 111
+size = 111
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2088,6 +2115,33 @@ invoice_id = 'invoice_id'
 request = UpdateMetadataRequest()
 
 result = invoices_controller.update_invoice_metadata(invoice_id, request)
+
+```
+
+
+### <a name="get_partial_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_partial_invoice") get_partial_invoice
+
+> TODO: Add a method description
+
+```python
+def get_partial_invoice(self,
+                            subscription_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+
+result = invoices_controller.get_partial_invoice(subscription_id)
 
 ```
 
@@ -2170,33 +2224,6 @@ result = customers_controller.update_address(customer_id, address_id, request)
 ```
 
 
-### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
-
-> Creates a new customer
-
-```python
-def create_customer(self,
-                        request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| request |  ``` Required ```  | Request for creating a customer |
-
-
-
-#### Example Usage
-
-```python
-request = CreateCustomerRequest()
-
-result = customers_controller.create_customer(request)
-
-```
-
-
 ### <a name="get_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customer") get_customer
 
 > Get a customer
@@ -2249,8 +2276,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 71
-size = 71
+page = 111
+size = 111
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2282,8 +2309,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 71
-size = 71
+page = 111
+size = 111
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2315,8 +2342,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 71
-size = 71
+page = 111
+size = 111
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2752,6 +2779,33 @@ result = customers_controller.renew_card(customer_id, card_id)
 ```
 
 
+### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
+
+> Creates a new customer
+
+```python
+def create_customer(self,
+                        request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Request for creating a customer |
+
+
+
+#### Example Usage
+
+```python
+request = CreateCustomerRequest()
+
+result = customers_controller.create_customer(request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
@@ -2941,8 +2995,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 163
-size = 163
+page = 203
+size = 203
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3131,8 +3185,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 163
-size = 163
+page = 203
+size = 203
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3242,8 +3296,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 163
-size = 163
+page = 161
+size = 161
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3383,8 +3437,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 254
-size = 254
+page = 161
+size = 161
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3506,8 +3560,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 161
+size = 161
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3833,8 +3887,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 253
+size = 253
 name = 'name'
 document = 'document'
 code = 'code'

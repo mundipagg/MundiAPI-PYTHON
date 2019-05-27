@@ -12,6 +12,7 @@ import mundiapi.models.create_payment_request
 import mundiapi.models.create_shipping_request
 import mundiapi.models.create_location_request
 import mundiapi.models.create_device_request
+import mundiapi.models.create_antifraud_request
 
 class CreateOrderRequest(object):
 
@@ -35,6 +36,7 @@ class CreateOrderRequest(object):
         device (CreateDeviceRequest): Device's informations
         closed (bool): TODO: type description here.
         currency (string): Currency
+        antifraud (CreateAntifraudRequest): TODO: type description here.
 
     """
 
@@ -48,6 +50,7 @@ class CreateOrderRequest(object):
         "shipping":'shipping',
         "metadata":'metadata',
         "closed":'closed',
+        "antifraud":'antifraud',
         "antifraud_enabled":'antifraud_enabled',
         "ip":'ip',
         "session_id":'session_id',
@@ -65,6 +68,7 @@ class CreateOrderRequest(object):
                  shipping=None,
                  metadata=None,
                  closed=True,
+                 antifraud=None,
                  antifraud_enabled=None,
                  ip=None,
                  session_id=None,
@@ -88,6 +92,7 @@ class CreateOrderRequest(object):
         self.device = device
         self.closed = closed
         self.currency = currency
+        self.antifraud = antifraud
 
 
     @classmethod
@@ -124,6 +129,7 @@ class CreateOrderRequest(object):
         shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         closed = dictionary.get("closed") if dictionary.get("closed") else True
+        antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
         antifraud_enabled = dictionary.get('antifraud_enabled')
         ip = dictionary.get('ip')
         session_id = dictionary.get('session_id')
@@ -140,6 +146,7 @@ class CreateOrderRequest(object):
                    shipping,
                    metadata,
                    closed,
+                   antifraud,
                    antifraud_enabled,
                    ip,
                    session_id,

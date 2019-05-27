@@ -70,7 +70,7 @@ class GetCheckoutPaymentResponse(object):
         "customer_editable":'customer_editable',
         "customer":'customer',
         "billingaddress":'billingaddress',
-        "credit_card":'credit_Card',
+        "credit_card":'credit_card',
         "boleto":'boleto',
         "billing_address_editable":'billing_address_editable',
         "shipping":'shipping',
@@ -168,7 +168,7 @@ class GetCheckoutPaymentResponse(object):
         customer_editable = dictionary.get('customer_editable')
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         billingaddress = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('billingaddress')) if dictionary.get('billingaddress') else None
-        credit_card = mundiapi.models.get_checkout_credit_card_payment_response.GetCheckoutCreditCardPaymentResponse.from_dictionary(dictionary.get('credit_Card')) if dictionary.get('credit_Card') else None
+        credit_card = mundiapi.models.get_checkout_credit_card_payment_response.GetCheckoutCreditCardPaymentResponse.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
         boleto = mundiapi.models.get_checkout_boleto_payment_response.GetCheckoutBoletoPaymentResponse.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
         billing_address_editable = dictionary.get('billing_address_editable')
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
