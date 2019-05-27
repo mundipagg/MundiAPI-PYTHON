@@ -165,5 +165,6 @@ __all__ = [
     'clear_sale_request',
     'create_charge_request',
     'create_customer_request',
+    'get_checkout_bank_transfer_payment_response',
     'get_checkout_payment_response',
 ]
