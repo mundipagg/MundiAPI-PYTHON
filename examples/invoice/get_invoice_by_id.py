@@ -3,20 +3,18 @@ from mundiapi.controllers import *
 from mundiapi.exceptions.error_exception import *
 
 MundiapiClient.config.basic_auth_user_name = "YOUR_SECRET_KEY:"
-charges_controller = charges_controller.ChargesController()
+invoices_controller = invoices_controller.InvoicesController()
 
-chargeId = "ch_8YQ1JeTLzF8zlqWy"
+invoiceId = "in_DKRdGqpsaVS4rmpl"
 
 try:
-    result = charges_controller.get_charge(chargeId)
+    result = invoices_controller.get_invoice(invoiceId)
     assert result is not None
-    assert result.id == chargeId
-    print("Charge found!")
-    print("Charge_Id: ", result.id)
+    assert result.id is not None
+    print("Invoice id: ", result.id)
+    print("Invoice status: ", result.status)
 except ErrorException as ex:
     print(ex.message)
     print("Errors: ", ex.errors)
 except Exception as ex:
     raise ex
-
-
