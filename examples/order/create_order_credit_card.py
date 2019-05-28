@@ -3,7 +3,7 @@ from mundiapi.models import *
 from mundiapi.controllers import *
 from mundiapi.exceptions.error_exception import *
 
-MundiapiClient.config.basic_auth_user_name = "SUA_SECRET_KEY:"
+MundiapiClient.config.basic_auth_user_name = "YOUR_SECRET_KEY:"
 orders_controller = orders_controller.OrdersController()
 
 customer = create_customer_request.CreateCustomerRequest()
@@ -37,6 +37,7 @@ try:
     result = orders_controller.create_order(request)
     assert result.status == "paid"
     print("Order id: ", result.id)
+    print("Charge id: ", result.charges[0].id)
     print("Order result status: ", result.status)
 except ErrorException as ex:
     print(ex.message)

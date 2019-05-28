@@ -1,0 +1,51 @@
+from mundiapi.mundiapi_client import MundiapiClient
+from mundiapi.models import *
+from mundiapi.controllers import *
+from mundiapi.exceptions.error_exception import *
+
+MundiapiClient.config.basic_auth_user_name = "YOUR_SECRET_KEY:"
+customers_controller = customers_controller.CustomersController()
+
+customer = create_customer_request.CreateCustomerRequest()
+customer.name = "sdk customer test"
+customer.email = "tonystark@avengers.com"
+
+request = create_card_request.CreateCardRequest()
+
+request.number = "4000000000000010"
+request.holder_name = "Tony Stark"
+request.holder_document = "93095135270"
+request.exp_month = 1
+request.exp_year = 20
+request.cvv = "351"
+request.brand = "Mastercard"
+request.private_label = False
+# Billing Address
+request.billing_address = create_address_request.CreateAddressRequest()
+request.billing_address.line_1 = "375 Av. General Osorio Centro"
+request.billing_address.line_2 = "7º Andar"
+request.billing_address.zip_code = "220000111"
+request.billing_address.city = "Rio de Janeiro"
+request.billing_address.state = "RJ"
+request.billing_address.country = "BR"
+# Card Options
+request.options = create_card_options_request.CreateCardOptionsRequest()
+request.options.verify_card = True
+
+try:
+    createdCustomer = customers_controller.create_customer(customer)
+    result = customers_controller.create_card(createdCustomer.id, request)
+    assert createdCustomer is not None
+    assert result is not None
+    print("Customer id: ", createdCustomer.id)
+    print("Card id: ", result.id)
+
+except ErrorException as ex:
+    print(ex.message)
+    print("Errors: ", ex.errors)
+except Exception as ex:
+    raise ex
+
+
+
+
