@@ -13,7 +13,6 @@ customer.email = "tonystark@avengers.com"
 credit_card = create_credit_card_payment_request.CreateCreditCardPaymentRequest()
 credit_card.capture = True
 credit_card.installments = 2
-credit_card.statement_descriptor = "order descriptor"
 credit_card.card = create_card_request.CreateCardRequest()
 credit_card.card.number = "4000000000000010"
 credit_card.card.holder_name = "Tony Stark"

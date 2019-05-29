@@ -6,25 +6,21 @@ from mundiapi.exceptions.error_exception import *
 MundiapiClient.config.basic_auth_user_name = "YOUR_SECRET_KEY:"
 customers_controller = customers_controller.CustomersController()
 
-createRequest = create_customer_request.CreateCustomerRequest()
-createRequest.name = "sdk customer test"
-createRequest.email = "tonystark@avengers.com"
+request = update_customer_request.UpdateCustomerRequest()
+request.name = "Peter Parker"
+request.email = "parker@avangers.com"
+request.gender = "male"
 
-updateRequest = update_customer_request.UpdateCustomerRequest()
-updateRequest.name = "New Customer Name"
+customerId = "cus_6l5dMWZ0hkHZ4XnE"
 
 try:
-    result = customers_controller.create_customer(createRequest)
-    customers_controller.update_customer(result.id, updateRequest)
-    updatedCustomer = customers_controller.get_customer(result.id)
+    result = customers_controller.update_customer(customerId, request)
     assert result is not None
-    assert updatedCustomer is not None
-    assert result.id == updatedCustomer.id
-    assert createRequest.name != updatedCustomer.name
-    assert updatedCustomer.name == updateRequest.name
-    print("Customer id: ", updatedCustomer.id)
-    print("Old name: ", createRequest.name)
-    print("New name: ", updatedCustomer.name)
+    assert result.name == request.name
+    assert result.email == request.email
+    assert result.gender == request.gender
+    print("Customer id: ", result.id)
+    print("New name: ", result.name)
 
 except ErrorException as ex:
     print(ex.message)

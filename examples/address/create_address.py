@@ -10,18 +10,20 @@ customerId = "cus_PzRyp10FeNca2rVB"
 
 request = create_address_request.CreateAddressRequest()
 
-request.line_1 = "375, Av. General Justo, Centro"
-request.line_2  = "8º andar"
-request.zip_code = "20021130"
-request.city = "Rio de Janeiro"
-request.state = "RJ"
-request.country = "BR"
+request = create_address_request.CreateAddressRequest()
+request.line_1 = "10880, Malibu Point, Malibu Central"
+request.line_2 = "7º floor"
+request.zip_code = "90265"
+request.city = "Malibu"
+request.state = "CA"
+request.country = "US"
 request.metadata = update_metadata_request.UpdateMetadataRequest()
 request.metadata.id = "my_address_id"
 
 try:
     result = customers_controller.create_address(customerId, request)
     assert result is not None
+    assert result.id is not None
     print("Address id: ", result.id)
 
 except ErrorException as ex:

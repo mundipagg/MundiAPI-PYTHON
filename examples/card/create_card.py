@@ -16,19 +16,20 @@ request.number = "4000000000000010"
 request.holder_name = "Tony Stark"
 request.holder_document = "93095135270"
 request.exp_month = 1
-request.exp_year = 20
+request.exp_year = 25
 request.cvv = "351"
+# Brand is Optional field and autodetected
 request.brand = "Mastercard"
 request.private_label = False
 # Billing Address
 request.billing_address = create_address_request.CreateAddressRequest()
-request.billing_address.line_1 = "375 Av. General Osorio Centro"
-request.billing_address.line_2 = "7º Andar"
-request.billing_address.zip_code = "220000111"
-request.billing_address.city = "Rio de Janeiro"
-request.billing_address.state = "RJ"
-request.billing_address.country = "BR"
-# Card Options
+request.billing_address.line_1 = "10880, Malibu Point, Malibu Central"
+request.billing_address.line_2 = "7º floor"
+request.billing_address.zip_code = "90265"
+request.billing_address.city = "Malibu"
+request.billing_address.state = "CA"
+request.billing_address.country = "US"
+# Card Options: Verify OneDollarAuth
 request.options = create_card_options_request.CreateCardOptionsRequest()
 request.options.verify_card = True
 
