@@ -162,7 +162,7 @@ __all__ = [
     'update_subscription_payment_method_request',
     'list_cycles_response',
     'create_antifraud_request',
-    'clear_sale_request',
+    'create_clear_sale_request',
     'create_charge_request',
     'create_customer_request',
     'get_checkout_bank_transfer_payment_response',
