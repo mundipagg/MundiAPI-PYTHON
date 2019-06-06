@@ -9,7 +9,7 @@ customers_controller = customers_controller.CustomersController()
 request = create_customer_request.CreateCustomerRequest()
 request.name = "sdk customer test"
 request.email = "tonystark@avengers.com"
-request.mtype = "individual"
+request.type = "individual"
 request.document = "55342561094"
 request.code = "MY_CUSTOMER_001"
 
