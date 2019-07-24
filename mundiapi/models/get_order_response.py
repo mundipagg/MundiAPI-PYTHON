@@ -50,7 +50,6 @@ class GetOrderResponse(object):
         "code":'code',
         "currency":'currency',
         "items":'items',
-        "customer":'customer',
         "status":'status',
         "created_at":'created_at',
         "updated_at":'updated_at',
@@ -59,6 +58,7 @@ class GetOrderResponse(object):
         "shipping":'shipping',
         "metadata":'metadata',
         "closed":'closed',
+        "customer":'customer',
         "checkouts":'checkouts',
         "ip":'ip',
         "session_id":'session_id',
@@ -71,7 +71,6 @@ class GetOrderResponse(object):
                  code=None,
                  currency=None,
                  items=None,
-                 customer=None,
                  status=None,
                  created_at=None,
                  updated_at=None,
@@ -80,6 +79,7 @@ class GetOrderResponse(object):
                  shipping=None,
                  metadata=None,
                  closed=None,
+                 customer=None,
                  checkouts=None,
                  ip=None,
                  session_id=None,
@@ -134,7 +134,6 @@ class GetOrderResponse(object):
             items = list()
             for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_order_item_response.GetOrderItemResponse.from_dictionary(structure))
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
@@ -147,6 +146,7 @@ class GetOrderResponse(object):
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         closed = dictionary.get('closed')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         checkouts = None
         if dictionary.get('checkouts') != None:
             checkouts = list()
@@ -162,7 +162,6 @@ class GetOrderResponse(object):
                    code,
                    currency,
                    items,
-                   customer,
                    status,
                    created_at,
                    updated_at,
@@ -171,6 +170,7 @@ class GetOrderResponse(object):
                    shipping,
                    metadata,
                    closed,
+                   customer,
                    checkouts,
                    ip,
                    session_id,

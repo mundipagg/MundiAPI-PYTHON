@@ -62,13 +62,16 @@ class SellersController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
 
     def delete_seller(self,
-                      seller_id):
+                      seller_id,
+                      idempotency_key=None):
         """Does a DELETE request to /sellers/{sellerId}.
 
         TODO: type endpoint description here.
 
         Args:
             seller_id (string): Seller Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetSellerResponse: Response from the API. 
@@ -92,7 +95,8 @@ class SellersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -105,13 +109,16 @@ class SellersController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
 
     def create_seller(self,
-                      request):
+                      request,
+                      idempotency_key=None):
         """Does a POST request to /sellers/.
 
         TODO: type endpoint description here.
 
         Args:
             request (CreateSellerRequest): Seller Model
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetSellerResponse: Response from the API. 
@@ -133,7 +140,8 @@ class SellersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -218,7 +226,8 @@ class SellersController(BaseController):
 
     def update_seller(self,
                       id,
-                      request):
+                      request,
+                      idempotency_key=None):
         """Does a PUT request to /sellers/{id}.
 
         TODO: type endpoint description here.
@@ -226,6 +235,8 @@ class SellersController(BaseController):
         Args:
             id (string): TODO: type description here. Example: 
             request (UpdateSellerRequest): Update Seller model
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetSellerResponse: Response from the API. 
@@ -250,7 +261,8 @@ class SellersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -264,7 +276,8 @@ class SellersController(BaseController):
 
     def update_seller_metadata(self,
                                seller_id,
-                               request):
+                               request,
+                               idempotency_key=None):
         """Does a PATCH request to /sellers/{seller_id}/metadata.
 
         TODO: type endpoint description here.
@@ -273,6 +286,8 @@ class SellersController(BaseController):
             seller_id (string): Seller Id
             request (UpdateMetadataRequest): Request for updating the charge
                 metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetSellerResponse: Response from the API. 
@@ -297,7 +312,8 @@ class SellersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

@@ -29,8 +29,8 @@ class GetUsagesDetailsResponse(object):
     _names = {
         "subscription_id":'subscription_id',
         "total_amount":'total_amount',
-        "period":'Period',
         "usages":'Usages',
+        "period":'Period',
         "total_discount":'total_discount',
         "total_increment":'total_increment'
     }
@@ -38,8 +38,8 @@ class GetUsagesDetailsResponse(object):
     def __init__(self,
                  subscription_id=None,
                  total_amount=None,
-                 period=None,
                  usages=None,
+                 period=None,
                  total_discount=None,
                  total_increment=None):
         """Constructor for the GetUsagesDetailsResponse class"""
@@ -73,16 +73,16 @@ class GetUsagesDetailsResponse(object):
         # Extract variables from the dictionary
         subscription_id = dictionary.get('subscription_id')
         total_amount = dictionary.get('total_amount')
-        period = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('Period')) if dictionary.get('Period') else None
         usages = mundiapi.models.list_usages_details_response.ListUsagesDetailsResponse.from_dictionary(dictionary.get('Usages')) if dictionary.get('Usages') else None
+        period = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('Period')) if dictionary.get('Period') else None
         total_discount = dictionary.get('total_discount')
         total_increment = dictionary.get('total_increment')
 
         # Return an object of this model
         return cls(subscription_id,
                    total_amount,
-                   period,
                    usages,
+                   period,
                    total_discount,
                    total_increment)
 

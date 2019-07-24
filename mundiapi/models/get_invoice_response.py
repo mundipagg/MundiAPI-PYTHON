@@ -59,15 +59,15 @@ class GetInvoiceResponse(object):
         "payment_method":'payment_method',
         "created_at":'created_at',
         "items":'items',
-        "customer":'customer',
         "charge":'charge',
         "installments":'installments',
         "billing_address":'billing_address',
         "subscription":'subscription',
-        "cycle":'cycle',
         "shipping":'shipping',
         "metadata":'metadata',
         "subscription_id":'subscription_id',
+        "customer":'customer',
+        "cycle":'cycle',
         "due_at":'due_at',
         "canceled_at":'canceled_at',
         "billing_at":'billing_at',
@@ -85,15 +85,15 @@ class GetInvoiceResponse(object):
                  payment_method=None,
                  created_at=None,
                  items=None,
-                 customer=None,
                  charge=None,
                  installments=None,
                  billing_address=None,
                  subscription=None,
-                 cycle=None,
                  shipping=None,
                  metadata=None,
                  subscription_id=None,
+                 customer=None,
+                 cycle=None,
                  due_at=None,
                  canceled_at=None,
                  billing_at=None,
@@ -158,15 +158,15 @@ class GetInvoiceResponse(object):
             items = list()
             for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_invoice_item_response.GetInvoiceItemResponse.from_dictionary(structure))
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         charge = mundiapi.models.get_charge_response.GetChargeResponse.from_dictionary(dictionary.get('charge')) if dictionary.get('charge') else None
         installments = dictionary.get('installments')
         billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
-        cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('cycle')) if dictionary.get('cycle') else None
         shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         subscription_id = dictionary.get('subscription_id')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('cycle')) if dictionary.get('cycle') else None
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None
@@ -183,15 +183,15 @@ class GetInvoiceResponse(object):
                    payment_method,
                    created_at,
                    items,
-                   customer,
                    charge,
                    installments,
                    billing_address,
                    subscription,
-                   cycle,
                    shipping,
                    metadata,
                    subscription_id,
+                   customer,
+                   cycle,
                    due_at,
                    canceled_at,
                    billing_at,

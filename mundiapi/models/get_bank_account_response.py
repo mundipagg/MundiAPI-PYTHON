@@ -49,8 +49,8 @@ class GetBankAccountResponse(object):
         "created_at":'created_at',
         "updated_at":'updated_at',
         "deleted_at":'deleted_at',
-        "recipient":'recipient',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "recipient":'recipient'
     }
 
     def __init__(self,
@@ -67,8 +67,8 @@ class GetBankAccountResponse(object):
                  created_at=None,
                  updated_at=None,
                  deleted_at=None,
-                 recipient=None,
-                 metadata=None):
+                 metadata=None,
+                 recipient=None):
         """Constructor for the GetBankAccountResponse class"""
 
         # Initialize members of the class
@@ -120,8 +120,8 @@ class GetBankAccountResponse(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
         metadata = dictionary.get('metadata')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(id,
@@ -137,7 +137,7 @@ class GetBankAccountResponse(object):
                    created_at,
                    updated_at,
                    deleted_at,
-                   recipient,
-                   metadata)
+                   metadata,
+                   recipient)
 
 

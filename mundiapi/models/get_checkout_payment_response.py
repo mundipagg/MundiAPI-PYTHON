@@ -71,7 +71,6 @@ class GetCheckoutPaymentResponse(object):
         "created_at":'created_at',
         "updated_at":'updated_at',
         "customer_editable":'customer_editable',
-        "customer":'customer',
         "billingaddress":'billingaddress',
         "credit_card":'credit_card',
         "boleto":'boleto',
@@ -81,6 +80,7 @@ class GetCheckoutPaymentResponse(object):
         "currency":'currency',
         "amount":'amount',
         "canceled_at":'canceled_at',
+        "customer":'customer',
         "closed_at":'closed_at',
         "expires_at":'expires_at',
         "debit_card":'debit_card',
@@ -99,7 +99,6 @@ class GetCheckoutPaymentResponse(object):
                  created_at=None,
                  updated_at=None,
                  customer_editable=None,
-                 customer=None,
                  billingaddress=None,
                  credit_card=None,
                  boleto=None,
@@ -109,6 +108,7 @@ class GetCheckoutPaymentResponse(object):
                  currency=None,
                  amount=None,
                  canceled_at=None,
+                 customer=None,
                  closed_at=None,
                  expires_at=None,
                  debit_card=None,
@@ -172,7 +172,6 @@ class GetCheckoutPaymentResponse(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         customer_editable = dictionary.get('customer_editable')
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         billingaddress = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('billingaddress')) if dictionary.get('billingaddress') else None
         credit_card = mundiapi.models.get_checkout_credit_card_payment_response.GetCheckoutCreditCardPaymentResponse.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
         boleto = mundiapi.models.get_checkout_boleto_payment_response.GetCheckoutBoletoPaymentResponse.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
@@ -182,6 +181,7 @@ class GetCheckoutPaymentResponse(object):
         currency = dictionary.get('currency')
         amount = dictionary.get('amount')
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         closed_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("closed_at")).datetime if dictionary.get("closed_at") else None
         expires_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("expires_at")).datetime if dictionary.get("expires_at") else None
         debit_card = mundiapi.models.get_checkout_debit_card_payment_response.GetCheckoutDebitCardPaymentResponse.from_dictionary(dictionary.get('debit_card')) if dictionary.get('debit_card') else None
@@ -199,7 +199,6 @@ class GetCheckoutPaymentResponse(object):
                    created_at,
                    updated_at,
                    customer_editable,
-                   customer,
                    billingaddress,
                    credit_card,
                    boleto,
@@ -209,6 +208,7 @@ class GetCheckoutPaymentResponse(object):
                    currency,
                    amount,
                    canceled_at,
+                   customer,
                    closed_at,
                    expires_at,
                    debit_card,

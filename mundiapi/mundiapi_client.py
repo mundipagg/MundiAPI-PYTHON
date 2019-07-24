@@ -8,8 +8,8 @@
 
 from mundiapi.decorators import lazy_property
 from mundiapi.configuration import Configuration
-from mundiapi.controllers.subscriptions_controller import SubscriptionsController
 from mundiapi.controllers.orders_controller import OrdersController
+from mundiapi.controllers.subscriptions_controller import SubscriptionsController
 from mundiapi.controllers.plans_controller import PlansController
 from mundiapi.controllers.invoices_controller import InvoicesController
 from mundiapi.controllers.customers_controller import CustomersController
@@ -25,12 +25,12 @@ class MundiapiClient(object):
     config = Configuration
 
     @lazy_property
-    def subscriptions(self):
-        return SubscriptionsController()
-
-    @lazy_property
     def orders(self):
         return OrdersController()
+
+    @lazy_property
+    def subscriptions(self):
+        return SubscriptionsController()
 
     @lazy_property
     def plans(self):

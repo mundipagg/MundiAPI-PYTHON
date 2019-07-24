@@ -47,16 +47,16 @@ class CreateOrderRequest(object):
         "payments":'payments',
         "code":'code',
         "customer_id":'customer_id',
-        "shipping":'shipping',
         "metadata":'metadata',
         "closed":'closed',
-        "antifraud":'antifraud',
+        "shipping":'shipping',
         "antifraud_enabled":'antifraud_enabled',
         "ip":'ip',
         "session_id":'session_id',
         "location":'location',
         "device":'device',
-        "currency":'currency'
+        "currency":'currency',
+        "antifraud":'antifraud'
     }
 
     def __init__(self,
@@ -65,16 +65,16 @@ class CreateOrderRequest(object):
                  payments=None,
                  code=None,
                  customer_id=None,
-                 shipping=None,
                  metadata=None,
                  closed=True,
-                 antifraud=None,
+                 shipping=None,
                  antifraud_enabled=None,
                  ip=None,
                  session_id=None,
                  location=None,
                  device=None,
-                 currency=None):
+                 currency=None,
+                 antifraud=None):
         """Constructor for the CreateOrderRequest class"""
 
         # Initialize members of the class
@@ -126,16 +126,16 @@ class CreateOrderRequest(object):
                 payments.append(mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(structure))
         code = dictionary.get('code')
         customer_id = dictionary.get('customer_id')
-        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         closed = dictionary.get("closed") if dictionary.get("closed") else True
-        antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
+        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         antifraud_enabled = dictionary.get('antifraud_enabled')
         ip = dictionary.get('ip')
         session_id = dictionary.get('session_id')
         location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
         device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
         currency = dictionary.get('currency')
+        antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
 
         # Return an object of this model
         return cls(items,
@@ -143,15 +143,15 @@ class CreateOrderRequest(object):
                    payments,
                    code,
                    customer_id,
-                   shipping,
                    metadata,
                    closed,
-                   antifraud,
+                   shipping,
                    antifraud_enabled,
                    ip,
                    session_id,
                    location,
                    device,
-                   currency)
+                   currency,
+                   antifraud)
 
 

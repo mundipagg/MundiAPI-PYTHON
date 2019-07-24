@@ -50,10 +50,10 @@ class GetAddressResponse(object):
         "status":'status',
         "created_at":'created_at',
         "updated_at":'updated_at',
-        "customer":'customer',
         "metadata":'metadata',
         "line_1":'line_1',
         "line_2":'line_2',
+        "customer":'customer',
         "deleted_at":'deleted_at'
     }
 
@@ -70,10 +70,10 @@ class GetAddressResponse(object):
                  status=None,
                  created_at=None,
                  updated_at=None,
-                 customer=None,
                  metadata=None,
                  line_1=None,
                  line_2=None,
+                 customer=None,
                  deleted_at=None):
         """Constructor for the GetAddressResponse class"""
 
@@ -127,10 +127,10 @@ class GetAddressResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         metadata = dictionary.get('metadata')
         line_1 = dictionary.get('line_1')
         line_2 = dictionary.get('line_2')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model
@@ -146,10 +146,10 @@ class GetAddressResponse(object):
                    status,
                    created_at,
                    updated_at,
-                   customer,
                    metadata,
                    line_1,
                    line_2,
+                   customer,
                    deleted_at)
 
 

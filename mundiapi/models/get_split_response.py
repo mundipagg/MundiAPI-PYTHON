@@ -26,15 +26,15 @@ class GetSplitResponse(object):
     _names = {
         "mtype":'type',
         "amount":'amount',
-        "recipient":'recipient',
-        "gateway_id":'gateway_id'
+        "gateway_id":'gateway_id',
+        "recipient":'recipient'
     }
 
     def __init__(self,
                  mtype=None,
                  amount=None,
-                 recipient=None,
-                 gateway_id=None):
+                 gateway_id=None,
+                 recipient=None):
         """Constructor for the GetSplitResponse class"""
 
         # Initialize members of the class
@@ -64,13 +64,13 @@ class GetSplitResponse(object):
         # Extract variables from the dictionary
         mtype = dictionary.get('type')
         amount = dictionary.get('amount')
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
         gateway_id = dictionary.get('gateway_id')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(mtype,
                    amount,
-                   recipient,
-                   gateway_id)
+                   gateway_id,
+                   recipient)
 
 

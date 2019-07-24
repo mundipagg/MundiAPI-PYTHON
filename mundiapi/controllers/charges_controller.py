@@ -21,7 +21,8 @@ class ChargesController(BaseController):
 
     def update_charge_card(self,
                            charge_id,
-                           request):
+                           request,
+                           idempotency_key=None):
         """Does a PATCH request to /charges/{charge_id}/card.
 
         Updates the card from a charge
@@ -30,6 +31,8 @@ class ChargesController(BaseController):
             charge_id (string): Charge id
             request (UpdateChargeCardRequest): Request for updating a charge's
                 card
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -54,7 +57,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -68,7 +72,8 @@ class ChargesController(BaseController):
 
     def update_charge_payment_method(self,
                                      charge_id,
-                                     request):
+                                     request,
+                                     idempotency_key=None):
         """Does a PATCH request to /charges/{charge_id}/payment-method.
 
         Updates a charge's payment method
@@ -77,6 +82,8 @@ class ChargesController(BaseController):
             charge_id (string): Charge id
             request (UpdateChargePaymentMethodRequest): Request for updating
                 the payment method from a charge
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -101,7 +108,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -114,13 +122,16 @@ class ChargesController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
 
     def create_charge(self,
-                      request):
+                      request,
+                      idempotency_key=None):
         """Does a POST request to /Charges.
 
         Creates a new charge
 
         Args:
             request (CreateChargeRequest): Request for creating a charge
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -142,7 +153,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -198,13 +210,16 @@ class ChargesController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
 
     def retry_charge(self,
-                     charge_id):
+                     charge_id,
+                     idempotency_key=None):
         """Does a POST request to /charges/{charge_id}/retry.
 
         Retries a charge
 
         Args:
             charge_id (string): Charge id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -228,7 +243,8 @@ class ChargesController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -314,7 +330,8 @@ class ChargesController(BaseController):
 
     def update_charge_metadata(self,
                                charge_id,
-                               request):
+                               request,
+                               idempotency_key=None):
         """Does a PATCH request to /Charges/{charge_id}/metadata.
 
         Updates the metadata from a charge
@@ -323,6 +340,8 @@ class ChargesController(BaseController):
             charge_id (string): The charge id
             request (UpdateMetadataRequest): Request for updating the charge
                 metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -347,7 +366,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -361,7 +381,8 @@ class ChargesController(BaseController):
 
     def cancel_charge(self,
                       charge_id,
-                      request=None):
+                      request=None,
+                      idempotency_key=None):
         """Does a DELETE request to /charges/{charge_id}.
 
         Cancel a charge
@@ -370,6 +391,8 @@ class ChargesController(BaseController):
             charge_id (string): Charge id
             request (CreateCancelChargeRequest, optional): Request for
                 cancelling a charge
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -394,7 +417,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -408,7 +432,8 @@ class ChargesController(BaseController):
 
     def capture_charge(self,
                        charge_id,
-                       request=None):
+                       request=None,
+                       idempotency_key=None):
         """Does a POST request to /charges/{charge_id}/capture.
 
         Captures a charge
@@ -417,6 +442,8 @@ class ChargesController(BaseController):
             charge_id (string): Charge id
             request (CreateCaptureChargeRequest, optional): Request for
                 capturing a charge
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -441,7 +468,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -455,7 +483,8 @@ class ChargesController(BaseController):
 
     def update_charge_due_date(self,
                                charge_id,
-                               request):
+                               request,
+                               idempotency_key=None):
         """Does a PATCH request to /Charges/{charge_id}/due-date.
 
         Updates the due date from a charge
@@ -464,6 +493,8 @@ class ChargesController(BaseController):
             charge_id (string): Charge Id
             request (UpdateChargeDueDateRequest): Request for updating the due
                 date
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -488,7 +519,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -502,7 +534,8 @@ class ChargesController(BaseController):
 
     def confirm_payment(self,
                         charge_id,
-                        request=None):
+                        request=None,
+                        idempotency_key=None):
         """Does a POST request to /charges/{charge_id}/confirm-payment.
 
         TODO: type endpoint description here.
@@ -511,6 +544,8 @@ class ChargesController(BaseController):
             charge_id (string): TODO: type description here. Example: 
             request (CreateConfirmPaymentRequest, optional): Request for
                 confirm payment
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetChargeResponse: Response from the API. 
@@ -535,7 +570,8 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

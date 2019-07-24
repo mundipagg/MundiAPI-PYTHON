@@ -61,14 +61,12 @@ class GetSubscriptionResponse(object):
         "interval":'interval',
         "interval_count":'interval_count',
         "billing_type":'billing_type',
-        "current_cycle":'current_cycle',
         "payment_method":'payment_method',
         "currency":'currency',
         "installments":'installments',
         "status":'status',
         "created_at":'created_at',
         "updated_at":'updated_at',
-        "customer":'customer',
         "card":'card',
         "items":'items',
         "statement_descriptor":'statement_descriptor',
@@ -76,6 +74,8 @@ class GetSubscriptionResponse(object):
         "setup":'setup',
         "gateway_affiliation_id":'gateway_affiliation_id',
         "increments":'increments',
+        "current_cycle":'current_cycle',
+        "customer":'customer',
         "next_billing_at":'next_billing_at',
         "billing_day":'billing_day',
         "minimum_price":'minimum_price',
@@ -91,14 +91,12 @@ class GetSubscriptionResponse(object):
                  interval=None,
                  interval_count=None,
                  billing_type=None,
-                 current_cycle=None,
                  payment_method=None,
                  currency=None,
                  installments=None,
                  status=None,
                  created_at=None,
                  updated_at=None,
-                 customer=None,
                  card=None,
                  items=None,
                  statement_descriptor=None,
@@ -106,6 +104,8 @@ class GetSubscriptionResponse(object):
                  setup=None,
                  gateway_affiliation_id=None,
                  increments=None,
+                 current_cycle=None,
+                 customer=None,
                  next_billing_at=None,
                  billing_day=None,
                  minimum_price=None,
@@ -168,14 +168,12 @@ class GetSubscriptionResponse(object):
         interval = dictionary.get('interval')
         interval_count = dictionary.get('interval_count')
         billing_type = dictionary.get('billing_type')
-        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('current_cycle')) if dictionary.get('current_cycle') else None
         payment_method = dictionary.get('payment_method')
         currency = dictionary.get('currency')
         installments = dictionary.get('installments')
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         items = None
         if dictionary.get('items') != None:
@@ -191,6 +189,8 @@ class GetSubscriptionResponse(object):
             increments = list()
             for structure in dictionary.get('increments'):
                 increments.append(mundiapi.models.get_increment_response.GetIncrementResponse.from_dictionary(structure))
+        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('current_cycle')) if dictionary.get('current_cycle') else None
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
         billing_day = dictionary.get('billing_day')
         minimum_price = dictionary.get('minimum_price')
@@ -209,14 +209,12 @@ class GetSubscriptionResponse(object):
                    interval,
                    interval_count,
                    billing_type,
-                   current_cycle,
                    payment_method,
                    currency,
                    installments,
                    status,
                    created_at,
                    updated_at,
-                   customer,
                    card,
                    items,
                    statement_descriptor,
@@ -224,6 +222,8 @@ class GetSubscriptionResponse(object):
                    setup,
                    gateway_affiliation_id,
                    increments,
+                   current_cycle,
+                   customer,
                    next_billing_at,
                    billing_day,
                    minimum_price,

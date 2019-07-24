@@ -54,13 +54,13 @@ class GetChargeResponse(object):
         "due_at":'due_at',
         "created_at":'created_at',
         "updated_at":'updated_at',
+        "metadata":'metadata',
+        "canceled_amount":'canceled_amount',
+        "paid_amount":'paid_amount',
         "last_transaction":'last_transaction',
         "invoice":'invoice',
         "order":'order',
         "customer":'customer',
-        "metadata":'metadata',
-        "canceled_amount":'canceled_amount',
-        "paid_amount":'paid_amount',
         "paid_at":'paid_at',
         "canceled_at":'canceled_at'
     }
@@ -76,13 +76,13 @@ class GetChargeResponse(object):
                  due_at=None,
                  created_at=None,
                  updated_at=None,
+                 metadata=None,
+                 canceled_amount=None,
+                 paid_amount=None,
                  last_transaction=None,
                  invoice=None,
                  order=None,
                  customer=None,
-                 metadata=None,
-                 canceled_amount=None,
-                 paid_amount=None,
                  paid_at=None,
                  canceled_at=None):
         """Constructor for the GetChargeResponse class"""
@@ -137,13 +137,13 @@ class GetChargeResponse(object):
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
+        metadata = dictionary.get('metadata')
+        canceled_amount = dictionary.get('canceled_amount')
+        paid_amount = dictionary.get('paid_amount')
         last_transaction = mundiapi.models.get_transaction_response.GetTransactionResponse.from_dictionary(dictionary.get('last_transaction')) if dictionary.get('last_transaction') else None
         invoice = mundiapi.models.get_invoice_response.GetInvoiceResponse.from_dictionary(dictionary.get('invoice')) if dictionary.get('invoice') else None
         order = mundiapi.models.get_order_response.GetOrderResponse.from_dictionary(dictionary.get('order')) if dictionary.get('order') else None
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
-        metadata = dictionary.get('metadata')
-        canceled_amount = dictionary.get('canceled_amount')
-        paid_amount = dictionary.get('paid_amount')
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
 
@@ -158,13 +158,13 @@ class GetChargeResponse(object):
                    due_at,
                    created_at,
                    updated_at,
+                   metadata,
+                   canceled_amount,
+                   paid_amount,
                    last_transaction,
                    invoice,
                    order,
                    customer,
-                   metadata,
-                   canceled_amount,
-                   paid_amount,
                    paid_at,
                    canceled_at)
 
