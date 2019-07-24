@@ -37,9 +37,9 @@ class UpdateCustomerRequest(object):
         "mtype":'type',
         "address":'address',
         "metadata":'metadata',
+        "phones":'phones',
         "code":'code',
-        "gender":'gender',
-        "phones":'phones'
+        "gender":'gender'
     }
 
     def __init__(self,
@@ -49,9 +49,9 @@ class UpdateCustomerRequest(object):
                  mtype=None,
                  address=None,
                  metadata=None,
+                 phones=None,
                  code=None,
-                 gender=None,
-                 phones=None):
+                 gender=None):
         """Constructor for the UpdateCustomerRequest class"""
 
         # Initialize members of the class
@@ -90,9 +90,9 @@ class UpdateCustomerRequest(object):
         mtype = dictionary.get('type')
         address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
         metadata = dictionary.get('metadata')
+        phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
         code = dictionary.get('code')
         gender = dictionary.get('gender')
-        phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
 
         # Return an object of this model
         return cls(name,
@@ -101,8 +101,8 @@ class UpdateCustomerRequest(object):
                    mtype,
                    address,
                    metadata,
+                   phones,
                    code,
-                   gender,
-                   phones)
+                   gender)
 
 

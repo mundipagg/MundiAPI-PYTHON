@@ -63,7 +63,8 @@ class TokensController(BaseController):
 
     def create_token(self,
                      public_key,
-                     request):
+                     request,
+                     idempotency_key=None):
         """Does a POST request to /tokens?appId={public_key}.
 
         TODO: type endpoint description here.
@@ -71,6 +72,8 @@ class TokensController(BaseController):
         Args:
             public_key (string): Public key
             request (CreateTokenRequest): Request for creating a token
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetTokenResponse: Response from the API. 
@@ -95,7 +98,8 @@ class TokensController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

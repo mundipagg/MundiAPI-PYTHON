@@ -34,26 +34,26 @@ class GetAnticipationResponse(object):
         "id":'id',
         "requested_amount":'requested_amount',
         "approved_amount":'approved_amount',
-        "recipient":'recipient',
         "pgid":'pgid',
         "created_at":'created_at',
         "updated_at":'updated_at',
         "payment_date":'payment_date',
         "status":'status',
-        "timeframe":'timeframe'
+        "timeframe":'timeframe',
+        "recipient":'recipient'
     }
 
     def __init__(self,
                  id=None,
                  requested_amount=None,
                  approved_amount=None,
-                 recipient=None,
                  pgid=None,
                  created_at=None,
                  updated_at=None,
                  payment_date=None,
                  status=None,
-                 timeframe=None):
+                 timeframe=None,
+                 recipient=None):
         """Constructor for the GetAnticipationResponse class"""
 
         # Initialize members of the class
@@ -90,24 +90,24 @@ class GetAnticipationResponse(object):
         id = dictionary.get('id')
         requested_amount = dictionary.get('requested_amount')
         approved_amount = dictionary.get('approved_amount')
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
         pgid = dictionary.get('pgid')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         payment_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("payment_date")).datetime if dictionary.get("payment_date") else None
         status = dictionary.get('status')
         timeframe = dictionary.get('timeframe')
+        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(id,
                    requested_amount,
                    approved_amount,
-                   recipient,
                    pgid,
                    created_at,
                    updated_at,
                    payment_date,
                    status,
-                   timeframe)
+                   timeframe,
+                   recipient)
 
 

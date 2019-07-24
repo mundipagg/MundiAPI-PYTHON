@@ -26,7 +26,8 @@ class RecipientsController(BaseController):
 
     def update_recipient_metadata(self,
                                   recipient_id,
-                                  request):
+                                  request,
+                                  idempotency_key=None):
         """Does a PATCH request to /recipients/{recipient_id}/metadata.
 
         Updates recipient metadata
@@ -34,6 +35,8 @@ class RecipientsController(BaseController):
         Args:
             recipient_id (string): Recipient id
             request (UpdateMetadataRequest): Metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetRecipientResponse: Response from the API. 
@@ -58,7 +61,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -182,7 +186,8 @@ class RecipientsController(BaseController):
 
     def create_anticipation(self,
                             recipient_id,
-                            request):
+                            request,
+                            idempotency_key=None):
         """Does a POST request to /recipients/{recipient_id}/anticipations.
 
         Creates an anticipation
@@ -190,6 +195,8 @@ class RecipientsController(BaseController):
         Args:
             recipient_id (string): Recipient id
             request (CreateAnticipationRequest): Anticipation data
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAnticipationResponse: Response from the API. 
@@ -214,7 +221,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -402,7 +410,8 @@ class RecipientsController(BaseController):
 
     def update_recipient(self,
                          recipient_id,
-                         request):
+                         request,
+                         idempotency_key=None):
         """Does a PUT request to /recipients/{recipient_id}.
 
         Updates a recipient
@@ -410,6 +419,8 @@ class RecipientsController(BaseController):
         Args:
             recipient_id (string): Recipient id
             request (UpdateRecipientRequest): Recipient data
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetRecipientResponse: Response from the API. 
@@ -434,7 +445,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -448,7 +460,8 @@ class RecipientsController(BaseController):
 
     def update_recipient_default_bank_account(self,
                                               recipient_id,
-                                              request):
+                                              request,
+                                              idempotency_key=None):
         """Does a PATCH request to /recipients/{recipient_id}/default-bank-account.
 
         Updates the default bank account from a recipient
@@ -456,6 +469,8 @@ class RecipientsController(BaseController):
         Args:
             recipient_id (string): Recipient id
             request (UpdateRecipientBankAccountRequest): Bank account data
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetRecipientResponse: Response from the API. 
@@ -480,7 +495,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -628,7 +644,8 @@ class RecipientsController(BaseController):
 
     def create_transfer(self,
                         recipient_id,
-                        request):
+                        request,
+                        idempotency_key=None):
         """Does a POST request to /recipients/{recipient_id}/transfers.
 
         Creates a transfer for a recipient
@@ -636,6 +653,8 @@ class RecipientsController(BaseController):
         Args:
             recipient_id (string): Recipient Id
             request (CreateTransferRequest): Transfer data
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetTransferResponse: Response from the API. 
@@ -660,7 +679,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -673,13 +693,16 @@ class RecipientsController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetTransferResponse.from_dictionary)
 
     def create_recipient(self,
-                         request):
+                         request,
+                         idempotency_key=None):
         """Does a POST request to /recipients.
 
         Creates a new recipient
 
         Args:
             request (CreateRecipientRequest): Recipient data
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetRecipientResponse: Response from the API. 
@@ -701,7 +724,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -715,7 +739,8 @@ class RecipientsController(BaseController):
 
     def update_recipient_transfer_settings(self,
                                            recipient_id,
-                                           request):
+                                           request,
+                                           idempotency_key=None):
         """Does a PATCH request to /recipients/{recipient_id}/transfer-settings.
 
         TODO: type endpoint description here.
@@ -724,6 +749,8 @@ class RecipientsController(BaseController):
             recipient_id (string): Recipient Identificator
             request (UpdateTransferSettingsRequest): TODO: type description
                 here. Example: 
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetRecipientResponse: Response from the API. 
@@ -748,7 +775,8 @@ class RecipientsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

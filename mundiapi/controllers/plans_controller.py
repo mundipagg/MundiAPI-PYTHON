@@ -21,7 +21,8 @@ class PlansController(BaseController):
 
     def create_plan_item(self,
                          plan_id,
-                         request):
+                         request,
+                         idempotency_key=None):
         """Does a POST request to /plans/{plan_id}/items.
 
         Adds a new item to a plan
@@ -29,6 +30,8 @@ class PlansController(BaseController):
         Args:
             plan_id (string): Plan id
             request (CreatePlanItemRequest): Request for creating a plan item
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanItemResponse: Response from the API. 
@@ -53,7 +56,8 @@ class PlansController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -68,7 +72,8 @@ class PlansController(BaseController):
     def update_plan_item(self,
                          plan_id,
                          plan_item_id,
-                         body):
+                         body,
+                         idempotency_key=None):
         """Does a PUT request to /plans/{plan_id}/items/{plan_item_id}.
 
         Updates a plan item
@@ -77,6 +82,8 @@ class PlansController(BaseController):
             plan_id (string): Plan id
             plan_item_id (string): Plan item id
             body (UpdatePlanItemRequest): Request for updating the plan item
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanItemResponse: Response from the API. 
@@ -102,7 +109,8 @@ class PlansController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -158,58 +166,16 @@ class PlansController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
 
     def delete_plan(self,
-                    plan_id):
+                    plan_id,
+                    idempotency_key=None):
         """Does a DELETE request to /plans/{plan_id}.
 
         Deletes a plan
 
         Args:
             plan_id (string): Plan id
-
-        Returns:
-            GetPlanResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/plans/{plan_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'plan_id': plan_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
-
-    def update_plan(self,
-                    plan_id,
-                    request):
-        """Does a PUT request to /plans/{plan_id}.
-
-        Updates a plan
-
-        Args:
-            plan_id (string): Plan id
-            request (UpdatePlanRequest): Request for updating a plan
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanResponse: Response from the API. 
@@ -234,7 +200,57 @@ class PlansController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
+
+    def update_plan(self,
+                    plan_id,
+                    request,
+                    idempotency_key=None):
+        """Does a PUT request to /plans/{plan_id}.
+
+        Updates a plan
+
+        Args:
+            plan_id (string): Plan id
+            request (UpdatePlanRequest): Request for updating a plan
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPlanResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'plan_id': plan_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -247,13 +263,16 @@ class PlansController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
 
     def create_plan(self,
-                    body):
+                    body,
+                    idempotency_key=None):
         """Does a POST request to /plans.
 
         Creates a new plan
 
         Args:
             body (CreatePlanRequest): Request for creating a plan
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanResponse: Response from the API. 
@@ -275,7 +294,8 @@ class PlansController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -354,7 +374,8 @@ class PlansController(BaseController):
 
     def update_plan_metadata(self,
                              plan_id,
-                             request):
+                             request,
+                             idempotency_key=None):
         """Does a PATCH request to /Plans/{plan_id}/metadata.
 
         Updates the metadata from a plan
@@ -363,6 +384,8 @@ class PlansController(BaseController):
             plan_id (string): The plan id
             request (UpdateMetadataRequest): Request for updating the plan
                 metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanResponse: Response from the API. 
@@ -387,7 +410,8 @@ class PlansController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -447,7 +471,8 @@ class PlansController(BaseController):
 
     def delete_plan_item(self,
                          plan_id,
-                         plan_item_id):
+                         plan_item_id,
+                         idempotency_key=None):
         """Does a DELETE request to /plans/{plan_id}/items/{plan_item_id}.
 
         Removes an item from a plan
@@ -455,6 +480,8 @@ class PlansController(BaseController):
         Args:
             plan_id (string): Plan id
             plan_item_id (string): Plan item id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetPlanItemResponse: Response from the API. 
@@ -479,7 +506,8 @@ class PlansController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

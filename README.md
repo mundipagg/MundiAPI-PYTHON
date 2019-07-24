@@ -109,8 +109,8 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
+* [SubscriptionsController](#subscriptions_controller)
 * [PlansController](#plans_controller)
 * [InvoicesController](#invoices_controller)
 * [CustomersController](#customers_controller)
@@ -119,6 +119,348 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 * [TokensController](#tokens_controller)
 * [SellersController](#sellers_controller)
 * [TransactionsController](#transactions_controller)
+
+## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
+
+### Get controller instance
+
+An instance of the ``` OrdersController ``` class can be accessed from the API Client.
+
+```python
+ orders_controller = client.orders
+```
+
+### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_order_item") get_order_item
+
+> TODO: Add a method description
+
+```python
+def get_order_item(self,
+                       order_id,
+                       item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+
+result = orders_controller.get_order_item(order_id, item_id)
+
+```
+
+
+### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_status") update_order_status
+
+> TODO: Add a method description
+
+```python
+def update_order_status(self,
+                            id,
+                            request,
+                            idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Update Order Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+id = 'id'
+request = UpdateOrderStatusRequest()
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.update_order_status(id, request, idempotency_key)
+
+```
+
+
+### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_order_item") delete_order_item
+
+> TODO: Add a method description
+
+```python
+def delete_order_item(self,
+                          order_id,
+                          item_id,
+                          idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.delete_order_item(order_id, item_id, idempotency_key)
+
+```
+
+
+### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.create_order_item") create_order_item
+
+> TODO: Add a method description
+
+```python
+def create_order_item(self,
+                          order_id,
+                          request,
+                          idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Order Item Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+request = CreateOrderItemRequest()
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.create_order_item(order_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_item") update_order_item
+
+> TODO: Add a method description
+
+```python
+def update_order_item(self,
+                          order_id,
+                          item_id,
+                          request,
+                          idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| request |  ``` Required ```  | Item Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+item_id = 'itemId'
+request = UpdateOrderItemRequest()
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.update_order_item(order_id, item_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_metadata") update_order_metadata
+
+> Updates the metadata from an order
+
+```python
+def update_order_metadata(self,
+                              order_id,
+                              request,
+                              idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | The order id |
+| request |  ``` Required ```  | Request for updating the order metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'order_id'
+request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.update_order_metadata(order_id, request, idempotency_key)
+
+```
+
+
+### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_all_order_items") delete_all_order_items
+
+> TODO: Add a method description
+
+```python
+def delete_all_order_items(self,
+                               order_id,
+                               idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'orderId'
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.delete_all_order_items(order_id, idempotency_key)
+
+```
+
+
+### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_orders") get_orders
+
+> Gets all orders
+
+```python
+def get_orders(self,
+                   page=None,
+                   size=None,
+                   code=None,
+                   status=None,
+                   created_since=None,
+                   created_until=None,
+                   customer_id=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for order's code |
+| status |  ``` Optional ```  | Filter for order's status |
+| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
+| customerId |  ``` Optional ```  | Filter for order's customer id |
+
+
+
+#### Example Usage
+
+```python
+page = 103
+size = 103
+code = 'code'
+status = 'status'
+created_since = datetime.now()
+created_until = datetime.now()
+customer_id = 'customer_id'
+
+result = orders_controller.get_orders(page, size, code, status, created_since, created_until, customer_id)
+
+```
+
+
+### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_order") get_order
+
+> Gets an order
+
+```python
+def get_order(self,
+                  order_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order id |
+
+
+
+#### Example Usage
+
+```python
+order_id = 'order_id'
+
+result = orders_controller.get_order(order_id)
+
+```
+
+
+### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.create_order") create_order
+
+> Creates a new Order
+
+```python
+def create_order(self,
+                     body,
+                     idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating an order |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+body = CreateOrderRequest()
+idempotency_key = 'idempotency-key'
+
+result = orders_controller.create_order(body, idempotency_key)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
 
@@ -130,22 +472,432 @@ An instance of the ``` SubscriptionsController ``` class can be accessed from th
  subscriptions_controller = client.subscriptions
 ```
 
-### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increment_by_id") get_increment_by_id
+### <a name="get_subscription_cycle_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_cycle_by_id") get_subscription_cycle_by_id
 
 > TODO: Add a method description
 
 ```python
-def get_increment_by_id(self,
-                            subscription_id,
-                            increment_id)
+def get_subscription_cycle_by_id(self,
+                                     subscription_id,
+                                     cycle_id)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription Id |
-| incrementId |  ``` Required ```  | The increment Id |
+| subscriptionId |  ``` Required ```  | The subscription id |
+| cycleId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+cycle_id = 'cycleId'
+
+result = subscriptions_controller.get_subscription_cycle_by_id(subscription_id, cycle_id)
+
+```
+
+
+### <a name="renew_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.renew_subscription") renew_subscription
+
+> TODO: Add a method description
+
+```python
+def renew_subscription(self,
+                           subscription_id,
+                           idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.renew_subscription(subscription_id, idempotency_key)
+
+```
+
+
+### <a name="update_current_cycle_status"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_current_cycle_status") update_current_cycle_status
+
+> TODO: Add a method description
+
+```python
+def update_current_cycle_status(self,
+                                    subscription_id,
+                                    request,
+                                    idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request for updating the end date of the subscription current status |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateCurrentCycleStatusRequest()
+idempotency_key = 'idempotency-key'
+
+subscriptions_controller.update_current_cycle_status(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="get_subscription_cycles"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_cycles") get_subscription_cycles
+
+> TODO: Add a method description
+
+```python
+def get_subscription_cycles(self,
+                                subscription_id,
+                                page,
+                                size)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 'page'
+size = 'size'
+
+result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+
+```
+
+
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
+
+> Updates the billing date from a subscription
+
+```python
+def update_subscription_billing_date(self,
+                                         subscription_id,
+                                         request,
+                                         idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionBillingDateRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_billing_date(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_latest_period_end_at"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_latest_period_end_at") update_latest_period_end_at
+
+> TODO: Add a method description
+
+```python
+def update_latest_period_end_at(self,
+                                    subscription_id,
+                                    request,
+                                    idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating the end date of the current signature cycle |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateCurrentCycleEndDateRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_latest_period_end_at(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_due_days"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_due_days") update_subscription_due_days
+
+> Updates the boleto due days from a subscription
+
+```python
+def update_subscription_due_days(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionDueDaysRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_due_days(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
+
+> Atualização do valor mínimo da assinatura
+
+```python
+def update_subscription_minium_price(self,
+                                         subscription_id,
+                                         request,
+                                         idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionMinimumPriceRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
+
+> Lists all usages from a subscription item
+
+```python
+def get_usages(self,
+                   subscription_id,
+                   item_id,
+                   page=None,
+                   size=None,
+                   code=None,
+                   group=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+page = 103
+size = 103
+code = 'code'
+group = 'group'
+
+result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
+
+> TODO: Add a method description
+
+```python
+def get_usages_details(self,
+                           subscription_id,
+                           cycle_id=None,
+                           size=None,
+                           page=None,
+                           item_id=None,
+                           group=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Identifier |
+| cycleId |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
+| itemId |  ``` Optional ```  | Identificador do item |
+| group |  ``` Optional ```  | identificador da loja (account) de cada item |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+cycle_id = 'cycle_id'
+size = 103
+page = 103
+item_id = 'item_id'
+group = 'group'
+
+result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id, group)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
+
+> TODO: Add a method description
+
+```python
+def get_increments(self,
+                       subscription_id,
+                       page=None,
+                       size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 103
+size = 103
+
+result = subscriptions_controller.get_increments(subscription_id, page, size)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
+
+> Creates a increment
+
+```python
+def create_increment(self,
+                         subscription_id,
+                         request,
+                         idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateIncrementRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.create_increment(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
+
+> Deletes a increment
+
+```python
+def delete_increment(self,
+                         subscription_id,
+                         increment_id,
+                         idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -154,20 +906,22 @@ def get_increment_by_id(self,
 ```python
 subscription_id = 'subscription_id'
 increment_id = 'increment_id'
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
+result = subscriptions_controller.delete_increment(subscription_id, increment_id, idempotency_key)
 
 ```
 
 
-### <a name="update_subscription_start_at"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_start_at") update_subscription_start_at
+### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
 
-> Updates the start at date from a subscription
+> TODO: Add a method description
 
 ```python
-def update_subscription_start_at(self,
-                                     subscription_id,
-                                     request)
+def get_discounts(self,
+                      subscription_id,
+                      page,
+                      size)
 ```
 
 #### Parameters
@@ -175,7 +929,8 @@ def update_subscription_start_at(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription start date |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
 
 
 
@@ -183,21 +938,23 @@ def update_subscription_start_at(self,
 
 ```python
 subscription_id = 'subscription_id'
-request = UpdateSubscriptionStartAtRequest()
+page = 103
+size = 103
 
-result = subscriptions_controller.update_subscription_start_at(subscription_id, request)
+result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
 ```
 
 
-### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
+### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
 
-> Updates the credit card from a subscription
+> Cancels a subscription
 
 ```python
-def update_subscription_card(self,
-                                 subscription_id,
-                                 request)
+def cancel_subscription(self,
+                            subscription_id,
+                            request=None,
+                            idempotency_key=None)
 ```
 
 #### Parameters
@@ -205,7 +962,8 @@ def update_subscription_card(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating a card |
+| request |  ``` Optional ```  | Request for cancelling a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -213,31 +971,30 @@ def update_subscription_card(self,
 
 ```python
 subscription_id = 'subscription_id'
-request = UpdateSubscriptionCardRequest()
+request = CreateCancelSubscriptionRequest()
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.update_subscription_card(subscription_id, request)
+result = subscriptions_controller.cancel_subscription(subscription_id, request, idempotency_key)
 
 ```
 
 
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
 
-> Updates a subscription item
+> TODO: Add a method description
 
 ```python
-def update_subscription_item(self,
-                                 subscription_id,
-                                 item_id,
-                                 body)
+def get_discount_by_id(self,
+                           subscription_id,
+                           discount_id)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
 
 
 
@@ -245,32 +1002,33 @@ def update_subscription_item(self,
 
 ```python
 subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = UpdateSubscriptionItemRequest()
+discount_id = 'discountId'
 
-result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body)
+result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
 
 ```
 
 
-### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
 
-> Creates a usage
+> Deletes a usage
 
 ```python
-def create_usage(self,
+def delete_usage(self,
                      subscription_id,
                      item_id,
-                     body)
+                     usage_id,
+                     idempotency_key=None)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for creating a usage |
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -279,105 +1037,23 @@ def create_usage(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-body = CreateUsageRequest()
+usage_id = 'usage_id'
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.create_usage(subscription_id, item_id, body)
-
-```
-
-
-### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
-
-> Gets a subscription
-
-```python
-def get_subscription(self,
-                         subscription_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-
-result = subscriptions_controller.get_subscription(subscription_id)
+result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id, idempotency_key)
 
 ```
 
 
-### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
+### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
 
-> Updates the payment method from a subscription
-
-```python
-def update_subscription_payment_method(self,
-                                           subscription_id,
-                                           request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
-
-
-
-#### Example Usage
+> Deletes a subscription item
 
 ```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionPaymentMethodRequest()
-
-result = subscriptions_controller.update_subscription_payment_method(subscription_id, request)
-
-```
-
-
-### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
-
-> Creates a new subscription
-
-```python
-def create_subscription(self,
-                            body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a subscription |
-
-
-
-#### Example Usage
-
-```python
-body = CreateSubscriptionRequest()
-
-result = subscriptions_controller.create_subscription(body)
-
-```
-
-
-### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
-
-> Creates a new Subscription item
-
-```python
-def create_subscription_item(self,
+def delete_subscription_item(self,
                                  subscription_id,
-                                 request)
+                                 subscription_item_id,
+                                 idempotency_key=None)
 ```
 
 #### Parameters
@@ -385,7 +1061,8 @@ def create_subscription_item(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a subscription item |
+| subscriptionItemId |  ``` Required ```  | Subscription item id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -393,21 +1070,23 @@ def create_subscription_item(self,
 
 ```python
 subscription_id = 'subscription_id'
-request = CreateSubscriptionItemRequest()
+subscription_item_id = 'subscription_item_id'
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.create_subscription_item(subscription_id, request)
+result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id, idempotency_key)
 
 ```
 
 
-### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
+### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
 
-> Creates a discount
+> Deletes a discount
 
 ```python
-def create_discount(self,
+def delete_discount(self,
                         subscription_id,
-                        request)
+                        discount_id,
+                        idempotency_key=None)
 ```
 
 #### Parameters
@@ -415,7 +1094,8 @@ def create_discount(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a discount |
+| discountId |  ``` Required ```  | Discount Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -423,9 +1103,76 @@ def create_discount(self,
 
 ```python
 subscription_id = 'subscription_id'
-request = CreateDiscountRequest()
+discount_id = 'discount_id'
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.create_discount(subscription_id, request)
+result = subscriptions_controller.delete_discount(subscription_id, discount_id, idempotency_key)
+
+```
+
+
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
+
+> Create Usage
+
+```python
+def create_an_usage(self,
+                        subscription_id,
+                        item_id,
+                        idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| itemId |  ``` Required ```  | Item id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.create_an_usage(subscription_id, item_id, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
+
+> Updates the metadata from a subscription
+
+```python
+def update_subscription_metadata(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_metadata(subscription_id, request, idempotency_key)
 
 ```
 
@@ -467,7 +1214,8 @@ result = subscriptions_controller.get_subscription_item(subscription_id, item_id
 ```python
 def update_subscription_affiliation_id(self,
                                            subscription_id,
-                                           request)
+                                           request,
+                                           idempotency_key=None)
 ```
 
 #### Parameters
@@ -476,6 +1224,7 @@ def update_subscription_affiliation_id(self,
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
 | request |  ``` Required ```  | Request for updating a subscription affiliation id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -484,20 +1233,22 @@ def update_subscription_affiliation_id(self,
 ```python
 subscription_id = 'subscription_id'
 request = UpdateSubscriptionAffiliationIdRequest()
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request)
+result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request, idempotency_key)
 
 ```
 
 
-### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
+### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
 
-> Create Usage
+> Creates a new Subscription item
 
 ```python
-def create_an_usage(self,
-                        subscription_id,
-                        item_id)
+def create_subscription_item(self,
+                                 subscription_id,
+                                 request,
+                                 idempotency_key=None)
 ```
 
 #### Parameters
@@ -505,7 +1256,139 @@ def create_an_usage(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a subscription item |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateSubscriptionItemRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.create_subscription_item(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
+
+> Creates a discount
+
+```python
+def create_discount(self,
+                        subscription_id,
+                        request,
+                        idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a discount |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = CreateDiscountRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.create_discount(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
+
+> Updates the payment method from a subscription
+
+```python
+def update_subscription_payment_method(self,
+                                           subscription_id,
+                                           request,
+                                           idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionPaymentMethodRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_payment_method(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
+
+> Creates a new subscription
+
+```python
+def create_subscription(self,
+                            body,
+                            idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+body = CreateSubscriptionRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.create_subscription(body, idempotency_key)
+
+```
+
+
+### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
+
+> Creates a usage
+
+```python
+def create_usage(self,
+                     subscription_id,
+                     item_id,
+                     body,
+                     idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
 | itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for creating a usage |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -514,8 +1397,169 @@ def create_an_usage(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
+body = CreateUsageRequest()
+idempotency_key = 'idempotency-key'
 
-result = subscriptions_controller.create_an_usage(subscription_id, item_id)
+result = subscriptions_controller.create_usage(subscription_id, item_id, body, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
+
+> Updates a subscription item
+
+```python
+def update_subscription_item(self,
+                                 subscription_id,
+                                 item_id,
+                                 body,
+                                 idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+body = UpdateSubscriptionItemRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body, idempotency_key)
+
+```
+
+
+### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
+
+> Updates the credit card from a subscription
+
+```python
+def update_subscription_card(self,
+                                 subscription_id,
+                                 request,
+                                 idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating a card |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionCardRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_card(subscription_id, request, idempotency_key)
+
+```
+
+
+### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
+
+> Gets a subscription
+
+```python
+def get_subscription(self,
+                         subscription_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+
+result = subscriptions_controller.get_subscription(subscription_id)
+
+```
+
+
+### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increment_by_id") get_increment_by_id
+
+> TODO: Add a method description
+
+```python
+def get_increment_by_id(self,
+                            subscription_id,
+                            increment_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription Id |
+| incrementId |  ``` Required ```  | The increment Id |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
+
+```
+
+
+### <a name="update_subscription_start_at"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_start_at") update_subscription_start_at
+
+> Updates the start at date from a subscription
+
+```python
+def update_subscription_start_at(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription start date |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionStartAtRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_start_at(subscription_id, request, idempotency_key)
 
 ```
 
@@ -562,8 +1606,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 55
-size = 55
+page = 61
+size = 61
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -576,399 +1620,6 @@ created_since = datetime.now()
 created_until = datetime.now()
 
 result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
-
-```
-
-
-### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
-
-> Updates the metadata from a subscription
-
-```python
-def update_subscription_metadata(self,
-                                     subscription_id,
-                                     request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscrption metadata |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateMetadataRequest()
-
-result = subscriptions_controller.update_subscription_metadata(subscription_id, request)
-
-```
-
-
-### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
-
-> Deletes a subscription item
-
-```python
-def delete_subscription_item(self,
-                                 subscription_id,
-                                 subscription_item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| subscriptionItemId |  ``` Required ```  | Subscription item id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-subscription_item_id = 'subscription_item_id'
-
-result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
-
-> Deletes a usage
-
-```python
-def delete_usage(self,
-                     subscription_id,
-                     item_id,
-                     usage_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-usage_id = 'usage_id'
-
-result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id)
-
-```
-
-
-### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
-
-> Deletes a discount
-
-```python
-def delete_discount(self,
-                        subscription_id,
-                        discount_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| discountId |  ``` Required ```  | Discount Id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-discount_id = 'discount_id'
-
-result = subscriptions_controller.delete_discount(subscription_id, discount_id)
-
-```
-
-
-### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
-
-> Cancels a subscription
-
-```python
-def cancel_subscription(self,
-                            subscription_id,
-                            request=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Optional ```  | Request for cancelling a subscription |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateCancelSubscriptionRequest()
-
-result = subscriptions_controller.cancel_subscription(subscription_id, request)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
-
-> TODO: Add a method description
-
-```python
-def get_discount_by_id(self,
-                           subscription_id,
-                           discount_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-discount_id = 'discountId'
-
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
-
-```
-
-
-### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
-
-> TODO: Add a method description
-
-```python
-def get_discounts(self,
-                      subscription_id,
-                      page,
-                      size)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 55
-size = 55
-
-result = subscriptions_controller.get_discounts(subscription_id, page, size)
-
-```
-
-
-### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
-
-> Creates a increment
-
-```python
-def create_increment(self,
-                         subscription_id,
-                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a increment |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = CreateIncrementRequest()
-
-result = subscriptions_controller.create_increment(subscription_id, request)
-
-```
-
-
-### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
-
-> TODO: Add a method description
-
-```python
-def get_increments(self,
-                       subscription_id,
-                       page=None,
-                       size=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 147
-size = 147
-
-result = subscriptions_controller.get_increments(subscription_id, page, size)
-
-```
-
-
-### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
-
-> Deletes a increment
-
-```python
-def delete_increment(self,
-                         subscription_id,
-                         increment_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| incrementId |  ``` Required ```  | Increment id |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-increment_id = 'increment_id'
-
-result = subscriptions_controller.delete_increment(subscription_id, increment_id)
-
-```
-
-
-### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
-
-> TODO: Add a method description
-
-```python
-def get_usages_details(self,
-                           subscription_id,
-                           cycle_id=None,
-                           size=None,
-                           page=None,
-                           item_id=None,
-                           group=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Identifier |
-| cycleId |  ``` Optional ```  | Cycle id |
-| size |  ``` Optional ```  | Page size |
-| page |  ``` Optional ```  | Page number |
-| itemId |  ``` Optional ```  | Identificador do item |
-| group |  ``` Optional ```  | identificador da loja (account) de cada item |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-cycle_id = 'cycle_id'
-size = 147
-page = 147
-item_id = 'item_id'
-group = 'group'
-
-result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id, group)
-
-```
-
-
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
-
-> Lists all usages from a subscription item
-
-```python
-def get_usages(self,
-                   subscription_id,
-                   item_id,
-                   page=None,
-                   size=None,
-                   code=None,
-                   group=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Identification code in the client system |
-| group |  ``` Optional ```  | Identification group in the client system |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-page = 147
-size = 147
-code = 'code'
-group = 'group'
-
-result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
 
 ```
 
@@ -1010,8 +1661,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 147
-size = 147
+page = 61
+size = 61
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1020,567 +1671,6 @@ created_since = 'created_since'
 created_until = 'created_until'
 
 result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
-
-```
-
-
-### <a name="update_subscription_due_days"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_due_days") update_subscription_due_days
-
-> Updates the boleto due days from a subscription
-
-```python
-def update_subscription_due_days(self,
-                                     subscription_id,
-                                     request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionDueDaysRequest()
-
-result = subscriptions_controller.update_subscription_due_days(subscription_id, request)
-
-```
-
-
-### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
-
-> Atualização do valor mínimo da assinatura
-
-```python
-def update_subscription_minium_price(self,
-                                         subscription_id,
-                                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionMinimumPriceRequest()
-
-result = subscriptions_controller.update_subscription_minium_price(subscription_id, request)
-
-```
-
-
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
-
-> Updates the billing date from a subscription
-
-```python
-def update_subscription_billing_date(self,
-                                         subscription_id,
-                                         request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionBillingDateRequest()
-
-result = subscriptions_controller.update_subscription_billing_date(subscription_id, request)
-
-```
-
-
-### <a name="update_latest_period_end_at"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_latest_period_end_at") update_latest_period_end_at
-
-> TODO: Add a method description
-
-```python
-def update_latest_period_end_at(self,
-                                    subscription_id,
-                                    request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating the end date of the current signature cycle |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateCurrentCycleEndDateRequest()
-
-result = subscriptions_controller.update_latest_period_end_at(subscription_id, request)
-
-```
-
-
-### <a name="update_current_cycle_status"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_current_cycle_status") update_current_cycle_status
-
-> TODO: Add a method description
-
-```python
-def update_current_cycle_status(self,
-                                    subscription_id,
-                                    request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request for updating the end date of the subscription current status |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateCurrentCycleStatusRequest()
-
-subscriptions_controller.update_current_cycle_status(subscription_id, request)
-
-```
-
-
-### <a name="get_subscription_cycles"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_cycles") get_subscription_cycles
-
-> TODO: Add a method description
-
-```python
-def get_subscription_cycles(self,
-                                subscription_id,
-                                page,
-                                size)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 'page'
-size = 'size'
-
-result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
-
-```
-
-
-### <a name="get_subscription_cycle_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_cycle_by_id") get_subscription_cycle_by_id
-
-> TODO: Add a method description
-
-```python
-def get_subscription_cycle_by_id(self,
-                                     subscription_id,
-                                     cycle_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| cycleId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-cycle_id = 'cycleId'
-
-result = subscriptions_controller.get_subscription_cycle_by_id(subscription_id, cycle_id)
-
-```
-
-
-### <a name="renew_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.renew_subscription") renew_subscription
-
-> TODO: Add a method description
-
-```python
-def renew_subscription(self,
-                           subscription_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-
-result = subscriptions_controller.renew_subscription(subscription_id)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png ".OrdersController") OrdersController
-
-### Get controller instance
-
-An instance of the ``` OrdersController ``` class can be accessed from the API Client.
-
-```python
- orders_controller = client.orders
-```
-
-### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_order") get_order
-
-> Gets an order
-
-```python
-def get_order(self,
-                  order_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order id |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'order_id'
-
-result = orders_controller.get_order(order_id)
-
-```
-
-
-### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.create_order") create_order
-
-> Creates a new Order
-
-```python
-def create_order(self,
-                     body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating an order |
-
-
-
-#### Example Usage
-
-```python
-body = CreateOrderRequest()
-
-result = orders_controller.create_order(body)
-
-```
-
-
-### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_orders") get_orders
-
-> Gets all orders
-
-```python
-def get_orders(self,
-                   page=None,
-                   size=None,
-                   code=None,
-                   status=None,
-                   created_since=None,
-                   created_until=None,
-                   customer_id=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for order's code |
-| status |  ``` Optional ```  | Filter for order's status |
-| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
-| customerId |  ``` Optional ```  | Filter for order's customer id |
-
-
-
-#### Example Usage
-
-```python
-page = 238
-size = 238
-code = 'code'
-status = 'status'
-created_since = datetime.now()
-created_until = datetime.now()
-customer_id = 'customer_id'
-
-result = orders_controller.get_orders(page, size, code, status, created_since, created_until, customer_id)
-
-```
-
-
-### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_metadata") update_order_metadata
-
-> Updates the metadata from an order
-
-```python
-def update_order_metadata(self,
-                              order_id,
-                              request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | The order id |
-| request |  ``` Required ```  | Request for updating the order metadata |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'order_id'
-request = UpdateMetadataRequest()
-
-result = orders_controller.update_order_metadata(order_id, request)
-
-```
-
-
-### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_all_order_items") delete_all_order_items
-
-> TODO: Add a method description
-
-```python
-def delete_all_order_items(self,
-                               order_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'orderId'
-
-result = orders_controller.delete_all_order_items(order_id)
-
-```
-
-
-### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_item") update_order_item
-
-> TODO: Add a method description
-
-```python
-def update_order_item(self,
-                          order_id,
-                          item_id,
-                          request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-| request |  ``` Required ```  | Item Model |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'orderId'
-item_id = 'itemId'
-request = UpdateOrderItemRequest()
-
-result = orders_controller.update_order_item(order_id, item_id, request)
-
-```
-
-
-### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.delete_order_item") delete_order_item
-
-> TODO: Add a method description
-
-```python
-def delete_order_item(self,
-                          order_id,
-                          item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'orderId'
-item_id = 'itemId'
-
-result = orders_controller.delete_order_item(order_id, item_id)
-
-```
-
-
-### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.create_order_item") create_order_item
-
-> TODO: Add a method description
-
-```python
-def create_order_item(self,
-                          order_id,
-                          request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| request |  ``` Required ```  | Order Item Model |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'orderId'
-request = CreateOrderItemRequest()
-
-result = orders_controller.create_order_item(order_id, request)
-
-```
-
-
-### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.get_order_item") get_order_item
-
-> TODO: Add a method description
-
-```python
-def get_order_item(self,
-                       order_id,
-                       item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-
-
-
-#### Example Usage
-
-```python
-order_id = 'orderId'
-item_id = 'itemId'
-
-result = orders_controller.get_order_item(order_id, item_id)
-
-```
-
-
-### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".OrdersController.update_order_status") update_order_status
-
-> TODO: Add a method description
-
-```python
-def update_order_status(self,
-                            id,
-                            request)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | Order Id |
-| request |  ``` Required ```  | Update Order Model |
-
-
-
-#### Example Usage
-
-```python
-id = 'id'
-request = UpdateOrderStatusRequest()
-
-result = orders_controller.update_order_status(id, request)
 
 ```
 
@@ -1604,7 +1694,8 @@ An instance of the ``` PlansController ``` class can be accessed from the API Cl
 ```python
 def create_plan_item(self,
                          plan_id,
-                         request)
+                         request,
+                         idempotency_key=None)
 ```
 
 #### Parameters
@@ -1613,6 +1704,7 @@ def create_plan_item(self,
 |-----------|------|-------------|
 | planId |  ``` Required ```  | Plan id |
 | request |  ``` Required ```  | Request for creating a plan item |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1621,8 +1713,9 @@ def create_plan_item(self,
 ```python
 plan_id = 'plan_id'
 request = CreatePlanItemRequest()
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.create_plan_item(plan_id, request)
+result = plans_controller.create_plan_item(plan_id, request, idempotency_key)
 
 ```
 
@@ -1635,7 +1728,8 @@ result = plans_controller.create_plan_item(plan_id, request)
 def update_plan_item(self,
                          plan_id,
                          plan_item_id,
-                         body)
+                         body,
+                         idempotency_key=None)
 ```
 
 #### Parameters
@@ -1645,6 +1739,7 @@ def update_plan_item(self,
 | planId |  ``` Required ```  | Plan id |
 | planItemId |  ``` Required ```  | Plan item id |
 | body |  ``` Required ```  | Request for updating the plan item |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1654,8 +1749,9 @@ def update_plan_item(self,
 plan_id = 'plan_id'
 plan_item_id = 'plan_item_id'
 body = UpdatePlanItemRequest()
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.update_plan_item(plan_id, plan_item_id, body)
+result = plans_controller.update_plan_item(plan_id, plan_item_id, body, idempotency_key)
 
 ```
 
@@ -1693,7 +1789,8 @@ result = plans_controller.get_plan(plan_id)
 
 ```python
 def delete_plan(self,
-                    plan_id)
+                    plan_id,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -1701,6 +1798,7 @@ def delete_plan(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | planId |  ``` Required ```  | Plan id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1708,8 +1806,9 @@ def delete_plan(self,
 
 ```python
 plan_id = 'plan_id'
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.delete_plan(plan_id)
+result = plans_controller.delete_plan(plan_id, idempotency_key)
 
 ```
 
@@ -1721,7 +1820,8 @@ result = plans_controller.delete_plan(plan_id)
 ```python
 def update_plan(self,
                     plan_id,
-                    request)
+                    request,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -1730,6 +1830,7 @@ def update_plan(self,
 |-----------|------|-------------|
 | planId |  ``` Required ```  | Plan id |
 | request |  ``` Required ```  | Request for updating a plan |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1738,8 +1839,9 @@ def update_plan(self,
 ```python
 plan_id = 'plan_id'
 request = UpdatePlanRequest()
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.update_plan(plan_id, request)
+result = plans_controller.update_plan(plan_id, request, idempotency_key)
 
 ```
 
@@ -1750,7 +1852,8 @@ result = plans_controller.update_plan(plan_id, request)
 
 ```python
 def create_plan(self,
-                    body)
+                    body,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -1758,6 +1861,7 @@ def create_plan(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | body |  ``` Required ```  | Request for creating a plan |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1765,8 +1869,9 @@ def create_plan(self,
 
 ```python
 body = CreatePlanRequest()
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.create_plan(body)
+result = plans_controller.create_plan(body, idempotency_key)
 
 ```
 
@@ -1803,8 +1908,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 238
-size = 238
+page = 61
+size = 61
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1823,7 +1928,8 @@ result = plans_controller.get_plans(page, size, name, status, billing_type, crea
 ```python
 def update_plan_metadata(self,
                              plan_id,
-                             request)
+                             request,
+                             idempotency_key=None)
 ```
 
 #### Parameters
@@ -1832,6 +1938,7 @@ def update_plan_metadata(self,
 |-----------|------|-------------|
 | planId |  ``` Required ```  | The plan id |
 | request |  ``` Required ```  | Request for updating the plan metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1840,8 +1947,9 @@ def update_plan_metadata(self,
 ```python
 plan_id = 'plan_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.update_plan_metadata(plan_id, request)
+result = plans_controller.update_plan_metadata(plan_id, request, idempotency_key)
 
 ```
 
@@ -1883,7 +1991,8 @@ result = plans_controller.get_plan_item(plan_id, plan_item_id)
 ```python
 def delete_plan_item(self,
                          plan_id,
-                         plan_item_id)
+                         plan_item_id,
+                         idempotency_key=None)
 ```
 
 #### Parameters
@@ -1892,6 +2001,7 @@ def delete_plan_item(self,
 |-----------|------|-------------|
 | planId |  ``` Required ```  | Plan id |
 | planItemId |  ``` Required ```  | Plan item id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1900,8 +2010,9 @@ def delete_plan_item(self,
 ```python
 plan_id = 'plan_id'
 plan_item_id = 'plan_item_id'
+idempotency_key = 'idempotency-key'
 
-result = plans_controller.delete_plan_item(plan_id, plan_item_id)
+result = plans_controller.delete_plan_item(plan_id, plan_item_id, idempotency_key)
 
 ```
 
@@ -1924,7 +2035,8 @@ An instance of the ``` InvoicesController ``` class can be accessed from the API
 
 ```python
 def cancel_invoice(self,
-                       invoice_id)
+                       invoice_id,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -1932,6 +2044,7 @@ def cancel_invoice(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | invoiceId |  ``` Required ```  | Invoice id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1939,8 +2052,9 @@ def cancel_invoice(self,
 
 ```python
 invoice_id = 'invoice_id'
+idempotency_key = 'idempotency-key'
 
-result = invoices_controller.cancel_invoice(invoice_id)
+result = invoices_controller.cancel_invoice(invoice_id, idempotency_key)
 
 ```
 
@@ -1980,7 +2094,8 @@ result = invoices_controller.get_invoice(invoice_id)
 def create_invoice(self,
                        subscription_id,
                        cycle_id,
-                       request=None)
+                       request=None,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -1990,6 +2105,7 @@ def create_invoice(self,
 | subscriptionId |  ``` Required ```  | Subscription Id |
 | cycleId |  ``` Required ```  | Cycle Id |
 | request |  ``` Optional ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -1999,8 +2115,9 @@ def create_invoice(self,
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
 request = CreateInvoiceRequest()
+idempotency_key = 'idempotency-key'
 
-result = invoices_controller.create_invoice(subscription_id, cycle_id, request)
+result = invoices_controller.create_invoice(subscription_id, cycle_id, request, idempotency_key)
 
 ```
 
@@ -2012,7 +2129,8 @@ result = invoices_controller.create_invoice(subscription_id, cycle_id, request)
 ```python
 def update_invoice_status(self,
                               invoice_id,
-                              request)
+                              request,
+                              idempotency_key=None)
 ```
 
 #### Parameters
@@ -2021,6 +2139,7 @@ def update_invoice_status(self,
 |-----------|------|-------------|
 | invoiceId |  ``` Required ```  | Invoice Id |
 | request |  ``` Required ```  | Request for updating an invoice's status |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2029,8 +2148,9 @@ def update_invoice_status(self,
 ```python
 invoice_id = 'invoice_id'
 request = UpdateInvoiceStatusRequest()
+idempotency_key = 'idempotency-key'
 
-result = invoices_controller.update_invoice_status(invoice_id, request)
+result = invoices_controller.update_invoice_status(invoice_id, request, idempotency_key)
 
 ```
 
@@ -2073,8 +2193,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 196
-size = 196
+page = 61
+size = 61
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2096,7 +2216,8 @@ result = invoices_controller.get_invoices(page, size, code, customer_id, subscri
 ```python
 def update_invoice_metadata(self,
                                 invoice_id,
-                                request)
+                                request,
+                                idempotency_key=None)
 ```
 
 #### Parameters
@@ -2105,6 +2226,7 @@ def update_invoice_metadata(self,
 |-----------|------|-------------|
 | invoiceId |  ``` Required ```  | The invoice id |
 | request |  ``` Required ```  | Request for updating the invoice metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2113,8 +2235,9 @@ def update_invoice_metadata(self,
 ```python
 invoice_id = 'invoice_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = invoices_controller.update_invoice_metadata(invoice_id, request)
+result = invoices_controller.update_invoice_metadata(invoice_id, request, idempotency_key)
 
 ```
 
@@ -2166,7 +2289,8 @@ An instance of the ``` CustomersController ``` class can be accessed from the AP
 def update_card(self,
                     customer_id,
                     card_id,
-                    request)
+                    request,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -2176,6 +2300,7 @@ def update_card(self,
 | customerId |  ``` Required ```  | Customer Id |
 | cardId |  ``` Required ```  | Card id |
 | request |  ``` Required ```  | Request for updating a card |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2185,8 +2310,9 @@ def update_card(self,
 customer_id = 'customer_id'
 card_id = 'card_id'
 request = UpdateCardRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.update_card(customer_id, card_id, request)
+result = customers_controller.update_card(customer_id, card_id, request, idempotency_key)
 
 ```
 
@@ -2199,7 +2325,8 @@ result = customers_controller.update_card(customer_id, card_id, request)
 def update_address(self,
                        customer_id,
                        address_id,
-                       request)
+                       request,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -2209,6 +2336,7 @@ def update_address(self,
 | customerId |  ``` Required ```  | Customer Id |
 | addressId |  ``` Required ```  | Address Id |
 | request |  ``` Required ```  | Request for updating an address |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2218,8 +2346,9 @@ def update_address(self,
 customer_id = 'customer_id'
 address_id = 'address_id'
 request = UpdateAddressRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.update_address(customer_id, address_id, request)
+result = customers_controller.update_address(customer_id, address_id, request, idempotency_key)
 
 ```
 
@@ -2276,8 +2405,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 196
-size = 196
+page = 61
+size = 61
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2309,8 +2438,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 196
-size = 196
+page = 61
+size = 61
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2342,8 +2471,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 196
-size = 196
+page = 61
+size = 61
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2414,7 +2543,8 @@ result = customers_controller.get_access_token(customer_id, token_id)
 ```python
 def create_access_token(self,
                             customer_id,
-                            request)
+                            request,
+                            idempotency_key=None)
 ```
 
 #### Parameters
@@ -2423,6 +2553,7 @@ def create_access_token(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer Id |
 | request |  ``` Required ```  | Request for creating a access token |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2431,8 +2562,9 @@ def create_access_token(self,
 ```python
 customer_id = 'customer_id'
 request = CreateAccessTokenRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.create_access_token(customer_id, request)
+result = customers_controller.create_access_token(customer_id, request, idempotency_key)
 
 ```
 
@@ -2444,7 +2576,8 @@ result = customers_controller.create_access_token(customer_id, request)
 ```python
 def delete_access_token(self,
                             customer_id,
-                            token_id)
+                            token_id,
+                            idempotency_key=None)
 ```
 
 #### Parameters
@@ -2453,6 +2586,7 @@ def delete_access_token(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer Id |
 | tokenId |  ``` Required ```  | Token Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2461,8 +2595,9 @@ def delete_access_token(self,
 ```python
 customer_id = 'customer_id'
 token_id = 'token_id'
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.delete_access_token(customer_id, token_id)
+result = customers_controller.delete_access_token(customer_id, token_id, idempotency_key)
 
 ```
 
@@ -2474,7 +2609,8 @@ result = customers_controller.delete_access_token(customer_id, token_id)
 ```python
 def update_customer_metadata(self,
                                  customer_id,
-                                 request)
+                                 request,
+                                 idempotency_key=None)
 ```
 
 #### Parameters
@@ -2483,6 +2619,7 @@ def update_customer_metadata(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | The customer id |
 | request |  ``` Required ```  | Request for updating the customer metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2491,8 +2628,9 @@ def update_customer_metadata(self,
 ```python
 customer_id = 'customer_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.update_customer_metadata(customer_id, request)
+result = customers_controller.update_customer_metadata(customer_id, request, idempotency_key)
 
 ```
 
@@ -2504,7 +2642,8 @@ result = customers_controller.update_customer_metadata(customer_id, request)
 ```python
 def update_customer(self,
                         customer_id,
-                        request)
+                        request,
+                        idempotency_key=None)
 ```
 
 #### Parameters
@@ -2513,6 +2652,7 @@ def update_customer(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer id |
 | request |  ``` Required ```  | Request for updating a customer |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2521,8 +2661,9 @@ def update_customer(self,
 ```python
 customer_id = 'customer_id'
 request = UpdateCustomerRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.update_customer(customer_id, request)
+result = customers_controller.update_customer(customer_id, request, idempotency_key)
 
 ```
 
@@ -2564,7 +2705,8 @@ result = customers_controller.get_address(customer_id, address_id)
 ```python
 def delete_address(self,
                        customer_id,
-                       address_id)
+                       address_id,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -2573,6 +2715,7 @@ def delete_address(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer Id |
 | addressId |  ``` Required ```  | Address Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2581,8 +2724,9 @@ def delete_address(self,
 ```python
 customer_id = 'customer_id'
 address_id = 'address_id'
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.delete_address(customer_id, address_id)
+result = customers_controller.delete_address(customer_id, address_id, idempotency_key)
 
 ```
 
@@ -2594,7 +2738,8 @@ result = customers_controller.delete_address(customer_id, address_id)
 ```python
 def delete_card(self,
                     customer_id,
-                    card_id)
+                    card_id,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -2603,6 +2748,7 @@ def delete_card(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer Id |
 | cardId |  ``` Required ```  | Card Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2611,8 +2757,9 @@ def delete_card(self,
 ```python
 customer_id = 'customer_id'
 card_id = 'card_id'
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.delete_card(customer_id, card_id)
+result = customers_controller.delete_card(customer_id, card_id, idempotency_key)
 
 ```
 
@@ -2624,7 +2771,8 @@ result = customers_controller.delete_card(customer_id, card_id)
 ```python
 def create_address(self,
                        customer_id,
-                       request)
+                       request,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -2633,6 +2781,7 @@ def create_address(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer Id |
 | request |  ``` Required ```  | Request for creating an address |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2641,8 +2790,9 @@ def create_address(self,
 ```python
 customer_id = 'customer_id'
 request = CreateAddressRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.create_address(customer_id, request)
+result = customers_controller.create_address(customer_id, request, idempotency_key)
 
 ```
 
@@ -2684,7 +2834,8 @@ result = customers_controller.get_card(customer_id, card_id)
 ```python
 def create_card(self,
                     customer_id,
-                    request)
+                    request,
+                    idempotency_key=None)
 ```
 
 #### Parameters
@@ -2693,6 +2844,7 @@ def create_card(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer id |
 | request |  ``` Required ```  | Request for creating a card |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2701,8 +2853,9 @@ def create_card(self,
 ```python
 customer_id = 'customer_id'
 request = CreateCardRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.create_card(customer_id, request)
+result = customers_controller.create_card(customer_id, request, idempotency_key)
 
 ```
 
@@ -2756,7 +2909,8 @@ result = customers_controller.get_customers(name, document, page, size, email, c
 ```python
 def renew_card(self,
                    customer_id,
-                   card_id)
+                   card_id,
+                   idempotency_key=None)
 ```
 
 #### Parameters
@@ -2765,6 +2919,7 @@ def renew_card(self,
 |-----------|------|-------------|
 | customerId |  ``` Required ```  | Customer id |
 | cardId |  ``` Required ```  | Card Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2773,8 +2928,9 @@ def renew_card(self,
 ```python
 customer_id = 'customer_id'
 card_id = 'card_id'
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.renew_card(customer_id, card_id)
+result = customers_controller.renew_card(customer_id, card_id, idempotency_key)
 
 ```
 
@@ -2785,7 +2941,8 @@ result = customers_controller.renew_card(customer_id, card_id)
 
 ```python
 def create_customer(self,
-                        request)
+                        request,
+                        idempotency_key=None)
 ```
 
 #### Parameters
@@ -2793,6 +2950,7 @@ def create_customer(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | request |  ``` Required ```  | Request for creating a customer |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2800,8 +2958,9 @@ def create_customer(self,
 
 ```python
 request = CreateCustomerRequest()
+idempotency_key = 'idempotency-key'
 
-result = customers_controller.create_customer(request)
+result = customers_controller.create_customer(request, idempotency_key)
 
 ```
 
@@ -2825,7 +2984,8 @@ An instance of the ``` ChargesController ``` class can be accessed from the API 
 ```python
 def update_charge_card(self,
                            charge_id,
-                           request)
+                           request,
+                           idempotency_key=None)
 ```
 
 #### Parameters
@@ -2834,6 +2994,7 @@ def update_charge_card(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge id |
 | request |  ``` Required ```  | Request for updating a charge's card |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2842,8 +3003,9 @@ def update_charge_card(self,
 ```python
 charge_id = 'charge_id'
 request = UpdateChargeCardRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.update_charge_card(charge_id, request)
+result = charges_controller.update_charge_card(charge_id, request, idempotency_key)
 
 ```
 
@@ -2855,7 +3017,8 @@ result = charges_controller.update_charge_card(charge_id, request)
 ```python
 def update_charge_payment_method(self,
                                      charge_id,
-                                     request)
+                                     request,
+                                     idempotency_key=None)
 ```
 
 #### Parameters
@@ -2864,6 +3027,7 @@ def update_charge_payment_method(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge id |
 | request |  ``` Required ```  | Request for updating the payment method from a charge |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2872,8 +3036,9 @@ def update_charge_payment_method(self,
 ```python
 charge_id = 'charge_id'
 request = UpdateChargePaymentMethodRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.update_charge_payment_method(charge_id, request)
+result = charges_controller.update_charge_payment_method(charge_id, request, idempotency_key)
 
 ```
 
@@ -2884,7 +3049,8 @@ result = charges_controller.update_charge_payment_method(charge_id, request)
 
 ```python
 def create_charge(self,
-                      request)
+                      request,
+                      idempotency_key=None)
 ```
 
 #### Parameters
@@ -2892,6 +3058,7 @@ def create_charge(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | request |  ``` Required ```  | Request for creating a charge |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2899,8 +3066,9 @@ def create_charge(self,
 
 ```python
 request = CreateChargeRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.create_charge(request)
+result = charges_controller.create_charge(request, idempotency_key)
 
 ```
 
@@ -2938,7 +3106,8 @@ result = charges_controller.get_charge(charge_id)
 
 ```python
 def retry_charge(self,
-                     charge_id)
+                     charge_id,
+                     idempotency_key=None)
 ```
 
 #### Parameters
@@ -2946,6 +3115,7 @@ def retry_charge(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2953,8 +3123,9 @@ def retry_charge(self,
 
 ```python
 charge_id = 'charge_id'
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.retry_charge(charge_id)
+result = charges_controller.retry_charge(charge_id, idempotency_key)
 
 ```
 
@@ -2995,8 +3166,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 33
-size = 33
+page = 153
+size = 153
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3017,7 +3188,8 @@ result = charges_controller.get_charges(page, size, code, status, payment_method
 ```python
 def update_charge_metadata(self,
                                charge_id,
-                               request)
+                               request,
+                               idempotency_key=None)
 ```
 
 #### Parameters
@@ -3026,6 +3198,7 @@ def update_charge_metadata(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | The charge id |
 | request |  ``` Required ```  | Request for updating the charge metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3034,8 +3207,9 @@ def update_charge_metadata(self,
 ```python
 charge_id = 'charge_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.update_charge_metadata(charge_id, request)
+result = charges_controller.update_charge_metadata(charge_id, request, idempotency_key)
 
 ```
 
@@ -3047,7 +3221,8 @@ result = charges_controller.update_charge_metadata(charge_id, request)
 ```python
 def cancel_charge(self,
                       charge_id,
-                      request=None)
+                      request=None,
+                      idempotency_key=None)
 ```
 
 #### Parameters
@@ -3056,6 +3231,7 @@ def cancel_charge(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge id |
 | request |  ``` Optional ```  | Request for cancelling a charge |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3064,8 +3240,9 @@ def cancel_charge(self,
 ```python
 charge_id = 'charge_id'
 request = CreateCancelChargeRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.cancel_charge(charge_id, request)
+result = charges_controller.cancel_charge(charge_id, request, idempotency_key)
 
 ```
 
@@ -3077,7 +3254,8 @@ result = charges_controller.cancel_charge(charge_id, request)
 ```python
 def capture_charge(self,
                        charge_id,
-                       request=None)
+                       request=None,
+                       idempotency_key=None)
 ```
 
 #### Parameters
@@ -3086,6 +3264,7 @@ def capture_charge(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge id |
 | request |  ``` Optional ```  | Request for capturing a charge |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3094,8 +3273,9 @@ def capture_charge(self,
 ```python
 charge_id = 'charge_id'
 request = CreateCaptureChargeRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.capture_charge(charge_id, request)
+result = charges_controller.capture_charge(charge_id, request, idempotency_key)
 
 ```
 
@@ -3107,7 +3287,8 @@ result = charges_controller.capture_charge(charge_id, request)
 ```python
 def update_charge_due_date(self,
                                charge_id,
-                               request)
+                               request,
+                               idempotency_key=None)
 ```
 
 #### Parameters
@@ -3116,6 +3297,7 @@ def update_charge_due_date(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | Charge Id |
 | request |  ``` Required ```  | Request for updating the due date |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3124,8 +3306,9 @@ def update_charge_due_date(self,
 ```python
 charge_id = 'charge_id'
 request = UpdateChargeDueDateRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.update_charge_due_date(charge_id, request)
+result = charges_controller.update_charge_due_date(charge_id, request, idempotency_key)
 
 ```
 
@@ -3137,7 +3320,8 @@ result = charges_controller.update_charge_due_date(charge_id, request)
 ```python
 def confirm_payment(self,
                         charge_id,
-                        request=None)
+                        request=None,
+                        idempotency_key=None)
 ```
 
 #### Parameters
@@ -3146,6 +3330,7 @@ def confirm_payment(self,
 |-----------|------|-------------|
 | chargeId |  ``` Required ```  | TODO: Add a parameter description |
 | request |  ``` Optional ```  | Request for confirm payment |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3154,8 +3339,9 @@ def confirm_payment(self,
 ```python
 charge_id = 'charge_id'
 request = CreateConfirmPaymentRequest()
+idempotency_key = 'idempotency-key'
 
-result = charges_controller.confirm_payment(charge_id, request)
+result = charges_controller.confirm_payment(charge_id, request, idempotency_key)
 
 ```
 
@@ -3185,8 +3371,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 246
-size = 246
+page = 153
+size = 153
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3212,7 +3398,8 @@ An instance of the ``` RecipientsController ``` class can be accessed from the A
 ```python
 def update_recipient_metadata(self,
                                   recipient_id,
-                                  request)
+                                  request,
+                                  idempotency_key=None)
 ```
 
 #### Parameters
@@ -3221,6 +3408,7 @@ def update_recipient_metadata(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient id |
 | request |  ``` Required ```  | Metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3229,8 +3417,9 @@ def update_recipient_metadata(self,
 ```python
 recipient_id = 'recipient_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.update_recipient_metadata(recipient_id, request)
+result = recipients_controller.update_recipient_metadata(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3296,8 +3485,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 246
-size = 246
+page = 153
+size = 153
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3314,7 +3503,8 @@ result = recipients_controller.get_transfers(recipient_id, page, size, status, c
 ```python
 def create_anticipation(self,
                             recipient_id,
-                            request)
+                            request,
+                            idempotency_key=None)
 ```
 
 #### Parameters
@@ -3323,6 +3513,7 @@ def create_anticipation(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient id |
 | request |  ``` Required ```  | Anticipation data |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3331,8 +3522,9 @@ def create_anticipation(self,
 ```python
 recipient_id = 'recipient_id'
 request = CreateAnticipationRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.create_anticipation(recipient_id, request)
+result = recipients_controller.create_anticipation(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3437,8 +3629,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 246
-size = 246
+page = 153
+size = 153
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3458,7 +3650,8 @@ result = recipients_controller.get_anticipations(recipient_id, page, size, statu
 ```python
 def update_recipient(self,
                          recipient_id,
-                         request)
+                         request,
+                         idempotency_key=None)
 ```
 
 #### Parameters
@@ -3467,6 +3660,7 @@ def update_recipient(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient id |
 | request |  ``` Required ```  | Recipient data |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3475,8 +3669,9 @@ def update_recipient(self,
 ```python
 recipient_id = 'recipient_id'
 request = UpdateRecipientRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.update_recipient(recipient_id, request)
+result = recipients_controller.update_recipient(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3488,7 +3683,8 @@ result = recipients_controller.update_recipient(recipient_id, request)
 ```python
 def update_recipient_default_bank_account(self,
                                               recipient_id,
-                                              request)
+                                              request,
+                                              idempotency_key=None)
 ```
 
 #### Parameters
@@ -3497,6 +3693,7 @@ def update_recipient_default_bank_account(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient id |
 | request |  ``` Required ```  | Bank account data |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3505,8 +3702,9 @@ def update_recipient_default_bank_account(self,
 ```python
 recipient_id = 'recipient_id'
 request = UpdateRecipientBankAccountRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.update_recipient_default_bank_account(recipient_id, request)
+result = recipients_controller.update_recipient_default_bank_account(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3560,8 +3758,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 246
-size = 246
+page = 153
+size = 153
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3602,7 +3800,8 @@ result = recipients_controller.get_balance(recipient_id)
 ```python
 def create_transfer(self,
                         recipient_id,
-                        request)
+                        request,
+                        idempotency_key=None)
 ```
 
 #### Parameters
@@ -3611,6 +3810,7 @@ def create_transfer(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient Id |
 | request |  ``` Required ```  | Transfer data |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3619,8 +3819,9 @@ def create_transfer(self,
 ```python
 recipient_id = 'recipient_id'
 request = CreateTransferRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.create_transfer(recipient_id, request)
+result = recipients_controller.create_transfer(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3631,7 +3832,8 @@ result = recipients_controller.create_transfer(recipient_id, request)
 
 ```python
 def create_recipient(self,
-                         request)
+                         request,
+                         idempotency_key=None)
 ```
 
 #### Parameters
@@ -3639,6 +3841,7 @@ def create_recipient(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | request |  ``` Required ```  | Recipient data |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3646,8 +3849,9 @@ def create_recipient(self,
 
 ```python
 request = CreateRecipientRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.create_recipient(request)
+result = recipients_controller.create_recipient(request, idempotency_key)
 
 ```
 
@@ -3659,7 +3863,8 @@ result = recipients_controller.create_recipient(request)
 ```python
 def update_recipient_transfer_settings(self,
                                            recipient_id,
-                                           request)
+                                           request,
+                                           idempotency_key=None)
 ```
 
 #### Parameters
@@ -3668,6 +3873,7 @@ def update_recipient_transfer_settings(self,
 |-----------|------|-------------|
 | recipientId |  ``` Required ```  | Recipient Identificator |
 | request |  ``` Required ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3676,8 +3882,9 @@ def update_recipient_transfer_settings(self,
 ```python
 recipient_id = 'recipient_id'
 request = UpdateTransferSettingsRequest()
+idempotency_key = 'idempotency-key'
 
-result = recipients_controller.update_recipient_transfer_settings(recipient_id, request)
+result = recipients_controller.update_recipient_transfer_settings(recipient_id, request, idempotency_key)
 
 ```
 
@@ -3735,7 +3942,8 @@ result = tokens_controller.get_token(id, public_key)
 ```python
 def create_token(self,
                      public_key,
-                     request)
+                     request,
+                     idempotency_key=None)
 ```
 
 #### Parameters
@@ -3744,6 +3952,7 @@ def create_token(self,
 |-----------|------|-------------|
 | publicKey |  ``` Required ```  | Public key |
 | request |  ``` Required ```  | Request for creating a token |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3752,8 +3961,9 @@ def create_token(self,
 ```python
 public_key = 'public_key'
 request = CreateTokenRequest()
+idempotency_key = 'idempotency-key'
 
-result = tokens_controller.create_token(public_key, request)
+result = tokens_controller.create_token(public_key, request, idempotency_key)
 
 ```
 
@@ -3803,7 +4013,8 @@ result = sellers_controller.get_seller_by_id(id)
 
 ```python
 def delete_seller(self,
-                      seller_id)
+                      seller_id,
+                      idempotency_key=None)
 ```
 
 #### Parameters
@@ -3811,6 +4022,7 @@ def delete_seller(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | sellerId |  ``` Required ```  | Seller Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3818,8 +4030,9 @@ def delete_seller(self,
 
 ```python
 seller_id = 'sellerId'
+idempotency_key = 'idempotency-key'
 
-result = sellers_controller.delete_seller(seller_id)
+result = sellers_controller.delete_seller(seller_id, idempotency_key)
 
 ```
 
@@ -3830,7 +4043,8 @@ result = sellers_controller.delete_seller(seller_id)
 
 ```python
 def create_seller(self,
-                      request)
+                      request,
+                      idempotency_key=None)
 ```
 
 #### Parameters
@@ -3838,6 +4052,7 @@ def create_seller(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | request |  ``` Required ```  | Seller Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3845,8 +4060,9 @@ def create_seller(self,
 
 ```python
 request = CreateSellerRequest()
+idempotency_key = 'idempotency-key'
 
-result = sellers_controller.create_seller(request)
+result = sellers_controller.create_seller(request, idempotency_key)
 
 ```
 
@@ -3887,8 +4103,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 83
-size = 83
+page = 244
+size = 244
 name = 'name'
 document = 'document'
 code = 'code'
@@ -3909,7 +4125,8 @@ result = sellers_controller.get_sellers(page, size, name, document, code, status
 ```python
 def update_seller(self,
                       id,
-                      request)
+                      request,
+                      idempotency_key=None)
 ```
 
 #### Parameters
@@ -3918,6 +4135,7 @@ def update_seller(self,
 |-----------|------|-------------|
 | id |  ``` Required ```  | TODO: Add a parameter description |
 | request |  ``` Required ```  | Update Seller model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3926,8 +4144,9 @@ def update_seller(self,
 ```python
 id = 'id'
 request = UpdateSellerRequest()
+idempotency_key = 'idempotency-key'
 
-result = sellers_controller.update_seller(id, request)
+result = sellers_controller.update_seller(id, request, idempotency_key)
 
 ```
 
@@ -3939,7 +4158,8 @@ result = sellers_controller.update_seller(id, request)
 ```python
 def update_seller_metadata(self,
                                seller_id,
-                               request)
+                               request,
+                               idempotency_key=None)
 ```
 
 #### Parameters
@@ -3948,6 +4168,7 @@ def update_seller_metadata(self,
 |-----------|------|-------------|
 | sellerId |  ``` Required ```  | Seller Id |
 | request |  ``` Required ```  | Request for updating the charge metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -3956,8 +4177,9 @@ def update_seller_metadata(self,
 ```python
 seller_id = 'seller_id'
 request = UpdateMetadataRequest()
+idempotency_key = 'idempotency-key'
 
-result = sellers_controller.update_seller_metadata(seller_id, request)
+result = sellers_controller.update_seller_metadata(seller_id, request, idempotency_key)
 
 ```
 

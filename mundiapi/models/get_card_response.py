@@ -49,11 +49,11 @@ class GetCardResponse(object):
         "created_at":'created_at',
         "updated_at":'updated_at',
         "billing_address":'billing_address',
-        "customer":'customer',
         "metadata":'metadata',
         "mtype":'type',
         "holder_document":'holder_document',
         "first_six_digits":'first_six_digits',
+        "customer":'customer',
         "deleted_at":'deleted_at'
     }
 
@@ -68,11 +68,11 @@ class GetCardResponse(object):
                  created_at=None,
                  updated_at=None,
                  billing_address=None,
-                 customer=None,
                  metadata=None,
                  mtype=None,
                  holder_document=None,
                  first_six_digits=None,
+                 customer=None,
                  deleted_at=None):
         """Constructor for the GetCardResponse class"""
 
@@ -123,11 +123,11 @@ class GetCardResponse(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         metadata = dictionary.get('metadata')
         mtype = dictionary.get('type')
         holder_document = dictionary.get('holder_document')
         first_six_digits = dictionary.get('first_six_digits')
+        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model
@@ -141,11 +141,11 @@ class GetCardResponse(object):
                    created_at,
                    updated_at,
                    billing_address,
-                   customer,
                    metadata,
                    mtype,
                    holder_document,
                    first_six_digits,
+                   customer,
                    deleted_at)
 
 

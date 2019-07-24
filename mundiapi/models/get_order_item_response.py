@@ -21,6 +21,7 @@ class GetOrderItemResponse(object):
         quantity (int): TODO: type description here.
         get_seller_response (GetSellerResponse): Seller data
         category (string): Category
+        code (string): Code
 
     """
 
@@ -31,6 +32,7 @@ class GetOrderItemResponse(object):
         "description":'description',
         "quantity":'quantity',
         "category":'category',
+        "code":'code',
         "get_seller_response":'GetSellerResponse'
     }
 
@@ -40,6 +42,7 @@ class GetOrderItemResponse(object):
                  description=None,
                  quantity=None,
                  category=None,
+                 code=None,
                  get_seller_response=None):
         """Constructor for the GetOrderItemResponse class"""
 
@@ -50,6 +53,7 @@ class GetOrderItemResponse(object):
         self.quantity = quantity
         self.get_seller_response = get_seller_response
         self.category = category
+        self.code = code
 
 
     @classmethod
@@ -75,6 +79,7 @@ class GetOrderItemResponse(object):
         description = dictionary.get('description')
         quantity = dictionary.get('quantity')
         category = dictionary.get('category')
+        code = dictionary.get('code')
         get_seller_response = mundiapi.models.get_seller_response.GetSellerResponse.from_dictionary(dictionary.get('GetSellerResponse')) if dictionary.get('GetSellerResponse') else None
 
         # Return an object of this model
@@ -83,6 +88,7 @@ class GetOrderItemResponse(object):
                    description,
                    quantity,
                    category,
+                   code,
                    get_seller_response)
 
 

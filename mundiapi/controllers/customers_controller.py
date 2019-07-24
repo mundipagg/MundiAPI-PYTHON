@@ -27,7 +27,8 @@ class CustomersController(BaseController):
     def update_card(self,
                     customer_id,
                     card_id,
-                    request):
+                    request,
+                    idempotency_key=None):
         """Does a PUT request to /customers/{customer_id}/cards/{card_id}.
 
         Updates a card
@@ -36,6 +37,8 @@ class CustomersController(BaseController):
             customer_id (string): Customer Id
             card_id (string): Card id
             request (UpdateCardRequest): Request for updating a card
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCardResponse: Response from the API. 
@@ -61,7 +64,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -76,7 +80,8 @@ class CustomersController(BaseController):
     def update_address(self,
                        customer_id,
                        address_id,
-                       request):
+                       request,
+                       idempotency_key=None):
         """Does a PUT request to /customers/{customer_id}/addresses/{address_id}.
 
         Updates an address
@@ -85,6 +90,8 @@ class CustomersController(BaseController):
             customer_id (string): Customer Id
             address_id (string): Address Id
             request (UpdateAddressRequest): Request for updating an address
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAddressResponse: Response from the API. 
@@ -110,7 +117,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -415,7 +423,8 @@ class CustomersController(BaseController):
 
     def create_access_token(self,
                             customer_id,
-                            request):
+                            request,
+                            idempotency_key=None):
         """Does a POST request to /customers/{customer_id}/access-tokens.
 
         Creates a access token for a customer
@@ -424,6 +433,8 @@ class CustomersController(BaseController):
             customer_id (string): Customer Id
             request (CreateAccessTokenRequest): Request for creating a access
                 token
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAccessTokenResponse: Response from the API. 
@@ -448,7 +459,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -462,7 +474,8 @@ class CustomersController(BaseController):
 
     def delete_access_token(self,
                             customer_id,
-                            token_id):
+                            token_id,
+                            idempotency_key=None):
         """Does a DELETE request to /customers/{customer_id}/access-tokens/{token_id}.
 
         Delete a customer's access token
@@ -470,6 +483,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer Id
             token_id (string): Token Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAccessTokenResponse: Response from the API. 
@@ -494,7 +509,8 @@ class CustomersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -508,7 +524,8 @@ class CustomersController(BaseController):
 
     def update_customer_metadata(self,
                                  customer_id,
-                                 request):
+                                 request,
+                                 idempotency_key=None):
         """Does a PATCH request to /Customers/{customer_id}/metadata.
 
         Updates the metadata a customer
@@ -517,6 +534,8 @@ class CustomersController(BaseController):
             customer_id (string): The customer id
             request (UpdateMetadataRequest): Request for updating the customer
                 metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCustomerResponse: Response from the API. 
@@ -541,7 +560,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -555,7 +575,8 @@ class CustomersController(BaseController):
 
     def update_customer(self,
                         customer_id,
-                        request):
+                        request,
+                        idempotency_key=None):
         """Does a PUT request to /customers/{customer_id}.
 
         Updates a customer
@@ -563,6 +584,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer id
             request (UpdateCustomerRequest): Request for updating a customer
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCustomerResponse: Response from the API. 
@@ -587,7 +610,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -647,7 +671,8 @@ class CustomersController(BaseController):
 
     def delete_address(self,
                        customer_id,
-                       address_id):
+                       address_id,
+                       idempotency_key=None):
         """Does a DELETE request to /customers/{customer_id}/addresses/{address_id}.
 
         Delete a Customer's address
@@ -655,6 +680,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer Id
             address_id (string): Address Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAddressResponse: Response from the API. 
@@ -679,7 +706,8 @@ class CustomersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -693,7 +721,8 @@ class CustomersController(BaseController):
 
     def delete_card(self,
                     customer_id,
-                    card_id):
+                    card_id,
+                    idempotency_key=None):
         """Does a DELETE request to /customers/{customer_id}/cards/{card_id}.
 
         Delete a customer's card
@@ -701,6 +730,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer Id
             card_id (string): Card Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCardResponse: Response from the API. 
@@ -725,7 +756,8 @@ class CustomersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -739,7 +771,8 @@ class CustomersController(BaseController):
 
     def create_address(self,
                        customer_id,
-                       request):
+                       request,
+                       idempotency_key=None):
         """Does a POST request to /customers/{customer_id}/addresses.
 
         Creates a new address for a customer
@@ -747,6 +780,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer Id
             request (CreateAddressRequest): Request for creating an address
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetAddressResponse: Response from the API. 
@@ -771,7 +806,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -831,7 +867,8 @@ class CustomersController(BaseController):
 
     def create_card(self,
                     customer_id,
-                    request):
+                    request,
+                    idempotency_key=None):
         """Does a POST request to /customers/{customer_id}/cards.
 
         Creates a new card for a customer
@@ -839,6 +876,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer id
             request (CreateCardRequest): Request for creating a card
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCardResponse: Response from the API. 
@@ -863,7 +902,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -937,7 +977,8 @@ class CustomersController(BaseController):
 
     def renew_card(self,
                    customer_id,
-                   card_id):
+                   card_id,
+                   idempotency_key=None):
         """Does a POST request to /customers/{customer_id}/cards/{card_id}/renew.
 
         Renew a card
@@ -945,6 +986,8 @@ class CustomersController(BaseController):
         Args:
             customer_id (string): Customer id
             card_id (string): Card Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCardResponse: Response from the API. 
@@ -969,7 +1012,8 @@ class CustomersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -982,13 +1026,16 @@ class CustomersController(BaseController):
         return APIHelper.json_deserialize(_context.response.raw_body, GetCardResponse.from_dictionary)
 
     def create_customer(self,
-                        request):
+                        request,
+                        idempotency_key=None):
         """Does a POST request to /customers.
 
         Creates a new customer
 
         Args:
             request (CreateCustomerRequest): Request for creating a customer
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetCustomerResponse: Response from the API. 
@@ -1010,7 +1057,8 @@ class CustomersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

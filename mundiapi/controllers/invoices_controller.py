@@ -19,13 +19,16 @@ class InvoicesController(BaseController):
 
 
     def cancel_invoice(self,
-                       invoice_id):
+                       invoice_id,
+                       idempotency_key=None):
         """Does a DELETE request to /invoices/{invoice_id}.
 
         Cancels an invoice
 
         Args:
             invoice_id (string): Invoice id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetInvoiceResponse: Response from the API. 
@@ -49,7 +52,8 @@ class InvoicesController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -107,7 +111,8 @@ class InvoicesController(BaseController):
     def create_invoice(self,
                        subscription_id,
                        cycle_id,
-                       request=None):
+                       request=None,
+                       idempotency_key=None):
         """Does a POST request to /subscriptions/{subscription_id}/cycles/{cycle_id}/pay.
 
         Create an Invoice
@@ -117,6 +122,8 @@ class InvoicesController(BaseController):
             cycle_id (string): Cycle Id
             request (CreateInvoiceRequest, optional): TODO: type description
                 here. Example: 
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetInvoiceResponse: Response from the API. 
@@ -142,7 +149,8 @@ class InvoicesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -156,7 +164,8 @@ class InvoicesController(BaseController):
 
     def update_invoice_status(self,
                               invoice_id,
-                              request):
+                              request,
+                              idempotency_key=None):
         """Does a PATCH request to /invoices/{invoice_id}/status.
 
         Updates the status from an invoice
@@ -165,6 +174,8 @@ class InvoicesController(BaseController):
             invoice_id (string): Invoice Id
             request (UpdateInvoiceStatusRequest): Request for updating an
                 invoice's status
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetInvoiceResponse: Response from the API. 
@@ -189,7 +200,8 @@ class InvoicesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
@@ -280,7 +292,8 @@ class InvoicesController(BaseController):
 
     def update_invoice_metadata(self,
                                 invoice_id,
-                                request):
+                                request,
+                                idempotency_key=None):
         """Does a PATCH request to /invoices/{invoice_id}/metadata.
 
         Updates the metadata from an invoice
@@ -289,6 +302,8 @@ class InvoicesController(BaseController):
             invoice_id (string): The invoice id
             request (UpdateMetadataRequest): Request for updating the invoice
                 metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
 
         Returns:
             GetInvoiceResponse: Response from the API. 
@@ -313,7 +328,8 @@ class InvoicesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request

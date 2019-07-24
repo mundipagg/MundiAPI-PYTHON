@@ -1,11 +1,18 @@
+# -*- coding: utf-8 -*-
+
+import sys
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+if sys.version_info[0] < 3:
+    with open("README.md", "r") as fh:
+        long_description = fh.read()
+else:
+    with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
 
 setup(
     name='mundiapi',
-    version='0.15.1',
+    version='0.16.0b0',
     description='Mundipagg API',
     long_description=long_description,
     long_description_content_type="text/markdown",
