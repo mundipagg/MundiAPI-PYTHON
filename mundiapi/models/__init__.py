@@ -150,7 +150,7 @@ __all__ = [
     'update_current_cycle_status_request',
     'create_google_pay_request',
     'create_google_pay_header_request',
-    'create_card_payment_token_request',
+    'create_card_payment_contactless_request',
     'create_invoice_request',
     'update_subscription_payment_method_request',
     'list_cycles_response',
@@ -167,4 +167,9 @@ __all__ = [
     'get_bank_account_response',
     'get_anticipation_response',
     'get_address_response',
+    'create_emv_data_tlv_decrypt_request',
+    'create_emv_data_dukpt_decrypt_request',
+    'create_emv_data_decrypt_request',
+    'create_emv_decrypt_request',
+    'create_card_payment_contactless_poi_request',
 ]

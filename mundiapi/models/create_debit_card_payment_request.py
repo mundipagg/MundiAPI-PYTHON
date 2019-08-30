@@ -8,7 +8,7 @@
 
 import mundiapi.models.create_card_request
 import mundiapi.models.create_payment_authentication_request
-import mundiapi.models.create_card_payment_token_request
+import mundiapi.models.create_card_payment_contactless_request
 
 class CreateDebitCardPaymentRequest(object):
 
@@ -25,8 +25,8 @@ class CreateDebitCardPaymentRequest(object):
         recurrence (bool): Indicates a recurrence
         authentication (CreatePaymentAuthenticationRequest): The payment
             authentication request
-        token (CreateCardPaymentTokenRequest): The Debit card payment token
-            request
+        token (CreateCardPaymentContactlessRequest): The Debit card payment
+            token request
 
     """
 
@@ -85,7 +85,7 @@ class CreateDebitCardPaymentRequest(object):
         card_token = dictionary.get('card_token')
         recurrence = dictionary.get('recurrence')
         authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
-        token = mundiapi.models.create_card_payment_token_request.CreateCardPaymentTokenRequest.from_dictionary(dictionary.get('token')) if dictionary.get('token') else None
+        token = mundiapi.models.create_card_payment_contactless_request.CreateCardPaymentContactlessRequest.from_dictionary(dictionary.get('token')) if dictionary.get('token') else None
 
         # Return an object of this model
         return cls(statement_descriptor,

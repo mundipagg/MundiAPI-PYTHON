@@ -10,665 +10,35 @@ from mundiapi.api_helper import APIHelper
 from mundiapi.configuration import Configuration
 from mundiapi.controllers.base_controller import BaseController
 from mundiapi.http.auth.basic_auth import BasicAuth
-from mundiapi.models.get_period_response import GetPeriodResponse
-from mundiapi.models.list_cycles_response import ListCyclesResponse
-from mundiapi.models.get_subscription_response import GetSubscriptionResponse
-from mundiapi.models.list_usages_response import ListUsagesResponse
-from mundiapi.models.get_usages_details_response import GetUsagesDetailsResponse
-from mundiapi.models.list_increments_response import ListIncrementsResponse
 from mundiapi.models.get_increment_response import GetIncrementResponse
-from mundiapi.models.list_discounts_response import ListDiscountsResponse
-from mundiapi.models.get_discount_response import GetDiscountResponse
-from mundiapi.models.get_usage_response import GetUsageResponse
+from mundiapi.models.get_subscription_response import GetSubscriptionResponse
 from mundiapi.models.get_subscription_item_response import GetSubscriptionItemResponse
+from mundiapi.models.get_usage_response import GetUsageResponse
+from mundiapi.models.get_discount_response import GetDiscountResponse
 from mundiapi.models.list_subscriptions_response import ListSubscriptionsResponse
+from mundiapi.models.list_discounts_response import ListDiscountsResponse
+from mundiapi.models.list_increments_response import ListIncrementsResponse
+from mundiapi.models.get_usages_details_response import GetUsagesDetailsResponse
+from mundiapi.models.list_usages_response import ListUsagesResponse
 from mundiapi.models.list_subscription_items_response import ListSubscriptionItemsResponse
+from mundiapi.models.list_cycles_response import ListCyclesResponse
+from mundiapi.models.get_period_response import GetPeriodResponse
 
 class SubscriptionsController(BaseController):
 
     """A Controller to access Endpoints in the mundiapi API."""
 
 
-    def get_subscription_cycle_by_id(self,
-                                     subscription_id,
-                                     cycle_id):
-        """Does a GET request to /subscriptions/{subscription_id}/cycles/{cycleId}.
+    def get_increment_by_id(self,
+                            subscription_id,
+                            increment_id):
+        """Does a GET request to /subscriptions/{subscription_id}/increments/{increment_id}.
 
         TODO: type endpoint description here.
 
         Args:
-            subscription_id (string): The subscription id
-            cycle_id (string): TODO: type description here. Example: 
-
-        Returns:
-            GetPeriodResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/cycles/{cycleId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'cycleId': cycle_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPeriodResponse.from_dictionary)
-
-    def renew_subscription(self,
-                           subscription_id,
-                           idempotency_key=None):
-        """Does a POST request to /subscriptions/{subscription_id}/cycles.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): TODO: type description here. Example: 
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetPeriodResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/cycles'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPeriodResponse.from_dictionary)
-
-    def update_current_cycle_status(self,
-                                    subscription_id,
-                                    request,
-                                    idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/cycle-status.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): Subscription Id
-            request (UpdateCurrentCycleStatusRequest): Request for updating
-                the end date of the subscription current status
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            void: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/cycle-status'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-    def get_subscription_cycles(self,
-                                subscription_id,
-                                page,
-                                size):
-        """Does a GET request to /subscriptions/{subscription_id}/cycles.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): Subscription Id
-            page (string): Page number
-            size (string): Page size
-
-        Returns:
-            ListCyclesResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/cycles'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'page': page,
-            'size': size
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListCyclesResponse.from_dictionary)
-
-    def update_subscription_billing_date(self,
-                                         subscription_id,
-                                         request,
-                                         idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/billing-date.
-
-        Updates the billing date from a subscription
-
-        Args:
-            subscription_id (string): The subscription id
-            request (UpdateSubscriptionBillingDateRequest): Request for
-                updating the subscription billing date
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/billing-date'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def update_latest_period_end_at(self,
-                                    subscription_id,
-                                    request,
-                                    idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/periods/latest/end-at.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): TODO: type description here. Example: 
-            request (UpdateCurrentCycleEndDateRequest): Request for updating
-                the end date of the current signature cycle
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/periods/latest/end-at'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def update_subscription_due_days(self,
-                                     subscription_id,
-                                     request,
-                                     idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/boleto-due-days.
-
-        Updates the boleto due days from a subscription
-
-        Args:
-            subscription_id (string): Subscription Id
-            request (UpdateSubscriptionDueDaysRequest): TODO: type description
-                here. Example: 
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/boleto-due-days'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def update_subscription_minium_price(self,
-                                         subscription_id,
-                                         request,
-                                         idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/minimum_price.
-
-        Atualização do valor mínimo da assinatura
-
-        Args:
-            subscription_id (string): Subscription Id
-            request (UpdateSubscriptionMinimumPriceRequest): Request da
-                requisição com o valor mínimo que será configurado
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/minimum_price'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def get_usages(self,
-                   subscription_id,
-                   item_id,
-                   page=None,
-                   size=None,
-                   code=None,
-                   group=None):
-        """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}/usages.
-
-        Lists all usages from a subscription item
-
-        Args:
-            subscription_id (string): The subscription id
-            item_id (string): The subscription item id
-            page (int, optional): Page number
-            size (int, optional): Page size
-            code (string, optional): Identification code in the client system
-            group (string, optional): Identification group in the client
-                system
-
-        Returns:
-            ListUsagesResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'item_id': item_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'page': page,
-            'size': size,
-            'code': code,
-            'group': group
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListUsagesResponse.from_dictionary)
-
-    def get_usages_details(self,
-                           subscription_id,
-                           cycle_id=None,
-                           size=None,
-                           page=None,
-                           item_id=None,
-                           group=None):
-        """Does a GET request to /subscriptions/{subscription_id}/usages-details/.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): Subscription Identifier
-            cycle_id (string, optional): Cycle id
-            size (int, optional): Page size
-            page (int, optional): Page number
-            item_id (string, optional): Identificador do item
-            group (string, optional): identificador da loja (account) de cada
-                item
-
-        Returns:
-            GetUsagesDetailsResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/usages-details/'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'cycle_id': cycle_id,
-            'size': size,
-            'page': page,
-            'item_id': item_id,
-            'group': group
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetUsagesDetailsResponse.from_dictionary)
-
-    def get_increments(self,
-                       subscription_id,
-                       page=None,
-                       size=None):
-        """Does a GET request to /subscriptions/{subscription_id}/increments/.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): The subscription id
-            page (int, optional): Page number
-            size (int, optional): Page size
-
-        Returns:
-            ListIncrementsResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/increments/'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'page': page,
-            'size': size
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListIncrementsResponse.from_dictionary)
-
-    def create_increment(self,
-                         subscription_id,
-                         request,
-                         idempotency_key=None):
-        """Does a POST request to /subscriptions/{subscription_id}/increments.
-
-        Creates a increment
-
-        Args:
-            subscription_id (string): Subscription id
-            request (CreateIncrementRequest): Request for creating a
-                increment
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetIncrementResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/increments'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
-
-    def delete_increment(self,
-                         subscription_id,
-                         increment_id,
-                         idempotency_key=None):
-        """Does a DELETE request to /subscriptions/{subscription_id}/increments/{increment_id}.
-
-        Deletes a increment
-
-        Args:
-            subscription_id (string): Subscription id
-            increment_id (string): Increment id
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
+            subscription_id (string): The subscription Id
+            increment_id (string): The increment Id
 
         Returns:
             GetIncrementResponse: Response from the API. 
@@ -693,60 +63,6 @@ class SubscriptionsController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
-
-    def get_discounts(self,
-                      subscription_id,
-                      page,
-                      size):
-        """Does a GET request to /subscriptions/{subscription_id}/discounts/.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): The subscription id
-            page (int): Page number
-            size (int): Page size
-
-        Returns:
-            ListDiscountsResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/discounts/'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'page': page,
-            'size': size
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
             'accept': 'application/json'
         }
 
@@ -757,20 +73,20 @@ class SubscriptionsController(BaseController):
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListDiscountsResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
 
-    def cancel_subscription(self,
-                            subscription_id,
-                            request=None,
-                            idempotency_key=None):
-        """Does a DELETE request to /subscriptions/{subscription_id}.
+    def update_subscription_start_at(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/start-at.
 
-        Cancels a subscription
+        Updates the start at date from a subscription
 
         Args:
-            subscription_id (string): Subscription id
-            request (CreateCancelSubscriptionRequest, optional): Request for
-                cancelling a subscription
+            subscription_id (string): The subscription id
+            request (UpdateSubscriptionStartAtRequest): Request for updating
+                the subscription start date
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -786,7 +102,7 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}'
+        _url_path = '/subscriptions/{subscription_id}/start-at'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
@@ -802,7 +118,7 @@ class SubscriptionsController(BaseController):
         }
 
         # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -810,70 +126,23 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
 
-    def get_discount_by_id(self,
-                           subscription_id,
-                           discount_id):
-        """Does a GET request to /subscriptions/{subscription_id}/discounts/{discountId}.
+    def update_subscription_card(self,
+                                 subscription_id,
+                                 request,
+                                 idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/card.
 
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): The subscription id
-            discount_id (string): TODO: type description here. Example: 
-
-        Returns:
-            GetDiscountResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/discounts/{discountId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'discountId': discount_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetDiscountResponse.from_dictionary)
-
-    def delete_usage(self,
-                     subscription_id,
-                     item_id,
-                     usage_id,
-                     idempotency_key=None):
-        """Does a DELETE request to /subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}.
-
-        Deletes a usage
+        Updates the credit card from a subscription
 
         Args:
-            subscription_id (string): The subscription id
-            item_id (string): The subscription item id
-            usage_id (string): The usage id
+            subscription_id (string): Subscription id
+            request (UpdateSubscriptionCardRequest): Request for updating a
+                card
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetUsageResponse: Response from the API. 
+            GetSubscriptionResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -884,11 +153,9 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
+        _url_path = '/subscriptions/{subscription_id}/card'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'item_id': item_id,
-            'usage_id': usage_id
+            'subscription_id': subscription_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -897,29 +164,33 @@ class SubscriptionsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetUsageResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
 
-    def delete_subscription_item(self,
+    def update_subscription_item(self,
                                  subscription_id,
-                                 subscription_item_id,
+                                 item_id,
+                                 body,
                                  idempotency_key=None):
-        """Does a DELETE request to /subscriptions/{subscription_id}/items/{subscription_item_id}.
+        """Does a PUT request to /subscriptions/{subscription_id}/items/{item_id}.
 
-        Deletes a subscription item
+        Updates a subscription item
 
         Args:
-            subscription_id (string): Subscription id
-            subscription_item_id (string): Subscription item id
+            subscription_id (string): Subscription Id
+            item_id (string): Item id
+            body (UpdateSubscriptionItemRequest): Request for updating a
+                subscription item
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -935,10 +206,10 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/items/{subscription_item_id}'
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id,
-            'subscription_item_id': subscription_item_id
+            'item_id': item_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -947,11 +218,12 @@ class SubscriptionsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -959,67 +231,19 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
 
-    def delete_discount(self,
-                        subscription_id,
-                        discount_id,
-                        idempotency_key=None):
-        """Does a DELETE request to /subscriptions/{subscription_id}/discounts/{discount_id}.
-
-        Deletes a discount
-
-        Args:
-            subscription_id (string): Subscription id
-            discount_id (string): Discount Id
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetDiscountResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/discounts/{discount_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'discount_id': discount_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetDiscountResponse.from_dictionary)
-
-    def create_an_usage(self,
-                        subscription_id,
-                        item_id,
-                        idempotency_key=None):
+    def create_usage(self,
+                     subscription_id,
+                     item_id,
+                     body,
+                     idempotency_key=None):
         """Does a POST request to /subscriptions/{subscription_id}/items/{item_id}/usages.
 
-        Create Usage
+        Creates a usage
 
         Args:
-            subscription_id (string): Subscription id
+            subscription_id (string): Subscription Id
             item_id (string): Item id
+            body (CreateUsageRequest): Request for creating a usage
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -1047,11 +271,12 @@ class SubscriptionsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers)
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -1059,18 +284,61 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetUsageResponse.from_dictionary)
 
-    def update_subscription_metadata(self,
-                                     subscription_id,
-                                     request,
-                                     idempotency_key=None):
-        """Does a PATCH request to /Subscriptions/{subscription_id}/metadata.
+    def get_subscription(self,
+                         subscription_id):
+        """Does a GET request to /subscriptions/{subscription_id}.
 
-        Updates the metadata from a subscription
+        Gets a subscription
 
         Args:
-            subscription_id (string): The subscription id
-            request (UpdateMetadataRequest): Request for updating the
-                subscrption metadata
+            subscription_id (string): Subscription id
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def update_subscription_payment_method(self,
+                                           subscription_id,
+                                           request,
+                                           idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/payment-method.
+
+        Updates the payment method from a subscription
+
+        Args:
+            subscription_id (string): Subscription id
+            request (UpdateSubscriptionPaymentMethodRequest): Request for
+                updating the paymentmethod from a subscription
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -1086,7 +354,7 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/Subscriptions/{subscription_id}/metadata'
+        _url_path = '/subscriptions/{subscription_id}/payment-method'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
@@ -1110,64 +378,16 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
 
-    def get_subscription_item(self,
-                              subscription_id,
-                              item_id):
-        """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}.
+    def create_subscription(self,
+                            body,
+                            idempotency_key=None):
+        """Does a POST request to /subscriptions.
 
-        Get Subscription Item
-
-        Args:
-            subscription_id (string): Subscription Id
-            item_id (string): Item id
-
-        Returns:
-            GetSubscriptionItemResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'item_id': item_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
-
-    def update_subscription_affiliation_id(self,
-                                           subscription_id,
-                                           request,
-                                           idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/gateway-affiliation-id.
-
-        TODO: type endpoint description here.
+        Creates a new subscription
 
         Args:
-            subscription_id (string): TODO: type description here. Example: 
-            request (UpdateSubscriptionAffiliationIdRequest): Request for
-                updating a subscription affiliation id
+            body (CreateSubscriptionRequest): Request for creating a
+                subscription
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -1183,10 +403,7 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/gateway-affiliation-id'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
+        _url_path = '/subscriptions'
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
@@ -1199,7 +416,7 @@ class SubscriptionsController(BaseController):
         }
 
         # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -1308,18 +525,64 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetDiscountResponse.from_dictionary)
 
-    def update_subscription_payment_method(self,
+    def get_subscription_item(self,
+                              subscription_id,
+                              item_id):
+        """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}.
+
+        Get Subscription Item
+
+        Args:
+            subscription_id (string): Subscription Id
+            item_id (string): Item id
+
+        Returns:
+            GetSubscriptionItemResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'item_id': item_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
+
+    def update_subscription_affiliation_id(self,
                                            subscription_id,
                                            request,
                                            idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/payment-method.
+        """Does a PATCH request to /subscriptions/{subscription_id}/gateway-affiliation-id.
 
-        Updates the payment method from a subscription
+        TODO: type endpoint description here.
 
         Args:
-            subscription_id (string): Subscription id
-            request (UpdateSubscriptionPaymentMethodRequest): Request for
-                updating the paymentmethod from a subscription
+            subscription_id (string): TODO: type description here. Example: 
+            request (UpdateSubscriptionAffiliationIdRequest): Request for
+                updating a subscription affiliation id
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -1335,7 +598,7 @@ class SubscriptionsController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/payment-method'
+        _url_path = '/subscriptions/{subscription_id}/gateway-affiliation-id'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'subscription_id': subscription_id
         })
@@ -1359,65 +622,17 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
 
-    def create_subscription(self,
-                            body,
-                            idempotency_key=None):
-        """Does a POST request to /subscriptions.
-
-        Creates a new subscription
-
-        Args:
-            body (CreateSubscriptionRequest): Request for creating a
-                subscription
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions'
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def create_usage(self,
-                     subscription_id,
-                     item_id,
-                     body,
-                     idempotency_key=None):
+    def create_an_usage(self,
+                        subscription_id,
+                        item_id,
+                        idempotency_key=None):
         """Does a POST request to /subscriptions/{subscription_id}/items/{item_id}/usages.
 
-        Creates a usage
+        Create Usage
 
         Args:
-            subscription_id (string): Subscription Id
+            subscription_id (string): Subscription id
             item_id (string): Item id
-            body (CreateUsageRequest): Request for creating a usage
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
@@ -1445,263 +660,17 @@ class SubscriptionsController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
+        _request = self.http_client.post(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetUsageResponse.from_dictionary)
-
-    def update_subscription_item(self,
-                                 subscription_id,
-                                 item_id,
-                                 body,
-                                 idempotency_key=None):
-        """Does a PUT request to /subscriptions/{subscription_id}/items/{item_id}.
-
-        Updates a subscription item
-
-        Args:
-            subscription_id (string): Subscription Id
-            item_id (string): Item id
-            body (UpdateSubscriptionItemRequest): Request for updating a
-                subscription item
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionItemResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/items/{item_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'item_id': item_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
-
-    def update_subscription_card(self,
-                                 subscription_id,
-                                 request,
-                                 idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/card.
-
-        Updates the credit card from a subscription
-
-        Args:
-            subscription_id (string): Subscription id
-            request (UpdateSubscriptionCardRequest): Request for updating a
-                card
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/card'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def get_subscription(self,
-                         subscription_id):
-        """Does a GET request to /subscriptions/{subscription_id}.
-
-        Gets a subscription
-
-        Args:
-            subscription_id (string): Subscription id
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
-
-    def get_increment_by_id(self,
-                            subscription_id,
-                            increment_id):
-        """Does a GET request to /subscriptions/{subscription_id}/increments/{increment_id}.
-
-        TODO: type endpoint description here.
-
-        Args:
-            subscription_id (string): The subscription Id
-            increment_id (string): The increment Id
-
-        Returns:
-            GetIncrementResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/increments/{increment_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id,
-            'increment_id': increment_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
-
-    def update_subscription_start_at(self,
-                                     subscription_id,
-                                     request,
-                                     idempotency_key=None):
-        """Does a PATCH request to /subscriptions/{subscription_id}/start-at.
-
-        Updates the start at date from a subscription
-
-        Args:
-            subscription_id (string): The subscription id
-            request (UpdateSubscriptionStartAtRequest): Request for updating
-                the subscription start date
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSubscriptionResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/subscriptions/{subscription_id}/start-at'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'subscription_id': subscription_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
 
     def get_subscriptions(self,
                           page=None,
@@ -1787,6 +756,640 @@ class SubscriptionsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionsResponse.from_dictionary)
 
+    def update_subscription_metadata(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None):
+        """Does a PATCH request to /Subscriptions/{subscription_id}/metadata.
+
+        Updates the metadata from a subscription
+
+        Args:
+            subscription_id (string): The subscription id
+            request (UpdateMetadataRequest): Request for updating the
+                subscrption metadata
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/Subscriptions/{subscription_id}/metadata'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def delete_subscription_item(self,
+                                 subscription_id,
+                                 subscription_item_id,
+                                 idempotency_key=None):
+        """Does a DELETE request to /subscriptions/{subscription_id}/items/{subscription_item_id}.
+
+        Deletes a subscription item
+
+        Args:
+            subscription_id (string): Subscription id
+            subscription_item_id (string): Subscription item id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionItemResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/items/{subscription_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'subscription_item_id': subscription_item_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionItemResponse.from_dictionary)
+
+    def delete_usage(self,
+                     subscription_id,
+                     item_id,
+                     usage_id,
+                     idempotency_key=None):
+        """Does a DELETE request to /subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}.
+
+        Deletes a usage
+
+        Args:
+            subscription_id (string): The subscription id
+            item_id (string): The subscription item id
+            usage_id (string): The usage id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetUsageResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'item_id': item_id,
+            'usage_id': usage_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetUsageResponse.from_dictionary)
+
+    def delete_discount(self,
+                        subscription_id,
+                        discount_id,
+                        idempotency_key=None):
+        """Does a DELETE request to /subscriptions/{subscription_id}/discounts/{discount_id}.
+
+        Deletes a discount
+
+        Args:
+            subscription_id (string): Subscription id
+            discount_id (string): Discount Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetDiscountResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/discounts/{discount_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'discount_id': discount_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetDiscountResponse.from_dictionary)
+
+    def cancel_subscription(self,
+                            subscription_id,
+                            request=None,
+                            idempotency_key=None):
+        """Does a DELETE request to /subscriptions/{subscription_id}.
+
+        Cancels a subscription
+
+        Args:
+            subscription_id (string): Subscription id
+            request (CreateCancelSubscriptionRequest, optional): Request for
+                cancelling a subscription
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def get_discount_by_id(self,
+                           subscription_id,
+                           discount_id):
+        """Does a GET request to /subscriptions/{subscription_id}/discounts/{discountId}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription id
+            discount_id (string): TODO: type description here. Example: 
+
+        Returns:
+            GetDiscountResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/discounts/{discountId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'discountId': discount_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetDiscountResponse.from_dictionary)
+
+    def get_discounts(self,
+                      subscription_id,
+                      page,
+                      size):
+        """Does a GET request to /subscriptions/{subscription_id}/discounts/.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription id
+            page (int): Page number
+            size (int): Page size
+
+        Returns:
+            ListDiscountsResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/discounts/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'page': page,
+            'size': size
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListDiscountsResponse.from_dictionary)
+
+    def create_increment(self,
+                         subscription_id,
+                         request,
+                         idempotency_key=None):
+        """Does a POST request to /subscriptions/{subscription_id}/increments.
+
+        Creates a increment
+
+        Args:
+            subscription_id (string): Subscription id
+            request (CreateIncrementRequest): Request for creating a
+                increment
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetIncrementResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/increments'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
+
+    def get_increments(self,
+                       subscription_id,
+                       page=None,
+                       size=None):
+        """Does a GET request to /subscriptions/{subscription_id}/increments/.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription id
+            page (int, optional): Page number
+            size (int, optional): Page size
+
+        Returns:
+            ListIncrementsResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/increments/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'page': page,
+            'size': size
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListIncrementsResponse.from_dictionary)
+
+    def delete_increment(self,
+                         subscription_id,
+                         increment_id,
+                         idempotency_key=None):
+        """Does a DELETE request to /subscriptions/{subscription_id}/increments/{increment_id}.
+
+        Deletes a increment
+
+        Args:
+            subscription_id (string): Subscription id
+            increment_id (string): Increment id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetIncrementResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/increments/{increment_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'increment_id': increment_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetIncrementResponse.from_dictionary)
+
+    def get_usages_details(self,
+                           subscription_id,
+                           cycle_id=None,
+                           size=None,
+                           page=None,
+                           item_id=None,
+                           group=None):
+        """Does a GET request to /subscriptions/{subscription_id}/usages-details/.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): Subscription Identifier
+            cycle_id (string, optional): Cycle id
+            size (int, optional): Page size
+            page (int, optional): Page number
+            item_id (string, optional): Identificador do item
+            group (string, optional): identificador da loja (account) de cada
+                item
+
+        Returns:
+            GetUsagesDetailsResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/usages-details/'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'cycle_id': cycle_id,
+            'size': size,
+            'page': page,
+            'item_id': item_id,
+            'group': group
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetUsagesDetailsResponse.from_dictionary)
+
+    def get_usages(self,
+                   subscription_id,
+                   item_id,
+                   page=None,
+                   size=None,
+                   code=None,
+                   group=None):
+        """Does a GET request to /subscriptions/{subscription_id}/items/{item_id}/usages.
+
+        Lists all usages from a subscription item
+
+        Args:
+            subscription_id (string): The subscription id
+            item_id (string): The subscription item id
+            page (int, optional): Page number
+            size (int, optional): Page size
+            code (string, optional): Identification code in the client system
+            group (string, optional): Identification group in the client
+                system
+
+        Returns:
+            ListUsagesResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'item_id': item_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'page': page,
+            'size': size,
+            'code': code,
+            'group': group
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListUsagesResponse.from_dictionary)
+
     def get_subscription_items(self,
                                subscription_id,
                                page=None,
@@ -1859,3 +1462,400 @@ class SubscriptionsController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListSubscriptionItemsResponse.from_dictionary)
+
+    def update_subscription_due_days(self,
+                                     subscription_id,
+                                     request,
+                                     idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/boleto-due-days.
+
+        Updates the boleto due days from a subscription
+
+        Args:
+            subscription_id (string): Subscription Id
+            request (UpdateSubscriptionDueDaysRequest): TODO: type description
+                here. Example: 
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/boleto-due-days'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def update_subscription_minium_price(self,
+                                         subscription_id,
+                                         request,
+                                         idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/minimum_price.
+
+        Atualização do valor mínimo da assinatura
+
+        Args:
+            subscription_id (string): Subscription Id
+            request (UpdateSubscriptionMinimumPriceRequest): Request da
+                requisição com o valor mínimo que será configurado
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/minimum_price'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def update_subscription_billing_date(self,
+                                         subscription_id,
+                                         request,
+                                         idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/billing-date.
+
+        Updates the billing date from a subscription
+
+        Args:
+            subscription_id (string): The subscription id
+            request (UpdateSubscriptionBillingDateRequest): Request for
+                updating the subscription billing date
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/billing-date'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def update_latest_period_end_at(self,
+                                    subscription_id,
+                                    request,
+                                    idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/periods/latest/end-at.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): TODO: type description here. Example: 
+            request (UpdateCurrentCycleEndDateRequest): Request for updating
+                the end date of the current signature cycle
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSubscriptionResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/periods/latest/end-at'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSubscriptionResponse.from_dictionary)
+
+    def update_current_cycle_status(self,
+                                    subscription_id,
+                                    request,
+                                    idempotency_key=None):
+        """Does a PATCH request to /subscriptions/{subscription_id}/cycle-status.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): Subscription Id
+            request (UpdateCurrentCycleStatusRequest): Request for updating
+                the end date of the subscription current status
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            void: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycle-status'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+    def get_subscription_cycles(self,
+                                subscription_id,
+                                page,
+                                size):
+        """Does a GET request to /subscriptions/{subscription_id}/cycles.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): Subscription Id
+            page (string): Page number
+            size (string): Page size
+
+        Returns:
+            ListCyclesResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycles'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'page': page,
+            'size': size
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ListCyclesResponse.from_dictionary)
+
+    def get_subscription_cycle_by_id(self,
+                                     subscription_id,
+                                     cycle_id):
+        """Does a GET request to /subscriptions/{subscription_id}/cycles/{cycleId}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): The subscription id
+            cycle_id (string): TODO: type description here. Example: 
+
+        Returns:
+            GetPeriodResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycles/{cycleId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id,
+            'cycleId': cycle_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPeriodResponse.from_dictionary)
+
+    def renew_subscription(self,
+                           subscription_id,
+                           idempotency_key=None):
+        """Does a POST request to /subscriptions/{subscription_id}/cycles.
+
+        TODO: type endpoint description here.
+
+        Args:
+            subscription_id (string): TODO: type description here. Example: 
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPeriodResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/subscriptions/{subscription_id}/cycles'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'subscription_id': subscription_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPeriodResponse.from_dictionary)

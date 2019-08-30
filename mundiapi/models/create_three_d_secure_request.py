@@ -19,6 +19,8 @@ class CreateThreeDSecureRequest(object):
         eci (string): The Electronic Commerce Indicator value
         transaction_id (string): The TransactionId value (XID)
         success_url (string): The success URL after the authentication
+        ds_transaction_id (string): Directory Service Transaction Identifier
+        version (string): ThreeDSecure Version
 
     """
 
@@ -28,7 +30,9 @@ class CreateThreeDSecureRequest(object):
         "cavv":'cavv',
         "eci":'eci',
         "transaction_id":'transaction_id',
-        "success_url":'success_url'
+        "success_url":'success_url',
+        "ds_transaction_id":'ds_transaction_id',
+        "version":'version'
     }
 
     def __init__(self,
@@ -36,7 +40,9 @@ class CreateThreeDSecureRequest(object):
                  cavv=None,
                  eci=None,
                  transaction_id=None,
-                 success_url=None):
+                 success_url=None,
+                 ds_transaction_id=None,
+                 version=None):
         """Constructor for the CreateThreeDSecureRequest class"""
 
         # Initialize members of the class
@@ -45,6 +51,8 @@ class CreateThreeDSecureRequest(object):
         self.eci = eci
         self.transaction_id = transaction_id
         self.success_url = success_url
+        self.ds_transaction_id = ds_transaction_id
+        self.version = version
 
 
     @classmethod
@@ -70,12 +78,16 @@ class CreateThreeDSecureRequest(object):
         eci = dictionary.get('eci')
         transaction_id = dictionary.get('transaction_id')
         success_url = dictionary.get('success_url')
+        ds_transaction_id = dictionary.get('ds_transaction_id')
+        version = dictionary.get('version')
 
         # Return an object of this model
         return cls(mpi,
                    cavv,
                    eci,
                    transaction_id,
-                   success_url)
+                   success_url,
+                   ds_transaction_id,
+                   version)
 
 

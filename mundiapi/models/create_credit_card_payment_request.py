@@ -8,7 +8,7 @@
 
 import mundiapi.models.create_card_request
 import mundiapi.models.create_payment_authentication_request
-import mundiapi.models.create_card_payment_token_request
+import mundiapi.models.create_card_payment_contactless_request
 
 class CreateCreditCardPaymentRequest(object):
 
@@ -32,8 +32,8 @@ class CreateCreditCardPaymentRequest(object):
         merchant_category_code (long|int): Customer business segment code
         authentication (CreatePaymentAuthenticationRequest): The payment
             authentication request
-        contactless (CreateCardPaymentTokenRequest): The Credit card payment
-            contactless request
+        contactless (CreateCardPaymentContactlessRequest): The Credit card
+            payment contactless request
         auto_recovery (bool): Indicates whether a particular payment will
             enter the offline retry flow
 
@@ -117,7 +117,7 @@ class CreateCreditCardPaymentRequest(object):
         extended_limit_code = dictionary.get('extended_limit_code')
         merchant_category_code = dictionary.get('merchant_category_code')
         authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
-        contactless = mundiapi.models.create_card_payment_token_request.CreateCardPaymentTokenRequest.from_dictionary(dictionary.get('contactless')) if dictionary.get('contactless') else None
+        contactless = mundiapi.models.create_card_payment_contactless_request.CreateCardPaymentContactlessRequest.from_dictionary(dictionary.get('contactless')) if dictionary.get('contactless') else None
         auto_recovery = dictionary.get('auto_recovery')
 
         # Return an object of this model
