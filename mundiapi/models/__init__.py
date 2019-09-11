@@ -172,4 +172,5 @@ __all__ = [
     'create_emv_data_decrypt_request',
     'create_emv_decrypt_request',
     'create_card_payment_contactless_poi_request',
+    'get_usage_report_response',
 ]
