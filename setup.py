@@ -12,7 +12,7 @@ else:
 
 setup(
     name='mundiapi',
-    version='0.16.2',
+    version='0.16.3',
     description='Mundipagg API',
     long_description=long_description,
     long_description_content_type="text/markdown",
