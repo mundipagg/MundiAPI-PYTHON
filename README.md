@@ -119,6 +119,7 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 * [TokensController](#tokens_controller)
 * [PlansController](#plans_controller)
 * [TransactionsController](#transactions_controller)
+* [TransfersController](#transfers_controller)
 
 ## <a name="customers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CustomersController") CustomersController
 
@@ -275,8 +276,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 186
-size = 186
+page = 16
+size = 16
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -500,8 +501,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 186
-size = 186
+page = 230
+size = 230
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -635,8 +636,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 186
-size = 186
+page = 230
+size = 230
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -955,8 +956,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 23
-size = 23
+page = 230
+size = 230
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1220,8 +1221,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 23
-size = 23
+page = 230
+size = 230
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -1391,8 +1392,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 23
-size = 23
+page = 230
+size = 230
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -1463,8 +1464,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 23
-size = 23
+page = 230
+size = 230
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -1631,8 +1632,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 23
-size = 23
+page = 230
+size = 230
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -1767,6 +1768,108 @@ timeframe = 'timeframe'
 payment_date = datetime.now()
 
 result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
+
+```
+
+
+### <a name="create_withdraw"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_withdraw") create_withdraw
+
+> TODO: Add a method description
+
+```python
+def create_withdraw(self,
+                        recipient_id,
+                        request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+request = CreateWithdrawRequest()
+
+result = recipients_controller.create_withdraw(recipient_id, request)
+
+```
+
+
+### <a name="get_withdraw_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_withdraw_by_id") get_withdraw_by_id
+
+> TODO: Add a method description
+
+```python
+def get_withdraw_by_id(self,
+                           recipient_id,
+                           withdrawal_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | TODO: Add a parameter description |
+| withdrawalId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+withdrawal_id = 'withdrawal_id'
+
+result = recipients_controller.get_withdraw_by_id(recipient_id, withdrawal_id)
+
+```
+
+
+### <a name="get_withdrawals"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_withdrawals") get_withdrawals
+
+> Gets a paginated list of transfers for the recipient
+
+```python
+def get_withdrawals(self,
+                        recipient_id,
+                        page=None,
+                        size=None,
+                        status=None,
+                        created_since=None,
+                        created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | TODO: Add a parameter description |
+| page |  ``` Optional ```  | TODO: Add a parameter description |
+| size |  ``` Optional ```  | TODO: Add a parameter description |
+| status |  ``` Optional ```  | TODO: Add a parameter description |
+| createdSince |  ``` Optional ```  | TODO: Add a parameter description |
+| createdUntil |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+page = 66
+size = 66
+status = 'status'
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = recipients_controller.get_withdrawals(recipient_id, page, size, status, created_since, created_until)
 
 ```
 
@@ -2139,8 +2242,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 23
-page = 23
+size = 66
+page = 66
 item_id = 'item_id'
 group = 'group'
 
@@ -2336,8 +2439,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 114
-size = 114
+page = 66
+size = 66
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -2445,8 +2548,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 114
-size = 114
+page = 66
+size = 66
 code = 'code'
 group = 'group'
 
@@ -2771,8 +2874,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 114
-size = 114
+page = 66
+size = 66
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2854,8 +2957,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 114
-size = 114
+page = 66
+size = 66
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2939,8 +3042,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 114
-size = 114
+page = 24
+size = 24
 name = 'name'
 code = 'code'
 status = 'status'
@@ -3252,8 +3355,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 114
-size = 114
+page = 24
+size = 24
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3408,8 +3511,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 72
-size = 72
+page = 24
+size = 24
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3721,8 +3824,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 72
-size = 72
+page = 24
+size = 24
 name = 'name'
 document = 'document'
 code = 'code'
@@ -4018,8 +4121,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 72
-size = 72
+page = 24
+size = 24
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -4282,6 +4385,89 @@ def get_transaction(self,
 transaction_id = 'transaction_id'
 
 result = transactions_controller.get_transaction(transaction_id)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="transfers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TransfersController") TransfersController
+
+### Get controller instance
+
+An instance of the ``` TransfersController ``` class can be accessed from the API Client.
+
+```python
+ transfers_controller = client.transfers
+```
+
+### <a name="create_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".TransfersController.create_transfer") create_transfer
+
+> TODO: Add a method description
+
+```python
+def create_transfer(self,
+                        request)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+request = CreateTransfer()
+
+result = transfers_controller.create_transfer(request)
+
+```
+
+
+### <a name="get_transfer_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".TransfersController.get_transfer_by_id") get_transfer_by_id
+
+> TODO: Add a method description
+
+```python
+def get_transfer_by_id(self,
+                           transfer_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| transferId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+transfer_id = 'transfer_id'
+
+result = transfers_controller.get_transfer_by_id(transfer_id)
+
+```
+
+
+### <a name="get_transfers"></a>![Method: ](https://apidocs.io/img/method.png ".TransfersController.get_transfers") get_transfers
+
+> Gets all transfers
+
+```python
+def get_transfers(self)
+```
+
+#### Example Usage
+
+```python
+
+result = transfers_controller.get_transfers()
 
 ```
 
