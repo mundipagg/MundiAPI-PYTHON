@@ -18,6 +18,7 @@ class GetAntifraudResponse(object):
         return_code (string): TODO: type description here.
         return_message (string): TODO: type description here.
         provider_name (string): TODO: type description here.
+        score (string): TODO: type description here.
 
     """
 
@@ -26,14 +27,16 @@ class GetAntifraudResponse(object):
         "status":'status',
         "return_code":'return_code',
         "return_message":'return_message',
-        "provider_name":'provider_name'
+        "provider_name":'provider_name',
+        "score":'score'
     }
 
     def __init__(self,
                  status=None,
                  return_code=None,
                  return_message=None,
-                 provider_name=None):
+                 provider_name=None,
+                 score=None):
         """Constructor for the GetAntifraudResponse class"""
 
         # Initialize members of the class
@@ -41,6 +44,7 @@ class GetAntifraudResponse(object):
         self.return_code = return_code
         self.return_message = return_message
         self.provider_name = provider_name
+        self.score = score
 
 
     @classmethod
@@ -65,11 +69,13 @@ class GetAntifraudResponse(object):
         return_code = dictionary.get('return_code')
         return_message = dictionary.get('return_message')
         provider_name = dictionary.get('provider_name')
+        score = dictionary.get('score')
 
         # Return an object of this model
         return cls(status,
                    return_code,
                    return_message,
-                   provider_name)
+                   provider_name,
+                   score)
 
 
