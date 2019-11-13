@@ -11,13 +11,63 @@ from mundiapi.configuration import Configuration
 from mundiapi.controllers.base_controller import BaseController
 from mundiapi.http.auth.basic_auth import BasicAuth
 from mundiapi.models.get_plan_item_response import GetPlanItemResponse
-from mundiapi.models.list_plans_response import ListPlansResponse
 from mundiapi.models.get_plan_response import GetPlanResponse
+from mundiapi.models.list_plans_response import ListPlansResponse
 
 class PlansController(BaseController):
 
     """A Controller to access Endpoints in the mundiapi API."""
 
+
+    def create_plan_item(self,
+                         plan_id,
+                         request,
+                         idempotency_key=None):
+        """Does a POST request to /plans/{plan_id}/items.
+
+        Adds a new item to a plan
+
+        Args:
+            plan_id (string): Plan id
+            request (CreatePlanItemRequest): Request for creating a plan item
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPlanItemResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/plans/{plan_id}/items'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'plan_id': plan_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
 
     def update_plan_item(self,
                          plan_id,
@@ -72,22 +122,17 @@ class PlansController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
 
-    def create_plan_item(self,
-                         plan_id,
-                         request,
-                         idempotency_key=None):
-        """Does a POST request to /plans/{plan_id}/items.
+    def get_plan(self,
+                 plan_id):
+        """Does a GET request to /plans/{plan_id}.
 
-        Adds a new item to a plan
+        Gets a plan
 
         Args:
             plan_id (string): Plan id
-            request (CreatePlanItemRequest): Request for creating a plan item
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
 
         Returns:
-            GetPlanItemResponse: Response from the API. 
+            GetPlanResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -98,7 +143,102 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/plans/{plan_id}/items'
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'plan_id': plan_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
+
+    def delete_plan(self,
+                    plan_id,
+                    idempotency_key=None):
+        """Does a DELETE request to /plans/{plan_id}.
+
+        Deletes a plan
+
+        Args:
+            plan_id (string): Plan id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPlanResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/plans/{plan_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'plan_id': plan_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
+
+    def update_plan(self,
+                    plan_id,
+                    request,
+                    idempotency_key=None):
+        """Does a PUT request to /plans/{plan_id}.
+
+        Updates a plan
+
+        Args:
+            plan_id (string): Plan id
+            request (UpdatePlanRequest): Request for updating a plan
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPlanResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/plans/{plan_id}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'plan_id': plan_id
         })
@@ -114,13 +254,58 @@ class PlansController(BaseController):
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
+
+    def create_plan(self,
+                    body,
+                    idempotency_key=None):
+        """Does a POST request to /plans.
+
+        Creates a new plan
+
+        Args:
+            body (CreatePlanRequest): Request for creating a plan
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetPlanResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/plans'
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
 
     def get_plans(self,
                   page=None,
@@ -187,99 +372,6 @@ class PlansController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListPlansResponse.from_dictionary)
 
-    def get_plan(self,
-                 plan_id):
-        """Does a GET request to /plans/{plan_id}.
-
-        Gets a plan
-
-        Args:
-            plan_id (string): Plan id
-
-        Returns:
-            GetPlanResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/plans/{plan_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'plan_id': plan_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
-
-    def update_plan(self,
-                    plan_id,
-                    request,
-                    idempotency_key=None):
-        """Does a PUT request to /plans/{plan_id}.
-
-        Updates a plan
-
-        Args:
-            plan_id (string): Plan id
-            request (UpdatePlanRequest): Request for updating a plan
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetPlanResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/plans/{plan_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'plan_id': plan_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
-
     def update_plan_metadata(self,
                              plan_id,
                              request,
@@ -331,20 +423,19 @@ class PlansController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
 
-    def create_plan(self,
-                    body,
-                    idempotency_key=None):
-        """Does a POST request to /plans.
+    def get_plan_item(self,
+                      plan_id,
+                      plan_item_id):
+        """Does a GET request to /plans/{plan_id}/items/{plan_item_id}.
 
-        Creates a new plan
+        Gets a plan item
 
         Args:
-            body (CreatePlanRequest): Request for creating a plan
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
+            plan_id (string): Plan id
+            plan_item_id (string): Plan item id
 
         Returns:
-            GetPlanResponse: Response from the API. 
+            GetPlanItemResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -355,26 +446,28 @@ class PlansController(BaseController):
         """
 
         # Prepare query URL
-        _url_path = '/plans'
+        _url_path = '/plans/{plan_id}/items/{plan_item_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'plan_id': plan_id,
+            'plan_item_id': plan_item_id
+        })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
+            'accept': 'application/json'
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
+        _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
 
     def delete_plan_item(self,
                          plan_id,
@@ -425,96 +518,3 @@ class PlansController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
-
-    def get_plan_item(self,
-                      plan_id,
-                      plan_item_id):
-        """Does a GET request to /plans/{plan_id}/items/{plan_item_id}.
-
-        Gets a plan item
-
-        Args:
-            plan_id (string): Plan id
-            plan_item_id (string): Plan item id
-
-        Returns:
-            GetPlanItemResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/plans/{plan_id}/items/{plan_item_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'plan_id': plan_id,
-            'plan_item_id': plan_item_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanItemResponse.from_dictionary)
-
-    def delete_plan(self,
-                    plan_id,
-                    idempotency_key=None):
-        """Does a DELETE request to /plans/{plan_id}.
-
-        Deletes a plan
-
-        Args:
-            plan_id (string): Plan id
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetPlanResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/plans/{plan_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'plan_id': plan_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetPlanResponse.from_dictionary)
