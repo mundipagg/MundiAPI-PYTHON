@@ -34,6 +34,7 @@ class GetCardResponse(object):
         holder_document (string): Document number for the card's holder
         deleted_at (datetime): TODO: type description here.
         first_six_digits (string): First six digits
+        label (string): TODO: type description here.
 
     """
 
@@ -53,6 +54,7 @@ class GetCardResponse(object):
         "mtype":'type',
         "holder_document":'holder_document',
         "first_six_digits":'first_six_digits',
+        "label":'label',
         "customer":'customer',
         "deleted_at":'deleted_at'
     }
@@ -72,6 +74,7 @@ class GetCardResponse(object):
                  mtype=None,
                  holder_document=None,
                  first_six_digits=None,
+                 label=None,
                  customer=None,
                  deleted_at=None):
         """Constructor for the GetCardResponse class"""
@@ -93,6 +96,7 @@ class GetCardResponse(object):
         self.holder_document = holder_document
         self.deleted_at = APIHelper.RFC3339DateTime(deleted_at) if deleted_at else None
         self.first_six_digits = first_six_digits
+        self.label = label
 
 
     @classmethod
@@ -127,6 +131,7 @@ class GetCardResponse(object):
         mtype = dictionary.get('type')
         holder_document = dictionary.get('holder_document')
         first_six_digits = dictionary.get('first_six_digits')
+        label = dictionary.get('label')
         customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
@@ -145,6 +150,7 @@ class GetCardResponse(object):
                    mtype,
                    holder_document,
                    first_six_digits,
+                   label,
                    customer,
                    deleted_at)
 

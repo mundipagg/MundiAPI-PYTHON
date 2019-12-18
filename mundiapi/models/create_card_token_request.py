@@ -21,6 +21,7 @@ class CreateCardTokenRequest(object):
             digits
         cvv (string): The card's security code
         brand (string): Card brand
+        label (string): TODO: type description here.
 
     """
 
@@ -31,7 +32,8 @@ class CreateCardTokenRequest(object):
         "exp_month":'exp_month',
         "exp_year":'exp_year',
         "cvv":'cvv',
-        "brand":'brand'
+        "brand":'brand',
+        "label":'label'
     }
 
     def __init__(self,
@@ -40,7 +42,8 @@ class CreateCardTokenRequest(object):
                  exp_month=None,
                  exp_year=None,
                  cvv=None,
-                 brand=None):
+                 brand=None,
+                 label=None):
         """Constructor for the CreateCardTokenRequest class"""
 
         # Initialize members of the class
@@ -50,6 +53,7 @@ class CreateCardTokenRequest(object):
         self.exp_year = exp_year
         self.cvv = cvv
         self.brand = brand
+        self.label = label
 
 
     @classmethod
@@ -76,6 +80,7 @@ class CreateCardTokenRequest(object):
         exp_year = dictionary.get('exp_year')
         cvv = dictionary.get('cvv')
         brand = dictionary.get('brand')
+        label = dictionary.get('label')
 
         # Return an object of this model
         return cls(number,
@@ -83,6 +88,7 @@ class CreateCardTokenRequest(object):
                    exp_month,
                    exp_year,
                    cvv,
-                   brand)
+                   brand,
+                   label)
 
 
