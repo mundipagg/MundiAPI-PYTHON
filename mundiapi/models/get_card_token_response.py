@@ -21,6 +21,7 @@ class GetCardTokenResponse(object):
         exp_year (string): TODO: type description here.
         brand (string): TODO: type description here.
         mtype (string): TODO: type description here.
+        label (string): TODO: type description here.
 
     """
 
@@ -32,7 +33,8 @@ class GetCardTokenResponse(object):
         "exp_month":'exp_month',
         "exp_year":'exp_year',
         "brand":'brand',
-        "mtype":'type'
+        "mtype":'type',
+        "label":'label'
     }
 
     def __init__(self,
@@ -42,7 +44,8 @@ class GetCardTokenResponse(object):
                  exp_month=None,
                  exp_year=None,
                  brand=None,
-                 mtype=None):
+                 mtype=None,
+                 label=None):
         """Constructor for the GetCardTokenResponse class"""
 
         # Initialize members of the class
@@ -53,6 +56,7 @@ class GetCardTokenResponse(object):
         self.exp_year = exp_year
         self.brand = brand
         self.mtype = mtype
+        self.label = label
 
 
     @classmethod
@@ -80,6 +84,7 @@ class GetCardTokenResponse(object):
         exp_year = dictionary.get('exp_year')
         brand = dictionary.get('brand')
         mtype = dictionary.get('type')
+        label = dictionary.get('label')
 
         # Return an object of this model
         return cls(last_four_digits,
@@ -88,6 +93,7 @@ class GetCardTokenResponse(object):
                    exp_month,
                    exp_year,
                    brand,
-                   mtype)
+                   mtype,
+                   label)
 
 

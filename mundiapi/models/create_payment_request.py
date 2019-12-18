@@ -15,6 +15,7 @@ import mundiapi.models.create_bank_transfer_payment_request
 import mundiapi.models.create_checkout_payment_request
 import mundiapi.models.create_customer_request
 import mundiapi.models.create_cash_payment_request
+import mundiapi.models.create_private_label_payment_request
 
 class CreatePaymentRequest(object):
 
@@ -42,12 +43,15 @@ class CreatePaymentRequest(object):
         customer (CreateCustomerRequest): Customer
         metadata (dict<object, string>): Metadata
         cash (CreateCashPaymentRequest): Settings for cash payment
+        private_label (CreatePrivateLabelPaymentRequest): Settings for private
+            label payment
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
         "payment_method":'payment_method',
+        "private_label":'private_label',
         "credit_card":'credit_card',
         "debit_card":'debit_card',
         "boleto":'boleto',
@@ -66,6 +70,7 @@ class CreatePaymentRequest(object):
 
     def __init__(self,
                  payment_method=None,
+                 private_label=None,
                  credit_card=None,
                  debit_card=None,
                  boleto=None,
@@ -98,6 +103,7 @@ class CreatePaymentRequest(object):
         self.customer = customer
         self.metadata = metadata
         self.cash = cash
+        self.private_label = private_label
 
 
     @classmethod
@@ -119,6 +125,7 @@ class CreatePaymentRequest(object):
 
         # Extract variables from the dictionary
         payment_method = dictionary.get('payment_method')
+        private_label = mundiapi.models.create_private_label_payment_request.CreatePrivateLabelPaymentRequest.from_dictionary(dictionary.get('private_label')) if dictionary.get('private_label') else None
         credit_card = mundiapi.models.create_credit_card_payment_request.CreateCreditCardPaymentRequest.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
         debit_card = mundiapi.models.create_debit_card_payment_request.CreateDebitCardPaymentRequest.from_dictionary(dictionary.get('debit_card')) if dictionary.get('debit_card') else None
         boleto = mundiapi.models.create_boleto_payment_request.CreateBoletoPaymentRequest.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
@@ -140,6 +147,7 @@ class CreatePaymentRequest(object):
 
         # Return an object of this model
         return cls(payment_method,
+                   private_label,
                    credit_card,
                    debit_card,
                    boleto,

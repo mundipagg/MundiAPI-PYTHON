@@ -22,6 +22,7 @@ class UpdateCardRequest(object):
             address
         billing_address (CreateAddressRequest): Billing address
         metadata (dict<object, string>): Metadata
+        label (string): TODO: type description here.
 
     """
 
@@ -32,7 +33,8 @@ class UpdateCardRequest(object):
         "exp_year":'exp_year',
         "billing_address_id":'billing_address_id',
         "billing_address":'billing_address',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "label":'label'
     }
 
     def __init__(self,
@@ -41,7 +43,8 @@ class UpdateCardRequest(object):
                  exp_year=None,
                  billing_address_id=None,
                  billing_address=None,
-                 metadata=None):
+                 metadata=None,
+                 label=None):
         """Constructor for the UpdateCardRequest class"""
 
         # Initialize members of the class
@@ -51,6 +54,7 @@ class UpdateCardRequest(object):
         self.billing_address_id = billing_address_id
         self.billing_address = billing_address
         self.metadata = metadata
+        self.label = label
 
 
     @classmethod
@@ -77,6 +81,7 @@ class UpdateCardRequest(object):
         billing_address_id = dictionary.get('billing_address_id')
         billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         metadata = dictionary.get('metadata')
+        label = dictionary.get('label')
 
         # Return an object of this model
         return cls(holder_name,
@@ -84,6 +89,7 @@ class UpdateCardRequest(object):
                    exp_year,
                    billing_address_id,
                    billing_address,
-                   metadata)
+                   metadata,
+                   label)
 
 

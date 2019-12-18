@@ -12,6 +12,7 @@ import mundiapi.models.create_boleto_payment_request
 import mundiapi.models.create_voucher_payment_request
 import mundiapi.models.create_cash_payment_request
 import mundiapi.models.create_bank_transfer_payment_request
+import mundiapi.models.create_private_label_payment_request
 
 class UpdateChargePaymentMethodRequest(object):
 
@@ -29,6 +30,8 @@ class UpdateChargePaymentMethodRequest(object):
         voucher (CreateVoucherPaymentRequest): Voucher data
         cash (CreateCashPaymentRequest): Cash data
         bank_transfer (CreateBankTransferPaymentRequest): Bank Transfer data
+        private_label (CreatePrivateLabelPaymentRequest): TODO: type
+            description here.
 
     """
 
@@ -41,7 +44,8 @@ class UpdateChargePaymentMethodRequest(object):
         "boleto":'boleto',
         "voucher":'voucher',
         "cash":'cash',
-        "bank_transfer":'bank_transfer'
+        "bank_transfer":'bank_transfer',
+        "private_label":'private_label'
     }
 
     def __init__(self,
@@ -52,7 +56,8 @@ class UpdateChargePaymentMethodRequest(object):
                  boleto=None,
                  voucher=None,
                  cash=None,
-                 bank_transfer=None):
+                 bank_transfer=None,
+                 private_label=None):
         """Constructor for the UpdateChargePaymentMethodRequest class"""
 
         # Initialize members of the class
@@ -64,6 +69,7 @@ class UpdateChargePaymentMethodRequest(object):
         self.voucher = voucher
         self.cash = cash
         self.bank_transfer = bank_transfer
+        self.private_label = private_label
 
 
     @classmethod
@@ -92,6 +98,7 @@ class UpdateChargePaymentMethodRequest(object):
         voucher = mundiapi.models.create_voucher_payment_request.CreateVoucherPaymentRequest.from_dictionary(dictionary.get('voucher')) if dictionary.get('voucher') else None
         cash = mundiapi.models.create_cash_payment_request.CreateCashPaymentRequest.from_dictionary(dictionary.get('cash')) if dictionary.get('cash') else None
         bank_transfer = mundiapi.models.create_bank_transfer_payment_request.CreateBankTransferPaymentRequest.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
+        private_label = mundiapi.models.create_private_label_payment_request.CreatePrivateLabelPaymentRequest.from_dictionary(dictionary.get('private_label')) if dictionary.get('private_label') else None
 
         # Return an object of this model
         return cls(update_subscription,
@@ -101,6 +108,7 @@ class UpdateChargePaymentMethodRequest(object):
                    boleto,
                    voucher,
                    cash,
-                   bank_transfer)
+                   bank_transfer,
+                   private_label)
 
 
