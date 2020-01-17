@@ -15,20 +15,28 @@ class GetUsageReportResponse(object):
 
     Attributes:
         url (string): TODO: type description here.
+        usage_report_url (string): TODO: type description here.
+        grouped_report_url (string): TODO: type description here.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "url":'url'
+        "url":'url',
+        "usage_report_url":'usage_report_url',
+        "grouped_report_url":'grouped_report_url'
     }
 
     def __init__(self,
-                 url=None):
+                 url=None,
+                 usage_report_url=None,
+                 grouped_report_url=None):
         """Constructor for the GetUsageReportResponse class"""
 
         # Initialize members of the class
         self.url = url
+        self.usage_report_url = usage_report_url
+        self.grouped_report_url = grouped_report_url
 
 
     @classmethod
@@ -50,8 +58,12 @@ class GetUsageReportResponse(object):
 
         # Extract variables from the dictionary
         url = dictionary.get('url')
+        usage_report_url = dictionary.get('usage_report_url')
+        grouped_report_url = dictionary.get('grouped_report_url')
 
         # Return an object of this model
-        return cls(url)
+        return cls(url,
+                   usage_report_url,
+                   grouped_report_url)
 
 
