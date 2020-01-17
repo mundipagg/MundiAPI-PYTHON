@@ -31,6 +31,8 @@ class CreateCardRequest(object):
         holder_document (string): Document number for the card's holder
         private_label (bool): Indicates whether it is a private label card
         label (string): TODO: type description here.
+        id (string): Identifier
+        token (string): token identifier
 
     """
 
@@ -49,7 +51,9 @@ class CreateCardRequest(object):
         "options":'options',
         "private_label":'private_label',
         "label":'label',
-        "holder_document":'holder_document'
+        "holder_document":'holder_document',
+        "id":'id',
+        "token":'token'
     }
 
     def __init__(self,
@@ -66,7 +70,9 @@ class CreateCardRequest(object):
                  options=None,
                  private_label=None,
                  label=None,
-                 holder_document=None):
+                 holder_document=None,
+                 id=None,
+                 token=None):
         """Constructor for the CreateCardRequest class"""
 
         # Initialize members of the class
@@ -84,6 +90,8 @@ class CreateCardRequest(object):
         self.holder_document = holder_document
         self.private_label = private_label
         self.label = label
+        self.id = id
+        self.token = token
 
 
     @classmethod
@@ -118,6 +126,8 @@ class CreateCardRequest(object):
         private_label = dictionary.get('private_label')
         label = dictionary.get('label')
         holder_document = dictionary.get('holder_document')
+        id = dictionary.get('id')
+        token = dictionary.get('token')
 
         # Return an object of this model
         return cls(number,
@@ -133,6 +143,8 @@ class CreateCardRequest(object):
                    options,
                    private_label,
                    label,
-                   holder_document)
+                   holder_document,
+                   id,
+                   token)
 
 
