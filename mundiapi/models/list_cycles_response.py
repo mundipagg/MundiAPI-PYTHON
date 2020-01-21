@@ -16,7 +16,7 @@ class ListCyclesResponse(object):
     Response object for listing subscription cycles
 
     Attributes:
-        data (GetPeriodResponse): The subscription cycles objects
+        data (list of GetPeriodResponse): The subscription cycles objects
         paging (PagingResponse): Paging object
 
     """
@@ -55,7 +55,11 @@ class ListCyclesResponse(object):
             return None
 
         # Extract variables from the dictionary
-        data = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('data')) if dictionary.get('data') else None
+        data = None
+        if dictionary.get('data') != None:
+            data = list()
+            for structure in dictionary.get('data'):
+                data.append(mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(structure))
         paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
