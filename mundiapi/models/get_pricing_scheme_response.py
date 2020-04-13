@@ -20,6 +20,7 @@ class GetPricingSchemeResponse(object):
         price_brackets (list of GetPriceBracketResponse): TODO: type
             description here.
         minimum_price (int): TODO: type description here.
+        percentage (float): percentual value used in pricing_scheme Percent
 
     """
 
@@ -28,14 +29,16 @@ class GetPricingSchemeResponse(object):
         "price":'price',
         "scheme_type":'scheme_type',
         "price_brackets":'price_brackets',
-        "minimum_price":'minimum_price'
+        "minimum_price":'minimum_price',
+        "percentage":'percentage'
     }
 
     def __init__(self,
                  price=None,
                  scheme_type=None,
                  price_brackets=None,
-                 minimum_price=None):
+                 minimum_price=None,
+                 percentage=None):
         """Constructor for the GetPricingSchemeResponse class"""
 
         # Initialize members of the class
@@ -43,6 +46,7 @@ class GetPricingSchemeResponse(object):
         self.scheme_type = scheme_type
         self.price_brackets = price_brackets
         self.minimum_price = minimum_price
+        self.percentage = percentage
 
 
     @classmethod
@@ -71,11 +75,13 @@ class GetPricingSchemeResponse(object):
             for structure in dictionary.get('price_brackets'):
                 price_brackets.append(mundiapi.models.get_price_bracket_response.GetPriceBracketResponse.from_dictionary(structure))
         minimum_price = dictionary.get('minimum_price')
+        percentage = dictionary.get('percentage')
 
         # Return an object of this model
         return cls(price,
                    scheme_type,
                    price_brackets,
-                   minimum_price)
+                   minimum_price,
+                   percentage)
 
 

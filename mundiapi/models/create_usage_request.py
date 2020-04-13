@@ -20,6 +20,7 @@ class CreateUsageRequest(object):
         used_at (datetime): TODO: type description here.
         code (string): Identification code in the client system
         group (string): identification group in the client system
+        amount (int): Field used in item scheme type 'Percent'
 
     """
 
@@ -29,7 +30,8 @@ class CreateUsageRequest(object):
         "description":'description',
         "used_at":'used_at',
         "code":'code',
-        "group":'group'
+        "group":'group',
+        "amount":'amount'
     }
 
     def __init__(self,
@@ -37,7 +39,8 @@ class CreateUsageRequest(object):
                  description=None,
                  used_at=None,
                  code=None,
-                 group=None):
+                 group=None,
+                 amount=None):
         """Constructor for the CreateUsageRequest class"""
 
         # Initialize members of the class
@@ -46,6 +49,7 @@ class CreateUsageRequest(object):
         self.used_at = APIHelper.RFC3339DateTime(used_at) if used_at else None
         self.code = code
         self.group = group
+        self.amount = amount
 
 
     @classmethod
@@ -71,12 +75,14 @@ class CreateUsageRequest(object):
         used_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("used_at")).datetime if dictionary.get("used_at") else None
         code = dictionary.get('code')
         group = dictionary.get('group')
+        amount = dictionary.get('amount')
 
         # Return an object of this model
         return cls(quantity,
                    description,
                    used_at,
                    code,
-                   group)
+                   group,
+                   amount)
 
 

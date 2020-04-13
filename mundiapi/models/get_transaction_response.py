@@ -663,7 +663,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
     Attributes:
         url (string): TODO: type description here.
-        bar_code (string): TODO: type description here.
+        barcode (string): TODO: type description here.
         nosso_numero (string): TODO: type description here.
         bank (string): TODO: type description here.
         document_number (string): TODO: type description here.
@@ -685,7 +685,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
     # Create a mapping from Model property names to API property names
     _names = {
         "url":'url',
-        "bar_code":'bar_code',
+        "barcode":'barcode',
         "nosso_numero":'nosso_numero',
         "bank":'bank',
         "document_number":'document_number',
@@ -719,7 +719,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
     def __init__(self,
                  url=None,
-                 bar_code=None,
+                 barcode=None,
                  nosso_numero=None,
                  bank=None,
                  document_number=None,
@@ -753,7 +753,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
         # Initialize members of the class
         self.url = url
-        self.bar_code = bar_code
+        self.barcode = barcode
         self.nosso_numero = nosso_numero
         self.bank = bank
         self.document_number = document_number
@@ -806,7 +806,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
         # Extract variables from the dictionary
         url = dictionary.get('url')
-        bar_code = dictionary.get('bar_code')
+        barcode = dictionary.get('barcode')
         nosso_numero = dictionary.get('nosso_numero')
         bank = dictionary.get('bank')
         document_number = dictionary.get('document_number')
@@ -843,7 +843,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
 
         # Return an object of this model
         return cls(url,
-                   bar_code,
+                   barcode,
                    nosso_numero,
                    bank,
                    document_number,
