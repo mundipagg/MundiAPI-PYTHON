@@ -27,7 +27,7 @@ class GetOrderItemResponse(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "id":'Id',
+        "id":'id',
         "amount":'amount',
         "description":'description',
         "quantity":'quantity',
@@ -74,7 +74,7 @@ class GetOrderItemResponse(object):
             return None
 
         # Extract variables from the dictionary
-        id = dictionary.get('Id')
+        id = dictionary.get('id')
         amount = dictionary.get('amount')
         description = dictionary.get('description')
         quantity = dictionary.get('quantity')

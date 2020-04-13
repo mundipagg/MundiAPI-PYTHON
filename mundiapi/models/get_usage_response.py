@@ -26,6 +26,7 @@ class GetUsageResponse(object):
         subscription_item (GetSubscriptionItemResponse): Subscription item
         code (string): Identification code in the client system
         group (string): Identification group in the client system
+        amount (int): Field used in item scheme type 'Percent'
 
     """
 
@@ -40,7 +41,8 @@ class GetUsageResponse(object):
         "subscription_item":'subscription_item',
         "deleted_at":'deleted_at',
         "code":'code',
-        "group":'group'
+        "group":'group',
+        "amount":'amount'
     }
 
     def __init__(self,
@@ -53,7 +55,8 @@ class GetUsageResponse(object):
                  subscription_item=None,
                  deleted_at=None,
                  code=None,
-                 group=None):
+                 group=None,
+                 amount=None):
         """Constructor for the GetUsageResponse class"""
 
         # Initialize members of the class
@@ -67,6 +70,7 @@ class GetUsageResponse(object):
         self.subscription_item = subscription_item
         self.code = code
         self.group = group
+        self.amount = amount
 
 
     @classmethod
@@ -97,6 +101,7 @@ class GetUsageResponse(object):
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
         code = dictionary.get('code')
         group = dictionary.get('group')
+        amount = dictionary.get('amount')
 
         # Return an object of this model
         return cls(id,
@@ -108,6 +113,7 @@ class GetUsageResponse(object):
                    subscription_item,
                    deleted_at,
                    code,
-                   group)
+                   group,
+                   amount)
 
 

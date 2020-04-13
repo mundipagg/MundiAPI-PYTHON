@@ -19,6 +19,7 @@ class UpdatePricingSchemeRequest(object):
         price_brackets (list of UpdatePriceBracketRequest): Price brackets
         price (int): Price
         minimum_price (int): Minimum price
+        percentage (float): percentual value used in pricing_scheme Percent
 
     """
 
@@ -27,14 +28,16 @@ class UpdatePricingSchemeRequest(object):
         "scheme_type":'scheme_type',
         "price_brackets":'price_brackets',
         "price":'price',
-        "minimum_price":'minimum_price'
+        "minimum_price":'minimum_price',
+        "percentage":'percentage'
     }
 
     def __init__(self,
                  scheme_type=None,
                  price_brackets=None,
                  price=None,
-                 minimum_price=None):
+                 minimum_price=None,
+                 percentage=None):
         """Constructor for the UpdatePricingSchemeRequest class"""
 
         # Initialize members of the class
@@ -42,6 +45,7 @@ class UpdatePricingSchemeRequest(object):
         self.price_brackets = price_brackets
         self.price = price
         self.minimum_price = minimum_price
+        self.percentage = percentage
 
 
     @classmethod
@@ -70,11 +74,13 @@ class UpdatePricingSchemeRequest(object):
                 price_brackets.append(mundiapi.models.update_price_bracket_request.UpdatePriceBracketRequest.from_dictionary(structure))
         price = dictionary.get('price')
         minimum_price = dictionary.get('minimum_price')
+        percentage = dictionary.get('percentage')
 
         # Return an object of this model
         return cls(scheme_type,
                    price_brackets,
                    price,
-                   minimum_price)
+                   minimum_price,
+                   percentage)
 
 
