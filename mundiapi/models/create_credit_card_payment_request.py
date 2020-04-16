@@ -36,6 +36,7 @@ class CreateCreditCardPaymentRequest(object):
             payment contactless request
         auto_recovery (bool): Indicates whether a particular payment will
             enter the offline retry flow
+        operation_type (string): AuthOnly, AuthAndCapture, PreAuth
 
     """
 
@@ -53,7 +54,8 @@ class CreateCreditCardPaymentRequest(object):
         "merchant_category_code":'merchant_category_code',
         "authentication":'authentication',
         "contactless":'contactless',
-        "auto_recovery":'auto_recovery'
+        "auto_recovery":'auto_recovery',
+        "operation_type":'operation_type'
     }
 
     def __init__(self,
@@ -69,7 +71,8 @@ class CreateCreditCardPaymentRequest(object):
                  merchant_category_code=None,
                  authentication=None,
                  contactless=None,
-                 auto_recovery=None):
+                 auto_recovery=None,
+                 operation_type=None):
         """Constructor for the CreateCreditCardPaymentRequest class"""
 
         # Initialize members of the class
@@ -86,6 +89,7 @@ class CreateCreditCardPaymentRequest(object):
         self.authentication = authentication
         self.contactless = contactless
         self.auto_recovery = auto_recovery
+        self.operation_type = operation_type
 
 
     @classmethod
@@ -119,6 +123,7 @@ class CreateCreditCardPaymentRequest(object):
         authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
         contactless = mundiapi.models.create_card_payment_contactless_request.CreateCardPaymentContactlessRequest.from_dictionary(dictionary.get('contactless')) if dictionary.get('contactless') else None
         auto_recovery = dictionary.get('auto_recovery')
+        operation_type = dictionary.get('operation_type')
 
         # Return an object of this model
         return cls(installments,
@@ -133,6 +138,7 @@ class CreateCreditCardPaymentRequest(object):
                    merchant_category_code,
                    authentication,
                    contactless,
-                   auto_recovery)
+                   auto_recovery,
+                   operation_type)
 
 
