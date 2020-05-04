@@ -7,6 +7,7 @@
 """
 
 import mundiapi.models.create_cancel_charge_split_rules_request
+import mundiapi.models.create_split_request
 
 class CreateCancelChargeRequest(object):
 
@@ -18,23 +19,31 @@ class CreateCancelChargeRequest(object):
         amount (int): The amount that will be canceled.
         split_rules (list of CreateCancelChargeSplitRulesRequest): The split
             rules request
+        split (list of CreateSplitRequest): Splits
+        operation_reference (string): TODO: type description here.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
+        "operation_reference":'operation_reference',
         "amount":'amount',
-        "split_rules":'split_rules'
+        "split_rules":'split_rules',
+        "split":'split'
     }
 
     def __init__(self,
+                 operation_reference=None,
                  amount=None,
-                 split_rules=None):
+                 split_rules=None,
+                 split=None):
         """Constructor for the CreateCancelChargeRequest class"""
 
         # Initialize members of the class
         self.amount = amount
         self.split_rules = split_rules
+        self.split = split
+        self.operation_reference = operation_reference
 
 
     @classmethod
@@ -55,15 +64,23 @@ class CreateCancelChargeRequest(object):
             return None
 
         # Extract variables from the dictionary
+        operation_reference = dictionary.get('operation_reference')
         amount = dictionary.get('amount')
         split_rules = None
         if dictionary.get('split_rules') != None:
             split_rules = list()
             for structure in dictionary.get('split_rules'):
                 split_rules.append(mundiapi.models.create_cancel_charge_split_rules_request.CreateCancelChargeSplitRulesRequest.from_dictionary(structure))
+        split = None
+        if dictionary.get('split') != None:
+            split = list()
+            for structure in dictionary.get('split'):
+                split.append(mundiapi.models.create_split_request.CreateSplitRequest.from_dictionary(structure))
 
         # Return an object of this model
-        return cls(amount,
-                   split_rules)
+        return cls(operation_reference,
+                   amount,
+                   split_rules,
+                   split)
 
 
