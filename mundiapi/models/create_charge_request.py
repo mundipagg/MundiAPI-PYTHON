@@ -26,6 +26,7 @@ class CreateChargeRequest(object):
         metadata (dict<object, string>): Metadata
         due_at (datetime): The charge due date
         antifraud (CreateAntifraudRequest): TODO: type description here.
+        order_id (string): Order Id
 
     """
 
@@ -38,6 +39,7 @@ class CreateChargeRequest(object):
         "payment":'payment',
         "metadata":'metadata',
         "antifraud":'antifraud',
+        "order_id":'order_id',
         "due_at":'due_at'
     }
 
@@ -49,6 +51,7 @@ class CreateChargeRequest(object):
                  payment=None,
                  metadata=None,
                  antifraud=None,
+                 order_id=None,
                  due_at=None):
         """Constructor for the CreateChargeRequest class"""
 
@@ -61,6 +64,7 @@ class CreateChargeRequest(object):
         self.metadata = metadata
         self.due_at = APIHelper.RFC3339DateTime(due_at) if due_at else None
         self.antifraud = antifraud
+        self.order_id = order_id
 
 
     @classmethod
@@ -88,6 +92,7 @@ class CreateChargeRequest(object):
         payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
         metadata = dictionary.get('metadata')
         antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
+        order_id = dictionary.get('order_id')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
 
         # Return an object of this model
@@ -98,6 +103,7 @@ class CreateChargeRequest(object):
                    payment,
                    metadata,
                    antifraud,
+                   order_id,
                    due_at)
 
 
