@@ -7,16 +7,16 @@
 """
 
 
-class CreateSplitOptionsRequest(object):
+class GetSplitOptionsResponse(object):
 
-    """Implementation of the 'CreateSplitOptionsRequest' model.
+    """Implementation of the 'GetSplitOptionsResponse' model.
 
-    The Split Options Request
+    TODO: type model description here.
 
     Attributes:
-        liable (bool): Liable options
-        charge_processing_fee (bool): Charge processing fee
-        charge_remainder_fee (bool): TODO: type description here.
+        liable (bool): TODO: type description here.
+        charge_processing_fee (bool): TODO: type description here.
+        charge_remainder_fee (string): TODO: type description here.
 
     """
 
@@ -31,7 +31,7 @@ class CreateSplitOptionsRequest(object):
                  liable=None,
                  charge_processing_fee=None,
                  charge_remainder_fee=None):
-        """Constructor for the CreateSplitOptionsRequest class"""
+        """Constructor for the GetSplitOptionsResponse class"""
 
         # Initialize members of the class
         self.liable = liable

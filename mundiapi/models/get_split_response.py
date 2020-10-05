@@ -7,6 +7,7 @@
 """
 
 import mundiapi.models.get_recipient_response
+import mundiapi.models.get_split_options_response
 
 class GetSplitResponse(object):
 
@@ -19,6 +20,7 @@ class GetSplitResponse(object):
         amount (int): Amount
         recipient (GetRecipientResponse): Recipient
         gateway_id (string): The split rule gateway id
+        options (GetSplitOptionsResponse): TODO: type description here.
 
     """
 
@@ -27,14 +29,16 @@ class GetSplitResponse(object):
         "mtype":'type',
         "amount":'amount',
         "gateway_id":'gateway_id',
-        "recipient":'recipient'
+        "recipient":'recipient',
+        "options":'options'
     }
 
     def __init__(self,
                  mtype=None,
                  amount=None,
                  gateway_id=None,
-                 recipient=None):
+                 recipient=None,
+                 options=None):
         """Constructor for the GetSplitResponse class"""
 
         # Initialize members of the class
@@ -42,6 +46,7 @@ class GetSplitResponse(object):
         self.amount = amount
         self.recipient = recipient
         self.gateway_id = gateway_id
+        self.options = options
 
 
     @classmethod
@@ -66,11 +71,13 @@ class GetSplitResponse(object):
         amount = dictionary.get('amount')
         gateway_id = dictionary.get('gateway_id')
         recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
+        options = mundiapi.models.get_split_options_response.GetSplitOptionsResponse.from_dictionary(dictionary.get('options')) if dictionary.get('options') else None
 
         # Return an object of this model
         return cls(mtype,
                    amount,
                    gateway_id,
-                   recipient)
+                   recipient,
+                   options)
 
 
