@@ -9,6 +9,7 @@
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_bank_account_response
 import mundiapi.models.get_gateway_recipient_response
+import mundiapi.models.get_automatic_anticipation_response
 
 class GetRecipientResponse(object):
 
@@ -31,6 +32,8 @@ class GetRecipientResponse(object):
         gateway_recipients (list of GetGatewayRecipientResponse): Info about
             the recipient on the gateway
         metadata (dict<object, string>): Metadata
+        automatic_anticipation_settings (GetAutomaticAnticipationResponse):
+            TODO: type description here.
 
     """
 
@@ -48,7 +51,8 @@ class GetRecipientResponse(object):
         "deleted_at":'deleted_at',
         "default_bank_account":'default_bank_account',
         "gateway_recipients":'gateway_recipients',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "automatic_anticipation_settings":'automatic_anticipation_settings'
     }
 
     def __init__(self,
@@ -64,7 +68,8 @@ class GetRecipientResponse(object):
                  deleted_at=None,
                  default_bank_account=None,
                  gateway_recipients=None,
-                 metadata=None):
+                 metadata=None,
+                 automatic_anticipation_settings=None):
         """Constructor for the GetRecipientResponse class"""
 
         # Initialize members of the class
@@ -81,6 +86,7 @@ class GetRecipientResponse(object):
         self.default_bank_account = default_bank_account
         self.gateway_recipients = gateway_recipients
         self.metadata = metadata
+        self.automatic_anticipation_settings = automatic_anticipation_settings
 
 
     @classmethod
@@ -118,6 +124,7 @@ class GetRecipientResponse(object):
             for structure in dictionary.get('gateway_recipients'):
                 gateway_recipients.append(mundiapi.models.get_gateway_recipient_response.GetGatewayRecipientResponse.from_dictionary(structure))
         metadata = dictionary.get('metadata')
+        automatic_anticipation_settings = mundiapi.models.get_automatic_anticipation_response.GetAutomaticAnticipationResponse.from_dictionary(dictionary.get('automatic_anticipation_settings')) if dictionary.get('automatic_anticipation_settings') else None
 
         # Return an object of this model
         return cls(id,
@@ -132,6 +139,7 @@ class GetRecipientResponse(object):
                    deleted_at,
                    default_bank_account,
                    gateway_recipients,
-                   metadata)
+                   metadata,
+                   automatic_anticipation_settings)
 
 
