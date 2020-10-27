@@ -13,6 +13,7 @@ import mundiapi.models.create_shipping_request
 import mundiapi.models.create_location_request
 import mundiapi.models.create_device_request
 import mundiapi.models.create_antifraud_request
+import mundiapi.models.create_sub_merchant_request
 
 class CreateOrderRequest(object):
 
@@ -37,6 +38,7 @@ class CreateOrderRequest(object):
         closed (bool): TODO: type description here.
         currency (string): Currency
         antifraud (CreateAntifraudRequest): TODO: type description here.
+        submerchant (CreateSubMerchantRequest): SubMerchant
 
     """
 
@@ -56,7 +58,8 @@ class CreateOrderRequest(object):
         "location":'location',
         "device":'device',
         "currency":'currency',
-        "antifraud":'antifraud'
+        "antifraud":'antifraud',
+        "submerchant":'submerchant'
     }
 
     def __init__(self,
@@ -74,7 +77,8 @@ class CreateOrderRequest(object):
                  location=None,
                  device=None,
                  currency=None,
-                 antifraud=None):
+                 antifraud=None,
+                 submerchant=None):
         """Constructor for the CreateOrderRequest class"""
 
         # Initialize members of the class
@@ -93,6 +97,7 @@ class CreateOrderRequest(object):
         self.closed = closed
         self.currency = currency
         self.antifraud = antifraud
+        self.submerchant = submerchant
 
 
     @classmethod
@@ -136,6 +141,7 @@ class CreateOrderRequest(object):
         device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
         currency = dictionary.get('currency')
         antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
+        submerchant = mundiapi.models.create_sub_merchant_request.CreateSubMerchantRequest.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
 
         # Return an object of this model
         return cls(items,
@@ -152,6 +158,7 @@ class CreateOrderRequest(object):
                    location,
                    device,
                    currency,
-                   antifraud)
+                   antifraud,
+                   submerchant)
 
 
