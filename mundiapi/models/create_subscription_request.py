@@ -16,6 +16,7 @@ import mundiapi.models.create_discount_request
 import mundiapi.models.create_setup_request
 import mundiapi.models.create_increment_request
 import mundiapi.models.create_period_request
+import mundiapi.models.create_sub_merchant_request
 
 class CreateSubscriptionRequest(object):
 
@@ -56,6 +57,7 @@ class CreateSubscriptionRequest(object):
         boleto_due_days (int): Days until boleto expires
         increments (list of CreateIncrementRequest): Increments
         period (CreatePeriodRequest): TODO: type description here.
+        submerchant (CreateSubMerchantRequest): SubMerchant
 
     """
 
@@ -90,7 +92,8 @@ class CreateSubscriptionRequest(object):
         "gateway_affiliation_id":'gateway_affiliation_id',
         "quantity":'quantity',
         "boleto_due_days":'boleto_due_days',
-        "period":'period'
+        "period":'period',
+        "submerchant":'submerchant'
     }
 
     def __init__(self,
@@ -123,7 +126,8 @@ class CreateSubscriptionRequest(object):
                  gateway_affiliation_id=None,
                  quantity=None,
                  boleto_due_days=None,
-                 period=None):
+                 period=None,
+                 submerchant=None):
         """Constructor for the CreateSubscriptionRequest class"""
 
         # Initialize members of the class
@@ -157,6 +161,7 @@ class CreateSubscriptionRequest(object):
         self.boleto_due_days = boleto_due_days
         self.increments = increments
         self.period = period
+        self.submerchant = submerchant
 
 
     @classmethod
@@ -219,6 +224,7 @@ class CreateSubscriptionRequest(object):
         quantity = dictionary.get('quantity')
         boleto_due_days = dictionary.get('boleto_due_days')
         period = mundiapi.models.create_period_request.CreatePeriodRequest.from_dictionary(dictionary.get('period')) if dictionary.get('period') else None
+        submerchant = mundiapi.models.create_sub_merchant_request.CreateSubMerchantRequest.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
 
         # Return an object of this model
         return cls(customer,
@@ -250,6 +256,7 @@ class CreateSubscriptionRequest(object):
                    gateway_affiliation_id,
                    quantity,
                    boleto_due_days,
-                   period)
+                   period,
+                   submerchant)
 
 
