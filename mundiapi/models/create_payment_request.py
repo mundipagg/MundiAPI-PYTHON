@@ -16,6 +16,7 @@ import mundiapi.models.create_checkout_payment_request
 import mundiapi.models.create_customer_request
 import mundiapi.models.create_cash_payment_request
 import mundiapi.models.create_private_label_payment_request
+import mundiapi.models.create_pix_payment_request
 
 class CreatePaymentRequest(object):
 
@@ -45,6 +46,7 @@ class CreatePaymentRequest(object):
         cash (CreateCashPaymentRequest): Settings for cash payment
         private_label (CreatePrivateLabelPaymentRequest): Settings for private
             label payment
+        pix (CreatePixPaymentRequest): Settings for pix payment
 
     """
 
@@ -65,7 +67,8 @@ class CreatePaymentRequest(object):
         "customer_id":'customer_id',
         "customer":'customer',
         "metadata":'metadata',
-        "cash":'cash'
+        "cash":'cash',
+        "pix":'pix'
     }
 
     def __init__(self,
@@ -84,7 +87,8 @@ class CreatePaymentRequest(object):
                  customer_id=None,
                  customer=None,
                  metadata=None,
-                 cash=None):
+                 cash=None,
+                 pix=None):
         """Constructor for the CreatePaymentRequest class"""
 
         # Initialize members of the class
@@ -104,6 +108,7 @@ class CreatePaymentRequest(object):
         self.metadata = metadata
         self.cash = cash
         self.private_label = private_label
+        self.pix = pix
 
 
     @classmethod
@@ -144,6 +149,7 @@ class CreatePaymentRequest(object):
         customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         metadata = dictionary.get('metadata')
         cash = mundiapi.models.create_cash_payment_request.CreateCashPaymentRequest.from_dictionary(dictionary.get('cash')) if dictionary.get('cash') else None
+        pix = mundiapi.models.create_pix_payment_request.CreatePixPaymentRequest.from_dictionary(dictionary.get('pix')) if dictionary.get('pix') else None
 
         # Return an object of this model
         return cls(payment_method,
@@ -161,6 +167,7 @@ class CreatePaymentRequest(object):
                    customer_id,
                    customer,
                    metadata,
-                   cash)
+                   cash,
+                   pix)
 
 
