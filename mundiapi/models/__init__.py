@@ -192,4 +192,5 @@ __all__ = [
     'create_sub_merchant_request',
     'pix_additional_information',
     'create_pix_payment_request',
+    'get_transfer_settings_response',
 ]

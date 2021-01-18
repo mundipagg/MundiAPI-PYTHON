@@ -21,6 +21,7 @@ class GetSplitResponse(object):
         recipient (GetRecipientResponse): Recipient
         gateway_id (string): The split rule gateway id
         options (GetSplitOptionsResponse): TODO: type description here.
+        id (string): TODO: type description here.
 
     """
 
@@ -29,6 +30,7 @@ class GetSplitResponse(object):
         "mtype":'type',
         "amount":'amount',
         "gateway_id":'gateway_id',
+        "id":'id',
         "recipient":'recipient',
         "options":'options'
     }
@@ -37,6 +39,7 @@ class GetSplitResponse(object):
                  mtype=None,
                  amount=None,
                  gateway_id=None,
+                 id=None,
                  recipient=None,
                  options=None):
         """Constructor for the GetSplitResponse class"""
@@ -47,6 +50,7 @@ class GetSplitResponse(object):
         self.recipient = recipient
         self.gateway_id = gateway_id
         self.options = options
+        self.id = id
 
 
     @classmethod
@@ -70,6 +74,7 @@ class GetSplitResponse(object):
         mtype = dictionary.get('type')
         amount = dictionary.get('amount')
         gateway_id = dictionary.get('gateway_id')
+        id = dictionary.get('id')
         recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
         options = mundiapi.models.get_split_options_response.GetSplitOptionsResponse.from_dictionary(dictionary.get('options')) if dictionary.get('options') else None
 
@@ -77,6 +82,7 @@ class GetSplitResponse(object):
         return cls(mtype,
                    amount,
                    gateway_id,
+                   id,
                    recipient,
                    options)
 
