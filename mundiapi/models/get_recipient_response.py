@@ -10,6 +10,7 @@ from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_bank_account_response
 import mundiapi.models.get_gateway_recipient_response
 import mundiapi.models.get_automatic_anticipation_response
+import mundiapi.models.get_transfer_settings_response
 
 class GetRecipientResponse(object):
 
@@ -34,6 +35,8 @@ class GetRecipientResponse(object):
         metadata (dict<object, string>): Metadata
         automatic_anticipation_settings (GetAutomaticAnticipationResponse):
             TODO: type description here.
+        transfer_settings (GetTransferSettingsResponse): TODO: type
+            description here.
 
     """
 
@@ -52,7 +55,8 @@ class GetRecipientResponse(object):
         "default_bank_account":'default_bank_account',
         "gateway_recipients":'gateway_recipients',
         "metadata":'metadata',
-        "automatic_anticipation_settings":'automatic_anticipation_settings'
+        "automatic_anticipation_settings":'automatic_anticipation_settings',
+        "transfer_settings":'transfer_settings'
     }
 
     def __init__(self,
@@ -69,7 +73,8 @@ class GetRecipientResponse(object):
                  default_bank_account=None,
                  gateway_recipients=None,
                  metadata=None,
-                 automatic_anticipation_settings=None):
+                 automatic_anticipation_settings=None,
+                 transfer_settings=None):
         """Constructor for the GetRecipientResponse class"""
 
         # Initialize members of the class
@@ -87,6 +92,7 @@ class GetRecipientResponse(object):
         self.gateway_recipients = gateway_recipients
         self.metadata = metadata
         self.automatic_anticipation_settings = automatic_anticipation_settings
+        self.transfer_settings = transfer_settings
 
 
     @classmethod
@@ -125,6 +131,7 @@ class GetRecipientResponse(object):
                 gateway_recipients.append(mundiapi.models.get_gateway_recipient_response.GetGatewayRecipientResponse.from_dictionary(structure))
         metadata = dictionary.get('metadata')
         automatic_anticipation_settings = mundiapi.models.get_automatic_anticipation_response.GetAutomaticAnticipationResponse.from_dictionary(dictionary.get('automatic_anticipation_settings')) if dictionary.get('automatic_anticipation_settings') else None
+        transfer_settings = mundiapi.models.get_transfer_settings_response.GetTransferSettingsResponse.from_dictionary(dictionary.get('transfer_settings')) if dictionary.get('transfer_settings') else None
 
         # Return an object of this model
         return cls(id,
@@ -140,6 +147,7 @@ class GetRecipientResponse(object):
                    default_bank_account,
                    gateway_recipients,
                    metadata,
-                   automatic_anticipation_settings)
+                   automatic_anticipation_settings,
+                   transfer_settings)
 
 
