@@ -32,6 +32,7 @@ class GetCustomerResponse(object):
         fb_id (long|int): TODO: type description here.
         code (string): Código de referência do cliente no sistema da loja.
             Max: 52 caracteres
+        document_type (string): TODO: type description here.
 
     """
 
@@ -50,6 +51,7 @@ class GetCustomerResponse(object):
         "metadata":'metadata',
         "phones":'phones',
         "code":'code',
+        "document_type":'document_type',
         "fb_id":'fb_id'
     }
 
@@ -67,6 +69,7 @@ class GetCustomerResponse(object):
                  metadata=None,
                  phones=None,
                  code=None,
+                 document_type=None,
                  fb_id=None):
         """Constructor for the GetCustomerResponse class"""
 
@@ -85,6 +88,7 @@ class GetCustomerResponse(object):
         self.phones = phones
         self.fb_id = fb_id
         self.code = code
+        self.document_type = document_type
 
 
     @classmethod
@@ -118,6 +122,7 @@ class GetCustomerResponse(object):
         metadata = dictionary.get('metadata')
         phones = mundiapi.models.get_phones_response.GetPhonesResponse.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
         code = dictionary.get('code')
+        document_type = dictionary.get('document_type')
         fb_id = dictionary.get('fb_id')
 
         # Return an object of this model
@@ -134,6 +139,7 @@ class GetCustomerResponse(object):
                    metadata,
                    phones,
                    code,
+                   document_type,
                    fb_id)
 
 

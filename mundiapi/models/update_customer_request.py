@@ -26,6 +26,7 @@ class UpdateCustomerRequest(object):
         code (string): Código de referência do cliente no sistema da loja.
             Max: 52 caracteres
         gender (string): Gênero do cliente
+        document_type (string): TODO: type description here.
 
     """
 
@@ -39,7 +40,8 @@ class UpdateCustomerRequest(object):
         "metadata":'metadata',
         "phones":'phones',
         "code":'code',
-        "gender":'gender'
+        "gender":'gender',
+        "document_type":'document_type'
     }
 
     def __init__(self,
@@ -51,7 +53,8 @@ class UpdateCustomerRequest(object):
                  metadata=None,
                  phones=None,
                  code=None,
-                 gender=None):
+                 gender=None,
+                 document_type=None):
         """Constructor for the UpdateCustomerRequest class"""
 
         # Initialize members of the class
@@ -64,6 +67,7 @@ class UpdateCustomerRequest(object):
         self.phones = phones
         self.code = code
         self.gender = gender
+        self.document_type = document_type
 
 
     @classmethod
@@ -93,6 +97,7 @@ class UpdateCustomerRequest(object):
         phones = mundiapi.models.create_phones_request.CreatePhonesRequest.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
         code = dictionary.get('code')
         gender = dictionary.get('gender')
+        document_type = dictionary.get('document_type')
 
         # Return an object of this model
         return cls(name,
@@ -103,6 +108,7 @@ class UpdateCustomerRequest(object):
                    metadata,
                    phones,
                    code,
-                   gender)
+                   gender,
+                   document_type)
 
 
