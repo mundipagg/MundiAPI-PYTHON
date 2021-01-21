@@ -276,8 +276,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 113
-size = 113
+page = 165
+size = 165
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -501,8 +501,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 204
-size = 204
+page = 123
+size = 123
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -636,8 +636,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 204
-size = 204
+page = 123
+size = 123
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -956,8 +956,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 204
-size = 204
+page = 123
+size = 123
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1221,8 +1221,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 204
-size = 204
+page = 123
+size = 123
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -1392,8 +1392,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 204
-size = 204
+page = 123
+size = 123
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -1464,8 +1464,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 204
-size = 204
+page = 123
+size = 123
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -1632,8 +1632,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 204
-size = 204
+page = 123
+size = 123
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -1863,8 +1863,8 @@ def get_withdrawals(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 204
-size = 204
+page = 123
+size = 215
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2275,8 +2275,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 163
-page = 163
+size = 215
+page = 215
 item_id = 'item_id'
 group = 'group'
 
@@ -2472,8 +2472,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 163
-size = 163
+page = 215
+size = 215
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -2581,8 +2581,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 163
-size = 163
+page = 215
+size = 215
 code = 'code'
 group = 'group'
 
@@ -2907,8 +2907,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 163
-size = 163
+page = 215
+size = 215
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2990,8 +2990,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 163
-size = 163
+page = 215
+size = 215
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -3075,8 +3075,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 163
-size = 163
+page = 215
+size = 215
 name = 'name'
 code = 'code'
 status = 'status'
@@ -3388,8 +3388,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 51
+size = 51
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3544,8 +3544,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 51
+size = 51
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3857,8 +3857,8 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 51
+size = 51
 name = 'name'
 document = 'document'
 code = 'code'
@@ -4154,8 +4154,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 254
-size = 254
+page = 51
+size = 51
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
