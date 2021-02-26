@@ -18,6 +18,8 @@ class GetBalanceResponse(object):
         currency (string): Currency
         available_amount (int): Amount available for transferring
         recipient (GetRecipientResponse): Recipient
+        waiting_funds_amount (int): TODO: type description here.
+        transferred_amount (int): TODO: type description here.
 
     """
 
@@ -25,12 +27,16 @@ class GetBalanceResponse(object):
     _names = {
         "currency":'currency',
         "available_amount":'available_amount',
+        "waiting_funds_amount":'waiting_funds_amount',
+        "transferred_amount":'transferred_amount',
         "recipient":'recipient'
     }
 
     def __init__(self,
                  currency=None,
                  available_amount=None,
+                 waiting_funds_amount=None,
+                 transferred_amount=None,
                  recipient=None):
         """Constructor for the GetBalanceResponse class"""
 
@@ -38,6 +44,8 @@ class GetBalanceResponse(object):
         self.currency = currency
         self.available_amount = available_amount
         self.recipient = recipient
+        self.waiting_funds_amount = waiting_funds_amount
+        self.transferred_amount = transferred_amount
 
 
     @classmethod
@@ -60,11 +68,15 @@ class GetBalanceResponse(object):
         # Extract variables from the dictionary
         currency = dictionary.get('currency')
         available_amount = dictionary.get('available_amount')
+        waiting_funds_amount = dictionary.get('waiting_funds_amount')
+        transferred_amount = dictionary.get('transferred_amount')
         recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(currency,
                    available_amount,
+                   waiting_funds_amount,
+                   transferred_amount,
                    recipient)
 
 
