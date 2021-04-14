@@ -10,6 +10,7 @@ from mundiapi.api_helper import APIHelper
 from mundiapi.http.http_context import HttpContext
 from mundiapi.http.requests_client import RequestsClient
 from mundiapi.exceptions.error_exception import ErrorException
+from mundiapi.exceptions.api_exception import APIException
 
 class BaseController(object):
 
