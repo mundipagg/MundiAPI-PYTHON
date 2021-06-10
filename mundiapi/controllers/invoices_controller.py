@@ -223,7 +223,8 @@ class InvoicesController(BaseController):
                      created_until=None,
                      status=None,
                      due_since=None,
-                     due_until=None):
+                     due_until=None,
+                     customer_document=None):
         """Does a GET request to /invoices.
 
         Gets all invoices
@@ -244,6 +245,8 @@ class InvoicesController(BaseController):
                 start range
             due_until (datetime, optional): Filter for Invoice's due date end
                 range
+            customer_document (string, optional): Fillter for invoice's
+                document
 
         Returns:
             ListInvoicesResponse: Response from the API. 
@@ -270,7 +273,8 @@ class InvoicesController(BaseController):
             'created_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, created_until),
             'status': status,
             'due_since': APIHelper.when_defined(APIHelper.RFC3339DateTime, due_since),
-            'due_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, due_until)
+            'due_until': APIHelper.when_defined(APIHelper.RFC3339DateTime, due_until),
+            'customer_document': customer_document
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

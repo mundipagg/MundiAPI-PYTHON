@@ -17,7 +17,7 @@ class CreateTransfer(object):
         amount (int): TODO: type description here.
         source_id (string): TODO: type description here.
         target_id (string): TODO: type description here.
-        metadata (list of string): TODO: type description here.
+        metadata (dict<object, string>): TODO: type description here.
 
     """
 
