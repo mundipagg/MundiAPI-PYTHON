@@ -593,8 +593,10 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
+
 page = 138
 size = 138
+
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -834,8 +836,11 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
+
 page = 138
 size = 138
+
+
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -900,8 +905,10 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
+
 page = 138
 size = 138
+
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -973,8 +980,10 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
+
 size = 138
 page = 138
+
 item_id = 'item_id'
 group = 'group'
 
@@ -1019,8 +1028,10 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
+
 page = 138
 size = 138
+
 code = 'code'
 group = 'group'
 used_since = datetime.now()
@@ -1068,8 +1079,10 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
+
 page = 138
 size = 138
+
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1471,8 +1484,10 @@ def get_orders(self,
 #### Example Usage
 
 ```python
+
 page = 230
 size = 230
+
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -1945,8 +1960,10 @@ def get_plans(self,
 #### Example Usage
 
 ```python
+
 page = 230
 size = 230
+
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2207,8 +2224,10 @@ def get_invoices(self,
                      created_until=None,
                      status=None,
                      due_since=None,
+
                      due_until=None,
                      customer_document=None)
+
 ```
 
 #### Parameters
@@ -2225,15 +2244,19 @@ def get_invoices(self,
 | status |  ``` Optional ```  | Filter for Invoice's status |
 | dueSince |  ``` Optional ```  | Filter for Invoice's due date start range |
 | dueUntil |  ``` Optional ```  | Filter for Invoice's due date end range |
+
 | customerDocument |  ``` Optional ```  | Fillter for invoice's document |
+
 
 
 
 #### Example Usage
 
 ```python
+
 page = 230
 size = 230
+
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2242,9 +2265,11 @@ created_until = datetime.now()
 status = 'status'
 due_since = datetime.now()
 due_until = datetime.now()
+
 customer_document = 'customer_document'
 
 result = invoices_controller.get_invoices(page, size, code, customer_id, subscription_id, created_since, created_until, status, due_since, due_until, customer_document)
+
 
 ```
 
@@ -2445,8 +2470,10 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
+
 page = 230
 size = 230
+
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2478,8 +2505,10 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
+
 page = 230
 size = 230
+
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2511,8 +2540,10 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
+
 page = 230
 size = 230
+
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -3206,8 +3237,10 @@ def get_charges(self,
 #### Example Usage
 
 ```python
+
 page = 188
 size = 188
+
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3411,8 +3444,10 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
+
 page = 188
 size = 188
+
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3558,8 +3593,10 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
+
 page = 188
 size = 188
+
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -3702,8 +3739,10 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
+
 page = 188
 size = 188
+
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -3831,8 +3870,10 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
+
 page = 188
 size = 188
+
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -4053,8 +4094,10 @@ def get_withdrawals(self,
 
 ```python
 recipient_id = 'recipient_id'
+
 page = 188
 size = 188
+
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -4311,8 +4354,10 @@ def get_sellers(self,
 #### Example Usage
 
 ```python
+
 page = 24
 size = 24
+
 name = 'name'
 document = 'document'
 code = 'code'
