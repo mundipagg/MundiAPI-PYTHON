@@ -16,10 +16,10 @@ class GetBalanceResponse(object):
 
     Attributes:
         currency (string): Currency
-        available_amount (int): Amount available for transferring
+        available_amount (long|int): Amount available for transferring
         recipient (GetRecipientResponse): Recipient
-        waiting_funds_amount (int): TODO: type description here.
-        transferred_amount (int): TODO: type description here.
+        waiting_funds_amount (long|int): TODO: type description here.
+        transferred_amount (long|int): TODO: type description here.
 
     """
 
