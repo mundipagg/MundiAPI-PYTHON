@@ -18,96 +18,6 @@ class SellersController(BaseController):
     """A Controller to access Endpoints in the mundiapi API."""
 
 
-    def get_seller_by_id(self,
-                         id):
-        """Does a GET request to /sellers/{id}.
-
-        TODO: type endpoint description here.
-
-        Args:
-            id (string): Seller Id
-
-        Returns:
-            GetSellerResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/sellers/{id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'id': id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
-
-    def delete_seller(self,
-                      seller_id,
-                      idempotency_key=None):
-        """Does a DELETE request to /sellers/{sellerId}.
-
-        TODO: type endpoint description here.
-
-        Args:
-            seller_id (string): Seller Id
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSellerResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/sellers/{sellerId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'sellerId': seller_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
-
     def create_seller(self,
                       request,
                       idempotency_key=None):
@@ -146,6 +56,56 @@ class SellersController(BaseController):
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
+
+    def update_seller(self,
+                      id,
+                      request,
+                      idempotency_key=None):
+        """Does a PUT request to /sellers/{id}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            id (string): TODO: type description here. Example: 
+            request (UpdateSellerRequest): Update Seller model
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSellerResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/sellers/{id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'id': id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -224,56 +184,6 @@ class SellersController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, ListSellerResponse.from_dictionary)
 
-    def update_seller(self,
-                      id,
-                      request,
-                      idempotency_key=None):
-        """Does a PUT request to /sellers/{id}.
-
-        TODO: type endpoint description here.
-
-        Args:
-            id (string): TODO: type description here. Example: 
-            request (UpdateSellerRequest): Update Seller model
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetSellerResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/sellers/{id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'id': id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
-
     def update_seller_metadata(self,
                                seller_id,
                                request,
@@ -318,6 +228,96 @@ class SellersController(BaseController):
 
         # Prepare and execute request
         _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
+
+    def delete_seller(self,
+                      seller_id,
+                      idempotency_key=None):
+        """Does a DELETE request to /sellers/{sellerId}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            seller_id (string): Seller Id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            GetSellerResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/sellers/{sellerId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'sellerId': seller_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, GetSellerResponse.from_dictionary)
+
+    def get_seller_by_id(self,
+                         id):
+        """Does a GET request to /sellers/{id}.
+
+        TODO: type endpoint description here.
+
+        Args:
+            id (string): Seller Id
+
+        Returns:
+            GetSellerResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/sellers/{id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'id': id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
