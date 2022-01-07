@@ -6,7 +6,6 @@ __all__ = [
     'subscriptions_controller',
     'invoices_controller',
     'orders_controller',
-    'sellers_controller',
     'tokens_controller',
     'plans_controller',
     'transactions_controller',

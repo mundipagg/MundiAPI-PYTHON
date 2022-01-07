@@ -1,17 +1,3 @@
-### DEPRECATED | CHECK NEW VERSION > https://github.com/pagarme/pagarme-core-api-python
-
-# Mundipagg agora é Pagar.me
-
-Buscando trazer a melhor experiência para os nossos clientes, a Mundipagg agora é parte do Pagar.me.
-
-Somamos nossas funcionalidades e agora você tem acesso a uma plataforma financeira completa, que oferece o melhor das duas soluções em uma experiência unificada.
-
-Você pode customizar nossos produtos e serviços da forma que for melhor para o seu e-commerce. Ficou curioso para saber o que muda? Preparamos um FAQ completo explicando tudo.
-
-[Saiba mais](https://mundipagg.zendesk.com/hc/pt-br/categories/4404432249876-Incorpora%C3%A7%C3%A3o-Mundipagg-pelo-Pagar-me)
-
------------------------------------------------------------------------------------------------------------------------------
-
 # Getting started
 
 Mundipagg API
@@ -129,7 +115,6 @@ client = MundiapiClient(basic_auth_user_name, basic_auth_password)
 * [SubscriptionsController](#subscriptions_controller)
 * [InvoicesController](#invoices_controller)
 * [OrdersController](#orders_controller)
-* [SellersController](#sellers_controller)
 * [TokensController](#tokens_controller)
 * [PlansController](#plans_controller)
 * [TransactionsController](#transactions_controller)
@@ -290,8 +275,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 49
-size = 49
+page = 92
+size = 92
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -515,8 +500,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 49
-size = 49
+page = 183
+size = 183
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -650,8 +635,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 49
-size = 49
+page = 183
+size = 183
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -970,8 +955,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 49
-size = 49
+page = 183
+size = 183
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1235,8 +1220,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 49
-size = 49
+page = 183
+size = 183
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -1406,8 +1391,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 91
-size = 91
+page = 183
+size = 183
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -1478,8 +1463,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 91
-size = 91
+page = 183
+size = 183
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -1646,8 +1631,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 91
-size = 91
+page = 183
+size = 183
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -1877,8 +1862,8 @@ def get_withdrawals(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 91
-size = 91
+page = 142
+size = 142
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2316,8 +2301,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 91
-page = 91
+size = 142
+page = 142
 item_id = 'item_id'
 group = 'group'
 
@@ -2513,8 +2498,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 91
-size = 91
+page = 142
+size = 142
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -2626,8 +2611,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 0
-size = 0
+page = 142
+size = 142
 code = 'code'
 group = 'group'
 used_since = datetime.now()
@@ -2954,8 +2939,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 0
-size = 0
+page = 142
+size = 142
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -3037,8 +3022,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 0
-size = 0
+page = 142
+size = 142
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -3122,8 +3107,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 0
-size = 0
+page = 233
+size = 233
 name = 'name'
 code = 'code'
 status = 'status'
@@ -3437,8 +3422,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 0
-size = 0
+page = 233
+size = 233
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3594,8 +3579,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 0
-size = 0
+page = 233
+size = 233
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -3798,222 +3783,6 @@ result = orders_controller.update_order_item(order_id, item_id, request, idempot
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="sellers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SellersController") SellersController
-
-### Get controller instance
-
-An instance of the ``` SellersController ``` class can be accessed from the API Client.
-
-```python
- sellers_controller = client.sellers
-```
-
-### <a name="create_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.create_seller") create_seller
-
-> TODO: Add a method description
-
-```python
-def create_seller(self,
-                      request,
-                      idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| request |  ``` Required ```  | Seller Model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-request = CreateSellerRequest()
-idempotency_key = 'idempotency-key'
-
-result = sellers_controller.create_seller(request, idempotency_key)
-
-```
-
-
-### <a name="update_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.update_seller") update_seller
-
-> TODO: Add a method description
-
-```python
-def update_seller(self,
-                      id,
-                      request,
-                      idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Update Seller model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-id = 'id'
-request = UpdateSellerRequest()
-idempotency_key = 'idempotency-key'
-
-result = sellers_controller.update_seller(id, request, idempotency_key)
-
-```
-
-
-### <a name="get_sellers"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.get_sellers") get_sellers
-
-> TODO: Add a method description
-
-```python
-def get_sellers(self,
-                    page=None,
-                    size=None,
-                    name=None,
-                    document=None,
-                    code=None,
-                    status=None,
-                    mtype=None,
-                    created_since=None,
-                    created_until=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | TODO: Add a parameter description |
-| document |  ``` Optional ```  | TODO: Add a parameter description |
-| code |  ``` Optional ```  | TODO: Add a parameter description |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| mtype |  ``` Optional ```  | TODO: Add a parameter description |
-| createdSince |  ``` Optional ```  | TODO: Add a parameter description |
-| createdUntil |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-page = 163
-size = 163
-name = 'name'
-document = 'document'
-code = 'code'
-status = 'status'
-mtype = 'type'
-created_since = datetime.now()
-created_until = datetime.now()
-
-result = sellers_controller.get_sellers(page, size, name, document, code, status, mtype, created_since, created_until)
-
-```
-
-
-### <a name="update_seller_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.update_seller_metadata") update_seller_metadata
-
-> TODO: Add a method description
-
-```python
-def update_seller_metadata(self,
-                               seller_id,
-                               request,
-                               idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| sellerId |  ``` Required ```  | Seller Id |
-| request |  ``` Required ```  | Request for updating the charge metadata |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-seller_id = 'seller_id'
-request = UpdateMetadataRequest()
-idempotency_key = 'idempotency-key'
-
-result = sellers_controller.update_seller_metadata(seller_id, request, idempotency_key)
-
-```
-
-
-### <a name="delete_seller"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.delete_seller") delete_seller
-
-> TODO: Add a method description
-
-```python
-def delete_seller(self,
-                      seller_id,
-                      idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| sellerId |  ``` Required ```  | Seller Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-seller_id = 'sellerId'
-idempotency_key = 'idempotency-key'
-
-result = sellers_controller.delete_seller(seller_id, idempotency_key)
-
-```
-
-
-### <a name="get_seller_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SellersController.get_seller_by_id") get_seller_by_id
-
-> TODO: Add a method description
-
-```python
-def get_seller_by_id(self,
-                         id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | Seller Id |
-
-
-
-#### Example Usage
-
-```python
-id = 'id'
-
-result = sellers_controller.get_seller_by_id(id)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
 ## <a name="tokens_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TokensController") TokensController
 
 ### Get controller instance
@@ -4204,8 +3973,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 163
-size = 163
+page = 233
+size = 233
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
