@@ -188,4 +188,10 @@ __all__ = [
     'pix_additional_information',
     'create_pix_payment_request',
     'get_transfer_settings_response',
+    'create_subscription_split_request',
+    'get_subscription_split_response',
+    'update_subscription_split_request',
+    'cancel_split_request',
+    'get_pix_payer_response',
+    'get_pix_bank_account_response',
 ]
