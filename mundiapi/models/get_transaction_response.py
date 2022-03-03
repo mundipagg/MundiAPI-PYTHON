@@ -13,6 +13,7 @@ import mundiapi.models.get_antifraud_response
 import mundiapi.models.get_card_response
 import mundiapi.models.get_billing_address_response
 import mundiapi.models.pix_additional_information
+import mundiapi.models.get_pix_payer_response
 
 class GetTransactionResponse(object):
 
@@ -1699,6 +1700,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         expires_at (datetime): TODO: type description here.
         additional_information (list of PixAdditionalInformation): TODO: type
             description here.
+        payer (GetPixPayerResponse): TODO: type description here.
 
     """
 
@@ -1721,6 +1723,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         "gateway_response":'gateway_response',
         "antifraud_response":'antifraud_response',
         "split":'split',
+        "payer":'payer',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
         "metadata":'metadata'
@@ -1744,6 +1747,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                  gateway_response=None,
                  antifraud_response=None,
                  split=None,
+                 payer=None,
                  next_attempt=None,
                  transaction_type=None,
                  metadata=None):
@@ -1754,6 +1758,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         self.qr_code_url = qr_code_url
         self.expires_at = APIHelper.RFC3339DateTime(expires_at) if expires_at else None
         self.additional_information = additional_information
+        self.payer = payer
 
         # Call the constructor for the base class
         super(GetPixTransactionResponse, self).__init__(gateway_id,
@@ -1821,6 +1826,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
             split = list()
             for structure in dictionary.get('split'):
                 split.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
+        payer = mundiapi.models.get_pix_payer_response.GetPixPayerResponse.from_dictionary(dictionary.get('payer')) if dictionary.get('payer') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
@@ -1843,6 +1849,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                    gateway_response,
                    antifraud_response,
                    split,
+                   payer,
                    next_attempt,
                    transaction_type,
                    metadata)
