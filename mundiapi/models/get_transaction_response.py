@@ -10,6 +10,8 @@ from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_split_response
 import mundiapi.models.get_gateway_response_response
 import mundiapi.models.get_antifraud_response
+import mundiapi.models.get_interest_response
+import mundiapi.models.get_fine_response
 import mundiapi.models.get_card_response
 import mundiapi.models.get_billing_address_response
 import mundiapi.models.pix_additional_information
@@ -39,6 +41,9 @@ class GetTransactionResponse(object):
             here.
         metadata (dict<object, string>): TODO: type description here.
         split (list of GetSplitResponse): TODO: type description here.
+        interest (GetInterestResponse): TODO: type description here.
+        fine (GetFineResponse): TODO: type description here.
+        max_days_to_pay_past_due (int): TODO: type description here.
 
     """
 
@@ -59,7 +64,10 @@ class GetTransactionResponse(object):
         "split":'split',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -78,7 +86,10 @@ class GetTransactionResponse(object):
                  split=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetTransactionResponse class"""
 
         # Initialize members of the class
@@ -98,6 +109,9 @@ class GetTransactionResponse(object):
         self.antifraud_response = antifraud_response
         self.metadata = metadata
         self.split = split
+        self.interest = interest
+        self.fine = fine
+        self.max_days_to_pay_past_due = max_days_to_pay_past_due
 
 
     @classmethod
@@ -160,6 +174,9 @@ class GetTransactionResponse(object):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(gateway_id,
@@ -177,7 +194,10 @@ class GetTransactionResponse(object):
                    split,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetBankTransferTransactionResponse(GetTransactionResponse):
@@ -218,7 +238,10 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
         "paid_amount":'paid_amount',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -242,7 +265,10 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                  paid_amount=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetBankTransferTransactionResponse class"""
 
         # Initialize members of the class
@@ -268,7 +294,10 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                                                                  split,
                                                                  next_attempt,
                                                                  transaction_type,
-                                                                 metadata)
+                                                                 metadata,
+                                                                 interest,
+                                                                 fine,
+                                                                 max_days_to_pay_past_due)
 
 
     @classmethod
@@ -318,6 +347,9 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(url,
@@ -340,7 +372,10 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
                    paid_amount,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetDebitCardTransactionResponse(GetTransactionResponse):
@@ -400,7 +435,10 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         "split":'split',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -433,7 +471,10 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                  split=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetDebitCardTransactionResponse class"""
 
         # Initialize members of the class
@@ -468,7 +509,10 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                                                               split,
                                                               next_attempt,
                                                               transaction_type,
-                                                              metadata)
+                                                              metadata,
+                                                              interest,
+                                                              fine,
+                                                              max_days_to_pay_past_due)
 
 
     @classmethod
@@ -527,6 +571,9 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -558,7 +605,10 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
                    split,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetVoucherTransactionResponse(GetTransactionResponse):
@@ -610,7 +660,10 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         "split":'split',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -639,7 +692,10 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                  split=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetVoucherTransactionResponse class"""
 
         # Initialize members of the class
@@ -670,7 +726,10 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                                                             split,
                                                             next_attempt,
                                                             transaction_type,
-                                                            metadata)
+                                                            metadata,
+                                                            interest,
+                                                            fine,
+                                                            max_days_to_pay_past_due)
 
 
     @classmethod
@@ -725,6 +784,9 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -752,7 +814,10 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
                    split,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetBoletoTransactionResponse(GetTransactionResponse):
@@ -816,7 +881,10 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         "credit_at":'credit_at',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -851,7 +919,10 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                  credit_at=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetBoletoTransactionResponse class"""
 
         # Initialize members of the class
@@ -888,7 +959,10 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                                                            split,
                                                            next_attempt,
                                                            transaction_type,
-                                                           metadata)
+                                                           metadata,
+                                                           interest,
+                                                           fine,
+                                                           max_days_to_pay_past_due)
 
 
     @classmethod
@@ -949,6 +1023,9 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(url,
@@ -982,7 +1059,10 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
                    credit_at,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetCashTransactionResponse(GetTransactionResponse):
@@ -1015,7 +1095,10 @@ class GetCashTransactionResponse(GetTransactionResponse):
         "split":'split',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -1035,7 +1118,10 @@ class GetCashTransactionResponse(GetTransactionResponse):
                  split=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetCashTransactionResponse class"""
 
         # Initialize members of the class
@@ -1057,7 +1143,10 @@ class GetCashTransactionResponse(GetTransactionResponse):
                                                          split,
                                                          next_attempt,
                                                          transaction_type,
-                                                         metadata)
+                                                         metadata,
+                                                         interest,
+                                                         fine,
+                                                         max_days_to_pay_past_due)
 
 
     @classmethod
@@ -1103,6 +1192,9 @@ class GetCashTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(description,
@@ -1121,7 +1213,10 @@ class GetCashTransactionResponse(GetTransactionResponse):
                    split,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetSafetyPayTransactionResponse(GetTransactionResponse):
@@ -1160,7 +1255,10 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
         "paid_amount":'paid_amount',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -1183,7 +1281,10 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                  paid_amount=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetSafetyPayTransactionResponse class"""
 
         # Initialize members of the class
@@ -1208,7 +1309,10 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                                                               split,
                                                               next_attempt,
                                                               transaction_type,
-                                                              metadata)
+                                                              metadata,
+                                                              interest,
+                                                              fine,
+                                                              max_days_to_pay_past_due)
 
 
     @classmethod
@@ -1257,6 +1361,9 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(url,
@@ -1278,7 +1385,10 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
                    paid_amount,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetCreditCardTransactionResponse(GetTransactionResponse):
@@ -1334,7 +1444,10 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         "installments":'installments',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -1365,7 +1478,10 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                  installments=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetCreditCardTransactionResponse class"""
 
         # Initialize members of the class
@@ -1398,7 +1514,10 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                                                                split,
                                                                next_attempt,
                                                                transaction_type,
-                                                               metadata)
+                                                               metadata,
+                                                               interest,
+                                                               fine,
+                                                               max_days_to_pay_past_due)
 
 
     @classmethod
@@ -1455,6 +1574,9 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -1484,7 +1606,10 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
                    installments,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetPrivateLabelTransactionResponse(GetTransactionResponse):
@@ -1538,7 +1663,10 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
         "installments":'installments',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -1568,7 +1696,10 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
                  installments=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetPrivateLabelTransactionResponse class"""
 
         # Initialize members of the class
@@ -1600,7 +1731,10 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
                                                                  split,
                                                                  next_attempt,
                                                                  transaction_type,
-                                                                 metadata)
+                                                                 metadata,
+                                                                 interest,
+                                                                 fine,
+                                                                 max_days_to_pay_past_due)
 
 
     @classmethod
@@ -1656,6 +1790,9 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(statement_descriptor,
@@ -1684,7 +1821,10 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
                    installments,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
 class GetPixTransactionResponse(GetTransactionResponse):
@@ -1726,7 +1866,10 @@ class GetPixTransactionResponse(GetTransactionResponse):
         "payer":'payer',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
-        "metadata":'metadata'
+        "metadata":'metadata',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -1750,7 +1893,10 @@ class GetPixTransactionResponse(GetTransactionResponse):
                  payer=None,
                  next_attempt=None,
                  transaction_type=None,
-                 metadata=None):
+                 metadata=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the GetPixTransactionResponse class"""
 
         # Initialize members of the class
@@ -1776,7 +1922,10 @@ class GetPixTransactionResponse(GetTransactionResponse):
                                                         split,
                                                         next_attempt,
                                                         transaction_type,
-                                                        metadata)
+                                                        metadata,
+                                                        interest,
+                                                        fine,
+                                                        max_days_to_pay_past_due)
 
 
     @classmethod
@@ -1830,6 +1979,9 @@ class GetPixTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
+        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(qr_code,
@@ -1852,6 +2004,9 @@ class GetPixTransactionResponse(GetTransactionResponse):
                    payer,
                    next_attempt,
                    transaction_type,
-                   metadata)
+                   metadata,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 

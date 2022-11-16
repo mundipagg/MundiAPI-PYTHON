@@ -275,8 +275,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 4
-size = 4
+page = 190
+size = 190
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -500,8 +500,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 4
-size = 4
+page = 190
+size = 190
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -610,114 +610,6 @@ result = customers_controller.update_card(customer_id, card_id, request, idempot
 ```
 
 
-### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
-
-> Get all cards from a customer
-
-```python
-def get_cards(self,
-                  customer_id,
-                  page=None,
-                  size=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-page = 4
-size = 4
-
-result = customers_controller.get_cards(customer_id, page, size)
-
-```
-
-
-### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_card") delete_card
-
-> Delete a customer's card
-
-```python
-def delete_card(self,
-                    customer_id,
-                    card_id,
-                    idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| cardId |  ``` Required ```  | Card Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-customer_id = 'customer_id'
-card_id = 'card_id'
-idempotency_key = 'idempotency-key'
-
-result = customers_controller.delete_card(customer_id, card_id, idempotency_key)
-
-```
-
-
-### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
-
-> Get all Customers
-
-```python
-def get_customers(self,
-                      name=None,
-                      document=None,
-                      page=1,
-                      size=10,
-                      email=None,
-                      code=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| name |  ``` Optional ```  | Name of the Customer |
-| document |  ``` Optional ```  | Document of the Customer |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
-| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
-| email |  ``` Optional ```  | Customer's email |
-| code |  ``` Optional ```  | Customer's code |
-
-
-
-#### Example Usage
-
-```python
-name = 'name'
-document = 'document'
-page = 1
-size = 10
-email = 'email'
-code = 'Code'
-
-result = customers_controller.get_customers(name, document, page, size, email, code)
-
-```
-
-
 ### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_access_token") delete_access_token
 
 > Delete a customer's access token
@@ -810,6 +702,114 @@ customer_id = 'customer_id'
 card_id = 'card_id'
 
 result = customers_controller.get_card(customer_id, card_id)
+
+```
+
+
+### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
+
+> Get all cards from a customer
+
+```python
+def get_cards(self,
+                  customer_id,
+                  page=None,
+                  size=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+page = 190
+size = 190
+
+result = customers_controller.get_cards(customer_id, page, size)
+
+```
+
+
+### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_card") delete_card
+
+> Delete a customer's card
+
+```python
+def delete_card(self,
+                    customer_id,
+                    card_id,
+                    idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| cardId |  ``` Required ```  | Card Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+customer_id = 'customer_id'
+card_id = 'card_id'
+idempotency_key = 'idempotency-key'
+
+result = customers_controller.delete_card(customer_id, card_id, idempotency_key)
+
+```
+
+
+### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
+
+> Get all Customers
+
+```python
+def get_customers(self,
+                      name=None,
+                      document=None,
+                      page=1,
+                      size=10,
+                      email=None,
+                      code=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| name |  ``` Optional ```  | Name of the Customer |
+| document |  ``` Optional ```  | Document of the Customer |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
+| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+| email |  ``` Optional ```  | Customer's email |
+| code |  ``` Optional ```  | Customer's code |
+
+
+
+#### Example Usage
+
+```python
+name = 'name'
+document = 'document'
+page = 1
+size = 10
+email = 'email'
+code = 'Code'
+
+result = customers_controller.get_customers(name, document, page, size, email, code)
 
 ```
 
@@ -955,8 +955,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 4
-size = 4
+page = 190
+size = 190
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1220,8 +1220,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 4
-size = 4
+page = 98
+size = 98
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -1391,8 +1391,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 4
-size = 4
+page = 98
+size = 98
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -1463,8 +1463,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 4
-size = 4
+page = 98
+size = 98
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -1570,6 +1570,39 @@ result = recipients_controller.get_recipient(recipient_id)
 ```
 
 
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
+
+> Gets the anticipation limits for a recipient
+
+```python
+def get_anticipation_limits(self,
+                                recipient_id,
+                                timeframe,
+                                payment_date)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| paymentDate |  ``` Required ```  | Anticipation payment date |
+
+
+
+#### Example Usage
+
+```python
+recipient_id = 'recipient_id'
+timeframe = 'timeframe'
+payment_date = datetime.now()
+
+result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
+
+```
+
+
 ### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfer") get_transfer
 
 > Gets a transfer
@@ -1631,8 +1664,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 4
-size = 4
+page = 98
+size = 98
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -1738,39 +1771,6 @@ result = recipients_controller.create_transfer(recipient_id, request, idempotenc
 ```
 
 
-### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
-
-> Gets the anticipation limits for a recipient
-
-```python
-def get_anticipation_limits(self,
-                                recipient_id,
-                                timeframe,
-                                payment_date)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recipientId |  ``` Required ```  | Recipient id |
-| timeframe |  ``` Required ```  | Timeframe |
-| paymentDate |  ``` Required ```  | Anticipation payment date |
-
-
-
-#### Example Usage
-
-```python
-recipient_id = 'recipient_id'
-timeframe = 'timeframe'
-payment_date = datetime.now()
-
-result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
-
-```
-
-
 ### <a name="create_withdraw"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_withdraw") create_withdraw
 
 > TODO: Add a method description
@@ -1862,8 +1862,8 @@ def get_withdrawals(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 4
-size = 4
+page = 98
+size = 98
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -2301,8 +2301,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 217
-page = 217
+size = 98
+page = 98
 item_id = 'item_id'
 group = 'group'
 
@@ -2498,8 +2498,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 217
-size = 217
+page = 7
+size = 7
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -2611,8 +2611,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 217
-size = 217
+page = 7
+size = 7
 code = 'code'
 group = 'group'
 used_since = datetime.now()
@@ -2718,6 +2718,180 @@ page = 'page'
 size = 'size'
 
 result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
+
+> Gets all subscriptions
+
+```python
+def get_subscriptions(self,
+                          page=None,
+                          size=None,
+                          code=None,
+                          billing_type=None,
+                          customer_id=None,
+                          plan_id=None,
+                          card_id=None,
+                          status=None,
+                          next_billing_since=None,
+                          next_billing_until=None,
+                          created_since=None,
+                          created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+
+#### Example Usage
+
+```python
+page = 7
+size = 7
+code = 'code'
+billing_type = 'billing_type'
+customer_id = 'customer_id'
+plan_id = 'plan_id'
+card_id = 'card_id'
+status = 'status'
+next_billing_since = datetime.now()
+next_billing_until = datetime.now()
+created_since = datetime.now()
+created_until = datetime.now()
+
+result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
+
+> TODO: Add a method description
+
+```python
+def get_discount_by_id(self,
+                           subscription_id,
+                           discount_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+discount_id = 'discountId'
+
+result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
+
+> Get Subscription Items
+
+```python
+def get_subscription_items(self,
+                               subscription_id,
+                               page=None,
+                               size=None,
+                               name=None,
+                               code=None,
+                               status=None,
+                               description=None,
+                               created_since=None,
+                               created_until=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+page = 7
+size = 7
+name = 'name'
+code = 'code'
+status = 'status'
+description = 'description'
+created_since = 'created_since'
+created_until = 'created_until'
+
+result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
+
+> Atualização do valor mínimo da assinatura
+
+```python
+def update_subscription_minium_price(self,
+                                         subscription_id,
+                                         request,
+                                         idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionMinimumPriceRequest()
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, idempotency_key)
 
 ```
 
@@ -2939,8 +3113,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 217
-size = 217
+page = 7
+size = 7
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2976,180 +3150,6 @@ request = CreateIncrementRequest()
 idempotency_key = 'idempotency-key'
 
 result = subscriptions_controller.create_increment(subscription_id, request, idempotency_key)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
-
-> Gets all subscriptions
-
-```python
-def get_subscriptions(self,
-                          page=None,
-                          size=None,
-                          code=None,
-                          billing_type=None,
-                          customer_id=None,
-                          plan_id=None,
-                          card_id=None,
-                          status=None,
-                          next_billing_since=None,
-                          next_billing_until=None,
-                          created_since=None,
-                          created_until=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billingType |  ``` Optional ```  | Filter for subscription's billing type |
-| customerId |  ``` Optional ```  | Filter for subscription's customer id |
-| planId |  ``` Optional ```  | Filter for subscription's plan id |
-| cardId |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-
-#### Example Usage
-
-```python
-page = 217
-size = 217
-code = 'code'
-billing_type = 'billing_type'
-customer_id = 'customer_id'
-plan_id = 'plan_id'
-card_id = 'card_id'
-status = 'status'
-next_billing_since = datetime.now()
-next_billing_until = datetime.now()
-created_since = datetime.now()
-created_until = datetime.now()
-
-result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
-
-> TODO: Add a method description
-
-```python
-def get_discount_by_id(self,
-                           subscription_id,
-                           discount_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-discount_id = 'discountId'
-
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
-
-```
-
-
-### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
-
-> Get Subscription Items
-
-```python
-def get_subscription_items(self,
-                               subscription_id,
-                               page=None,
-                               size=None,
-                               name=None,
-                               code=None,
-                               status=None,
-                               description=None,
-                               created_since=None,
-                               created_until=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | The item name |
-| code |  ``` Optional ```  | Identification code in the client system |
-| status |  ``` Optional ```  | The item statis |
-| description |  ``` Optional ```  | The item description |
-| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-page = 217
-size = 217
-name = 'name'
-code = 'code'
-status = 'status'
-description = 'description'
-created_since = 'created_since'
-created_until = 'created_until'
-
-result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
-
-```
-
-
-### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
-
-> Atualização do valor mínimo da assinatura
-
-```python
-def update_subscription_minium_price(self,
-                                         subscription_id,
-                                         request,
-                                         idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionMinimumPriceRequest()
-idempotency_key = 'idempotency-key'
-
-result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, idempotency_key)
 
 ```
 
@@ -3382,36 +3382,6 @@ result = invoices_controller.update_invoice_metadata(invoice_id, request, idempo
 ```
 
 
-### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
-
-> Cancels an invoice
-
-```python
-def cancel_invoice(self,
-                       invoice_id,
-                       idempotency_key=None)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-invoice_id = 'invoice_id'
-idempotency_key = 'idempotency-key'
-
-result = invoices_controller.cancel_invoice(invoice_id, idempotency_key)
-
-```
-
-
 ### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoices") get_invoices
 
 > Gets all invoices
@@ -3452,8 +3422,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 53
-size = 53
+page = 48
+size = 48
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3465,6 +3435,36 @@ due_until = datetime.now()
 customer_document = 'customer_document'
 
 result = invoices_controller.get_invoices(page, size, code, customer_id, subscription_id, created_since, created_until, status, due_since, due_until, customer_document)
+
+```
+
+
+### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
+
+> Cancels an invoice
+
+```python
+def cancel_invoice(self,
+                       invoice_id,
+                       idempotency_key=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+invoice_id = 'invoice_id'
+idempotency_key = 'idempotency-key'
+
+result = invoices_controller.cancel_invoice(invoice_id, idempotency_key)
 
 ```
 
@@ -3609,8 +3609,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 53
-size = 53
+page = 48
+size = 48
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -4003,8 +4003,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 53
-size = 53
+page = 48
+size = 48
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -4172,36 +4172,6 @@ result = plans_controller.delete_plan_item(plan_id, plan_item_id, idempotency_ke
 ```
 
 
-### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
-
-> Gets a plan item
-
-```python
-def get_plan_item(self,
-                      plan_id,
-                      plan_item_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-
-#### Example Usage
-
-```python
-plan_id = 'plan_id'
-plan_item_id = 'plan_item_id'
-
-result = plans_controller.get_plan_item(plan_id, plan_item_id)
-
-```
-
-
 ### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan") delete_plan
 
 > Deletes a plan
@@ -4228,6 +4198,36 @@ plan_id = 'plan_id'
 idempotency_key = 'idempotency-key'
 
 result = plans_controller.delete_plan(plan_id, idempotency_key)
+
+```
+
+
+### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
+
+> Gets a plan item
+
+```python
+def get_plan_item(self,
+                      plan_id,
+                      plan_item_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+
+#### Example Usage
+
+```python
+plan_id = 'plan_id'
+plan_item_id = 'plan_item_id'
+
+result = plans_controller.get_plan_item(plan_id, plan_item_id)
 
 ```
 
