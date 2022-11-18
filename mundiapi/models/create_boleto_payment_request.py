@@ -8,6 +8,8 @@
 
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.create_address_request
+import mundiapi.models.create_interest_request
+import mundiapi.models.create_fine_request
 
 class CreateBoletoPaymentRequest(object):
 
@@ -26,6 +28,9 @@ class CreateBoletoPaymentRequest(object):
         billing_address_id (string): The address id for the billing address
         nosso_numero (string): Customer identification number with the bank
         document_number (string): Boleto identification
+        interest (CreateInterestRequest): TODO: type description here.
+        fine (CreateFineRequest): TODO: type description here.
+        max_days_to_pay_past_due (int): TODO: type description here.
 
     """
 
@@ -38,7 +43,10 @@ class CreateBoletoPaymentRequest(object):
         "billing_address_id":'billing_address_id',
         "document_number":'document_number',
         "due_at":'due_at',
-        "nosso_numero":'nosso_numero'
+        "nosso_numero":'nosso_numero',
+        "interest":'interest',
+        "fine":'fine',
+        "max_days_to_pay_past_due":'max_days_to_pay_past_due'
     }
 
     def __init__(self,
@@ -49,7 +57,10 @@ class CreateBoletoPaymentRequest(object):
                  billing_address_id=None,
                  document_number=None,
                  due_at=None,
-                 nosso_numero=None):
+                 nosso_numero=None,
+                 interest=None,
+                 fine=None,
+                 max_days_to_pay_past_due=None):
         """Constructor for the CreateBoletoPaymentRequest class"""
 
         # Initialize members of the class
@@ -61,6 +72,9 @@ class CreateBoletoPaymentRequest(object):
         self.billing_address_id = billing_address_id
         self.nosso_numero = nosso_numero
         self.document_number = document_number
+        self.interest = interest
+        self.fine = fine
+        self.max_days_to_pay_past_due = max_days_to_pay_past_due
 
 
     @classmethod
@@ -89,6 +103,9 @@ class CreateBoletoPaymentRequest(object):
         document_number = dictionary.get('document_number')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         nosso_numero = dictionary.get('nosso_numero')
+        interest = mundiapi.models.create_interest_request.CreateInterestRequest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.create_fine_request.CreateFineRequest.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
         return cls(retries,
@@ -98,6 +115,9 @@ class CreateBoletoPaymentRequest(object):
                    billing_address_id,
                    document_number,
                    due_at,
-                   nosso_numero)
+                   nosso_numero,
+                   interest,
+                   fine,
+                   max_days_to_pay_past_due)
 
 
