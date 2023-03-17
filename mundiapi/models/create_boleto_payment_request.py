@@ -7,9 +7,9 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.create_address_request
-import mundiapi.models.create_interest_request
-import mundiapi.models.create_fine_request
+import mundiapi.models.billing_address_1
+import mundiapi.models.interest
+import mundiapi.models.fine
 
 class CreateBoletoPaymentRequest(object):
 
@@ -24,12 +24,12 @@ class CreateBoletoPaymentRequest(object):
         instructions (string): The instructions field that will be printed on
             the boleto.
         due_at (datetime): Boleto due date
-        billing_address (CreateAddressRequest): Card's billing address
+        billing_address (BillingAddress1): TODO: type description here.
         billing_address_id (string): The address id for the billing address
         nosso_numero (string): Customer identification number with the bank
         document_number (string): Boleto identification
-        interest (CreateInterestRequest): TODO: type description here.
-        fine (CreateFineRequest): TODO: type description here.
+        interest (Interest): TODO: type description here.
+        fine (Fine): TODO: type description here.
         max_days_to_pay_past_due (int): TODO: type description here.
 
     """
@@ -98,13 +98,13 @@ class CreateBoletoPaymentRequest(object):
         retries = dictionary.get('retries')
         bank = dictionary.get('bank')
         instructions = dictionary.get('instructions')
-        billing_address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        billing_address = mundiapi.models.billing_address_1.BillingAddress1.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         billing_address_id = dictionary.get('billing_address_id')
         document_number = dictionary.get('document_number')
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         nosso_numero = dictionary.get('nosso_numero')
-        interest = mundiapi.models.create_interest_request.CreateInterestRequest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.create_fine_request.CreateFineRequest.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model

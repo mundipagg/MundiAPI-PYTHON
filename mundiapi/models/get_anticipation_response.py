@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_recipient_response
+import mundiapi.models.recipient
 
 class GetAnticipationResponse(object):
 
@@ -19,7 +19,7 @@ class GetAnticipationResponse(object):
         id (string): Id
         requested_amount (int): Requested amount
         approved_amount (int): Approved amount
-        recipient (GetRecipientResponse): Recipient
+        recipient (Recipient): TODO: type description here.
         pgid (string): Anticipation id on the gateway
         created_at (datetime): Creation date
         updated_at (datetime): Last update date
@@ -96,7 +96,7 @@ class GetAnticipationResponse(object):
         payment_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("payment_date")).datetime if dictionary.get("payment_date") else None
         status = dictionary.get('status')
         timeframe = dictionary.get('timeframe')
-        recipient = mundiapi.models.get_recipient_response.GetRecipientResponse.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
+        recipient = mundiapi.models.recipient.Recipient.from_dictionary(dictionary.get('recipient')) if dictionary.get('recipient') else None
 
         # Return an object of this model
         return cls(id,

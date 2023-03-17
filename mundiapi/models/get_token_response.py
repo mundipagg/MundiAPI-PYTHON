@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_card_token_response
+import mundiapi.models.card_9
 
 class GetTokenResponse(object):
 
@@ -20,7 +20,7 @@ class GetTokenResponse(object):
         mtype (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         expires_at (string): TODO: type description here.
-        card (GetCardTokenResponse): TODO: type description here.
+        card (Card9): TODO: type description here.
 
     """
 
@@ -71,7 +71,7 @@ class GetTokenResponse(object):
         mtype = dictionary.get('type')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         expires_at = dictionary.get('expires_at')
-        card = mundiapi.models.get_card_token_response.GetCardTokenResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card_9.Card9.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
 
         # Return an object of this model
         return cls(id,

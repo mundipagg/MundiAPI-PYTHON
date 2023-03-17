@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_customer_response
+import mundiapi.models.customer
 
 class GetAddressResponse(object):
 
@@ -28,7 +28,7 @@ class GetAddressResponse(object):
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
-        customer (GetCustomerResponse): TODO: type description here.
+        customer (Customer): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         line_1 (string): Line 1 for address
         line_2 (string): Line 2 for address
@@ -130,7 +130,7 @@ class GetAddressResponse(object):
         metadata = dictionary.get('metadata')
         line_1 = dictionary.get('line_1')
         line_2 = dictionary.get('line_2')
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

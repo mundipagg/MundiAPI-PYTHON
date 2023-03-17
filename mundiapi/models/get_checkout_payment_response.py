@@ -7,13 +7,13 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_customer_response
-import mundiapi.models.get_address_response
+import mundiapi.models.customer
+import mundiapi.models.billingaddress_3
 import mundiapi.models.get_checkout_credit_card_payment_response
 import mundiapi.models.get_checkout_boleto_payment_response
-import mundiapi.models.get_shipping_response
+import mundiapi.models.shipping
 import mundiapi.models.get_checkout_debit_card_payment_response
-import mundiapi.models.get_checkout_bank_transfer_payment_response
+import mundiapi.models.bank_transfer
 
 class GetCheckoutPaymentResponse(object):
 
@@ -39,22 +39,22 @@ class GetCheckoutPaymentResponse(object):
         updated_at (datetime): Data de atualização
         canceled_at (datetime): Data de cancelamento
         customer_editable (bool): Torna o objeto customer editável
-        customer (GetCustomerResponse): Dados do comprador
-        billingaddress (GetAddressResponse): Dados do endereço de cobrança
-        credit_card (GetCheckoutCreditCardPaymentResponse): Configurações de
-            cartão de crédito
-        boleto (GetCheckoutBoletoPaymentResponse): Configurações de boleto
+        customer (Customer): TODO: type description here.
+        billingaddress (Billingaddress3): TODO: type description here.
+        credit_card (GetCheckoutCreditCardPaymentResponse): TODO: type
+            description here.
+        boleto (GetCheckoutBoletoPaymentResponse): TODO: type description
+            here.
         billing_address_editable (bool): Indica se o billing address poderá
             ser editado
-        shipping (GetShippingResponse): Configurações  de entrega
+        shipping (Shipping): TODO: type description here.
         shippable (bool): Indica se possui entrega
         closed_at (datetime): Data de fechamento
         expires_at (datetime): Data de expiração
         currency (string): Moeda
-        debit_card (GetCheckoutDebitCardPaymentResponse): Configurações de
-            cartão de débito
-        bank_transfer (GetCheckoutBankTransferPaymentResponse): Bank transfer
-            payment response
+        debit_card (GetCheckoutDebitCardPaymentResponse): TODO: type
+            description here.
+        bank_transfer (BankTransfer): TODO: type description here.
         accepted_brands (list of string): Accepted Brands
 
     """
@@ -176,21 +176,21 @@ class GetCheckoutPaymentResponse(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         customer_editable = dictionary.get('customer_editable')
-        billingaddress = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('billingaddress')) if dictionary.get('billingaddress') else None
+        billingaddress = mundiapi.models.billingaddress_3.Billingaddress3.from_dictionary(dictionary.get('billingaddress')) if dictionary.get('billingaddress') else None
         credit_card = mundiapi.models.get_checkout_credit_card_payment_response.GetCheckoutCreditCardPaymentResponse.from_dictionary(dictionary.get('credit_card')) if dictionary.get('credit_card') else None
         boleto = mundiapi.models.get_checkout_boleto_payment_response.GetCheckoutBoletoPaymentResponse.from_dictionary(dictionary.get('boleto')) if dictionary.get('boleto') else None
         billing_address_editable = dictionary.get('billing_address_editable')
-        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        shipping = mundiapi.models.shipping.Shipping.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         shippable = dictionary.get('shippable')
         currency = dictionary.get('currency')
         accepted_brands = dictionary.get('accepted_brands')
         amount = dictionary.get('amount')
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         closed_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("closed_at")).datetime if dictionary.get("closed_at") else None
         expires_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("expires_at")).datetime if dictionary.get("expires_at") else None
         debit_card = mundiapi.models.get_checkout_debit_card_payment_response.GetCheckoutDebitCardPaymentResponse.from_dictionary(dictionary.get('debit_card')) if dictionary.get('debit_card') else None
-        bank_transfer = mundiapi.models.get_checkout_bank_transfer_payment_response.GetCheckoutBankTransferPaymentResponse.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
+        bank_transfer = mundiapi.models.bank_transfer.BankTransfer.from_dictionary(dictionary.get('bank_transfer')) if dictionary.get('bank_transfer') else None
 
         # Return an object of this model
         return cls(id,

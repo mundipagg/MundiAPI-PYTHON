@@ -7,8 +7,8 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_pricing_scheme_response
-import mundiapi.models.get_plan_response
+import mundiapi.models.pricing_scheme
+import mundiapi.models.plan
 
 class GetPlanItemResponse(object):
 
@@ -22,10 +22,9 @@ class GetPlanItemResponse(object):
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
-        pricing_scheme (GetPricingSchemeResponse): TODO: type description
-            here.
+        pricing_scheme (PricingScheme): TODO: type description here.
         description (string): TODO: type description here.
-        plan (GetPlanResponse): TODO: type description here.
+        plan (Plan): TODO: type description here.
         quantity (int): TODO: type description here.
         cycles (int): TODO: type description here.
         deleted_at (datetime): TODO: type description here.
@@ -98,9 +97,9 @@ class GetPlanItemResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        pricing_scheme = mundiapi.models.pricing_scheme.PricingScheme.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         description = dictionary.get('description')
-        plan = mundiapi.models.get_plan_response.GetPlanResponse.from_dictionary(dictionary.get('plan')) if dictionary.get('plan') else None
+        plan = mundiapi.models.plan.Plan.from_dictionary(dictionary.get('plan')) if dictionary.get('plan') else None
         quantity = dictionary.get('quantity')
         cycles = dictionary.get('cycles')
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None

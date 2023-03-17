@@ -8,14 +8,13 @@
 
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_split_response
-import mundiapi.models.get_gateway_response_response
+import mundiapi.models.gateway_response
 import mundiapi.models.get_antifraud_response
-import mundiapi.models.get_interest_response
-import mundiapi.models.get_fine_response
-import mundiapi.models.get_card_response
-import mundiapi.models.get_billing_address_response
+import mundiapi.models.interest
+import mundiapi.models.fine
+import mundiapi.models.card
+import mundiapi.models.billing_address
 import mundiapi.models.pix_additional_information
-import mundiapi.models.get_pix_payer_response
 
 class GetTransactionResponse(object):
 
@@ -36,13 +35,13 @@ class GetTransactionResponse(object):
         next_attempt (datetime): Date and time of the next attempt
         transaction_type (string): TODO: type description here.
         id (string): Código da transação
-        gateway_response (GetGatewayResponseResponse): The Gateway Response
+        gateway_response (GatewayResponse): TODO: type description here.
         antifraud_response (GetAntifraudResponse): TODO: type description
             here.
         metadata (dict<object, string>): TODO: type description here.
         split (list of GetSplitResponse): TODO: type description here.
-        interest (GetInterestResponse): TODO: type description here.
-        fine (GetFineResponse): TODO: type description here.
+        interest (Interest): TODO: type description here.
+        fine (Fine): TODO: type description here.
         max_days_to_pay_past_due (int): TODO: type description here.
 
     """
@@ -164,7 +163,7 @@ class GetTransactionResponse(object):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -174,8 +173,8 @@ class GetTransactionResponse(object):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -335,7 +334,7 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -347,8 +346,8 @@ class GetBankTransferTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -394,7 +393,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         acquirer_nsu (string): Acquirer NSU
         acquirer_auth_code (string): Acquirer authorization code
         operation_type (string): Operation type
-        card (GetCardResponse): Card data
+        card (Card): TODO: type description here.
         acquirer_message (string): Acquirer message
         acquirer_return_code (string): Acquirer Return Code
         mpi (string): Merchant Plugin
@@ -540,7 +539,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         acquirer_nsu = dictionary.get('acquirer_nsu')
         acquirer_auth_code = dictionary.get('acquirer_auth_code')
         operation_type = dictionary.get('operation_type')
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card.Card.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         acquirer_message = dictionary.get('acquirer_message')
         acquirer_return_code = dictionary.get('acquirer_return_code')
         mpi = dictionary.get('mpi')
@@ -561,7 +560,7 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -571,8 +570,8 @@ class GetDebitCardTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -629,7 +628,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         acquirer_message (string): acquirer_message
         acquirer_return_code (string): Acquirer return code
         operation_type (string): Operation type
-        card (GetCardResponse): Card data
+        card (Card): TODO: type description here.
 
     """
 
@@ -759,7 +758,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         acquirer_message = dictionary.get('acquirer_message')
         acquirer_return_code = dictionary.get('acquirer_return_code')
         operation_type = dictionary.get('operation_type')
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card.Card.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         gateway_id = dictionary.get('gateway_id')
         amount = dictionary.get('amount')
         status = dictionary.get('status')
@@ -774,7 +773,7 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -784,8 +783,8 @@ class GetVoucherTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -834,8 +833,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         bank (string): TODO: type description here.
         document_number (string): TODO: type description here.
         instructions (string): TODO: type description here.
-        billing_address (GetBillingAddressResponse): TODO: type description
-            here.
+        billing_address (BillingAddress): TODO: type description here.
         due_at (datetime): TODO: type description here.
         qr_code (string): TODO: type description here.
         line (string): TODO: type description here.
@@ -989,7 +987,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         bank = dictionary.get('bank')
         document_number = dictionary.get('document_number')
         instructions = dictionary.get('instructions')
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        billing_address = mundiapi.models.billing_address.BillingAddress.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         qr_code = dictionary.get('qr_code')
         line = dictionary.get('line')
         pdf_password = dictionary.get('pdf_password')
@@ -1010,7 +1008,7 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -1023,8 +1021,8 @@ class GetBoletoTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1182,7 +1180,7 @@ class GetCashTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -1192,8 +1190,8 @@ class GetCashTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1349,7 +1347,7 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -1361,8 +1359,8 @@ class GetSafetyPayTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1407,7 +1405,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         acquirer_nsu (string): Acquirer NSU
         acquirer_auth_code (string): Acquirer authorization code
         operation_type (string): Operation type
-        card (GetCardResponse): Card data
+        card (Card): TODO: type description here.
         acquirer_message (string): Acquirer message
         acquirer_return_code (string): Acquirer Return Code
         installments (int): Number of installments
@@ -1545,7 +1543,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         acquirer_nsu = dictionary.get('acquirer_nsu')
         acquirer_auth_code = dictionary.get('acquirer_auth_code')
         operation_type = dictionary.get('operation_type')
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card.Card.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         acquirer_message = dictionary.get('acquirer_message')
         acquirer_return_code = dictionary.get('acquirer_return_code')
         threed_authentication_url = dictionary.get('threed_authentication_url')
@@ -1563,7 +1561,7 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -1574,8 +1572,8 @@ class GetCreditCardTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1628,7 +1626,7 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
         acquirer_nsu (string): Acquirer NSU
         acquirer_auth_code (string): Acquirer authorization code
         operation_type (string): Operation type
-        card (GetCardResponse): Card data
+        card (Card): TODO: type description here.
         acquirer_message (string): Acquirer message
         acquirer_return_code (string): Acquirer Return Code
         installments (int): Number of installments
@@ -1762,7 +1760,7 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
         acquirer_nsu = dictionary.get('acquirer_nsu')
         acquirer_auth_code = dictionary.get('acquirer_auth_code')
         operation_type = dictionary.get('operation_type')
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card.Card.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         acquirer_message = dictionary.get('acquirer_message')
         acquirer_return_code = dictionary.get('acquirer_return_code')
         gateway_id = dictionary.get('gateway_id')
@@ -1779,7 +1777,7 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
@@ -1790,8 +1788,8 @@ class GetPrivateLabelTransactionResponse(GetTransactionResponse):
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1840,7 +1838,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         expires_at (datetime): TODO: type description here.
         additional_information (list of PixAdditionalInformation): TODO: type
             description here.
-        payer (GetPixPayerResponse): TODO: type description here.
+        payer (object): TODO: type description here.
 
     """
 
@@ -1850,6 +1848,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         "qr_code_url":'qr_code_url',
         "expires_at":'expires_at',
         "additional_information":'additional_information',
+        "payer":'payer',
         "gateway_id":'gateway_id',
         "amount":'amount',
         "status":'status',
@@ -1863,7 +1862,6 @@ class GetPixTransactionResponse(GetTransactionResponse):
         "gateway_response":'gateway_response',
         "antifraud_response":'antifraud_response',
         "split":'split',
-        "payer":'payer',
         "next_attempt":'next_attempt',
         "transaction_type":'transaction_type',
         "metadata":'metadata',
@@ -1877,6 +1875,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                  qr_code_url=None,
                  expires_at=None,
                  additional_information=None,
+                 payer=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -1890,7 +1889,6 @@ class GetPixTransactionResponse(GetTransactionResponse):
                  gateway_response=None,
                  antifraud_response=None,
                  split=None,
-                 payer=None,
                  next_attempt=None,
                  transaction_type=None,
                  metadata=None,
@@ -1954,6 +1952,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
             additional_information = list()
             for structure in dictionary.get('additional_information'):
                 additional_information.append(mundiapi.models.pix_additional_information.PixAdditionalInformation.from_dictionary(structure))
+        payer = dictionary.get('payer')
         gateway_id = dictionary.get('gateway_id')
         amount = dictionary.get('amount')
         status = dictionary.get('status')
@@ -1968,19 +1967,18 @@ class GetPixTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('splits'):
                 splits.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
         id = dictionary.get('id')
-        gateway_response = mundiapi.models.get_gateway_response_response.GetGatewayResponseResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
+        gateway_response = mundiapi.models.gateway_response.GatewayResponse.from_dictionary(dictionary.get('gateway_response')) if dictionary.get('gateway_response') else None
         antifraud_response = mundiapi.models.get_antifraud_response.GetAntifraudResponse.from_dictionary(dictionary.get('antifraud_response')) if dictionary.get('antifraud_response') else None
         split = None
         if dictionary.get('split') != None:
             split = list()
             for structure in dictionary.get('split'):
                 split.append(mundiapi.models.get_split_response.GetSplitResponse.from_dictionary(structure))
-        payer = mundiapi.models.get_pix_payer_response.GetPixPayerResponse.from_dictionary(dictionary.get('payer')) if dictionary.get('payer') else None
         next_attempt = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_attempt")).datetime if dictionary.get("next_attempt") else None
         transaction_type = dictionary.get('transaction_type')
         metadata = dictionary.get('metadata')
-        interest = mundiapi.models.get_interest_response.GetInterestResponse.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
-        fine = mundiapi.models.get_fine_response.GetFineResponse.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
+        interest = mundiapi.models.interest.Interest.from_dictionary(dictionary.get('interest')) if dictionary.get('interest') else None
+        fine = mundiapi.models.fine.Fine.from_dictionary(dictionary.get('fine')) if dictionary.get('fine') else None
         max_days_to_pay_past_due = dictionary.get('max_days_to_pay_past_due')
 
         # Return an object of this model
@@ -1988,6 +1986,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                    qr_code_url,
                    expires_at,
                    additional_information,
+                   payer,
                    gateway_id,
                    amount,
                    status,
@@ -2001,7 +2000,6 @@ class GetPixTransactionResponse(GetTransactionResponse):
                    gateway_response,
                    antifraud_response,
                    split,
-                   payer,
                    next_attempt,
                    transaction_type,
                    metadata,

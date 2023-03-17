@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_anticipation_response
-import mundiapi.models.paging_response
+import mundiapi.models.paging
 
 class ListAnticipationResponse(object):
 
@@ -17,7 +17,7 @@ class ListAnticipationResponse(object):
 
     Attributes:
         data (list of GetAnticipationResponse): Anticipations
-        paging (PagingResponse): Paging
+        paging (Paging): TODO: type description here.
 
     """
 
@@ -60,7 +60,7 @@ class ListAnticipationResponse(object):
             data = list()
             for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_anticipation_response.GetAnticipationResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
+        paging = mundiapi.models.paging.Paging.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

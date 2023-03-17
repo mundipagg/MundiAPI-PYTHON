@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.create_plan_item_request
-import mundiapi.models.create_pricing_scheme_request
+import mundiapi.models.pricing_scheme_4
 
 class CreatePlanRequest(object):
 
@@ -33,7 +33,7 @@ class CreatePlanRequest(object):
         billing_days (list of int): Allowed billings days for the
             subscription, in case the plan type is 'exact_day'
         billing_type (string): Billing type
-        pricing_scheme (CreatePricingSchemeRequest): Plan's pricing scheme
+        pricing_scheme (PricingScheme4): TODO: type description here.
         metadata (dict<object, string>): Metadata
         minimum_price (int): Minimum price that will be charged
         cycles (int): Number of cycles
@@ -141,7 +141,7 @@ class CreatePlanRequest(object):
         interval_count = dictionary.get('interval_count')
         billing_days = dictionary.get('billing_days')
         billing_type = dictionary.get('billing_type')
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        pricing_scheme = mundiapi.models.pricing_scheme_4.PricingScheme4.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         metadata = dictionary.get('metadata')
         minimum_price = dictionary.get('minimum_price')
         cycles = dictionary.get('cycles')

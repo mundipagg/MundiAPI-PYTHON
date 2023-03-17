@@ -7,14 +7,14 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_period_response
-import mundiapi.models.get_customer_response
-import mundiapi.models.get_card_response
+import mundiapi.models.current_cycle
+import mundiapi.models.customer
+import mundiapi.models.card
 import mundiapi.models.get_subscription_item_response
-import mundiapi.models.get_setup_response
+import mundiapi.models.setup
 import mundiapi.models.get_discount_response
 import mundiapi.models.get_increment_response
-import mundiapi.models.get_subscription_split_response
+import mundiapi.models.split
 
 class GetSubscriptionResponse(object):
 
@@ -29,20 +29,20 @@ class GetSubscriptionResponse(object):
         interval (string): TODO: type description here.
         interval_count (int): TODO: type description here.
         billing_type (string): TODO: type description here.
-        current_cycle (GetPeriodResponse): TODO: type description here.
+        current_cycle (CurrentCycle): TODO: type description here.
         payment_method (string): TODO: type description here.
         currency (string): TODO: type description here.
         installments (int): TODO: type description here.
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
-        customer (GetCustomerResponse): TODO: type description here.
-        card (GetCardResponse): TODO: type description here.
+        customer (Customer): TODO: type description here.
+        card (Card): TODO: type description here.
         items (list of GetSubscriptionItemResponse): TODO: type description
             here.
         statement_descriptor (string): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
-        setup (GetSetupResponse): TODO: type description here.
+        setup (Setup): TODO: type description here.
         gateway_affiliation_id (string): Affiliation Code
         next_billing_at (datetime): TODO: type description here.
         billing_day (int): TODO: type description here.
@@ -51,7 +51,7 @@ class GetSubscriptionResponse(object):
         discounts (list of GetDiscountResponse): Subscription discounts
         increments (list of GetIncrementResponse): Subscription increments
         boleto_due_days (int): Days until boleto expires
-        split (GetSubscriptionSplitResponse): Subscription's split response
+        split (Split): TODO: type description here.
 
     """
 
@@ -179,7 +179,7 @@ class GetSubscriptionResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        card = mundiapi.models.get_card_response.GetCardResponse.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        card = mundiapi.models.card.Card.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         items = None
         if dictionary.get('items') != None:
             items = list()
@@ -187,16 +187,16 @@ class GetSubscriptionResponse(object):
                 items.append(mundiapi.models.get_subscription_item_response.GetSubscriptionItemResponse.from_dictionary(structure))
         statement_descriptor = dictionary.get('statement_descriptor')
         metadata = dictionary.get('metadata')
-        setup = mundiapi.models.get_setup_response.GetSetupResponse.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
+        setup = mundiapi.models.setup.Setup.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
         gateway_affiliation_id = dictionary.get('gateway_affiliation_id')
         increments = None
         if dictionary.get('increments') != None:
             increments = list()
             for structure in dictionary.get('increments'):
                 increments.append(mundiapi.models.get_increment_response.GetIncrementResponse.from_dictionary(structure))
-        split = mundiapi.models.get_subscription_split_response.GetSubscriptionSplitResponse.from_dictionary(dictionary.get('split')) if dictionary.get('split') else None
-        current_cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('current_cycle')) if dictionary.get('current_cycle') else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        split = mundiapi.models.split.Split.from_dictionary(dictionary.get('split')) if dictionary.get('split') else None
+        current_cycle = mundiapi.models.current_cycle.CurrentCycle.from_dictionary(dictionary.get('current_cycle')) if dictionary.get('current_cycle') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         next_billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("next_billing_at")).datetime if dictionary.get("next_billing_at") else None
         billing_day = dictionary.get('billing_day')
         minimum_price = dictionary.get('minimum_price')

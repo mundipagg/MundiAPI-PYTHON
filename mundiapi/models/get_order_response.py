@@ -8,12 +8,12 @@
 
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_order_item_response
-import mundiapi.models.get_customer_response
+import mundiapi.models.customer
 import mundiapi.models.get_charge_response
-import mundiapi.models.get_shipping_response
+import mundiapi.models.shipping
 import mundiapi.models.get_checkout_payment_response
-import mundiapi.models.get_location_response
-import mundiapi.models.get_device_response
+import mundiapi.models.location
+import mundiapi.models.device
 
 class GetOrderResponse(object):
 
@@ -26,20 +26,20 @@ class GetOrderResponse(object):
         code (string): TODO: type description here.
         currency (string): TODO: type description here.
         items (list of GetOrderItemResponse): TODO: type description here.
-        customer (GetCustomerResponse): TODO: type description here.
+        customer (Customer): TODO: type description here.
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
         charges (list of GetChargeResponse): TODO: type description here.
         invoice_url (string): TODO: type description here.
-        shipping (GetShippingResponse): TODO: type description here.
+        shipping (Shipping): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         checkouts (list of GetCheckoutPaymentResponse): Checkout Payment
             Settings Response
         ip (string): Ip address
         session_id (string): Session id
-        location (GetLocationResponse): Location
-        device (GetDeviceResponse): Device's informations
+        location (Location): TODO: type description here.
+        device (Device): TODO: type description here.
         closed (bool): Indicates whether the order is closed
 
     """
@@ -143,10 +143,10 @@ class GetOrderResponse(object):
             for structure in dictionary.get('charges'):
                 charges.append(mundiapi.models.get_charge_response.GetChargeResponse.from_dictionary(structure))
         invoice_url = dictionary.get('invoice_url')
-        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        shipping = mundiapi.models.shipping.Shipping.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         closed = dictionary.get('closed')
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         checkouts = None
         if dictionary.get('checkouts') != None:
             checkouts = list()
@@ -154,8 +154,8 @@ class GetOrderResponse(object):
                 checkouts.append(mundiapi.models.get_checkout_payment_response.GetCheckoutPaymentResponse.from_dictionary(structure))
         ip = dictionary.get('ip')
         session_id = dictionary.get('session_id')
-        location = mundiapi.models.get_location_response.GetLocationResponse.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
-        device = mundiapi.models.get_device_response.GetDeviceResponse.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
+        location = mundiapi.models.location.Location.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
+        device = mundiapi.models.device.Device.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
 
         # Return an object of this model
         return cls(id,

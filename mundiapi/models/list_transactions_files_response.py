@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_transaction_report_file_response
-import mundiapi.models.paging_response
+import mundiapi.models.paging
 
 class ListTransactionsFilesResponse(object):
 
@@ -18,7 +18,7 @@ class ListTransactionsFilesResponse(object):
     Attributes:
         data (list of GetTransactionReportFileResponse): TODO: type
             description here.
-        paging (PagingResponse): Paging object
+        paging (Paging): TODO: type description here.
 
     """
 
@@ -61,7 +61,7 @@ class ListTransactionsFilesResponse(object):
             data = list()
             for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_transaction_report_file_response.GetTransactionReportFileResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
+        paging = mundiapi.models.paging.Paging.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

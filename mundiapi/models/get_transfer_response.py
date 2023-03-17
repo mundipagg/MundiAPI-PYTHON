@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_bank_account_response
+import mundiapi.models.bank_account
 
 class GetTransferResponse(object):
 
@@ -21,7 +21,7 @@ class GetTransferResponse(object):
         status (string): Transfer status
         created_at (datetime): Transfer creation date
         updated_at (datetime): Transfer last update date
-        bank_account (GetBankAccountResponse): Bank account
+        bank_account (BankAccount): TODO: type description here.
         metadata (dict<object, string>): Metadata
 
     """
@@ -80,7 +80,7 @@ class GetTransferResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        bank_account = mundiapi.models.get_bank_account_response.GetBankAccountResponse.from_dictionary(dictionary.get('bank_account')) if dictionary.get('bank_account') else None
+        bank_account = mundiapi.models.bank_account.BankAccount.from_dictionary(dictionary.get('bank_account')) if dictionary.get('bank_account') else None
         metadata = dictionary.get('metadata')
 
         # Return an object of this model

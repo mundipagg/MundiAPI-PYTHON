@@ -8,9 +8,9 @@
 
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_transaction_response
-import mundiapi.models.get_invoice_response
-import mundiapi.models.get_order_response
-import mundiapi.models.get_customer_response
+import mundiapi.models.invoice
+import mundiapi.models.order
+import mundiapi.models.customer
 
 class GetChargeResponse(object):
 
@@ -31,9 +31,9 @@ class GetChargeResponse(object):
         updated_at (datetime): TODO: type description here.
         last_transaction (GetTransactionResponse): TODO: type description
             here.
-        invoice (GetInvoiceResponse): TODO: type description here.
-        order (GetOrderResponse): TODO: type description here.
-        customer (GetCustomerResponse): TODO: type description here.
+        invoice (Invoice): TODO: type description here.
+        order (Order): TODO: type description here.
+        customer (Customer): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         paid_at (datetime): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
@@ -150,9 +150,9 @@ class GetChargeResponse(object):
         canceled_amount = dictionary.get('canceled_amount')
         paid_amount = dictionary.get('paid_amount')
         last_transaction = mundiapi.models.get_transaction_response.GetTransactionResponse.from_dictionary(dictionary.get('last_transaction')) if dictionary.get('last_transaction') else None
-        invoice = mundiapi.models.get_invoice_response.GetInvoiceResponse.from_dictionary(dictionary.get('invoice')) if dictionary.get('invoice') else None
-        order = mundiapi.models.get_order_response.GetOrderResponse.from_dictionary(dictionary.get('order')) if dictionary.get('order') else None
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        invoice = mundiapi.models.invoice.Invoice.from_dictionary(dictionary.get('invoice')) if dictionary.get('invoice') else None
+        order = mundiapi.models.order.Order.from_dictionary(dictionary.get('order')) if dictionary.get('order') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         paid_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("paid_at")).datetime if dictionary.get("paid_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         recurrency_cycle = dictionary.get('recurrency_cycle')

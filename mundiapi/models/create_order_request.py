@@ -7,13 +7,13 @@
 """
 
 import mundiapi.models.create_order_item_request
-import mundiapi.models.create_customer_request
+import mundiapi.models.customer_8
 import mundiapi.models.create_payment_request
-import mundiapi.models.create_shipping_request
-import mundiapi.models.create_location_request
-import mundiapi.models.create_device_request
+import mundiapi.models.shipping_3
+import mundiapi.models.location
+import mundiapi.models.device_1
 import mundiapi.models.create_antifraud_request
-import mundiapi.models.create_sub_merchant_request
+import mundiapi.models.submerchant
 
 class CreateOrderRequest(object):
 
@@ -23,22 +23,22 @@ class CreateOrderRequest(object):
 
     Attributes:
         items (list of CreateOrderItemRequest): Items
-        customer (CreateCustomerRequest): Customer
+        customer (Customer8): TODO: type description here.
         payments (list of CreatePaymentRequest): Payment data
         code (string): The order code
         customer_id (string): The customer id
-        shipping (CreateShippingRequest): Shipping data
+        shipping (Shipping3): TODO: type description here.
         metadata (dict<object, string>): Metadata
         antifraud_enabled (bool): Defines whether the order will go through
             anti-fraud
         ip (string): Ip address
         session_id (string): Session id
-        location (CreateLocationRequest): Request's location
-        device (CreateDeviceRequest): Device's informations
+        location (Location): TODO: type description here.
+        device (Device1): TODO: type description here.
         closed (bool): TODO: type description here.
         currency (string): Currency
         antifraud (CreateAntifraudRequest): TODO: type description here.
-        submerchant (CreateSubMerchantRequest): SubMerchant
+        submerchant (Submerchant): TODO: type description here.
 
     """
 
@@ -69,7 +69,7 @@ class CreateOrderRequest(object):
                  code=None,
                  customer_id=None,
                  metadata=None,
-                 closed=True,
+                 closed=None,
                  shipping=None,
                  antifraud_enabled=None,
                  ip=None,
@@ -123,7 +123,7 @@ class CreateOrderRequest(object):
             items = list()
             for structure in dictionary.get('items'):
                 items.append(mundiapi.models.create_order_item_request.CreateOrderItemRequest.from_dictionary(structure))
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        customer = mundiapi.models.customer_8.Customer8.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         payments = None
         if dictionary.get('payments') != None:
             payments = list()
@@ -132,16 +132,16 @@ class CreateOrderRequest(object):
         code = dictionary.get('code')
         customer_id = dictionary.get('customer_id')
         metadata = dictionary.get('metadata')
-        closed = dictionary.get("closed") if dictionary.get("closed") else True
-        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        closed = dictionary.get('closed')
+        shipping = mundiapi.models.shipping_3.Shipping3.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         antifraud_enabled = dictionary.get('antifraud_enabled')
         ip = dictionary.get('ip')
         session_id = dictionary.get('session_id')
-        location = mundiapi.models.create_location_request.CreateLocationRequest.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
-        device = mundiapi.models.create_device_request.CreateDeviceRequest.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
+        location = mundiapi.models.location.Location.from_dictionary(dictionary.get('location')) if dictionary.get('location') else None
+        device = mundiapi.models.device_1.Device1.from_dictionary(dictionary.get('device')) if dictionary.get('device') else None
         currency = dictionary.get('currency')
         antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
-        submerchant = mundiapi.models.create_sub_merchant_request.CreateSubMerchantRequest.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
+        submerchant = mundiapi.models.submerchant.Submerchant.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
 
         # Return an object of this model
         return cls(items,

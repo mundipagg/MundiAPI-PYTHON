@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_subscription_item_response
-import mundiapi.models.paging_response
+import mundiapi.models.paging
 
 class ListSubscriptionItemsResponse(object):
 
@@ -17,7 +17,7 @@ class ListSubscriptionItemsResponse(object):
 
     Attributes:
         data (list of GetSubscriptionItemResponse): The subscription items
-        paging (PagingResponse): Paging object
+        paging (Paging): TODO: type description here.
 
     """
 
@@ -60,7 +60,7 @@ class ListSubscriptionItemsResponse(object):
             data = list()
             for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_subscription_item_response.GetSubscriptionItemResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
+        paging = mundiapi.models.paging.Paging.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

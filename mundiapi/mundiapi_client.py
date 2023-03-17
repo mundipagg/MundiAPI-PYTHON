@@ -8,14 +8,14 @@
 
 from mundiapi.decorators import lazy_property
 from mundiapi.configuration import Configuration
+from mundiapi.controllers.subscriptions_controller import SubscriptionsController
+from mundiapi.controllers.orders_controller import OrdersController
+from mundiapi.controllers.plans_controller import PlansController
+from mundiapi.controllers.invoices_controller import InvoicesController
 from mundiapi.controllers.customers_controller import CustomersController
 from mundiapi.controllers.charges_controller import ChargesController
 from mundiapi.controllers.recipients_controller import RecipientsController
-from mundiapi.controllers.subscriptions_controller import SubscriptionsController
-from mundiapi.controllers.invoices_controller import InvoicesController
-from mundiapi.controllers.orders_controller import OrdersController
 from mundiapi.controllers.tokens_controller import TokensController
-from mundiapi.controllers.plans_controller import PlansController
 from mundiapi.controllers.transactions_controller import TransactionsController
 from mundiapi.controllers.transfers_controller import TransfersController
 
@@ -23,6 +23,22 @@ from mundiapi.controllers.transfers_controller import TransfersController
 class MundiapiClient(object):
 
     config = Configuration
+
+    @lazy_property
+    def subscriptions(self):
+        return SubscriptionsController()
+
+    @lazy_property
+    def orders(self):
+        return OrdersController()
+
+    @lazy_property
+    def plans(self):
+        return PlansController()
+
+    @lazy_property
+    def invoices(self):
+        return InvoicesController()
 
     @lazy_property
     def customers(self):
@@ -37,24 +53,8 @@ class MundiapiClient(object):
         return RecipientsController()
 
     @lazy_property
-    def subscriptions(self):
-        return SubscriptionsController()
-
-    @lazy_property
-    def invoices(self):
-        return InvoicesController()
-
-    @lazy_property
-    def orders(self):
-        return OrdersController()
-
-    @lazy_property
     def tokens(self):
         return TokensController()
-
-    @lazy_property
-    def plans(self):
-        return PlansController()
 
     @lazy_property
     def transactions(self):

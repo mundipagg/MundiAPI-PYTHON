@@ -7,8 +7,8 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_billing_address_response
-import mundiapi.models.get_customer_response
+import mundiapi.models.billing_address
+import mundiapi.models.customer
 
 class GetCardResponse(object):
 
@@ -26,9 +26,8 @@ class GetCardResponse(object):
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
-        billing_address (GetBillingAddressResponse): TODO: type description
-            here.
-        customer (GetCustomerResponse): TODO: type description here.
+        billing_address (BillingAddress): TODO: type description here.
+        customer (Customer): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         mtype (string): Card type
         holder_document (string): Document number for the card's holder
@@ -126,13 +125,13 @@ class GetCardResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        billing_address = mundiapi.models.billing_address.BillingAddress.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         metadata = dictionary.get('metadata')
         mtype = dictionary.get('type')
         holder_document = dictionary.get('holder_document')
         first_six_digits = dictionary.get('first_six_digits')
         label = dictionary.get('label')
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
         deleted_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("deleted_at")).datetime if dictionary.get("deleted_at") else None
 
         # Return an object of this model

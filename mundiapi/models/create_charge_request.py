@@ -7,8 +7,8 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.create_customer_request
-import mundiapi.models.create_payment_request
+import mundiapi.models.customer_8
+import mundiapi.models.payment
 import mundiapi.models.create_antifraud_request
 
 class CreateChargeRequest(object):
@@ -21,8 +21,8 @@ class CreateChargeRequest(object):
         code (string): Code
         amount (int): The amount of the charge, in cents
         customer_id (string): The customer's id
-        customer (CreateCustomerRequest): Customer data
-        payment (CreatePaymentRequest): Payment data
+        customer (Customer8): TODO: type description here.
+        payment (Payment): TODO: type description here.
         metadata (dict<object, string>): Metadata
         due_at (datetime): The charge due date
         antifraud (CreateAntifraudRequest): TODO: type description here.
@@ -88,8 +88,8 @@ class CreateChargeRequest(object):
         code = dictionary.get('code')
         amount = dictionary.get('amount')
         customer_id = dictionary.get('customer_id')
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
-        payment = mundiapi.models.create_payment_request.CreatePaymentRequest.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
+        customer = mundiapi.models.customer_8.Customer8.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        payment = mundiapi.models.payment.Payment.from_dictionary(dictionary.get('payment')) if dictionary.get('payment') else None
         metadata = dictionary.get('metadata')
         antifraud = mundiapi.models.create_antifraud_request.CreateAntifraudRequest.from_dictionary(dictionary.get('antifraud')) if dictionary.get('antifraud') else None
         order_id = dictionary.get('order_id')

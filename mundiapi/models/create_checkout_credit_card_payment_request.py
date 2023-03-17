@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.create_checkout_card_installment_option_request
-import mundiapi.models.create_payment_authentication_request
+import mundiapi.models.authentication_2
 
 class CreateCheckoutCreditCardPaymentRequest(object):
 
@@ -19,8 +19,7 @@ class CreateCheckoutCreditCardPaymentRequest(object):
         statement_descriptor (string): Card invoice text descriptor
         installments (list of CreateCheckoutCardInstallmentOptionRequest):
             Payment installment options
-        authentication (CreatePaymentAuthenticationRequest): Creates payment
-            authentication
+        authentication (Authentication2): TODO: type description here.
         capture (bool): Authorize and capture?
 
     """
@@ -71,7 +70,7 @@ class CreateCheckoutCreditCardPaymentRequest(object):
             installments = list()
             for structure in dictionary.get('installments'):
                 installments.append(mundiapi.models.create_checkout_card_installment_option_request.CreateCheckoutCardInstallmentOptionRequest.from_dictionary(structure))
-        authentication = mundiapi.models.create_payment_authentication_request.CreatePaymentAuthenticationRequest.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
+        authentication = mundiapi.models.authentication_2.Authentication2.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
         capture = dictionary.get('capture')
 
         # Return an object of this model
