@@ -7,17 +7,17 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.create_customer_request
-import mundiapi.models.create_card_request
-import mundiapi.models.create_pricing_scheme_request
+import mundiapi.models.customer_8
+import mundiapi.models.card_1
+import mundiapi.models.pricing_scheme_4
 import mundiapi.models.create_subscription_item_request
-import mundiapi.models.create_shipping_request
+import mundiapi.models.shipping_3
 import mundiapi.models.create_discount_request
-import mundiapi.models.create_setup_request
+import mundiapi.models.setup_1
 import mundiapi.models.create_increment_request
 import mundiapi.models.create_period_request
-import mundiapi.models.create_sub_merchant_request
-import mundiapi.models.create_subscription_split_request
+import mundiapi.models.submerchant
+import mundiapi.models.update_subscription_split_request
 
 class CreateSubscriptionRequest(object):
 
@@ -26,8 +26,8 @@ class CreateSubscriptionRequest(object):
     Request for creating a subcription
 
     Attributes:
-        customer (CreateCustomerRequest): Customer
-        card (CreateCardRequest): Card
+        customer (Customer8): TODO: type description here.
+        card (Card1): TODO: type description here.
         code (string): Subscription code
         payment_method (string): Payment method
         billing_type (string): Billing type
@@ -37,13 +37,12 @@ class CreateSubscriptionRequest(object):
         currency (string): Currency
         interval (string): Interval
         interval_count (int): Interval count
-        pricing_scheme (CreatePricingSchemeRequest): Subscription pricing
-            scheme
+        pricing_scheme (PricingScheme4): TODO: type description here.
         items (list of CreateSubscriptionItemRequest): Subscription items
-        shipping (CreateShippingRequest): Shipping
+        shipping (Shipping3): TODO: type description here.
         discounts (list of CreateDiscountRequest): Discounts
         metadata (dict<object, string>): Metadata
-        setup (CreateSetupRequest): Setup data
+        setup (Setup1): TODO: type description here.
         plan_id (string): Plan id
         customer_id (string): Customer id
         card_id (string): Card id
@@ -58,8 +57,8 @@ class CreateSubscriptionRequest(object):
         boleto_due_days (int): Days until boleto expires
         increments (list of CreateIncrementRequest): Increments
         period (CreatePeriodRequest): TODO: type description here.
-        submerchant (CreateSubMerchantRequest): SubMerchant
-        split (CreateSubscriptionSplitRequest): Subscription's split
+        submerchant (Submerchant): TODO: type description here.
+        split (UpdateSubscriptionSplitRequest): TODO: type description here.
 
     """
 
@@ -187,8 +186,8 @@ class CreateSubscriptionRequest(object):
             return None
 
         # Extract variables from the dictionary
-        customer = mundiapi.models.create_customer_request.CreateCustomerRequest.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
-        card = mundiapi.models.create_card_request.CreateCardRequest.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
+        customer = mundiapi.models.customer_8.Customer8.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        card = mundiapi.models.card_1.Card1.from_dictionary(dictionary.get('card')) if dictionary.get('card') else None
         code = dictionary.get('code')
         payment_method = dictionary.get('payment_method')
         billing_type = dictionary.get('billing_type')
@@ -197,20 +196,20 @@ class CreateSubscriptionRequest(object):
         currency = dictionary.get('currency')
         interval = dictionary.get('interval')
         interval_count = dictionary.get('interval_count')
-        pricing_scheme = mundiapi.models.create_pricing_scheme_request.CreatePricingSchemeRequest.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        pricing_scheme = mundiapi.models.pricing_scheme_4.PricingScheme4.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         items = None
         if dictionary.get('items') != None:
             items = list()
             for structure in dictionary.get('items'):
                 items.append(mundiapi.models.create_subscription_item_request.CreateSubscriptionItemRequest.from_dictionary(structure))
-        shipping = mundiapi.models.create_shipping_request.CreateShippingRequest.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        shipping = mundiapi.models.shipping_3.Shipping3.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         discounts = None
         if dictionary.get('discounts') != None:
             discounts = list()
             for structure in dictionary.get('discounts'):
                 discounts.append(mundiapi.models.create_discount_request.CreateDiscountRequest.from_dictionary(structure))
         metadata = dictionary.get('metadata')
-        setup = mundiapi.models.create_setup_request.CreateSetupRequest.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
+        setup = mundiapi.models.setup_1.Setup1.from_dictionary(dictionary.get('setup')) if dictionary.get('setup') else None
         increments = None
         if dictionary.get('increments') != None:
             increments = list()
@@ -229,8 +228,8 @@ class CreateSubscriptionRequest(object):
         quantity = dictionary.get('quantity')
         boleto_due_days = dictionary.get('boleto_due_days')
         period = mundiapi.models.create_period_request.CreatePeriodRequest.from_dictionary(dictionary.get('period')) if dictionary.get('period') else None
-        submerchant = mundiapi.models.create_sub_merchant_request.CreateSubMerchantRequest.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
-        split = mundiapi.models.create_subscription_split_request.CreateSubscriptionSplitRequest.from_dictionary(dictionary.get('split')) if dictionary.get('split') else None
+        submerchant = mundiapi.models.submerchant.Submerchant.from_dictionary(dictionary.get('submerchant')) if dictionary.get('submerchant') else None
+        split = mundiapi.models.update_subscription_split_request.UpdateSubscriptionSplitRequest.from_dictionary(dictionary.get('split')) if dictionary.get('split') else None
 
         # Return an object of this model
         return cls(customer,

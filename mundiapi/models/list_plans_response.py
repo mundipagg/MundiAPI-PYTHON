@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_plan_response
-import mundiapi.models.paging_response
+import mundiapi.models.paging
 
 class ListPlansResponse(object):
 
@@ -17,7 +17,7 @@ class ListPlansResponse(object):
 
     Attributes:
         data (list of GetPlanResponse): The plan objects
-        paging (PagingResponse): Paging object
+        paging (Paging): TODO: type description here.
 
     """
 
@@ -60,7 +60,7 @@ class ListPlansResponse(object):
             data = list()
             for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_plan_response.GetPlanResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
+        paging = mundiapi.models.paging.Paging.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

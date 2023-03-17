@@ -7,8 +7,8 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_transfer_source_response
-import mundiapi.models.get_transfer_target_response
+import mundiapi.models.get_withdraw_source_response
+import mundiapi.models.get_withdraw_target_response
 
 class GetTransfer(object):
 
@@ -28,8 +28,8 @@ class GetTransfer(object):
         funding_date (datetime): TODO: type description here.
         funding_estimated_date (datetime): TODO: type description here.
         mtype (string): TODO: type description here.
-        source (GetTransferSourceResponse): TODO: type description here.
-        target (GetTransferTargetResponse): TODO: type description here.
+        source (GetWithdrawSourceResponse): TODO: type description here.
+        target (GetWithdrawTargetResponse): TODO: type description here.
 
     """
 
@@ -107,8 +107,8 @@ class GetTransfer(object):
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
         mtype = dictionary.get('type')
-        source = mundiapi.models.get_transfer_source_response.GetTransferSourceResponse.from_dictionary(dictionary.get('source')) if dictionary.get('source') else None
-        target = mundiapi.models.get_transfer_target_response.GetTransferTargetResponse.from_dictionary(dictionary.get('target')) if dictionary.get('target') else None
+        source = mundiapi.models.get_withdraw_source_response.GetWithdrawSourceResponse.from_dictionary(dictionary.get('source')) if dictionary.get('source') else None
+        target = mundiapi.models.get_withdraw_target_response.GetWithdrawTargetResponse.from_dictionary(dictionary.get('target')) if dictionary.get('target') else None
         metadata = dictionary.get('metadata')
         fee = dictionary.get('fee')
         funding_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("funding_date")).datetime if dictionary.get("funding_date") else None

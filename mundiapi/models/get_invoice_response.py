@@ -8,12 +8,12 @@
 
 from mundiapi.api_helper import APIHelper
 import mundiapi.models.get_invoice_item_response
-import mundiapi.models.get_customer_response
-import mundiapi.models.get_charge_response
-import mundiapi.models.get_billing_address_response
+import mundiapi.models.customer
+import mundiapi.models.charge
+import mundiapi.models.billing_address
 import mundiapi.models.get_subscription_response
-import mundiapi.models.get_period_response
-import mundiapi.models.get_shipping_response
+import mundiapi.models.cycle
+import mundiapi.models.shipping
 
 class GetInvoiceResponse(object):
 
@@ -30,14 +30,13 @@ class GetInvoiceResponse(object):
         payment_method (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         items (list of GetInvoiceItemResponse): TODO: type description here.
-        customer (GetCustomerResponse): TODO: type description here.
-        charge (GetChargeResponse): TODO: type description here.
+        customer (Customer): TODO: type description here.
+        charge (Charge): TODO: type description here.
         installments (int): TODO: type description here.
-        billing_address (GetBillingAddressResponse): TODO: type description
-            here.
+        billing_address (BillingAddress): TODO: type description here.
         subscription (GetSubscriptionResponse): TODO: type description here.
-        cycle (GetPeriodResponse): TODO: type description here.
-        shipping (GetShippingResponse): TODO: type description here.
+        cycle (Cycle): TODO: type description here.
+        shipping (Shipping): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         due_at (datetime): TODO: type description here.
         canceled_at (datetime): TODO: type description here.
@@ -158,15 +157,15 @@ class GetInvoiceResponse(object):
             items = list()
             for structure in dictionary.get('items'):
                 items.append(mundiapi.models.get_invoice_item_response.GetInvoiceItemResponse.from_dictionary(structure))
-        charge = mundiapi.models.get_charge_response.GetChargeResponse.from_dictionary(dictionary.get('charge')) if dictionary.get('charge') else None
+        charge = mundiapi.models.charge.Charge.from_dictionary(dictionary.get('charge')) if dictionary.get('charge') else None
         installments = dictionary.get('installments')
-        billing_address = mundiapi.models.get_billing_address_response.GetBillingAddressResponse.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
+        billing_address = mundiapi.models.billing_address.BillingAddress.from_dictionary(dictionary.get('billing_address')) if dictionary.get('billing_address') else None
         subscription = mundiapi.models.get_subscription_response.GetSubscriptionResponse.from_dictionary(dictionary.get('subscription')) if dictionary.get('subscription') else None
-        shipping = mundiapi.models.get_shipping_response.GetShippingResponse.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
+        shipping = mundiapi.models.shipping.Shipping.from_dictionary(dictionary.get('shipping')) if dictionary.get('shipping') else None
         metadata = dictionary.get('metadata')
         subscription_id = dictionary.get('subscription_id')
-        customer = mundiapi.models.get_customer_response.GetCustomerResponse.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
-        cycle = mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(dictionary.get('cycle')) if dictionary.get('cycle') else None
+        customer = mundiapi.models.customer.Customer.from_dictionary(dictionary.get('customer')) if dictionary.get('customer') else None
+        cycle = mundiapi.models.cycle.Cycle.from_dictionary(dictionary.get('cycle')) if dictionary.get('cycle') else None
         due_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("due_at")).datetime if dictionary.get("due_at") else None
         canceled_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("canceled_at")).datetime if dictionary.get("canceled_at") else None
         billing_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("billing_at")).datetime if dictionary.get("billing_at") else None

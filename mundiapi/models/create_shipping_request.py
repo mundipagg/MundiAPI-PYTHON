@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.create_address_request
+import mundiapi.models.address_1
 
 class CreateShippingRequest(object):
 
@@ -22,7 +22,7 @@ class CreateShippingRequest(object):
         recipient_phone (string): Recipient phone number
         address_id (string): The id of the address that will be used for
             shipping
-        address (CreateAddressRequest): Address data
+        address (Address1): TODO: type description here.
         max_delivery_date (datetime): Data máxima de entrega
         estimated_delivery_date (datetime): Prazo estimado de entrega
         mtype (string): Shipping type
@@ -89,7 +89,7 @@ class CreateShippingRequest(object):
         recipient_name = dictionary.get('recipient_name')
         recipient_phone = dictionary.get('recipient_phone')
         address_id = dictionary.get('address_id')
-        address = mundiapi.models.create_address_request.CreateAddressRequest.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        address = mundiapi.models.address_1.Address1.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
         mtype = dictionary.get('type')
         max_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("max_delivery_date")).datetime if dictionary.get("max_delivery_date") else None
         estimated_delivery_date = APIHelper.RFC3339DateTime.from_value(dictionary.get("estimated_delivery_date")).datetime if dictionary.get("estimated_delivery_date") else None

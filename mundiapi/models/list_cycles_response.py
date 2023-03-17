@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_period_response
-import mundiapi.models.paging_response
+import mundiapi.models.paging
 
 class ListCyclesResponse(object):
 
@@ -17,7 +17,7 @@ class ListCyclesResponse(object):
 
     Attributes:
         data (list of GetPeriodResponse): The subscription cycles objects
-        paging (PagingResponse): Paging object
+        paging (Paging): TODO: type description here.
 
     """
 
@@ -60,7 +60,7 @@ class ListCyclesResponse(object):
             data = list()
             for structure in dictionary.get('data'):
                 data.append(mundiapi.models.get_period_response.GetPeriodResponse.from_dictionary(structure))
-        paging = mundiapi.models.paging_response.PagingResponse.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
+        paging = mundiapi.models.paging.Paging.from_dictionary(dictionary.get('paging')) if dictionary.get('paging') else None
 
         # Return an object of this model
         return cls(data,

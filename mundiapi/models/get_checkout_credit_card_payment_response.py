@@ -7,7 +7,7 @@
 """
 
 import mundiapi.models.get_checkout_card_installment_options_response
-import mundiapi.models.get_payment_authentication_response
+import mundiapi.models.authentication
 
 class GetCheckoutCreditCardPaymentResponse(object):
 
@@ -19,8 +19,7 @@ class GetCheckoutCreditCardPaymentResponse(object):
         statement_descriptor (string): Descrição na fatura
         installments (list of GetCheckoutCardInstallmentOptionsResponse):
             Parcelas
-        authentication (GetPaymentAuthenticationResponse): Payment
-            Authentication response
+        authentication (Authentication): TODO: type description here.
 
     """
 
@@ -67,7 +66,7 @@ class GetCheckoutCreditCardPaymentResponse(object):
             installments = list()
             for structure in dictionary.get('installments'):
                 installments.append(mundiapi.models.get_checkout_card_installment_options_response.GetCheckoutCardInstallmentOptionsResponse.from_dictionary(structure))
-        authentication = mundiapi.models.get_payment_authentication_response.GetPaymentAuthenticationResponse.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
+        authentication = mundiapi.models.authentication.Authentication.from_dictionary(dictionary.get('authentication')) if dictionary.get('authentication') else None
 
         # Return an object of this model
         return cls(statement_descriptor,

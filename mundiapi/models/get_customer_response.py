@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_address_response
+import mundiapi.models.address
 import mundiapi.models.get_phones_response
 
 class GetCustomerResponse(object):
@@ -26,7 +26,7 @@ class GetCustomerResponse(object):
         document (string): TODO: type description here.
         mtype (string): TODO: type description here.
         fb_access_token (string): TODO: type description here.
-        address (GetAddressResponse): TODO: type description here.
+        address (Address): TODO: type description here.
         metadata (dict<object, string>): TODO: type description here.
         phones (GetPhonesResponse): TODO: type description here.
         fb_id (long|int): TODO: type description here.
@@ -118,7 +118,7 @@ class GetCustomerResponse(object):
         document = dictionary.get('document')
         mtype = dictionary.get('type')
         fb_access_token = dictionary.get('fb_access_token')
-        address = mundiapi.models.get_address_response.GetAddressResponse.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
+        address = mundiapi.models.address.Address.from_dictionary(dictionary.get('address')) if dictionary.get('address') else None
         metadata = dictionary.get('metadata')
         phones = mundiapi.models.get_phones_response.GetPhonesResponse.from_dictionary(dictionary.get('phones')) if dictionary.get('phones') else None
         code = dictionary.get('code')

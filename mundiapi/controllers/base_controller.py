@@ -9,7 +9,7 @@
 from mundiapi.api_helper import APIHelper
 from mundiapi.http.http_context import HttpContext
 from mundiapi.http.requests_client import RequestsClient
-from mundiapi.exceptions.error_exception import ErrorException
+from mundiapi.exceptions.api_exception import APIException
 
 class BaseController(object):
 
@@ -32,7 +32,7 @@ class BaseController(object):
     http_call_back = None
 
     global_headers = {
-        'user-agent': 'MundiSDK - Python 2.4.0'
+        'user-agent': 'MundiSDK - Python 2.4.1'
     }
 
     def __init__(self, client=None, call_back=None):
@@ -90,17 +90,5 @@ class BaseController(object):
             context (HttpContext): The HttpContext of the API call.
 
         """
-        if context.response.status_code == 400:
-            raise ErrorException('Invalid request', context)
-        elif context.response.status_code == 401:
-            raise ErrorException('Invalid API key', context)
-        elif context.response.status_code == 404:
-            raise ErrorException('An informed resource was not found', context)
-        elif context.response.status_code == 412:
-            raise ErrorException('Business validation error', context)
-        elif context.response.status_code == 422:
-            raise ErrorException('Contract validation error', context)
-        elif context.response.status_code == 500:
-            raise ErrorException('Internal server error', context)
-        elif (context.response.status_code < 200) or (context.response.status_code > 208): #[200,208] = HTTP OK
+        if (context.response.status_code < 200) or (context.response.status_code > 208): #[200,208] = HTTP OK
             raise APIException('HTTP response not OK.', context)

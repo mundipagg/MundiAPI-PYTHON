@@ -10,10 +10,18 @@ from mundiapi.api_helper import APIHelper
 from mundiapi.configuration import Configuration
 from mundiapi.controllers.base_controller import BaseController
 from mundiapi.http.auth.basic_auth import BasicAuth
-from mundiapi.models.get_charge_response import GetChargeResponse
-from mundiapi.models.list_charges_response import ListChargesResponse
-from mundiapi.models.list_charge_transactions_response import ListChargeTransactionsResponse
+from mundiapi.models.charges_response import ChargesResponse
+from mundiapi.models.charges_confirm_payment_response import ChargesConfirmPaymentResponse
+from mundiapi.models.charges_card_response import ChargesCardResponse
+from mundiapi.models.charges_response_2 import ChargesResponse2
+from mundiapi.models.charges_retry_response import ChargesRetryResponse
+from mundiapi.models.charges_payment_method_response import ChargesPaymentMethodResponse
+from mundiapi.models.charges_metadata_response import ChargesMetadataResponse
+from mundiapi.models.charges_capture_response import ChargesCaptureResponse
+from mundiapi.models.charges_due_date_response import ChargesDueDateResponse
+from mundiapi.models.charges_transactions_response import ChargesTransactionsResponse
 from mundiapi.models.get_charges_summary_response import GetChargesSummaryResponse
+from mundiapi.exceptions.error_exception import ErrorException
 
 class ChargesController(BaseController):
 
@@ -30,7 +38,7 @@ class ChargesController(BaseController):
             charge_id (string): Charge id
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -58,28 +66,106 @@ class ChargesController(BaseController):
         _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesResponse.from_dictionary)
+
+    def cancel_charge(self,
+                      charge_id,
+                      idempotency_key=None,
+                      body=None):
+        """Does a DELETE request to /charges/{charge_id}.
+
+        Cancel a charge
+
+        Args:
+            charge_id (string): Charge id
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+            body (ChargesRequest, optional): Request for cancelling a charge
+
+        Returns:
+            ChargesResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/charges/{charge_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'charge_id': charge_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesResponse.from_dictionary)
 
     def confirm_payment(self,
                         charge_id,
-                        request=None,
-                        idempotency_key=None):
+                        idempotency_key=None,
+                        body=None):
         """Does a POST request to /charges/{charge_id}/confirm-payment.
 
-        TODO: type endpoint description here.
+        ConfirmPayment
 
         Args:
             charge_id (string): TODO: type description here. Example: 
-            request (CreateConfirmPaymentRequest, optional): Request for
-                confirm payment
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
+            body (CreateConfirmPaymentRequest, optional): Request for confirm
+                payment
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesConfirmPaymentResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -101,22 +187,36 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesConfirmPaymentResponse.from_dictionary)
 
     def update_charge_card(self,
                            charge_id,
-                           request,
+                           body,
                            idempotency_key=None):
         """Does a PATCH request to /charges/{charge_id}/card.
 
@@ -124,13 +224,12 @@ class ChargesController(BaseController):
 
         Args:
             charge_id (string): Charge id
-            request (UpdateChargeCardRequest): Request for updating a charge's
-                card
+            body (ChargesCardRequest): Request for updating a charge's card
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesCardResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -152,18 +251,32 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesCardResponse.from_dictionary)
 
     def get_charges(self,
                     page=None,
@@ -194,7 +307,7 @@ class ChargesController(BaseController):
                 range for charge's creation
 
         Returns:
-            ListChargesResponse: Response from the API. 
+            ChargesResponse2: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -232,61 +345,24 @@ class ChargesController(BaseController):
         _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListChargesResponse.from_dictionary)
-
-    def cancel_charge(self,
-                      charge_id,
-                      request=None,
-                      idempotency_key=None):
-        """Does a DELETE request to /charges/{charge_id}.
-
-        Cancel a charge
-
-        Args:
-            charge_id (string): Charge id
-            request (CreateCancelChargeRequest, optional): Request for
-                cancelling a charge
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            GetChargeResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/charges/{charge_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'charge_id': charge_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesResponse2.from_dictionary)
 
     def retry_charge(self,
                      charge_id,
@@ -301,7 +377,7 @@ class ChargesController(BaseController):
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesRetryResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -330,14 +406,28 @@ class ChargesController(BaseController):
         _request = self.http_client.post(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesRetryResponse.from_dictionary)
 
     def update_charge_payment_method(self,
                                      charge_id,
-                                     request,
+                                     body,
                                      idempotency_key=None):
         """Does a PATCH request to /charges/{charge_id}/payment-method.
 
@@ -345,13 +435,13 @@ class ChargesController(BaseController):
 
         Args:
             charge_id (string): Charge id
-            request (UpdateChargePaymentMethodRequest): Request for updating
-                the payment method from a charge
+            body (ChargesPaymentMethodRequest): Request for updating the
+                payment method from a charge
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesPaymentMethodResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -373,22 +463,36 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesPaymentMethodResponse.from_dictionary)
 
     def update_charge_metadata(self,
                                charge_id,
-                               request,
+                               body,
                                idempotency_key=None):
         """Does a PATCH request to /Charges/{charge_id}/metadata.
 
@@ -396,13 +500,13 @@ class ChargesController(BaseController):
 
         Args:
             charge_id (string): The charge id
-            request (UpdateMetadataRequest): Request for updating the charge
+            body (ChargesMetadataRequest): Request for updating the charge
                 metadata
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesMetadataResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -424,36 +528,50 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesMetadataResponse.from_dictionary)
 
     def capture_charge(self,
                        charge_id,
-                       request=None,
-                       idempotency_key=None):
+                       idempotency_key=None,
+                       body=None):
         """Does a POST request to /charges/{charge_id}/capture.
 
         Captures a charge
 
         Args:
             charge_id (string): Charge id
-            request (CreateCaptureChargeRequest, optional): Request for
-                capturing a charge
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
+            body (ChargesCaptureRequest, optional): Request for capturing a
+                charge
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesCaptureResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -475,22 +593,36 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesCaptureResponse.from_dictionary)
 
     def update_charge_due_date(self,
                                charge_id,
-                               request,
+                               body,
                                idempotency_key=None):
         """Does a PATCH request to /Charges/{charge_id}/due-date.
 
@@ -498,13 +630,12 @@ class ChargesController(BaseController):
 
         Args:
             charge_id (string): Charge Id
-            request (UpdateChargeDueDateRequest): Request for updating the due
-                date
+            body (ChargesDueDateRequest): Request for updating the due date
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesDueDateResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -526,33 +657,47 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesDueDateResponse.from_dictionary)
 
     def create_charge(self,
-                      request,
+                      body,
                       idempotency_key=None):
         """Does a POST request to /Charges.
 
         Creates a new charge
 
         Args:
-            request (CreateChargeRequest): Request for creating a charge
+            body (ChargesRequest1): Request for creating a charge
             idempotency_key (string, optional): TODO: type description here.
                 Example: 
 
         Returns:
-            GetChargeResponse: Response from the API. 
+            ChargesResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -571,18 +716,32 @@ class ChargesController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8',
+            'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(request))
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, GetChargeResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesResponse.from_dictionary)
 
     def get_charge_transactions(self,
                                 charge_id,
@@ -590,7 +749,7 @@ class ChargesController(BaseController):
                                 size=None):
         """Does a GET request to /charges/{charge_id}/transactions.
 
-        TODO: type endpoint description here.
+        GetChargeTransactions
 
         Args:
             charge_id (string): Charge Id
@@ -598,7 +757,7 @@ class ChargesController(BaseController):
             size (int, optional): Page size
 
         Returns:
-            ListChargeTransactionsResponse: Response from the API. 
+            ChargesTransactionsResponse: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -632,10 +791,24 @@ class ChargesController(BaseController):
         _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, ListChargeTransactionsResponse.from_dictionary)
+        return APIHelper.json_deserialize(_context.response.raw_body, ChargesTransactionsResponse.from_dictionary)
 
     def get_charges_summary(self,
                             status,
@@ -643,7 +816,7 @@ class ChargesController(BaseController):
                             created_until=None):
         """Does a GET request to /charges/summary.
 
-        TODO: type endpoint description here.
+        GetChargesSummary
 
         Args:
             status (string): TODO: type description here. Example: 
@@ -685,6 +858,20 @@ class ChargesController(BaseController):
         _request = self.http_client.get(_query_url, headers=_headers)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
         self.validate_response(_context)
 
         # Return appropriate type

@@ -7,7 +7,7 @@
 """
 
 from mundiapi.api_helper import APIHelper
-import mundiapi.models.get_pricing_scheme_response
+import mundiapi.models.pricing_scheme
 import mundiapi.models.get_discount_response
 import mundiapi.models.get_increment_response
 import mundiapi.models.get_subscription_response
@@ -24,8 +24,7 @@ class GetSubscriptionItemResponse(object):
         status (string): TODO: type description here.
         created_at (datetime): TODO: type description here.
         updated_at (datetime): TODO: type description here.
-        pricing_scheme (GetPricingSchemeResponse): TODO: type description
-            here.
+        pricing_scheme (PricingScheme): TODO: type description here.
         discounts (list of GetDiscountResponse): TODO: type description here.
         increments (list of GetIncrementResponse): TODO: type description
             here.
@@ -109,7 +108,7 @@ class GetSubscriptionItemResponse(object):
         status = dictionary.get('status')
         created_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("created_at")).datetime if dictionary.get("created_at") else None
         updated_at = APIHelper.RFC3339DateTime.from_value(dictionary.get("updated_at")).datetime if dictionary.get("updated_at") else None
-        pricing_scheme = mundiapi.models.get_pricing_scheme_response.GetPricingSchemeResponse.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
+        pricing_scheme = mundiapi.models.pricing_scheme.PricingScheme.from_dictionary(dictionary.get('pricing_scheme')) if dictionary.get('pricing_scheme') else None
         discounts = None
         if dictionary.get('discounts') != None:
             discounts = list()
