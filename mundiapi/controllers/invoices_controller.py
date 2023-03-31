@@ -12,9 +12,9 @@ from mundiapi.controllers.base_controller import BaseController
 from mundiapi.http.auth.basic_auth import BasicAuth
 from mundiapi.models.subscriptions_cycles_pay_response import SubscriptionsCyclesPayResponse
 from mundiapi.models.subscriptions_partial_invoice_response import SubscriptionsPartialInvoiceResponse
-from mundiapi.models.invoices_status_response import InvoicesStatusResponse
 from mundiapi.models.invoices_response import InvoicesResponse
 from mundiapi.models.invoices_metadata_response import InvoicesMetadataResponse
+from mundiapi.models.invoices_status_response import InvoicesStatusResponse
 from mundiapi.models.invoices_response_2 import InvoicesResponse2
 from mundiapi.exceptions.error_exception import ErrorException
 
@@ -148,128 +148,6 @@ class InvoicesController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, SubscriptionsPartialInvoiceResponse.from_dictionary)
 
-    def update_invoice_status(self,
-                              invoice_id,
-                              body,
-                              idempotency_key=None):
-        """Does a PATCH request to /invoices/{invoice_id}/status.
-
-        Updates the status from an invoice
-
-        Args:
-            invoice_id (string): Invoice Id
-            body (UpdateCurrentCycleStatusRequest): Request for updating an
-                invoice's status
-            idempotency_key (string, optional): TODO: type description here.
-                Example: 
-
-        Returns:
-            InvoicesStatusResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/invoices/{invoice_id}/status'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'invoice_id': invoice_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'Content-Type': 'application/json',
-            'idempotency-key': idempotency_key
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-
-        # Endpoint and global error handling using HTTP status codes.
-        if _context.response.status_code == 400:
-            raise ErrorException('Invalid request', _context)
-        elif _context.response.status_code == 401:
-            raise ErrorException('Invalid API key', _context)
-        elif _context.response.status_code == 404:
-            raise ErrorException('An informed resource was not found', _context)
-        elif _context.response.status_code == 412:
-            raise ErrorException('Business validation error', _context)
-        elif _context.response.status_code == 422:
-            raise ErrorException('Contract validation error', _context)
-        elif _context.response.status_code == 500:
-            raise ErrorException('Internal server error', _context)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, InvoicesStatusResponse.from_dictionary)
-
-    def get_invoice(self,
-                    invoice_id):
-        """Does a GET request to /invoices/{invoice_id}.
-
-        Gets an invoice
-
-        Args:
-            invoice_id (string): Invoice Id
-
-        Returns:
-            InvoicesResponse: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _url_path = '/invoices/{invoice_id}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'invoice_id': invoice_id
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-
-        # Endpoint and global error handling using HTTP status codes.
-        if _context.response.status_code == 400:
-            raise ErrorException('Invalid request', _context)
-        elif _context.response.status_code == 401:
-            raise ErrorException('Invalid API key', _context)
-        elif _context.response.status_code == 404:
-            raise ErrorException('An informed resource was not found', _context)
-        elif _context.response.status_code == 412:
-            raise ErrorException('Business validation error', _context)
-        elif _context.response.status_code == 422:
-            raise ErrorException('Contract validation error', _context)
-        elif _context.response.status_code == 500:
-            raise ErrorException('Internal server error', _context)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body, InvoicesResponse.from_dictionary)
-
     def cancel_invoice(self,
                        invoice_id,
                        idempotency_key=None):
@@ -395,6 +273,128 @@ class InvoicesController(BaseController):
 
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body, InvoicesMetadataResponse.from_dictionary)
+
+    def update_invoice_status(self,
+                              invoice_id,
+                              body,
+                              idempotency_key=None):
+        """Does a PATCH request to /invoices/{invoice_id}/status.
+
+        Updates the status from an invoice
+
+        Args:
+            invoice_id (string): Invoice Id
+            body (UpdateCurrentCycleStatusRequest): Request for updating an
+                invoice's status
+            idempotency_key (string, optional): TODO: type description here.
+                Example: 
+
+        Returns:
+            InvoicesStatusResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/invoices/{invoice_id}/status'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'invoice_id': invoice_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+            'idempotency-key': idempotency_key
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.patch(_query_url, headers=_headers, parameters=APIHelper.json_serialize(body))
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, InvoicesStatusResponse.from_dictionary)
+
+    def get_invoice(self,
+                    invoice_id):
+        """Does a GET request to /invoices/{invoice_id}.
+
+        Gets an invoice
+
+        Args:
+            invoice_id (string): Invoice Id
+
+        Returns:
+            InvoicesResponse: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _url_path = '/invoices/{invoice_id}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'invoice_id': invoice_id
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+
+        # Endpoint and global error handling using HTTP status codes.
+        if _context.response.status_code == 400:
+            raise ErrorException('Invalid request', _context)
+        elif _context.response.status_code == 401:
+            raise ErrorException('Invalid API key', _context)
+        elif _context.response.status_code == 404:
+            raise ErrorException('An informed resource was not found', _context)
+        elif _context.response.status_code == 412:
+            raise ErrorException('Business validation error', _context)
+        elif _context.response.status_code == 422:
+            raise ErrorException('Contract validation error', _context)
+        elif _context.response.status_code == 500:
+            raise ErrorException('Internal server error', _context)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body, InvoicesResponse.from_dictionary)
 
     def get_invoices(self,
                      page=None,
