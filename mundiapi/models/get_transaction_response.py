@@ -1853,6 +1853,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         additional_information (list of PixAdditionalInformation): TODO: type
             description here.
         payer (object): TODO: type description here.
+        provider_transaction_id (string): Provider transaction id
 
     """
 
@@ -1863,6 +1864,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         "expires_at":'expires_at',
         "additional_information":'additional_information',
         "payer":'payer',
+        "provider_transaction_id":'provider_transaction_id',
         "gateway_id":'gateway_id',
         "amount":'amount',
         "status":'status',
@@ -1890,6 +1892,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                  expires_at=None,
                  additional_information=None,
                  payer=None,
+                 provider_transaction_id=None,
                  gateway_id=None,
                  amount=None,
                  status=None,
@@ -1917,6 +1920,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
         self.expires_at = APIHelper.RFC3339DateTime(expires_at) if expires_at else None
         self.additional_information = additional_information
         self.payer = payer
+        self.provider_transaction_id = provider_transaction_id
 
         # Call the constructor for the base class
         super(GetPixTransactionResponse, self).__init__(gateway_id,
@@ -1967,6 +1971,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
             for structure in dictionary.get('additional_information'):
                 additional_information.append(mundiapi.models.pix_additional_information.PixAdditionalInformation.from_dictionary(structure))
         payer = dictionary.get('payer')
+        provider_transaction_id = dictionary.get('provider_transaction_id')
         gateway_id = dictionary.get('gateway_id')
         amount = dictionary.get('amount')
         status = dictionary.get('status')
@@ -2001,6 +2006,7 @@ class GetPixTransactionResponse(GetTransactionResponse):
                    expires_at,
                    additional_information,
                    payer,
+                   provider_transaction_id,
                    gateway_id,
                    amount,
                    status,
