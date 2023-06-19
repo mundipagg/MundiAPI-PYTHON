@@ -48,6 +48,7 @@ class TransfersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json'
         }
 
@@ -105,7 +106,8 @@ class TransfersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name
         }
 
         # Prepare and execute request
@@ -155,7 +157,8 @@ class TransfersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name
         }
 
         # Prepare and execute request

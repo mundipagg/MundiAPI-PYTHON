@@ -88,6 +88,7 @@ In order to setup authentication and initialization of the API client, you need 
 
 | Parameter | Description |
 |-----------|-------------|
+| service_referer_name | TODO: add a description |
 | basic_auth_user_name | The username to use with basic authentication |
 | basic_auth_password | The password to use with basic authentication |
 
@@ -97,10 +98,11 @@ API client can be initialized as following.
 
 ```python
 # Configuration parameters and credentials
+service_referer_name = 'service_referer_name'
 basic_auth_user_name = 'basic_auth_user_name' # The username to use with basic authentication
 basic_auth_password = 'basic_auth_password' # The password to use with basic authentication
 
-client = MundiapiClient(basic_auth_user_name, basic_auth_password)
+client = MundiapiClient(service_referer_name, basic_auth_user_name, basic_auth_password)
 ```
 
 
@@ -758,8 +760,8 @@ def get_subscriptions(self,
 #### Example Usage
 
 ```python
-page = 180
-size = 180
+page = 142
+size = 142
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -821,8 +823,8 @@ def get_usages_details(self,
 ```python
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 180
-page = 180
+size = 142
+page = 142
 item_id = 'item_id'
 group = 'group'
 
@@ -1015,8 +1017,8 @@ def get_usages(self,
 ```python
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 180
-size = 180
+page = 142
+size = 142
 code = 'code'
 group = 'group'
 used_since = datetime.now()
@@ -1111,8 +1113,8 @@ def get_increments(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 180
-size = 180
+page = 142
+size = 142
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -1215,8 +1217,8 @@ def get_subscription_items(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 180
-size = 180
+page = 142
+size = 142
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1589,8 +1591,8 @@ def get_discounts(self,
 
 ```python
 subscription_id = 'subscription_id'
-page = 16
-size = 16
+page = 142
+size = 142
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2056,8 +2058,8 @@ def get_orders(self,
 #### Example Usage
 
 ```python
-page = 16
-size = 16
+page = 233
+size = 233
 code = 'code'
 status = 'status'
 created_since = datetime.now()
@@ -2531,8 +2533,8 @@ def get_plans(self,
 #### Example Usage
 
 ```python
-page = 16
-size = 16
+page = 233
+size = 233
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -3091,8 +3093,8 @@ def get_invoices(self,
 #### Example Usage
 
 ```python
-page = 230
-size = 230
+page = 191
+size = 191
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3204,8 +3206,8 @@ def get_access_tokens(self,
 
 ```python
 customer_id = 'customer_id'
-page = 230
-size = 230
+page = 191
+size = 191
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -3376,8 +3378,8 @@ def get_addresses(self,
 
 ```python
 customer_id = 'customer_id'
-page = 230
-size = 230
+page = 191
+size = 191
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -3741,8 +3743,8 @@ def get_cards(self,
 
 ```python
 customer_id = 'customer_id'
-page = 230
-size = 230
+page = 191
+size = 191
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -4316,8 +4318,8 @@ def get_charges(self,
 #### Example Usage
 
 ```python
-page = 230
-size = 230
+page = 28
+size = 28
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -4639,8 +4641,8 @@ def get_charge_transactions(self,
 
 ```python
 charge_id = 'charge_id'
-page = 66
-size = 66
+page = 28
+size = 28
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -4875,8 +4877,8 @@ def get_recipients(self,
 #### Example Usage
 
 ```python
-page = 66
-size = 66
+page = 28
+size = 28
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -5016,8 +5018,8 @@ def get_anticipations(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 66
-size = 66
+page = 28
+size = 28
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = datetime.now()
@@ -5295,8 +5297,8 @@ def get_transfers(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 66
-size = 66
+page = 28
+size = 28
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
@@ -5485,8 +5487,8 @@ def get_withdrawals(self,
 
 ```python
 recipient_id = 'recipient_id'
-page = 66
-size = 66
+page = 28
+size = 28
 status = 'status'
 created_since = datetime.now()
 created_until = datetime.now()
