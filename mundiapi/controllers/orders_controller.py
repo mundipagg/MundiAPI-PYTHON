@@ -60,6 +60,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
@@ -122,6 +123,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'idempotency-key': idempotency_key
         }
 
@@ -185,6 +187,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
@@ -250,6 +253,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
@@ -330,7 +334,8 @@ class OrdersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name
         }
 
         # Prepare and execute request
@@ -388,6 +393,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
@@ -453,6 +459,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'idempotency-key': idempotency_key
         }
 
@@ -513,7 +520,8 @@ class OrdersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name
         }
 
         # Prepare and execute request
@@ -579,6 +587,7 @@ class OrdersController(BaseController):
         # Prepare headers
         _headers = {
             'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name,
             'Content-Type': 'application/json',
             'idempotency-key': idempotency_key
         }
@@ -637,7 +646,8 @@ class OrdersController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'ServiceRefererName': Configuration.service_referer_name
         }
 
         # Prepare and execute request
